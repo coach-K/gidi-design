@@ -234,3 +234,41 @@ def logos():
 <h2>iOS (<code>logos/app/ios/</code>)</h2><div class="airow">{iosrow}</div><p class="small">1024 is the only size Xcode 14+ needs; the full legacy set is included. Shown with the iOS corner mask for preview only: files are square.</p>
 <h2>Android adaptive (<code>logos/app/android/</code>)</h2><div class="airow">{andr}</div><p class="small">Foreground art sits inside the 66 dp safe circle of the 108 dp layer. Vector layers: <a href="logos/app/android/ic_launcher_foreground.svg">foreground.svg</a>, <a href="logos/app/android/ic_launcher_background.svg">background.svg</a>. Legacy mipmaps 48–192 px included.</p>
 <h2>Web favicons &amp; PWA (<code>logos/app/web/</code>)</h2><div class="airow">{web}</div><p class="small"><a href="logos/app/web/favicon.ico">favicon.ico</a> (16/32/48) · <a href="logos/app/web/manifest.webmanifest">manifest.webmanifest</a> with <code>"orientation": "landscape"</code> and <code>"display": "fullscreen"</code>. This site uses these favicons.</p>'''
+
+SOUV = [ # level, name, glyph inner (viewBox 0 0 64 64, centred around 32,32)
+ (1,"Agege Bread",'<path d="M14 38c0-10 8-16 18-16s18 6 18 16v4H14z" fill="#D9A15A" stroke="#7A4630" stroke-width="2"/><path d="M22 28l3 6M32 26v7M42 28l-3 6" stroke="#7A4630" stroke-width="2.5" stroke-linecap="round"/>'),
+ (2,"Surulere Match Ticket",'<rect x="12" y="22" width="40" height="22" rx="3" fill="#56B4E9"/><circle cx="12" cy="33" r="4" fill="#0F1219"/><circle cx="52" cy="33" r="4" fill="#0F1219"/><path d="M38 22v22" stroke="#0F1219" stroke-dasharray="2 2" stroke-width="2"/><circle cx="25" cy="33" r="6" fill="none" stroke="#0F1219" stroke-width="2.5"/>'),
+ (3,"Ikorodu Road Sign",'<rect x="14" y="18" width="36" height="20" rx="3" fill="#2E7A68" stroke="#F5F5F0" stroke-width="2"/><path d="M20 28h20M34 23l6 5-6 5" stroke="#F5F5F0" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M31 38v10" stroke="#9EA3AD" stroke-width="3"/>'),
+ (4,"Mushin Market Basket",'<path d="M14 30h36l-4 16H18z" fill="#C8743A" stroke="#7A4630" stroke-width="2"/><path d="M20 30c0-8 24-8 24 0" fill="none" stroke="#7A4630" stroke-width="3"/><circle cx="26" cy="28" r="4" fill="#FF6B7A"/><circle cx="36" cy="27" r="4" fill="#59D9B8"/>'),
+ (5,"Oshodi Danfo Keyring",'<rect x="14" y="24" width="34" height="18" rx="4" fill="#E8B21E"/><path d="M14 32h34" stroke="#0F1219" stroke-width="3"/><circle cx="21" cy="44" r="3.5" fill="#0F1219"/><circle cx="41" cy="44" r="3.5" fill="#0F1219"/><circle cx="50" cy="18" r="5" fill="none" stroke="#9EA3AD" stroke-width="2.5"/><path d="M47 22l-3 3" stroke="#9EA3AD" stroke-width="2.5"/>'),
+ (6,"Ikeja Along Phone Case",'<rect x="22" y="14" width="20" height="36" rx="4" fill="#E07CC0" stroke="#0F1219" stroke-width="2"/><circle cx="32" cy="20" r="2" fill="#0F1219"/><path d="M26 30h12M26 36h12" stroke="#0F1219" stroke-width="2"/>'),
+ (7,"Ojota Park Flag",'<path d="M20 14v38" stroke="#9EA3AD" stroke-width="3"/><path d="M21 16h24l-6 8 6 8H21z" fill="#FF7A1A"/>'),
+ (8,"Third Mainland Lamp",'<path d="M12 46h40" stroke="#9EA3AD" stroke-width="3"/><path d="M14 46c6-10 30-10 36 0" fill="none" stroke="#9EA3AD" stroke-width="2"/><path d="M32 46V18h8" stroke="#F5F5F0" stroke-width="3" fill="none"/><circle cx="42" cy="21" r="5" fill="#FAE69E"/>'),
+ (9,"Lekki Toll Card",'<rect x="12" y="20" width="40" height="26" rx="4" fill="#2B2F5C" stroke="#FAE69E" stroke-width="2"/><rect x="17" y="27" width="10" height="8" rx="1.5" fill="#E8B21E"/><path d="M17 40h20" stroke="#FAE69E" stroke-width="2"/>'),
+ (10,"Ojuelegba Under-bridge Sticker",'<path d="M12 40c6-14 34-14 40 0" fill="none" stroke="#9EA3AD" stroke-width="4"/><path d="M18 40v8M46 40v8" stroke="#9EA3AD" stroke-width="3"/><path d="M32 18l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="#E8B21E"/>'),
+]
+def souv_svg(n, name, g, locked=False):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="120" height="120"><defs><radialGradient id="m{n}" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#3A3F55"/><stop offset="1" stop-color="#0F1219"/></radialGradient></defs>'
+            f'<circle cx="32" cy="32" r="30" fill="url(#m{n})" stroke="#E8B21E" stroke-width="2.5"/><circle cx="32" cy="32" r="26" fill="none" stroke="#FAE69E" stroke-opacity=".25"/>'
+            f'<g{" opacity=\".25\" filter=\"grayscale(1)\"" if locked else ""}>{g}</g><text x="32" y="60" text-anchor="middle" font-family="Jakarta,sans-serif" font-weight="700" font-size="7" fill="#FAE69E">L{n}</text></svg>')
+
+def souvenirs():
+    import os
+    from brand import ROOT
+    for n,name,g in SOUV: open(f"{ROOT}/souvenirs/souvenir_L{n:02d}.svg","w").write(souv_svg(n,name,g))
+    cards = "".join(f'<a class="ic" href="souvenirs/souvenir_L{n:02d}.svg">{souv_svg(n,name,g)}<b>{name}</b><span>L{n} · drop rule <span class="badge">TBD</span></span></a>' for n,name,g in SOUV)
+    return f'''<h1>Souvenirs &amp; perks</h1><p class="lead">Perks come from the code. Souvenirs are not in code yet: this is the visual design, with all numbers <span class="badge">TBD</span>. Cosmetic and collection items never change crossing difficulty (Storefront IA: no pay-to-win).</p>
+<h2>Perks in code today</h2><table><tr><th>Perk</th><th>Value</th><th>Source</th><th>UI</th></tr>
+<tr><td>Starting lives</td><td>3</td><td><code>GidiEconomyTables.StartLives</code></td><td>♥ 3 in the HUD</td></tr>
+<tr><td>Continue</td><td>1 per run · 100 chips at L1, 125 at L2+ · or watch an ad</td><td><code>MaxContinuesPerRun</code>, <code>ContinueChipsCost</code></td><td><a href="screens.html#s-continue">Continue modal</a></td></tr>
+<tr><td>Cash-out grant</td><td>50 chips at L1, 75 at L2+</td><td><code>CashoutGrantChips</code></td><td><a href="screens.html#s-clear">Level clear</a></td></tr>
+<tr><td>Owa! charges</td><td>cap 3 per run · refill 80 chips per charge · no free refill on level clear</td><td><code>PowerUpInventoryCap</code>, <code>GameManager.owaReplenishCostPerCharge</code></td><td>OWA! pips</td></tr>
+<tr><td>Owa capacity upgrade</td><td>₦500 per +1, but max = hard cap = 3, so no headroom today</td><td><code>GameManager.owaCapacityUpgradeCost</code>, <code>absoluteMaxOwaCapacity</code></td><td>Hidden until the cap rises (<span class="badge">TBD</span>)</td></tr>
+<tr><td>Power-up stock</td><td>caps 3/3/2/2/2/2; curb finds and shop buys share the cap</td><td><code>PowerUpInventoryCap</code></td><td>Base Camp pips</td></tr>
+<tr><td>KAI bribe</td><td>₦200 (in-run Naira)</td><td><code>LevelManager.kaiBribeCostNaira</code></td><td>CHANGE pip / toast</td></tr>
+<tr><td>Endless score</td><td>metres + 25 per delivery + 10 per combo step</td><td><code>EndlessRunScore</code></td><td><a href="screens.html#s-hud-endless">Endless HUD</a></td></tr></table>
+<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. These differ from the code (Owa costs 80 chips, six items, Agbero Whistle kept). The storefront doc lists Pure Water at 40 chips, but <code>GidiEconomyTables</code> says 60. Mockups follow the code.</div>
+<h2>Souvenirs: one per district (concept)</h2><p>A collectible medallion found once per district, shown in a Lagos collection book on the map. Gold rim = collected; dim = not found yet.</p>
+<div class="icgrid">{cards}</div>
+<div class="card" style="display:flex;gap:18px;align-items:center">{souv_svg(5,"","".join(g for n,_,g in SOUV if n==5))}{souv_svg(6,"","".join(g for n,_,g in SOUV if n==6),locked=True)}<div><b>States:</b> collected (left) vs not found (right, 25% and greyscale).<br>Drop chance, where it spawns, rewards for a full set and whether souvenirs give chips: <span class="badge">TBD</span>, needs economy numbers in <code>GidiEconomyTables</code> first.</div></div>
+<h2>Perk badges (visual)</h2><div class="icgrid"><div class="ic">{badge("owa",80)}<b>Owa! +1 capacity</b><span>₦500 · cap TBD</span></div><div class="ic">{icon("lives",64,"#FF6B7A")}<b>Lives</b><span>3 per run</span></div><div class="ic">{icon("ad",64)}<b>Watch-ad continue</b><span>1 per run</span></div><div class="ic">{icon("chip",64)}<b>Cash-out</b><span>50 / 75 chips</span></div></div>'''
