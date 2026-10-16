@@ -77,7 +77,7 @@ Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in 
 | Item (id) | Cost (chips) | Cap / run | Unlock |
 |---|---|---|---|
 | Owa! (`owa`) | FREE (shop refill 80 per charge) | 3 | L2 |
-| Pure Water (`pure_water`) | 60 | 2 | L3 |
+| Pure Water (`pure_water`) | 110 · full traffic immunity | 1 (once until cash-out; resets at cash-out) | L3 |
 | Malta & Agege Roll (`maltina_gala`) | 80 | 2 | L3 |
 | Change (`bribe_change`) | 90 | 2 | L5 |
 | Danfo Ride | 150 (shop only) | 1 | L4 |
@@ -87,4 +87,4 @@ Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in 
 | Gist Bomb | 100 | 1 | L8 |
 | Agbero Whistle (`agbero_whistle`) | 120 | 2 | L7 | 
 
-Agbero Whistle isn't in vision v2 (it was removed there), so it keeps the code values.
+Pure Water follows the game, not the vision doc (Kehinde, Oct 16). Shop copy “Full immunity, once until cash-out”; used state “used, cash out to refresh”. Agbero Whistle isn't in vision v2 (it was removed there), so it keeps the code values.

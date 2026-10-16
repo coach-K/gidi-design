@@ -74,11 +74,11 @@ V2 = { # vision v2 §8: effect, duration, cap, cost, unlock
 }
 def powerups():
     E = {p:(d,c,cap,f) for p,d,_,c,cap,f in ECON}
-    def code(pid): d,c,cap,f = E[pid]; return f"<b>Site values (vision doc):</b> {'FREE (refill '+str(c)+' chips per charge)' if pid=='owa' else str(c)+' chips'} · cap {cap} · from L{f}"
+    def code(pid): d,c,cap,f = E[pid]; return f"<b>Site values ({'game, not vision' if pid=='pure_water' else 'vision doc'}):</b> {'FREE (refill '+str(c)+' chips per charge)' if pid=='owa' else str(c)+' chips'} · cap {cap} · from L{f}"
     def vis(k): e,du,cap,cost,u = V2[k]; return f"<b>Vision v2 §8:</b> {e}. {du} · cap {cap} · cost {cost} · {u}"
     items = [
      ("Pure Water","pure_water","pure_water", [ref("pure_water_current","powerups","in-game pickup (current)"), ref("pure_water_3d_render","powerups","regenerated mesh render")], r3("pu_purewater", GAME+" <b>Pure Water</b> pickup at dusk"),
-      "v2 concept (not hosted, origin unclear): a pillow-shaped sachet with blue water, on white."),
+      "<b>Site values:</b> 110 chips · <b>full traffic immunity</b> · usable <b>once until cash-out</b> (cap 1, resets at cash-out) · L3. Shop copy: “Full immunity, once until cash-out”; used state: “used, cash out to refresh”. <b>Pure Water follows the game, not the vision doc (Kehinde, Oct 16).</b> The vision line above is for reference only. v2 concept (not hosted, origin unclear): a pillow-shaped sachet with blue water, on white."),
      ("Malta &amp; Agege Roll","maltina_gala","maltina", [ref("malta_3d_render","powerups","regenerated mesh render (old pickup)")], r3("pu_malta", CON+" <b>Malta &amp; Agege Roll</b> pickup (renamed)"),
       "Renamed by Kehinde (Oct 16): display name is now <b>Malta &amp; Agege Roll</b> (fictional, no real brands). The internal id <code>maltina_gala</code> is unchanged. The old in-game pickup image is not hosted because its packaging shows a real brand; the render here is a CONCEPT for the renamed pickup: an amber malt bottle with a generic “MALTA” label and a golden Agege roll. The shipped model still needs re-texturing in the game."),
      ("Change (Bribe)","bribe_change","change", [ref("change_current","powerups","in-game pickup (current)")], r3("pu_change", GAME+" <b>Change Bundle</b> pickup at dusk"),

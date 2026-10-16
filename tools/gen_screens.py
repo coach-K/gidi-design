@@ -7,7 +7,7 @@ from gen_hud import FRAMES, OUT
 ECON = [  # id, display, blurb, cost, cap, first level
  ("owa","Owa","FREE · starts every run full · refill ₦80 per charge",80,3,2),  # vision: free; 80 = refill per charge
  ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,2,3),
- ("pure_water","Pure Water","Near-miss shield — one hit / ~2s, not run-through",60,2,3),
+ ("pure_water","Pure Water","Full immunity, once until cash-out",110,1,3),  # exception: follows the game, not vision (Kehinde, Oct 16); cap 1 resets at cash-out
  ("bribe_change","Change Bundle","Settle LASTMA / KAI pressure",90,2,5),
  ("siren","VIP Siren","Short VIP clear (mid lane exempt)",120,1,5),
  ("agbero_whistle","Agbero Whistle","Not in vision v2 · code values",120,2,7),  # not defined in vision v2 (removed): code values
@@ -52,7 +52,7 @@ def shop(name):
         owned = {"owa":2,"maltina_gala":1,"pure_water":0}.get(pid,0)
         pips = "".join(f'<i class="{"on" if k<owned else ""}"></i>' for k in range(cap))
         btn = f'<button class="buy lock">🔒 Opens L{first}</button>' if locked else (
-              f'<button class="buy full">Bag full</button>' if owned>=cap else (f'<span class="owabtns"><button class="buy sm2">Buy 1<br>₦{cost}</button><button class="buy sm2">Fill all<br>₦{cost*(cap-owned)}</button></span>' if pid=="owa" else f'<button class="buy">₦{cost}</button>'))
+              f'<button class="buy full">Bag full</button>' if owned>=cap else (f'<button class="buy full sm2" style="width:200px;min-width:200px">used, cash out to refresh</button>' if (pid=="pure_water" and name=="phone") else f'<span class="owabtns"><button class="buy sm2">Buy 1<br>₦{cost}</button><button class="buy sm2">Fill all<br>₦{cost*(cap-owned)}</button></span>' if pid=="owa" else f'<button class="buy">₦{cost}</button>'))
         rows += f'''<div class="item glass {'locked' if locked else ''}"><div class="ic">{ICON[pid]}</div>
 <div class="tx"><b>{disp}</b><span>{blurb}</span><span class="pips">{pips}<em>{owned}/{cap}</em></span></div>{btn}</div>'''
     iap = "".join(f'<div class="iap glass"><b>{d}</b><span>Store price</span></div>' for _,d in IAP)

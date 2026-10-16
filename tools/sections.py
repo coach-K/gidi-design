@@ -90,7 +90,7 @@ LEVELS = [ # n, name, pool, speedMul, gapOffset, lanes, speedVar, luxury, lastma
 ]
 LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; Owa! not yet unlocked.",
  2:"Owa! unlocks here (toast). Base Camp opens (ShopAllowed L2+). Continue cost rises to 125 chips.",
- 3:"First Agbada Bigman in the curb mix. Malta &amp; Agege Roll and Pure Water start spawning.",
+ 3:"First Agbada Bigman in the curb mix. Malta &amp; Agege Roll and Pure Water unlock (Pure Water: full immunity, once until cash-out, 110 chips; follows the game, not the vision doc).",
  4:"Slay Queen joins the mix. Traffic jumps to ×0.55 with tighter gaps (+0.6 s).",
  5:"LASTMA flag enforcement starts (every 5–8 s, lane slows to ×0.8). Change Bundle and VIP Siren appear.",
  6:"First 6-lane road. KAI officers join LASTMA (KAI bribe ₦200).",
@@ -117,7 +117,7 @@ def levels():
 <p>{LEVEL_NOTES[n]}</p><div class="pills">{pu}</div></div></article>'''
     return f'''<h1>Levels</h1><p class="lead">The ten-district Lagos campaign as authored in <code>LevelManager.CreateDefaultLevels</code> (mirrors <code>Resources/Campaign/LagosCampaign.asset</code>). Screenshots: current build, original camera, old HUD removed, dusk grade. Landscape only.</p>
 <div class="lvgrid">{cards}</div>
-<p class="small">* Cruise = baseTrafficSpeed 12 × (1 + 0.12 × level index) × profile multiplier, before adaptive difficulty and luxury bonus (LevelManager.GetScaledTrafficSpeed). Difficulty dots are a design summary of lanes, speed and enforcement, not a code value. Power-up unlocks per vision doc v2 §8 (Owa L2, Malta &amp; Pure Water L3, Change &amp; VIP Siren L5; new v2 items: Danfo Ride L4, Agbada Armour L6, Okada Dash L7, Gist Bomb L8, see <a href="powerups.html">Power-ups</a>). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Stars / par times per level: <span class="badge">TBD</span> (not in code).</p>'''
+<p class="small">* Cruise = baseTrafficSpeed 12 × (1 + 0.12 × level index) × profile multiplier, before adaptive difficulty and luxury bonus (LevelManager.GetScaledTrafficSpeed). Difficulty dots are a design summary of lanes, speed and enforcement, not a code value. Pure Water follows the game, not the vision doc (Kehinde, Oct 16). Power-up unlocks per vision doc v2 §8 (Owa L2, Malta &amp; Pure Water L3, Change &amp; VIP Siren L5; new v2 items: Danfo Ride L4, Agbada Armour L6, Okada Dash L7, Gist Bomb L8, see <a href="powerups.html">Power-ups</a>). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Stars / par times per level: <span class="badge">TBD</span> (not in code).</p>'''
 
 def costumes():
     from gen_costumes import CFG, VEH
@@ -205,7 +205,7 @@ def icons():
     out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, caps and unlock levels from the code. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Display name of <code>maltina_gala</code> is now “Malta &amp; Agege Roll”.</p><div class="icgrid">'
     for p in PU_ACCENT:
         c,cap,f,b = E[p]
-        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{("FREE · refill "+str(c)+" chips/charge") if p=="owa" else str(c)+" chips"} · cap {cap} · L{f}+{" · not in vision, code values" if p=="agbero_whistle" else ""}</span></a>'
+        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{("FREE · refill "+str(c)+" chips/charge") if p=="owa" else str(c)+" chips"} · cap {cap}{" (resets at cash-out) · full immunity, follows the game" if p=="pure_water" else ""} · L{f}+{" · not in vision, code values" if p=="agbero_whistle" else ""}</span></a>'
     out += '</div>'
     for g, names in GROUPS:
         anchor = ' id="warn"' if g.startswith("Warning") else ''
