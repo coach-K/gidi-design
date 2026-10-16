@@ -154,7 +154,7 @@ TYPE = [ # role, const, ref px, weight, line, tracking, usage, sample
  ("Title","FontTitle",42,700,1.2,"+0.02em","HUD level name","L5 · Oshodi Expressway"),
  ("Body","FontBody",33,700,1.3,"0","Body copy, buttons in lists","Load your bag before you cross"),
  ("Button","FontButton",30,700,1.2,"+0.02em","Buttons, stock labels","OYA, CROSS!"),
- ("Small (floor)","FontSmall / FontMin",27,700,1.3,"0","Meta, captions; nothing smaller","Saved 4/6 · Best 00:42"),
+ ("Small (floor)","FontSmall / FontMin",27,700,1.3,"0","Meta, captions; nothing smaller","Saved 4 · Best 6"),
 ]
 
 def palette():

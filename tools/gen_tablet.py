@@ -12,7 +12,7 @@ bg = f"{ROOT}/assets/bg/L03_tablet.png"
 im = Image.open(f"{ROOT}/assets/bg/L03_desktop.png"); x0 = (im.width - W) // 2; im.crop((x0, 0, x0 + W, H)).save(bg)
 
 def body(annot=False):
-    tl = f'<div class="hud-tl glass" style="min-width:0;width:560px"><div class="lvl">{G.lab(3)}</div><div class="meta">{G.META}</div></div>'
+    tl = f'<div class="hud-tl glass lvcard" style="min-width:0;width:560px"><div class="lvl">{G.lab(3)}</div><div class="meta">{G.META}</div></div>'
     stock = G.stock(g=(3,5), c=(1,2), o=(2,3)).replace('class="hud-tc glass"', 'class="hud-tc glass" style="width:560px;box-sizing:border-box;justify-content:space-between"')
     tr = (f'<div class="hud-tr"><div class="glass chips"><span class="amt">₦12,450</span><small>NAIRA CHIPS</small></div>'
           f'<div class="glass lives"><span class="heart">♥</span> {G.START_LIVES}</div>'
@@ -21,7 +21,7 @@ def body(annot=False):
     pr, dr = 0.1 * H, 0.15 * H
     px, py = M + 24 + pr, H - MB - 24 - pr
     dx, dy = W - M - 12 - dr, H - MB - 12 - dr
-    ctl = controls(W, H, (1, 0.6, 3), pick=(px, py, pr), dpad=(dx, dy, dr))
+    ctl = controls(W, H, (1, 0.6, 3), dpad=(dx, dy, dr))
     ann = ""
     if annot:
         def box(x, y, w, h, t, c="#56B4E9", ty=None):

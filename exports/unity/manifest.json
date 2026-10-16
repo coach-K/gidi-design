@@ -25,6 +25,27 @@
    "note": "HUD dusk-glass panel: level card 400×144, stock panel, chips, lives, toasts, endless strip, shop item card, IAP card."
   },
   {
+   "name": "panel_levelcard_normal",
+   "file": "sprites@1x/hud/panel_levelcard_normal.png",
+   "file2x": "sprites@2x/hud/panel_levelcard_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud",
+   "note": "HUD level card (PR #59): 82% glass, 2 px gold outline baked."
+  },
+  {
    "name": "panel_modal_normal",
    "file": "sprites@1x/common/panels/panel_modal_normal.png",
    "file2x": "sprites@2x/common/panels/panel_modal_normal.png",

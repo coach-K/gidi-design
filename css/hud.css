@@ -40,7 +40,7 @@ body{background:#000;font-family:Jakarta,system-ui,sans-serif;font-weight:700;co
 .ctlband span{left:50%;right:auto;transform:translateX(-50%)}
 .note{position:absolute;background:rgba(255,255,255,.93);color:#111;border-radius:16px;padding:16px 22px;font-size:20px;line-height:1.35}
 .note h4{font-size:22px;margin-bottom:6px;color:#0072B2}.note ul,.note ol{padding-left:24px}
-.cam{left:calc(var(--sl) + 260px);top:230px;width:780px}
+.cam{left:calc(var(--sl) + 600px);top:200px;width:780px}
 .z{right:calc(var(--sr) + 40px);top:230px;width:330px}
 .scene{object-fit:cover}
 .crowdcol{position:absolute;border:4px dashed #56B4E9;border-bottom:none;background:rgba(86,180,233,.10)}
@@ -62,3 +62,6 @@ body{background:#000;font-family:Jakarta,system-ui,sans-serif;font-weight:700;co
 .opips i.part{background:conic-gradient(#59D9B8 var(--p),rgba(20,22,30,.55) 0);border-color:#59D9B8}
 .owa2.off .disc{border-color:rgba(160,160,160,.55);background:rgba(40,40,48,.28);box-shadow:none}.owa2.off .k{color:rgba(200,200,200,.6)}
 .owa2.hi .disc{box-shadow:0 0 0 6px rgba(232,178,30,.35),0 0 28px rgba(232,178,30,.6)}
+
+/* Level card (PR #59): 82% glass, 2 px gold outline */
+.glass.lvcard{background:rgba(15,18,25,.82);border:2px solid #E8B21E}

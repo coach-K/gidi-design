@@ -29,12 +29,12 @@ def stock(g=(2,3), c=(1,2), o=(1,3), hi=None):
     return f'<div class="hud-tc glass{" hilite" if hi=="all" else ""}">{cell("GROUP",g)}{cell("CHANGE",c)}</div>'
 
 def top_hud(lv, meta, **kw):
-    return f'''<div class="toprow"><div class="hud-tl glass"><div class="lvl{' long' if len(lab(lv))>18 else ''}">{lab(lv)}</div><div class="meta">{meta}</div></div>
+    return f'''<div class="toprow"><div class="hud-tl glass lvcard"><div class="lvl{' long' if len(lab(lv))>18 else ''}">{lab(lv)}</div><div class="meta">{meta}</div></div>
 {stock(**kw)}<div class="hud-tr"><div class="glass chips"><span class="amt">₦12,450</span><small>NAIRA CHIPS</small></div>
 <div class="glass lives"><span class="heart">♥</span> {START_LIVES}</div>
 <button class="glass btn">{icon("stats",44,P["text"])}<small>Stats</small></button><button class="glass btn">{icon("pause",44,P["text"])}<small>Pause</small></button></div></div>'''
 
-META = 'Saved <b>4/6</b> · Best <b>00:42</b>'
+META = 'Saved <b>4</b> · Best <b>6</b>'
 
 def wallet():
     return f'''<div class="hud-tr"><div class="glass chips"><span class="amt">₦12,450</span><small>NAIRA CHIPS</small></div>
@@ -118,14 +118,14 @@ def hud_warn(n):
 
 def hud_toast(n):
     lv = 2
-    return shell(n, lv, top_hud(lv, 'Saved <b>2/4</b> · Best <b>00:51</b>', o=(1,3), hi="OWA!")+
+    return shell(n, lv, top_hud(lv, 'Saved <b>2</b> · Best <b>4</b>', o=(1,3), hi="OWA!")+
       f'<div class="toast" style="top:200px">{icon("owa",40)} Owa! unlocked in Surulere Way. Shout to freeze the next Danfo lane.</div>'
       f'<div class="toast" style="top:300px;color:#F5F5F0;border-color:rgba(89,217,184,.6)">{icon("group",36,"#59D9B8")} They\'re with you. Take one more, or cross now.</div>'
       f'<div class="toast" style="top:400px;color:#F5F5F0">{icon("chip",36)} Found Owa</div>', "HUD toasts", ctl=True, owa=(1,0,3), owa_hi=True)
 
 def hud_endless(n):
     lv = 10
-    return shell(n, lv, top_hud(lv, 'Endless · <b>no goal zone</b>', o=(2,3))+
+    return shell(n, lv, top_hud(lv, 'Saved <b>14</b> · Best <b>20</b>', o=(2,3))+
       f'<div class="endl glass">Score <b>1,482</b> · <b>912 m</b> · <b>14</b> delivered · combo <b>x6</b> · Best <b>2,050</b></div>'
       f'<div class="toast" style="top:300px">Combo x6! +10 per step · +25 per delivery</div>', "HUD endless", ctl=True, owa=(3,0,3))
 

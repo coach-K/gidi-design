@@ -38,8 +38,15 @@ def owa_btn(px, py, pr, owa=(2, 0.5, 3), hi=False):
     return (f'<div class="owa2{" off" if dis else ""}{" hi" if hi else ""}" style="left:{px-OWA_HIT/2:.0f}px;top:{cy-OWA_HIT/2:.0f}px">'
             f'<div class="disc"><span class="k">OWA!</span><span class="opips">{pips}</span></div></div>')
 
+# PICK UP centre per G-Prototype PR #59: (240, 196) in the 1280x720 reference, from the bottom-left of Screen.safeArea.
+# x1.5 at 1080 height -> (360, 294). Unity safe insets (left, bottom) per mock frame width:
+SAFE_LB = {1920: (0, 0), 2340: (132, 63), 1440: (0, 40)}
+def pick_pos(w, h):
+    l, b = SAFE_LB.get(w, (0, 0)); k = h / 720
+    return l + 240*k, h - b - 196*k, PICK[2]*h
+
 def controls(w, h, owa=(2, 0.5, 3), owa_hi=False, pick=None, dpad=None):
-    px, py, pr = pick or (PICK[0]*w, PICK[1]*h, PICK[2]*h)
+    px, py, pr = pick or pick_pos(w, h)
     dx, dy, dr = dpad or (DPAD[0]*w, DPAD[1]*h, DPAD[2]*h)
     return (f'<div class="pick2" style="left:{px-pr:.0f}px;top:{py-pr:.0f}px;width:{2*pr:.0f}px;height:{2*pr:.0f}px"><b>+</b><span>PICK UP</span></div>'
             + owa_btn(px, py, pr, owa, owa_hi) +
@@ -56,9 +63,9 @@ def page(name, annot):
 {'<div class="notch"></div><div class="homebar"></div>' if name=='phone' else ''}
 <div class="safe">
   <div class="toprow">
-  <div class="hud-tl glass" id="level">
+  <div class="hud-tl glass lvcard" id="level">
     <div class="lvl long">L5 · Oshodi Expressway</div>
-    <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b></div>
+    <div class="meta">Saved <b>4</b> · Best <b>6</b></div>
   </div>
   <div class="hud-tc glass" id="stock">
     <div class="cell"><span class="k">GROUP</span><span class="pips"><i class="on"></i><i class="on"></i><i></i></span></div>

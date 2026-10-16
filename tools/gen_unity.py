@@ -39,6 +39,7 @@ def nine(name, folder, screen, size, radius, states, note=""):
 
 # ---------- shared glass panels (9-slice) ----------
 nine("panel_glass", "common/panels", "all", (96, 96), 28, {"normal": GLASS}, "HUD dusk-glass panel: level card 400×144, stock panel, chips, lives, toasts, endless strip, shop item card, IAP card.")
+nine("panel_levelcard", "hud", "hud", (96, 96), 28, {"normal": "background:rgba(15,18,25,.82);border:2px solid #E8B21E"}, "HUD level card (PR #59): 82% glass, 2 px gold outline baked.")
 nine("panel_modal", "common/panels", "gameover,pause", (112, 112), 40, {"normal": "background:rgba(10,12,18,.88);border:2px solid rgba(255,216,115,.28)"}, "Modal panel (Game Over 1240 wide).")
 nine("tile_stat", "common/panels", "gameover,shop", (80, 80), 24, {"normal": "background:rgba(255,255,255,.05)"}, "Stat tile / shop icon tile (Game Over stats, item icon well 110×110).")
 nine("divider_cell", "hud", "hud", (4, 96), 0, {"normal": "background:rgba(255,216,115,.18)"}, "Stock-panel cell divider (stretch vertically).")
