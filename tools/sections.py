@@ -74,3 +74,47 @@ def screens():
             body += f'''<section id="s-{k}" class="scr"><h3>{t}</h3><p>{note}</p><div class="pair"><a href="{d}"><img loading="lazy" class="shot" src="{d}" alt="{t}, desktop 1920×1080"></a><a href="{p}"><img loading="lazy" class="shot" src="{p}" alt="{t}, phone 2340×1080"></a></div><p class="small">Desktop 1920×1080 · Phone 2340×1080 · source <code>mockups/{k}-desktop.html</code></p></section>'''
     body += '''<h2 id="hud-spec">HUD spec (annotated)</h2><img loading="lazy" class="shot" src="exports/hud/hud-desktop-annotated.png" alt="Annotated HUD desktop"><p></p><img loading="lazy" class="shot" src="exports/hud/hud-phone-annotated.png" alt="Annotated HUD phone"><p>Spec: <a href="exports/hud/HUD_Landscape_Spec.md">HUD_Landscape_Spec.md</a>.</p>'''
     return body
+
+# LevelManager.CreateDefaultLevels (== Resources/Campaign/LagosCampaign.asset), team-branch Oct 2026
+LEVELS = [ # n, name, pool, speedMul, gapOffset, lanes, speedVar, luxury, lastma, kai, agbada, slay, regularOnly, powerups, endless
+ (1,"Agege Bus Stop",3,0.46,1.2,5,0,0,0,0,0,0,1,[],0),
+ (2,"Surulere Way",4,0.45,0.8,5,0,0,0,0,0,0,1,["owa"],0),
+ (3,"Ikorodu Road",5,0.43,0.9,5,0,0,0,0,1,0,0,["owa","maltina_gala","pure_water"],0),
+ (4,"Mushin Market",6,0.55,0.6,5,0,0,0,0,1,1,0,["owa","maltina_gala","pure_water"],0),
+ (5,"Oshodi Expressway",6,0.56,0.5,5,0,0,1,0,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
+ (6,"Ikeja Along",7,0.55,0.9,6,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
+ (7,"Ojota Intersect",7,0.55,1.0,7,0.15,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
+ (8,"Third Mainland Bridge",8,1.2,0.35,8,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
+ (9,"Lekki Toll Gate",8,1.35,0.1,8,0,3,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
+ (10,"Ojuelegba Chaos",8,1.45,0.0,8,0.35,3.5,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],1),
+]
+LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; Owa! not yet unlocked.",
+ 2:"Owa! unlocks here (toast). Base Camp opens (ShopAllowed L2+). Continue cost rises to 125 chips.",
+ 3:"First Agbada Bigman in the curb mix. Maltina &amp; Gala and Pure Water start spawning.",
+ 4:"Slay Queen joins the mix. Traffic jumps to ×0.55 with tighter gaps (+0.6 s).",
+ 5:"LASTMA flag enforcement starts (every 5–8 s, lane slows to ×0.8). Change Bundle and VIP Siren appear.",
+ 6:"First 6-lane road. KAI officers join LASTMA (KAI bribe ₦200).",
+ 7:"7 lanes, per-lane speed variation ±15%. Agbero Whistle unlocks (L7+).",
+ 8:"8 lanes: wide camera (20 m, FOV 58°). Traffic ×1.2, gaps +0.35 s. Big difficulty step.",
+ 9:"Luxury/aggressive cars +3 speed bonus, near-zero gap offset (+0.1 s).",
+ 10:"Truly endless: no goal zone. Difficulty climbs every 20 s (+4% speed, −0.05 s gaps per tick); ±35% lane variation. Score = metres + 25/delivery + 10/combo step."}
+from gen_screens import ECON
+NAMES = {p:d for p,d,*_ in ECON}
+
+def levels():
+    cards = ""
+    for n,name,pool,mul,gap,lanes,var,lux,la,kai,ag,sq,reg,pus,endless in LEVELS:
+        cruise = 12*(1+0.12*(n-1))*mul
+        tags = [f"{lanes} lanes"] + (["wide camera"] if lanes>=8 else []) + (["LASTMA"] if la else []) + (["KAI"] if kai else []) + (["ENDLESS"] if endless else []) + (["Day grade"] if n<=4 else ["Dusk grade"])
+        diff = min(5, 1 + (n>=4) + (n>=6) + (n>=8) + (n>=10))
+        peds = "Commuters only" if reg else "Commuters" + (" + Agbada Bigman" if ag else "") + (" + Slay Queen" if sq else "")
+        pu = "".join(f'<span class="pill">{badge(p,26)} {NAMES[p]}</span>' for p in pus) or '<span class="small">none</span>'
+        cards += f'''<article class="lvcard" id="L{n}"><img loading="lazy" src="assets/bg/L{n:02d}_card.jpg" alt="L{n} {name} screenshot">
+<div class="lvb"><div class="lvh"><b>L{n}</b> {name}<span class="diff" title="relative difficulty">{"●"*diff}{"○"*(5-diff)}</span></div>
+<div class="tags">{"".join(f"<span>{t}</span>" for t in tags)}</div>
+<table class="kv2"><tr><td>Curb pool</td><td>{pool} people · {peds}</td></tr><tr><td>Traffic</td><td>×{mul} profile · cruise ≈ {cruise:.1f} m/s<sup>*</sup></td></tr>
+<tr><td>Spawn gap</td><td>{gap:+.2f} s offset{f" · lane speed ±{int(var*100)}%" if var else ""}{f" · luxury +{lux}" if lux else ""}</td></tr></table>
+<p>{LEVEL_NOTES[n]}</p><div class="pills">{pu}</div></div></article>'''
+    return f'''<h1>Levels</h1><p class="lead">The ten-district Lagos campaign as authored in <code>LevelManager.CreateDefaultLevels</code> (mirrors <code>Resources/Campaign/LagosCampaign.asset</code>). Screenshots: current build, original camera, old HUD removed, dusk grade. Landscape only.</p>
+<div class="lvgrid">{cards}</div>
+<p class="small">* Cruise = baseTrafficSpeed 12 × (1 + 0.12 × level index) × profile multiplier, before adaptive difficulty and luxury bonus (LevelManager.GetScaledTrafficSpeed). Difficulty dots are a design summary of lanes, speed and enforcement, not a code value. Stars / par times per level: <span class="badge">TBD</span> (not in code).</p>'''
