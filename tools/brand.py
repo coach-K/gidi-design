@@ -13,7 +13,14 @@ ICONS = {
  "pure_water": f'<path {S} d="M8 14c0-3 3-4 6-4h20c3 0 6 1 6 4v20c0 3-3 4-6 4H14c-3 0-6-1-6-4z"/><path {S} d="M24 16c-4 6-6 8-6 11a6 6 0 0 0 12 0c0-3-2-5-6-11z"/>',
  "bribe_change": f'<rect {S} x="6" y="14" width="30" height="18" rx="3"/><path {S} d="M12 36h30V18"/><path {S} d="M16 28v-10l8 10v-10M14 21h12M14 25h12"/>',
  "siren": f'<path {S} d="M14 34v-10a10 10 0 0 1 20 0v10"/><rect {S} x="10" y="34" width="28" height="6" rx="2"/><path {S} d="M24 6v4M10 12l3 3M38 12l-3 3M4 24h4M40 24h4"/><path d="M19 24a5 5 0 0 1 5-5" stroke="{P["danger"]}" stroke-width="3" fill="none" stroke-linecap="round"/>',
- "agbero_whistle": f'<circle {S} cx="28" cy="29" r="12"/><path {S} d="M4 17h24v6"/><path {S} d="M4 17v8h12"/><circle cx="28" cy="29" r="3.5" fill="currentColor"/><path {S} d="M34 9l2-4M40 13l4-3M38 19h5"/>',
+ "danfo_ride": f'<path {S} d="M5 30V16a4 4 0 0 1 4-4h26l8 9v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path {S} d="M10 17h7v6h-7zM21 17h8v6h-8zM33 17l4 6"/><circle {S} cx="14" cy="33" r="4"/><circle {S} cx="34" cy="33" r="4"/><path d="M8 8c6-4 14-4 20 0" fill="none" stroke="{P["gold"]}" stroke-width="3" stroke-linecap="round"/>',
+ "gist_bomb": f'<rect {S} x="6" y="16" width="36" height="24" rx="4"/><circle {S} cx="17" cy="28" r="6"/><path {S} d="M28 23h9M28 28h9M28 33h6M14 16l14-10"/><path d="M38 6c2 2 2 5 0 7M42 4c3 3 3 8 0 11" fill="none" stroke="{P["danger"]}" stroke-width="2.5" stroke-linecap="round"/>',
+ "agbada_armour": f'<path {S} d="M24 6l15 6v11c0 9-6 15-15 19-9-4-15-10-15-19V12z"/><path {S} d="M17 18l7 5 7-5M24 23v12"/><path d="M36 6l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="{P["gold"]}"/>',
+ "okada_dash": f'<circle {S} cx="11" cy="33" r="6"/><circle {S} cx="37" cy="33" r="6"/><path {S} d="M11 33l8-12h9l9 12M19 21l-3-6h-4M28 21l3-6h5"/><path {S} d="M2 18h7M1 24h6" opacity=".7"/>',
+ "retry": f'<path {S} d="M38 24a14 14 0 1 1-4.1-9.9"/><path {S} d="M36 6v9h-9"/>',
+ "iap_skins_pack": f'<path {S} d="M6 30V20a3 3 0 0 1 3-3h24l7 7v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><circle {S} cx="13" cy="33" r="4"/><circle {S} cx="33" cy="33" r="4"/><path d="M30 6l5 5-9 9-6 1 1-6z" fill="none" stroke="{P["gold"]}" stroke-width="3" stroke-linejoin="round"/>',
+ "iap_fits_pack": f'<path {S} d="M17 8l-9 5 4 8 4-2v21h16V19l4 2 4-8-9-5c-1 3-4 5-7 5s-6-2-7-5z"/><path d="M20 26h8M20 31h8" stroke="{P["gold"]}" stroke-width="3" stroke-linecap="round"/>',
+ "iap_remove_ads": f'<rect {S} x="6" y="11" width="36" height="26" rx="5"/><path {S} d="M21 18l9 6-9 6z"/><path d="M8 40L40 8" stroke="{P["danger"]}" stroke-width="3.5" stroke-linecap="round"/>',
  # curb pickups / in-world
  "pickup_ring": f'<ellipse {S} cx="24" cy="34" rx="16" ry="6"/><path {S} d="M24 8v18M17 19l7 7 7-7"/>',
  "pickup_person": f'<circle {S} cx="24" cy="12" r="5"/><path {S} d="M16 40l3-14h10l3 14M18 30h12"/><path d="M8 40h32" stroke="{P["naira"]}" stroke-width="3" stroke-linecap="round"/>',
@@ -40,11 +47,13 @@ ICONS = {
  "warn_lastma": f'<path d="M24 3l21 21-21 21L3 24z" fill="{P["lastma"]}"/><path d="M15 24h12l4-4 3 3-4 4" fill="none" stroke="#0F1219" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="24" r="3" fill="#0F1219"/>',
  "warn_train": f'<rect x="2" y="12" width="44" height="24" rx="3" fill="{P["train"]}"/><path d="M8 12v24M16 12v24M24 12v24M32 12v24M40 12v24" stroke="#0F1219" stroke-width="3"/><path d="M2 20h44M2 28h44" stroke="#0F1219" stroke-width="2"/>',
 }
-GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"]),
+GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren","danfo_ride","gist_bomb"]),
+          ("Earned &amp; curb-only (not sold)", ["agbada_armour","okada_dash"]),
+          ("Shop extras", ["retry","iap_skins_pack","iap_fits_pack","iap_remove_ads"]),
           ("Curb pickups &amp; currency", ["pickup_ring","pickup_person","chip"]),
           ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock"]),
           ("Warning shapes (colour + shape)", ["warn_safe","warn_caution","warn_danger","warn_lastma","warn_train"])]
-PU_ACCENT = {"owa":P["gold"],"maltina_gala":"#C8743A","pure_water":P["safe"],"bribe_change":"#7FD6A2","siren":P["danger"],"agbero_whistle":P["lastma"]}
+PU_ACCENT = {"owa":P["gold"],"maltina_gala":"#C8743A","pure_water":P["safe"],"bribe_change":"#7FD6A2","siren":P["danger"],"danfo_ride":"#F2C230","gist_bomb":"#E0443C","agbada_armour":P["naira"],"okada_dash":"#59D9B8"}
 
 def icon(name, size=48, color=None):
     c = color or P["naira"]

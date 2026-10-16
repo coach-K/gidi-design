@@ -47,6 +47,18 @@ nine("btn_glass", "common/buttons", "all", (96, 96), 28, {"normal": GLASS, "pres
 nine("btn_cta", "common/buttons", "home,gameover,shop", (112, 112), 32, {"normal": CTA, "pressed": CTA_P, "disabled": CTA_D, "highlight": CTA}, "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high).")
 nine("btn_buy", "shop/buttons", "shop", (80, 80), 24, {"normal": BUY, "pressed": BUY_P, "disabled": BUY_D, "highlight": BUY}, "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'.")
 nine("btn_buy_locked", "shop/buttons", "shop", (80, 80), 24, {"normal": BUY_L}, "Shop locked state (unlocks at Lx).")
+nine("btn_buy_full", "shop/buttons", "shop", (80, 80), 24, {"normal": BUY_D}, "Shop 'Bag full' / 'used, cash out to refresh' (same look as btn_buy_disabled, own name for code).")
+nine("btn_buy_locked", "shop/buttons", "shop", (80, 80), 24, {"pressed": "background:#121318;border:2px solid rgba(158,163,173,.45)"}, "Locked buy pressed (tap shows 'Opens Lx' / 'Coming soon' toast).")
+# (a) locked / coming-soon tile
+nine("tile_soon", "shop/tiles", "shop", (96, 96), 28, {"normal": "background:rgba(15,18,25,.58);border:2px solid rgba(158,163,173,.30)"}, "Coming-soon tile (Danfo Ride, Gist Bomb): icon + text at 55% alpha, ribbon top-left (22 px in), price box right.")
+nine("btn_soon_price", "shop/tiles", "shop", (80, 80), 24, {"normal": "background:#1a1c22;border:2px solid rgba(158,163,173,.35)"}, "Coming-soon price box 150×144: icon_lock_white tinted #9EA3AD (28 px) above TMP price (32 px, #F5F5F0). Not interactive.")
+add("ribbon_coming_soon", "shop/tiles", 64, 30, box(64, 30, "background:#E8B21E;border-radius:0 0 10px 10px"), "shop", [12, 12, 0, 12], (0, 1), "Ribbon base (9-slice, stretch to text width + 24). Text: TMP 'COMING SOON' 17 px, #0F1219, tracking 10%.")
+add("ribbon_coming_soon_text", "shop/tiles", 176, 30, '<div style="width:176px;height:30px;background:#E8B21E;border-radius:0 0 10px 10px;color:#0F1219;font:700 17px Jakarta,sans-serif;letter-spacing:.1em;display:flex;align-items:center;justify-content:center">COMING SOON</div>', "shop", None, (0, 1), "Ribbon with baked text (if you don't want TMP).")
+# (b) not-for-sale info tile
+add("tile_info", "shop/tiles", 120, 120, '<svg width="120" height="120"><rect x="1" y="1" width="118" height="118" rx="28" fill="rgba(15,18,25,.50)" stroke="rgba(89,217,184,.65)" stroke-width="2" stroke-dasharray="8 6"/></svg>', "shop", [36, 36, 36, 36], note="Not-for-sale info tile (Agbada Armour, Okada Dash): dashed teal border, no buy button. Use Image Type Sliced; dashes on the stretched edges lengthen slightly (or use Tiled).")
+add("tag_info", "shop/tiles", 64, 48, box(64, 48, "border-radius:24px;background:rgba(89,217,184,.10);border:2px solid rgba(89,217,184,.7)"), "shop", [24, 24, 22, 22], note="Info tag pill ('EARNED' / 'CURB PICKUP'): TMP 20 px, #59D9B8, tracking 8%, padding 16 px.")
+add("tag_info_earned", "shop/tiles", 136, 48, '<div style="width:136px;height:48px;box-sizing:border-box;border-radius:24px;background:rgba(89,217,184,.10);border:2px solid rgba(89,217,184,.7);color:#59D9B8;font:700 20px Jakarta,sans-serif;letter-spacing:.08em;display:flex;align-items:center;justify-content:center">EARNED</div>', "shop", note="Baked-text variant.")
+add("tag_info_curb_pickup", "shop/tiles", 200, 48, '<div style="width:200px;height:48px;box-sizing:border-box;border-radius:24px;background:rgba(89,217,184,.10);border:2px solid rgba(89,217,184,.7);color:#59D9B8;font:700 20px Jakarta,sans-serif;letter-spacing:.08em;display:flex;align-items:center;justify-content:center">CURB PICKUP</div>', "shop", note="Baked-text variant.")
 nine("badge_rating", "home", "home", (48, 48), 12, {"normal": "border:3px solid #F5F5F0"}, "Age-rating outline box (Home).")
 
 # ---------- PICK UP + OWA! ----------
@@ -85,11 +97,13 @@ def inline(path, color, size):
     return t
 for f in sorted(os.listdir(ISV)):
     n = f[:-4]
-    if n.startswith("badge_"): add(n, "icons/powerup_badges", 140, 140, inline(f"{ISV}/{f}", NAIRA, 140), "hud,shop", note="Power-up badge (Base Camp rows, HUD timer ring, curb pickups).")
+    if n.startswith("badge_"): add(n, "icons/powerup_badges", 140, 140, inline(f"{ISV}/{f}", NAIRA, 140), "hud,shop", note=("Earned only (fill the Owa meter), NOT a shop item." if "agbada" in n else "Curb pickup only, NOT a shop item." if "okada" in n else "Coming soon in the shop (locked tile, price shown)." if n[6:] in ("danfo_ride","gist_bomb") else "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."))
     elif n.startswith("warn_"): add(n, "icons/warnings", 64, 64, inline(f"{ISV}/{f}", NAIRA, 64), "hud", note="Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour.")
+    elif n.startswith("iap_"):
+        add(n, "icons/iap", 64, 64, inline(f"{ISV}/{f}", NAIRA, 64), "shop", note="IAP row icon (Fits & Extras).")
     else:
-        grp = "powerups" if n in ("owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle") else "pickups" if n.startswith("pickup") or n in ("group","change") else "ui"
-        add(f"icon_{n}", f"icons/{grp}", 64, 64, inline(f"{ISV}/{f}", NAIRA, 64), "all", note="Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white.")
+        grp = "powerups" if n in ("owa","maltina_gala","pure_water","bribe_change","siren","danfo_ride","gist_bomb","agbada_armour","okada_dash") else "pickups" if n.startswith("pickup") or n in ("group","change") else "ui"
+        add(f"icon_{n}", f"icons/{grp}", 64, 64, inline(f"{ISV}/{f}", NAIRA, 64), "all", note=("Earned only, NOT a shop item. " if n=="agbada_armour" else "Curb pickup only, NOT a shop item. " if n=="okada_dash" else "Game Over 'TRY AM AGAIN'. " if n=="retry" else "")+"Line icon, Naira gold #FAE69E baked.")
         add(f"icon_{n}_white", f"icons/{grp}/white", 64, 64, inline(f"{ISV}/{f}", "#FFFFFF", 64), "all", note="White version for Image.color tinting (accents keep their colour).")
 # ---------- logos ----------
 for n, w in (("wordmark_dark", 720), ("wordmark_light", 720), ("lockup_tagline_dark", 720), ("mark", 256)):

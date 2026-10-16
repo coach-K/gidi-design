@@ -94,12 +94,11 @@ def powerups():
     ])
     left = "".join(f'<li>{t}</li>' for t in ["Okada Dash (v2, L7, not sold): concept image exists but isn't hosted (origin unclear). Description: yellow open-face helmet with a black stripe.",
         "Gist Bomb (v2, 100, L8): concept image exists but isn't hosted (origin unclear). Description: a red retro transistor radio.",
-        f"Agbero Whistle: still in the code ({E['agbero_whistle'][1]} chips, cap {E['agbero_whistle'][2]}, L{E['agbero_whistle'][3]}) but removed in vision v2, so the site keeps the code values."])
+        "Agbero Whistle: removed from the game (#39); not sold, not shown."])
     return f'''<h1>Power-ups</h1><p class="lead">Current pickups (shipped models re-staged at dusk) next to the reference images, plus concepts for the three new v2 items that have no image. <b>Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51.</b></p>{LEGEND}
 <h2>Current pickups</h2>{rows}
 <h2>New v2 items {CON}</h2>{conc}
 <h2>Not shown as images</h2><ul>{left}</ul>
-<div class="card" style="max-width:440px">{r3("pu_whistle", GAME+" <b>Agbero Whistle</b> pickup (in code, cut in v2)")}</div>
 <p class="small">HUD icons for every power-up: <a href="icons.html">Icons</a>.</p>'''
 
 OUTFITS = [("baba_default",GAME,"Default fit","Green kaftan + fila (shipped texture)."),

@@ -361,6 +361,201 @@
    "note": "Shop locked state (unlocks at Lx)."
   },
   {
+   "name": "btn_buy_full_normal",
+   "file": "sprites@1x/shop/buttons/btn_buy_full_normal.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_full_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Shop 'Bag full' / 'used, cash out to refresh' (same look as btn_buy_disabled, own name for code)."
+  },
+  {
+   "name": "btn_buy_locked_pressed",
+   "file": "sprites@1x/shop/buttons/btn_buy_locked_pressed.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_locked_pressed.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Locked buy pressed (tap shows 'Opens Lx' / 'Coming soon' toast)."
+  },
+  {
+   "name": "tile_soon_normal",
+   "file": "sprites@1x/shop/tiles/tile_soon_normal.png",
+   "file2x": "sprites@2x/shop/tiles/tile_soon_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "shop",
+   "note": "Coming-soon tile (Danfo Ride, Gist Bomb): icon + text at 55% alpha, ribbon top-left (22 px in), price box right."
+  },
+  {
+   "name": "btn_soon_price_normal",
+   "file": "sprites@1x/shop/tiles/btn_soon_price_normal.png",
+   "file2x": "sprites@2x/shop/tiles/btn_soon_price_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Coming-soon price box 150×144: icon_lock_white tinted #9EA3AD (28 px) above TMP price (32 px, #F5F5F0). Not interactive."
+  },
+  {
+   "name": "ribbon_coming_soon",
+   "file": "sprites@1x/shop/tiles/ribbon_coming_soon.png",
+   "file2x": "sprites@2x/shop/tiles/ribbon_coming_soon.png",
+   "size": [
+    64,
+    30
+   ],
+   "pivot": [
+    0,
+    1
+   ],
+   "border": {
+    "left": 12,
+    "right": 12,
+    "top": 0,
+    "bottom": 12
+   },
+   "screen": "shop",
+   "note": "Ribbon base (9-slice, stretch to text width + 24). Text: TMP 'COMING SOON' 17 px, #0F1219, tracking 10%."
+  },
+  {
+   "name": "ribbon_coming_soon_text",
+   "file": "sprites@1x/shop/tiles/ribbon_coming_soon_text.png",
+   "file2x": "sprites@2x/shop/tiles/ribbon_coming_soon_text.png",
+   "size": [
+    176,
+    30
+   ],
+   "pivot": [
+    0,
+    1
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "Ribbon with baked text (if you don't want TMP)."
+  },
+  {
+   "name": "tile_info",
+   "file": "sprites@1x/shop/tiles/tile_info.png",
+   "file2x": "sprites@2x/shop/tiles/tile_info.png",
+   "size": [
+    120,
+    120
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "shop",
+   "note": "Not-for-sale info tile (Agbada Armour, Okada Dash): dashed teal border, no buy button. Use Image Type Sliced; dashes on the stretched edges lengthen slightly (or use Tiled)."
+  },
+  {
+   "name": "tag_info",
+   "file": "sprites@1x/shop/tiles/tag_info.png",
+   "file2x": "sprites@2x/shop/tiles/tag_info.png",
+   "size": [
+    64,
+    48
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 24,
+    "right": 24,
+    "top": 22,
+    "bottom": 22
+   },
+   "screen": "shop",
+   "note": "Info tag pill ('EARNED' / 'CURB PICKUP'): TMP 20 px, #59D9B8, tracking 8%, padding 16 px."
+  },
+  {
+   "name": "tag_info_earned",
+   "file": "sprites@1x/shop/tiles/tag_info_earned.png",
+   "file2x": "sprites@2x/shop/tiles/tag_info_earned.png",
+   "size": [
+    136,
+    48
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "Baked-text variant."
+  },
+  {
+   "name": "tag_info_curb_pickup",
+   "file": "sprites@1x/shop/tiles/tag_info_curb_pickup.png",
+   "file2x": "sprites@2x/shop/tiles/tag_info_curb_pickup.png",
+   "size": [
+    200,
+    48
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "Baked-text variant."
+  },
+  {
    "name": "badge_rating_normal",
    "file": "sprites@1x/home/badge_rating_normal.png",
    "file2x": "sprites@2x/home/badge_rating_normal.png",
@@ -923,7 +1118,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_ad_white",
@@ -942,9 +1137,9 @@
    "note": "White version for Image.color tinting (accents keep their colour)."
   },
   {
-   "name": "icon_agbero_whistle",
-   "file": "sprites@1x/icons/powerups/icon_agbero_whistle.png",
-   "file2x": "sprites@2x/icons/powerups/icon_agbero_whistle.png",
+   "name": "icon_agbada_armour",
+   "file": "sprites@1x/icons/powerups/icon_agbada_armour.png",
+   "file2x": "sprites@2x/icons/powerups/icon_agbada_armour.png",
    "size": [
     64,
     64
@@ -955,12 +1150,12 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Earned only, NOT a shop item. Line icon, Naira gold #FAE69E baked."
   },
   {
-   "name": "icon_agbero_whistle_white",
-   "file": "sprites@1x/icons/powerups/white/icon_agbero_whistle_white.png",
-   "file2x": "sprites@2x/icons/powerups/white/icon_agbero_whistle_white.png",
+   "name": "icon_agbada_armour_white",
+   "file": "sprites@1x/icons/powerups/white/icon_agbada_armour_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_agbada_armour_white.png",
    "size": [
     64,
     64
@@ -987,7 +1182,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_back_white",
@@ -1006,9 +1201,9 @@
    "note": "White version for Image.color tinting (accents keep their colour)."
   },
   {
-   "name": "badge_agbero_whistle",
-   "file": "sprites@1x/icons/powerup_badges/badge_agbero_whistle.png",
-   "file2x": "sprites@2x/icons/powerup_badges/badge_agbero_whistle.png",
+   "name": "badge_agbada_armour",
+   "file": "sprites@1x/icons/powerup_badges/badge_agbada_armour.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_agbada_armour.png",
    "size": [
     140,
     140
@@ -1019,7 +1214,7 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Earned only (fill the Owa meter), NOT a shop item."
   },
   {
    "name": "badge_bribe_change",
@@ -1035,7 +1230,39 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_danfo_ride",
+   "file": "sprites@1x/icons/powerup_badges/badge_danfo_ride.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_danfo_ride.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Coming soon in the shop (locked tile, price shown)."
+  },
+  {
+   "name": "badge_gist_bomb",
+   "file": "sprites@1x/icons/powerup_badges/badge_gist_bomb.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_gist_bomb.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Coming soon in the shop (locked tile, price shown)."
   },
   {
    "name": "badge_maltina_gala",
@@ -1051,7 +1278,23 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_okada_dash",
+   "file": "sprites@1x/icons/powerup_badges/badge_okada_dash.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_okada_dash.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Curb pickup only, NOT a shop item."
   },
   {
    "name": "badge_owa",
@@ -1067,7 +1310,7 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."
   },
   {
    "name": "badge_pure_water",
@@ -1083,7 +1326,7 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."
   },
   {
    "name": "badge_siren",
@@ -1099,7 +1342,7 @@
    ],
    "border": null,
    "screen": "hud,shop",
-   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+   "note": "Power-up badge (Base Camp tiles, HUD timer ring, curb pickups)."
   },
   {
    "name": "icon_basecamp",
@@ -1115,7 +1358,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_basecamp_white",
@@ -1147,7 +1390,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_bribe_change_white",
@@ -1179,7 +1422,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_change_white",
@@ -1211,7 +1454,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_chip_white",
@@ -1243,12 +1486,76 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_close_white",
    "file": "sprites@1x/icons/ui/white/icon_close_white.png",
    "file2x": "sprites@2x/icons/ui/white/icon_close_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_danfo_ride",
+   "file": "sprites@1x/icons/powerups/icon_danfo_ride.png",
+   "file2x": "sprites@2x/icons/powerups/icon_danfo_ride.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_danfo_ride_white",
+   "file": "sprites@1x/icons/powerups/white/icon_danfo_ride_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_danfo_ride_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_gist_bomb",
+   "file": "sprites@1x/icons/powerups/icon_gist_bomb.png",
+   "file2x": "sprites@2x/icons/powerups/icon_gist_bomb.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_gist_bomb_white",
+   "file": "sprites@1x/icons/powerups/white/icon_gist_bomb_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_gist_bomb_white.png",
    "size": [
     64,
     64
@@ -1275,7 +1582,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_group_white",
@@ -1294,6 +1601,54 @@
    "note": "White version for Image.color tinting (accents keep their colour)."
   },
   {
+   "name": "iap_fits_pack",
+   "file": "sprites@1x/icons/iap/iap_fits_pack.png",
+   "file2x": "sprites@2x/icons/iap/iap_fits_pack.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "IAP row icon (Fits & Extras)."
+  },
+  {
+   "name": "iap_remove_ads",
+   "file": "sprites@1x/icons/iap/iap_remove_ads.png",
+   "file2x": "sprites@2x/icons/iap/iap_remove_ads.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "IAP row icon (Fits & Extras)."
+  },
+  {
+   "name": "iap_skins_pack",
+   "file": "sprites@1x/icons/iap/iap_skins_pack.png",
+   "file2x": "sprites@2x/icons/iap/iap_skins_pack.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop",
+   "note": "IAP row icon (Fits & Extras)."
+  },
+  {
    "name": "icon_lives",
    "file": "sprites@1x/icons/ui/icon_lives.png",
    "file2x": "sprites@2x/icons/ui/icon_lives.png",
@@ -1307,7 +1662,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_lives_white",
@@ -1339,7 +1694,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_lock_white",
@@ -1371,7 +1726,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_maltina_gala_white",
@@ -1403,12 +1758,44 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_map_white",
    "file": "sprites@1x/icons/ui/white/icon_map_white.png",
    "file2x": "sprites@2x/icons/ui/white/icon_map_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_okada_dash",
+   "file": "sprites@1x/icons/powerups/icon_okada_dash.png",
+   "file2x": "sprites@2x/icons/powerups/icon_okada_dash.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Curb pickup only, NOT a shop item. Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_okada_dash_white",
+   "file": "sprites@1x/icons/powerups/white/icon_okada_dash_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_okada_dash_white.png",
    "size": [
     64,
     64
@@ -1435,7 +1822,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_owa_white",
@@ -1467,7 +1854,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_pause_white",
@@ -1499,7 +1886,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_pickup_person_white",
@@ -1531,7 +1918,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_pickup_ring_white",
@@ -1563,7 +1950,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_play_white",
@@ -1595,12 +1982,44 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_pure_water_white",
    "file": "sprites@1x/icons/powerups/white/icon_pure_water_white.png",
    "file2x": "sprites@2x/icons/powerups/white/icon_pure_water_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_retry",
+   "file": "sprites@1x/icons/ui/icon_retry.png",
+   "file2x": "sprites@2x/icons/ui/icon_retry.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Game Over 'TRY AM AGAIN'. Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_retry_white",
+   "file": "sprites@1x/icons/ui/white/icon_retry_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_retry_white.png",
    "size": [
     64,
     64
@@ -1627,7 +2046,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_settings_white",
@@ -1659,7 +2078,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_siren_white",
@@ -1691,7 +2110,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_stats_white",
@@ -1723,7 +2142,7 @@
    ],
    "border": null,
    "screen": "all",
-   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+   "note": "Line icon, Naira gold #FAE69E baked."
   },
   {
    "name": "icon_timer_white",

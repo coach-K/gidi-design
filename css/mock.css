@@ -41,3 +41,19 @@
 .srcnote{position:absolute;z-index:3;right:calc(var(--sr) + 16px);bottom:calc(var(--sb) + 4px);font-size:16px;color:rgba(245,245,240,.55)}
 .realbg.shop .srcnote,.realbg.home .srcnote{bottom:auto;top:calc(var(--st) + 160px)}
 .owabtns{display:flex;gap:8px;flex:none}.buy.sm2{min-width:144px;width:144px;font-size:24px;line-height:1.15}
+
+/* 3x3 Base Camp grid (Oct 16): tiles 180 px, 16 gap */
+.shopgrid.g3{gap:16px;grid-auto-rows:180px}
+.g3 .item{height:180px;padding:18px 20px;position:relative;gap:18px}
+.g3 .item .ic{width:104px;height:104px;background:none}
+.g3 .item b{font-size:31px}.g3 .item span{font-size:21px}
+.g3 .buy{height:144px}
+.g3 .buy.lock{display:flex;align-items:center;justify-content:center;gap:6px;font-size:28px}
+.item.soon{background:rgba(15,18,25,.58);border:2px solid rgba(158,163,173,.30)}
+.item.soon .ic,.item.soon .tx{opacity:.55}
+.ribbon{position:absolute;top:-2px;left:22px;background:#E8B21E;color:#0F1219;font-size:17px;letter-spacing:.1em;padding:4px 12px;border-radius:0 0 10px 10px;z-index:2}
+.soonbtn{background:#1a1c22;border:2px solid rgba(158,163,173,.35);color:#F5F5F0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:34px}
+.item.info{background:rgba(15,18,25,.50);border:2px dashed rgba(89,217,184,.65);border-radius:28px;display:flex;align-items:center}
+.infotag{flex:none;font-size:20px !important;letter-spacing:.08em;color:#59D9B8 !important;border:2px solid rgba(89,217,184,.7);border-radius:40px;padding:10px 16px;background:rgba(89,217,184,.10)}
+.item .ribbon{color:#0F1219;font-size:17px;line-height:1.2}
+.item .soonbtn span{font-size:32px;color:#F5F5F0}

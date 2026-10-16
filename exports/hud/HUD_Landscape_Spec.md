@@ -94,6 +94,9 @@ Mockups: `exports/devices/dev-tablet-hud.png` (clean) and `exports/devices/dev-t
 
 **Switch rule:** `aspect = Screen.safeArea.width / Screen.safeArea.height`. If it's under 1.5, use the two-row layout (a `HudLayoutSwitcher` on the HUD root toggles a second `HorizontalLayoutGroup` row). Otherwise use one row. Safe margins: 32 px sides/top, 40 px bottom (iPad home indicator).
 
+## Base Camp shop 3×3 grid
+Three columns × three rows of 180 px tiles (16 px gaps, from safe y 176 to 748), touch targets ≥ 144 px, on 1920×1080 and 2340×1080 inside the safe areas together with the Owa refill buttons, the IAP row and the CTA. Buyable: Owa refill, Pure Water 110 (once until cash-out), Malta 80, Change 90, VIP Siren 120 (“Freezes all traffic · LASTMA ignores you”). Coming soon (locked, price visible): Danfo Ride 150, Gist Bomb 100. Not for sale (info tiles): Agbada Armour “Earned”, Okada Dash “Curb pickup”. No empty slot. Sprites and slicing: `../unity/README.md`. Mockups: `shop-desktop.png`, `shop-phone.png`.
+
 ## Power-up values shown in the UI
 Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51.
 
@@ -108,6 +111,5 @@ Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in 
 | Agbada Armour | earned only, never sold | 1 | L6 |
 | Okada Dash | not sold (curb pickup) | 2 | L7 |
 | Gist Bomb | 100 | 1 | L8 |
-| Agbero Whistle (`agbero_whistle`) | 120 | 2 | L7 | 
 
-Pure Water follows the game, not the vision doc (Kehinde, Oct 16). Shop copy “Full immunity, once until cash-out”; used state “used, cash out to refresh”. Agbero Whistle isn't in vision v2 (it was removed there), so it keeps the code values.
+Pure Water follows the game, not the vision doc (Kehinde, Oct 16). Shop copy “Full immunity, once until cash-out”; used state “used, cash out to refresh”. Agbero Whistle is removed from the game (#39): not in the shop, HUD or exports (assets archived).

@@ -22,7 +22,7 @@ SCREENS = [  # key, title, group, note
  ("continue","Continue modal (1 per run)","Run modals","Watch ad / ₦125 chips at L2+ (₦100 at L1) / End run. MaxContinuesPerRun = 1."),
  ("clear","Level clear","Results","\"{location} Cleared!\" (code copy). Cash-out grant 75 chips (L2+). Stars rule TBD. Background: L6 Ikeja Along."),
  ("gameover","Game over","Results","After the single continue is used or declined. Background: L5."),
- ("shop","Base Camp shop","Menus","Six soft power-ups. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Background: L4 Mushin Market."),
+ ("shop","Base Camp shop","Menus","3×3 grid, 180 px tiles: buyable Owa refill, Pure Water 110 (once until cash-out), Malta 80, Change 90, VIP Siren 120; Danfo Ride 150 and Gist Bomb 100 coming soon (locked, price shown); Agbada Armour (Earned) and Okada Dash (Curb pickup) are not for sale. Agbero Whistle removed (#39). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Background: L4 Mushin Market."),
  ("settings","Settings","Menus","Audio, Controls (touch only), Display, Accessibility, Account. Background: L9 (blurred)."),
  ("credits","Credits","Menus","Names TBD. Background: L10 (blurred)."),
 ]
@@ -83,10 +83,10 @@ LEVELS = [ # n, name, pool, speedMul, gapOffset, lanes, speedVar, luxury, lastma
  (4,"Mushin Market",6,0.55,0.6,5,0,0,0,0,1,1,0,["owa","maltina_gala","pure_water"],0),
  (5,"Oshodi Expressway",6,0.56,0.5,5,0,0,1,0,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
  (6,"Ikeja Along",7,0.55,0.9,6,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
- (7,"Ojota Intersect",7,0.55,1.0,7,0.15,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
- (8,"Third Mainland Bridge",8,1.2,0.35,8,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
- (9,"Lekki Toll Gate",8,1.35,0.1,8,0,3,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],0),
- (10,"Ojuelegba Chaos",8,1.45,0.0,8,0.35,3.5,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"],1),
+ (7,"Ojota Intersect",7,0.55,1.0,7,0.15,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
+ (8,"Third Mainland Bridge",8,1.2,0.35,8,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
+ (9,"Lekki Toll Gate",8,1.35,0.1,8,0,3,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
+ (10,"Ojuelegba Chaos",8,1.45,0.0,8,0.35,3.5,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],1),
 ]
 LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; Owa! not yet unlocked.",
  2:"Owa! unlocks here (toast). Base Camp opens (ShopAllowed L2+). Continue cost rises to 125 chips.",
@@ -94,7 +94,7 @@ LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; 
  4:"Slay Queen joins the mix. Traffic jumps to ×0.55 with tighter gaps (+0.6 s).",
  5:"LASTMA flag enforcement starts (every 5–8 s, lane slows to ×0.8). Change Bundle and VIP Siren appear.",
  6:"First 6-lane road. KAI officers join LASTMA (KAI bribe ₦200).",
- 7:"7 lanes, per-lane speed variation ±15%. Agbero Whistle unlocks (L7+; not in vision v2, code value).",
+ 7:"7 lanes, per-lane speed variation ±15%. Okada Dash appears at the curb (L7+, curb pickup, not sold).",
  8:"8 lanes: wide camera (20 m, FOV 58°). Traffic ×1.2, gaps +0.35 s. Big difficulty step.",
  9:"Luxury/aggressive cars +3 speed bonus, near-zero gap offset (+0.1 s).",
  10:"Truly endless: no goal zone. Difficulty climbs every 20 s (+4% speed, −0.05 s gaps per tick); ±35% lane variation. Score = metres + 25/delivery + 10/combo step."}
@@ -195,18 +195,23 @@ def typography():
 <li>Floor: nothing below 27 ref px (18 px at 720p, 9 dp on a 360 dp-tall phone).</li><li>Numbers that tick (timer, wallet, score) use tabular figures.</li><li>Sentence case for copy, UPPERCASE only for CTAs and stock labels.</li><li>Pidgin first; keep lines short (≤ 48 characters in toasts).</li></ul></div>
 <h2>Web (this site / storefront)</h2><table><tr><th>Role</th><th>Size</th></tr><tr><td>H1</td><td>40 px (28 px mobile)</td></tr><tr><td>H2</td><td>24 px</td></tr><tr><td>Body</td><td>16 px / 1.55, system UI</td></tr><tr><td>Caption</td><td>13 px</td></tr></table>'''
 
-LABEL = {"owa":"Owa","maltina_gala":"Malta &amp; Agege Roll","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","agbero_whistle":"Agbero Whistle",
+LABEL = {"owa":"Owa","maltina_gala":"Malta &amp; Agege Roll","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","danfo_ride":"Danfo Ride","gist_bomb":"Gist Bomb","agbada_armour":"Agbada Armour","okada_dash":"Okada Dash","retry":"Retry (TRY AM AGAIN)","iap_skins_pack":"Lagos skins pack","iap_fits_pack":"Baba fits pack","iap_remove_ads":"Remove ads",
  "pickup_ring":"Curb pickup marker","pickup_person":"Recruit (person lights up)","chip":"Naira Chip","lives":"Lives","group":"GROUP","change":"CHANGE","stats":"Stats","pause":"Pause",
  "settings":"Settings","map":"Lagos map","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
  "warn_safe":"Safe / gap","warn_caution":"Caution","warn_danger":"Danger","warn_lastma":"LASTMA","warn_train":"Train"}
 def icons():
-    from gen_screens import ECON
+    from gen_screens import ECON, SOON, INFO
     E = {p:(c,cap,f,b) for p,_,b,c,cap,f in ECON}
+    SO = {p:(c,f) for p,_,_,c,_,f in SOON}; IN = {p:t for p,_,_,t in INFO}
     out = '<h1>Icons</h1><p class="lead">One SVG set on a 48×48 grid, 3 px rounded stroke, <code>currentColor</code> lines (default Naira gold <code>#FAE69E</code> on ink glass). Warning shapes are filled and keep their state colour. Download any icon from <code>icons/svg/</code>.</p>'
     out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, caps and unlock levels from the code. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Display name of <code>maltina_gala</code> is now “Malta &amp; Agege Roll”.</p><div class="icgrid">'
     for p in PU_ACCENT:
-        c,cap,f,b = E[p]
-        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{("FREE · refill "+str(c)+" chips/charge") if p=="owa" else str(c)+" chips"} · cap {cap}{" (resets at cash-out) · full immunity, follows the game" if p=="pure_water" else ""} · L{f}+{" · not in vision, code values" if p=="agbero_whistle" else ""}</span></a>'
+        if p in E:
+            c,cap,f,b = E[p]
+            txt = f'{("FREE · refill "+str(c)+" chips/charge") if p=="owa" else str(c)+" chips"} · cap {cap}{" (resets at cash-out) · full immunity, follows the game" if p=="pure_water" else ""} · L{f}+'
+        elif p in SO: txt = f"{SO[p][0]} chips · coming soon · L{SO[p][1]}+"
+        else: txt = f"{IN[p]} · not sold"
+        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{txt}</span></a>'
     out += '</div>'
     for g, names in GROUPS:
         anchor = ' id="warn"' if g.startswith("Warning") else ''
@@ -268,7 +273,7 @@ def souvenirs():
 <tr><td>Power-up stock</td><td>caps 3/3/2/2/2/2; curb finds and shop buys share the cap</td><td><code>PowerUpInventoryCap</code></td><td>Base Camp pips</td></tr>
 <tr><td>KAI bribe</td><td>₦200 (in-run Naira)</td><td><code>LevelManager.kaiBribeCostNaira</code></td><td>CHANGE pip / toast</td></tr>
 <tr><td>Endless score</td><td>metres + 25 per delivery + 10 per combo step</td><td><code>EndlessRunScore</code></td><td><a href="screens.html#s-hud-endless">Endless HUD</a></td></tr></table>
-<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. The site now shows Owa as FREE (refill 80 chips per charge); the code still has six items and Agbero Whistle. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
+<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. The site now shows Owa as FREE (refill 80 chips per charge); Agbero Whistle is removed from the game (#39). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
 <h2>Souvenirs: one per district (concept)</h2><p>A collectible medallion found once per district, shown in a Lagos collection book on the map. Gold rim = collected; dim = not found yet.</p>
 <div class="icgrid">{cards}</div>
 <div class="card" style="display:flex;gap:18px;align-items:center">{souv_svg(5,"","".join(g for n,_,g in SOUV if n==5))}{souv_svg(6,"","".join(g for n,_,g in SOUV if n==6),locked=True)}<div><b>States:</b> collected (left) vs not found (right, 25% and greyscale).<br>Drop chance, where it spawns, rewards for a full set and whether souvenirs give chips: <span class="badge">TBD</span>, needs economy numbers in <code>GidiEconomyTables</code> first.</div></div>

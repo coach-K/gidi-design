@@ -9,15 +9,16 @@ ECON = [  # id, display, blurb, cost, cap, first level
  ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,2,3),
  ("pure_water","Pure Water","Full immunity, once until cash-out",110,1,3),  # exception: follows the game, not vision (Kehinde, Oct 16); cap 1 resets at cash-out
  ("bribe_change","Change Bundle","Settle LASTMA / KAI pressure",90,2,5),
- ("siren","VIP Siren","Short VIP clear (mid lane exempt)",120,1,5),
- ("agbero_whistle","Agbero Whistle","Not in vision v2 · code values",120,2,7),  # not defined in vision v2 (removed): code values
-]
+ ("siren","VIP Siren","Freezes all traffic · LASTMA ignores you",120,1,5),
+]  # Agbero Whistle removed from the game (#39)
+SOON = [("danfo_ride","Danfo Ride","Hop two lanes in a danfo",150,1,4),("gist_bomb","Gist Bomb","Radio gist pulls traffic off one lane",100,1,8)]
+INFO = [("agbada_armour","Agbada Armour","2.5 s full immunity · fill the Owa meter","Earned"),("okada_dash","Okada Dash","Grab one at the curb and dash","Curb pickup")]
 START_LIVES, MAX_CONTINUES = 3, 1
 def continue_cost(l): return 100 if l <= 1 else 125
 def cashout(l): return 50 if l <= 1 else 75
 IAP = [("pack_skins_lagos","Lagos skins pack"),("pack_baba_fits","Baba fits pack"),("remove_ads","Remove ads")]
 LEVELS = {"home": (9, "Lekki Toll Gate"), "shop": (4, "Mushin Market"), "gameover": (5, "Oshodi Expressway")}  # match each background (LevelManager names)
-ICON = {"owa":"📣","maltina_gala":"🥤","pure_water":"💧","bribe_change":"₦","siren":"🚨","agbero_whistle":"🎺"}
+ICON = {"owa":"📣","maltina_gala":"🥤","pure_water":"💧","bribe_change":"₦","siren":"🚨"}
 
 def shell(name, body, title, bg):
     w,h,sl,sr,st,sb,label = FRAMES[name]
@@ -45,20 +46,34 @@ def home(name):
 <div class="tag glass">Baba Gidi don ready. Owa! 📣</div>''', "Home", "home")
 
 def shop(name):
+    """3x3 Base Camp grid (Oct 16 final): 5 buyable, 2 coming soon (price shown), 2 not-for-sale info tiles. Agbero Whistle removed (#39)."""
+    from brand import badge, icon
     lv, nm = LEVELS["shop"]
+    E = {e[0]: e for e in ECON}; SO = {e[0]: e for e in SOON}; IN = {e[0]: e for e in INFO}
+    order = ["owa","pure_water","maltina_gala","bribe_change","siren","danfo_ride","gist_bomb","agbada_armour","okada_dash"]
     rows = ""
-    for pid, disp, blurb, cost, cap, first in ECON:
-        locked = lv < first
-        owned = {"owa":2,"maltina_gala":1,"pure_water":0}.get(pid,0)
-        pips = "".join(f'<i class="{"on" if k<owned else ""}"></i>' for k in range(cap))
-        btn = f'<button class="buy lock">🔒 Opens L{first}</button>' if locked else (
-              f'<button class="buy full">Bag full</button>' if owned>=cap else (f'<button class="buy full sm2" style="width:200px;min-width:200px">used, cash out to refresh</button>' if (pid=="pure_water" and name=="phone") else f'<span class="owabtns"><button class="buy sm2">Buy 1<br>₦{cost}</button><button class="buy sm2">Fill all<br>₦{cost*(cap-owned)}</button></span>' if pid=="owa" else f'<button class="buy">₦{cost}</button>'))
-        rows += f'''<div class="item glass {'locked' if locked else ''}"><div class="ic">{ICON[pid]}</div>
-<div class="tx"><b>{disp}</b><span>{blurb}</span><span class="pips">{pips}<em>{owned}/{cap}</em></span></div>{btn}</div>'''
+    for pid in order:
+        if pid in E:
+            _, disp, blurb, cost, cap, first = E[pid]
+            locked = lv < first
+            owned = {"owa":2,"maltina_gala":1,"pure_water":0}.get(pid,0)
+            pips = "".join(f'<i class="{"on" if k<owned else ""}"></i>' for k in range(cap))
+            btn = f'<button class="buy lock">{icon("lock",30,"#9EA3AD")} L{first}</button>' if locked else (
+                  f'<button class="buy full">Bag full</button>' if owned>=cap else (f'<button class="buy full sm2" style="width:200px;min-width:200px">used, cash out to refresh</button>' if (pid=="pure_water" and name=="phone") else f'<span class="owabtns"><button class="buy sm2">Buy 1<br>₦{cost}</button><button class="buy sm2">Fill all<br>₦{cost*(cap-owned)}</button></span>' if pid=="owa" else f'<button class="buy">₦{cost}</button>'))
+            rows += f'''<div class="item glass {'locked' if locked else ''}"><div class="ic">{badge(pid,96)}</div>
+<div class="tx"><b>{"Owa refill" if pid=="owa" else disp}</b><span>{blurb}</span><span class="pips">{pips}<em>{owned}/{cap}</em></span></div>{btn}</div>'''
+        elif pid in SO:
+            _, disp, blurb, cost, cap, first = SO[pid]
+            rows += f'''<div class="item glass soon"><span class="ribbon">COMING SOON</span><div class="ic">{badge(pid,96)}</div>
+<div class="tx"><b>{disp}</b><span>{blurb}</span></div><button class="buy soonbtn">{icon("lock",28,"#9EA3AD")}<span>₦{cost}</span></button></div>'''
+        else:
+            _, disp, blurb, tag = IN[pid]
+            rows += f'''<div class="item info"><div class="ic">{badge(pid,96)}</div>
+<div class="tx"><b>{disp}</b><span>{blurb}</span></div><span class="infotag">{tag.upper()}</span></div>'''
     iap = "".join(f'<div class="iap glass"><b>{d}</b><span>Store price</span></div>' for _,d in IAP)
     return shell(name, f'''
 <div class="toprow"><div class="hud-tl glass"><div class="lvl">BASE CAMP</div><div class="meta">Load your bag before L{lv} · {nm}</div></div>{wallet()}</div>
-<div class="shopgrid">{rows}</div>
+<div class="shopgrid g3">{rows}</div>
 <div class="iaprow"><span class="iaph">FITS &amp; EXTRAS · na drip only, no power for cash</span>{iap}</div>
 <button class="cta shopgo">OYA, CROSS! ▶<small>L{lv} · {nm}</small></button>
 <button class="glass btn back">◀<small>Back</small></button>''', "Base Camp", "shop")

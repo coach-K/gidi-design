@@ -10,7 +10,7 @@ from brand import icon, badge, logo_mark, wordmark, P
 LV = {1:("Agege Bus Stop",5),2:("Surulere Way",5),3:("Ikorodu Road",5),4:("Mushin Market",5),5:("Oshodi Expressway",5),
       6:("Ikeja Along",6),7:("Ojota Intersect",7),8:("Third Mainland Bridge",8),9:("Lekki Toll Gate",8),10:("Ojuelegba Chaos",8)}
 LIVE = {pid:first for pid,_,_,_,_,first in ECON}
-DUR = {"owa":4,"maltina_gala":4,"siren":5,"bribe_change":6,"agbero_whistle":6}  # LevelManager / GameManager seconds
+DUR = {"owa":4,"maltina_gala":4,"siren":5,"bribe_change":6}  # LevelManager / GameManager seconds
 
 def lab(n): return f"L{n} · {LV[n][0]}"
 
