@@ -74,8 +74,9 @@ def grade(bgr):
     return cv2.addWeighted(out, 1.45, blur, -0.45, 0)            # unsharp after 1.5x upscale
 
 def frame(img, W):
-    up = cv2.resize(img, (2400, 1080), interpolation=cv2.INTER_CUBIC)
-    x0 = (2400 - W) // 2
+    UW = round(img.shape[1] * 1080 / img.shape[0])  # keep aspect (1600x720 -> 2400; 1640x720 L10 -> 2460)
+    up = cv2.resize(img, (UW, 1080), interpolation=cv2.INTER_LANCZOS4)
+    x0 = (UW - W) // 2
     return up[:, x0:x0+W]
 
 USE = {"hud": "L05", "home": "L09", "shop": "L04", "gameover": "L05"}
@@ -90,11 +91,102 @@ if __name__ == "__main__":
             cv2.imwrite(f"{OUT}/lv_{key}_{name}.png", im)
     print(USE)
 
+# L10 recapture (fixed build, 1640x720, Oct 16). Dev-build HUD layout differs from L01-L09, so it has its own boxes.
+# Fill model: the walls are straight slanted lines; road pixels take the row median of visible road (lane stripes are
+# horizontal), wall pixels copy the wall texture at the same distance from the wall edge on the nearest clean row.
+L10_BOXES = [(60,0,362,128),(560,0,1022,96),(665,125,974,170),(1170,0,1432,98),(1276,96,1348,124),
+             (110,438,290,618),(1282,375,1545,637),(565,615,1073,647),(769,681,873,720),(1512,690,1640,720)]
+def clean_l10(local=True):
+    src = cv2.imread(f"{R}/reference/levels/L10.png"); H, W = src.shape[:2]
+    m = np.zeros((H,W), bool)
+    for (x0,y0,x1,y1) in L10_BOXES: m[y0:y1, x0:x1] = True
+    f = src.astype(np.int32); wall = (f[...,2] > 1.65 * f[...,1]) & (f[...,2] > 60)
+    ys, L, Rr = [], [], []
+    for y in range(0, H, 4):   # wall edges from clean rows: last wall px from left / first wall px from right
+        row = wall[y] & ~m[y]
+        l = np.where(row[:W//2])[0]; r = np.where(row[W//2:])[0]
+        if len(l) > 20 and len(r) > 20:
+            lx, rx = l.max(), W//2 + r.min()
+            if not m[y, max(0,lx-6):lx+8].any() and not m[y, max(0,rx-8):rx+6].any(): ys.append(y); L.append(lx); Rr.append(rx)
+    ys, L, Rr = map(np.array, (ys, L, Rr))
+    def _local(vals):   # local linear fit of the wall edge around each row (the edge bends near the top)
+        tab = {}
+        for y in range(H):
+            near = np.argsort(np.abs(ys - y))[:12]
+            tab[y] = np.polyval(np.polyfit(ys[near], vals[near], 1), y)
+        return tab
+    if local: fl, fr = _local(L), _local(Rr)
+    else:
+        gl, gr = np.polyfit(ys, L, 1), np.polyfit(ys, Rr, 1); fl = {y: np.polyval(gl, y) for y in range(H)}; fr = {y: np.polyval(gr, y) for y in range(H)}
+    edge = lambda c, y: int(round(c[int(np.clip(y, 0, H-1))]))
+    out = src.copy(); rng = np.random.default_rng(10)
+    clean_rows = [y for y in range(H) if (~m[y]).sum() > W*0.6]
+    for y in range(H):
+        if not m[y].any(): continue
+        el, er = edge(fl, y), edge(fr, y)
+        road = (~m[y]) & (np.arange(W) > el+3) & (np.arange(W) < er-3)
+        px = src[y, road].astype(np.float32)
+        med = np.median(px, 0) if len(px) > 40 else None
+        if med is not None:   # drop objects (cars, peds) from the median estimate
+            keep = np.abs(px - med).sum(1) < 45
+            if keep.sum() > 30: med = np.median(px[keep], 0)
+        yy = min(clean_rows, key=lambda r: abs(r - y))
+        mx = np.where(m[y])[0]
+        # local road colour: nearest clean road pixels left/right of each masked run, blended across the run
+        runs = np.split(mx, np.where(np.diff(mx) > 1)[0] + 1)
+        locfill = {}
+        for rn in runs:
+            a0, a1 = rn[0], rn[-1]
+            lw = [x for x in range(max(el+3, a0-90, 0), a0) if road[x]]; rw = [x for x in range(a1+1, min(er-3, a1+91, W)) if road[x]]
+            cl = np.median(src[y, lw].astype(np.float32), 0) if len(lw) > 8 else None
+            cr = np.median(src[y, rw].astype(np.float32), 0) if len(rw) > 8 else None
+            if cl is None: cl = cr if cr is not None else med
+            if cr is None: cr = cl
+            for x in rn:
+                t = (x - a0) / max(1, a1 - a0); locfill[x] = None if cl is None else cl*(1-t) + cr*t
+        for x in mx:
+            if el+2 < x < er-2:
+                c = locfill.get(x)
+                if c is None: c = med if med is not None else src[yy, (el+er)//2].astype(np.float32)
+                out[y, x] = np.clip(c + rng.normal(0, 2.2, 3), 0, 255)
+            else:
+                left = x <= el+2; d = (el - x) if left else (x - er)
+                xs = (edge(fl, yy) - d) if left else (edge(fr, yy) + d)
+                y2 = yy
+                for k in range(1, 200):   # nearest row where the mirrored sample is clean
+                    for cand in (y-k, y+k):
+                        if 0 <= cand < H:
+                            xc = (edge(fl, cand) - d) if left else (edge(fr, cand) + d)
+                            if 0 <= xc < W and not m[cand, xc]: y2, xs = cand, xc; break
+                    else: continue
+                    break
+                out[y, x] = src[y2, int(np.clip(xs, 0, W-1))]
+    return cv2.GaussianBlur(out, (3,3), 0) * m[...,None] + src * (~m[...,None])
+
+def clean_l10_merged():
+    """Top boxes: local wall-edge fit (the edge bends near the top). Lower boxes: global straight-edge fit."""
+    a, b = clean_l10(True).astype(np.uint8), clean_l10(False).astype(np.uint8)
+    out = a.copy()
+    for (x0,y0,x1,y1) in L10_BOXES:
+        if y0 >= 300: out[y0:y1, x0:x1] = b[y0:y1, x0:x1]
+    # side control boxes: road pixels mirrored from the clean road just inside the box edge (keeps stripe grain)
+    src = cv2.imread(f"{R}/reference/levels/L10.png"); H, W = src.shape[:2]
+    f = src.astype(np.int32); wall = (f[...,2] > 1.65 * f[...,1]) & (f[...,2] > 60)
+    for (x0,y0,x1,y1) in L10_BOXES[5:7]:
+        leftbox = x0 < W/2
+        for y in range(y0, y1):
+            for x in range(x0, x1):
+                mx = 2*x1 - x + 2 if leftbox else 2*x0 - x - 2
+                if 0 <= mx < W and not wall[y, mx] and not wall[y, (x1+4) if leftbox else (x0-4)]:
+                    # only where the mirrored side is road and the road actually continues to this x (not past the wall)
+                    if not (b[y, x].astype(int)[2] > 1.65*b[y, x].astype(int)[1]): out[y, x] = src[y, mx]
+    return out
+
 def all_levels():
     """Every level L01-L10: cleaned + dusk grade (desktop/phone) and a 960x540 card thumbnail; plus blurred variants for menu screens."""
     for i in range(1, 11):
         lv = f"L{i:02d}"
-        try: c = clean(lv)
+        try: c = clean_l10_merged() if lv == "L10" else clean(lv)
         except Exception as e:
             print("fallback inpaint", lv, e); src = cv2.imread(f"{R}/reference/levels/{lv}.png")
             m = np.zeros(src.shape[:2], np.uint8)
