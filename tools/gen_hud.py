@@ -26,10 +26,23 @@ def dpad_svg(R):
     return (f'<svg viewBox="-180 -180 360 360" width="{2*R}" height="{2*R}"><circle r="176" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)" stroke-width="3"/>'
             f'<g fill="rgba(226,196,128,.62)" stroke="rgba(120,90,30,.35)" stroke-width="2">{"".join(arrows)}</g><circle r="24" fill="rgba(30,30,30,.35)"/></svg>')
 
-def controls(w, h):
-    px, py, pr = PICK[0]*w, PICK[1]*h, PICK[2]*h
-    dx, dy, dr = DPAD[0]*w, DPAD[1]*h, DPAD[2]*h
+# OWA! button (Kehinde, Oct 16): smaller round button stacked above PICK UP, same visual family.
+OWA_D, OWA_HIT, OWA_GAP = 120, 144, 32   # visual diameter, square touch target (48 dp @3x), gap between touch targets
+
+def owa_btn(px, py, pr, owa=(2, 0.5, 3), hi=False):
+    """owa = (full charges, partial refill 0..1 of next charge, cap). 0 full + 0 partial = disabled."""
+    full, part, cap = owa
+    cy = py - pr - OWA_GAP - OWA_HIT/2
+    pips = "".join(f'<i class="on"></i>' if i < full else (f'<i class="part" style="--p:{part*100:.0f}%"></i>' if i == full and part > 0 else '<i></i>') for i in range(cap))
+    dis = full == 0 and part == 0
+    return (f'<div class="owa2{" off" if dis else ""}{" hi" if hi else ""}" style="left:{px-OWA_HIT/2:.0f}px;top:{cy-OWA_HIT/2:.0f}px">'
+            f'<div class="disc"><span class="k">OWA!</span><span class="opips">{pips}</span></div></div>')
+
+def controls(w, h, owa=(2, 0.5, 3), owa_hi=False, pick=None, dpad=None):
+    px, py, pr = pick or (PICK[0]*w, PICK[1]*h, PICK[2]*h)
+    dx, dy, dr = dpad or (DPAD[0]*w, DPAD[1]*h, DPAD[2]*h)
     return (f'<div class="pick2" style="left:{px-pr:.0f}px;top:{py-pr:.0f}px;width:{2*pr:.0f}px;height:{2*pr:.0f}px"><b>+</b><span>PICK UP</span></div>'
+            + owa_btn(px, py, pr, owa, owa_hi) +
             f'<div class="dpad2" style="left:{dx-dr:.0f}px;top:{dy-dr:.0f}px">{dpad_svg(dr)}</div>')
 
 def page(name, annot):
@@ -45,12 +58,11 @@ def page(name, annot):
   <div class="toprow">
   <div class="hud-tl glass" id="level">
     <div class="lvl long">L5 · Oshodi Expressway</div>
-    <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b> · <span class="t">00:31</span></div>
+    <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b></div>
   </div>
   <div class="hud-tc glass" id="stock">
     <div class="cell"><span class="k">GROUP</span><span class="pips"><i class="on"></i><i class="on"></i><i></i></span></div>
     <div class="cell"><span class="k">CHANGE</span><span class="pips"><i class="on"></i><i></i></span></div>
-    <div class="cell owa"><span class="k">OWA!</span><span class="pips"><i class="on"></i><i></i><i></i></span></div>
   </div>
   <div class="hud-tr" id="wallet">
     <div class="glass chips"><span class="amt">₦12,450</span><small>NAIRA CHIPS</small></div>
@@ -73,7 +85,7 @@ def page(name, annot):
    <li>Wide stages (≥ 8 lanes): height 20 m, FOV 58°. Shown: L5 (standard)</li>
    <li>Road narrows with distance; lanes enter from the screen edges</li>
    <li>Controls stay where the build puts them; their overlap with lane ends is accepted, as in the build</li></ul></div>
-  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs</li><li>HUD glass panels</li><li>Touch controls (translucent)</li><li>Toasts</li><li>Modals</li></ol></div>
+  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs</li><li>HUD glass panels</li><li>Touch controls (translucent): PICK UP, OWA! (same layer, no overlap), d-pad</li><li>Toasts</li><li>Modals</li></ol></div>
 </div>"""
     a += "</div></body></html>"
     fn = os.path.join(OUT, f"hud-{name}{'-annotated' if annot else ''}.html")

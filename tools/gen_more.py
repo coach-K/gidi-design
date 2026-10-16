@@ -14,19 +14,19 @@ DUR = {"owa":4,"maltina_gala":4,"siren":5,"bribe_change":6,"agbero_whistle":6}  
 
 def lab(n): return f"L{n} · {LV[n][0]}"
 
-def shell(name, lv, body, title, blur=False, ctl=False):
+def shell(name, lv, body, title, blur=False, ctl=False, owa=(2,0.5,3), owa_hi=False):
     w,h,sl,sr,st,sb,_ = FRAMES[name]
     bg = f"../assets/bg/L{lv:02d}_{name}{'_blur' if blur else ''}.png"
     return f"""<!doctype html><html><head><meta charset="utf-8"><title>{title} {name}</title>
 <link rel="stylesheet" href="../css/hud.css"><link rel="stylesheet" href="../css/mock.css"><link rel="stylesheet" href="../css/more.css"></head>
 <body style="width:{w}px;height:{h}px"><div class="frame {name} realbg" style="width:{w}px;height:{h}px;--sl:{sl}px;--sr:{sr}px;--st:{st}px;--sb:{sb}px"><img class="scene" src="{bg}" alt="">
 {'<div class="notch"></div><div class="homebar"></div>' if name=='phone' else ''}
-<div class="safe">{body}</div>{controls(w,h) if ctl else ''}</div></body></html>"""
+<div class="safe">{body}</div>{controls(w,h,owa,owa_hi) if ctl else ''}</div></body></html>"""
 
 def stock(g=(2,3), c=(1,2), o=(1,3), hi=None):
     def cell(k, v, cls=""):
         return f'<div class="cell {cls}"{" style=\"background:rgba(232,178,30,.18)\"" if hi==k else ""}><span class="k">{k}</span><span class="pips">'+"".join(f'<i class="{"on" if i<v[0] else ""}"></i>' for i in range(v[1]))+'</span></div>'
-    return f'<div class="hud-tc glass{" hilite" if hi=="all" else ""}">{cell("GROUP",g)}{cell("CHANGE",c)}{cell("OWA!",o,"owa")}</div>'
+    return f'<div class="hud-tc glass{" hilite" if hi=="all" else ""}">{cell("GROUP",g)}{cell("CHANGE",c)}</div>'
 
 def top_hud(lv, meta, **kw):
     return f'''<div class="toprow"><div class="hud-tl glass"><div class="lvl{' long' if len(lab(lv))>18 else ''}">{lab(lv)}</div><div class="meta">{meta}</div></div>
@@ -34,7 +34,7 @@ def top_hud(lv, meta, **kw):
 <div class="glass lives"><span class="heart">♥</span> {START_LIVES}</div>
 <button class="glass btn">{icon("stats",44,P["text"])}<small>Stats</small></button><button class="glass btn">{icon("pause",44,P["text"])}<small>Pause</small></button></div></div>'''
 
-META = 'Saved <b>4/6</b> · Best <b>00:42</b> · <span class="t">00:31</span>'
+META = 'Saved <b>4/6</b> · Best <b>00:42</b>'
 
 def wallet():
     return f'''<div class="hud-tr"><div class="glass chips"><span class="amt">₦12,450</span><small>NAIRA CHIPS</small></div>
@@ -79,7 +79,7 @@ def intro(n):
 def onboard(n, step):
     texts = {1:"Move Baba Gidi with the d-pad. Waka go the curb.",
              2:"Read the road: ▲ caution, ≫ danger. Wait for your gap.",
-             3:"Your stock: GROUP → CHANGE → OWA!",
+             3:"Your stock: GROUP and CHANGE up top, OWA! above PICK UP",
              4:"Reach the far curb with your people. We don reach!"}
     w,h = FRAMES[n][:2]
     extra = ""
@@ -97,7 +97,7 @@ def onboard(n, step):
     coach = f'<div class="coach"{chr(32)+'style="top:560px"' if step==4 else ''}><span class="n">{step}</span>{texts[step]}</div>'
     dots = '<div class="dots">'+"".join(f'<i class="{"on" if i==step else ""}"></i>' for i in range(1,5))+'</div>'
     skip = '' if step==1 else '<button class="gbtn skip" style="min-width:200px">Skip</button>'
-    return shell(n, 1, top_hud(1, 'Tutorial · <b>step '+str(step)+'/4</b>', g=(0,3) if step<3 else (2,3), c=(0,2), o=(0,3), hi="all" if step==3 else None)+coach+skip+dots+extra, f"Onboarding {step}", ctl=True)
+    return shell(n, 1, top_hud(1, 'Tutorial · <b>step '+str(step)+'/4</b>', g=(0,3) if step<3 else (2,3), c=(0,2), o=(0,3), hi="all" if step==3 else None)+coach+skip+dots+extra, f"Onboarding {step}", ctl=True, owa=(0,0,3))
 
 def hud_power(n):
     lv = 7; w,h = FRAMES[n][:2]
@@ -107,27 +107,27 @@ def hud_power(n):
         return f'<div class="puc">{badge(p,140)}<svg class="r" viewBox="0 0 170 170"><circle cx="85" cy="85" r="75" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><path d="M85 10 A75 75 0 {large} 1 {x:.1f} {y:.1f}" fill="none" stroke="#E8B21E" stroke-width="10" stroke-linecap="round"/></svg><div class="t">{label}</div></div>'
     return shell(n, lv, top_hud(lv, META, o=(2,3))+
       f'<div class="pu" style="left:50%;transform:translateX(-50%);top:190px">{ring("maltina_gala",.62,"Malta · 2.5s")}</div>'
-      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Malta break! Traffic slow down 60% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True)
+      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Malta break! Traffic slow down 60% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True, owa=(2,0,3))
 
 def hud_warn(n):
     lv = 8; w,h = FRAMES[n][:2]
     t = lambda x,y,ic,txt,c: f'<div class="tele" style="position:fixed;left:{x*w:.0f}px;top:{y*h:.0f}px;border:3px solid {c}">{icon(ic,44)} {txt}</div>'
     return shell(n, lv, top_hud(lv, META)+
       t(0.06,0.20,"warn_caution","CAUTION",P["caution"])+t(0.66,0.30,"warn_danger","DANGER",P["danger"])+t(0.30,0.42,"warn_lastma","LASTMA",P["lastma"])+
-      t(0.70,0.50,"warn_safe","GAP · GO",P["safe"]), "HUD warnings", ctl=True)
+      t(0.70,0.50,"warn_safe","GAP · GO",P["safe"]), "HUD warnings", ctl=True, owa=(0,0,3))
 
 def hud_toast(n):
     lv = 2
-    return shell(n, lv, top_hud(lv, 'Saved <b>2/4</b> · Best <b>00:51</b> · <span class="t">00:18</span>', o=(1,3), hi="OWA!")+
+    return shell(n, lv, top_hud(lv, 'Saved <b>2/4</b> · Best <b>00:51</b>', o=(1,3), hi="OWA!")+
       f'<div class="toast" style="top:200px">{icon("owa",40)} Owa! unlocked in Surulere Way. Shout to freeze the next Danfo lane.</div>'
       f'<div class="toast" style="top:300px;color:#F5F5F0;border-color:rgba(89,217,184,.6)">{icon("group",36,"#59D9B8")} They\'re with you. Take one more, or cross now.</div>'
-      f'<div class="toast" style="top:400px;color:#F5F5F0">{icon("chip",36)} Found Owa</div>', "HUD toasts", ctl=True)
+      f'<div class="toast" style="top:400px;color:#F5F5F0">{icon("chip",36)} Found Owa</div>', "HUD toasts", ctl=True, owa=(1,0,3), owa_hi=True)
 
 def hud_endless(n):
     lv = 10
     return shell(n, lv, top_hud(lv, 'Endless · <b>no goal zone</b>', o=(2,3))+
       f'<div class="endl glass">Score <b>1,482</b> · <b>912 m</b> · <b>14</b> delivered · combo <b>x6</b> · Best <b>2,050</b></div>'
-      f'<div class="toast" style="top:300px">Combo x6! +10 per step · +25 per delivery</div>', "HUD endless", ctl=True)
+      f'<div class="toast" style="top:300px">Combo x6! +10 per step · +25 per delivery</div>', "HUD endless", ctl=True, owa=(3,0,3))
 
 def pause(n):
     lv = 5

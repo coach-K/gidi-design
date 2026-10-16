@@ -52,3 +52,13 @@ body{background:#000;font-family:Jakarta,system-ui,sans-serif;font-weight:700;co
 .pick2 b{font-size:44px;line-height:1}.pick2 span{font-size:26px;letter-spacing:.04em}
 .dpad2{position:absolute;z-index:4}
 .lvl.long{font-size:34px}
+
+/* OWA! button: smaller round, stacked above PICK UP (spec v1.1) */
+.owa2{position:absolute;z-index:4;width:144px;height:144px;display:flex;align-items:center;justify-content:center}
+.owa2 .disc{width:120px;height:120px;border-radius:50%;box-sizing:border-box;background:radial-gradient(circle,rgba(40,32,14,.42),rgba(15,18,25,.30) 70%);border:5px solid rgba(232,178,30,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 0 3px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.25)}
+.owa2 .k{font-size:28px;color:#E8B21E;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,.5)}
+.opips{display:flex;gap:7px}.opips i{width:18px;height:18px;border-radius:50%;box-sizing:border-box;background:rgba(20,22,30,.55);border:2px solid rgba(255,236,190,.55)}
+.opips i.on{background:#59D9B8;border-color:#59D9B8}
+.opips i.part{background:conic-gradient(#59D9B8 var(--p),rgba(20,22,30,.55) 0);border-color:#59D9B8}
+.owa2.off .disc{border-color:rgba(160,160,160,.55);background:rgba(40,40,48,.28);box-shadow:none}.owa2.off .k{color:rgba(200,200,200,.6)}
+.owa2.hi .disc{box-shadow:0 0 0 6px rgba(232,178,30,.35),0 0 28px rgba(232,178,30,.6)}

@@ -1,7 +1,7 @@
 """Tablet 4:3 two-row HUD (reference canvas 1440x1080: CanvasScaler 1920x1080, match height). Spec lives in exports/hud/HUD_Landscape_Spec.md."""
 import os, sys, subprocess
 sys.path.insert(0, os.path.dirname(__file__))
-from gen_hud import FRAMES, OUT, dpad_svg
+from gen_hud import FRAMES, OUT, dpad_svg, controls
 import gen_more as G
 from brand import icon, P
 from PIL import Image
@@ -21,8 +21,7 @@ def body(annot=False):
     pr, dr = 0.1 * H, 0.15 * H
     px, py = M + 24 + pr, H - MB - 24 - pr
     dx, dy = W - M - 12 - dr, H - MB - 12 - dr
-    ctl = (f'<div class="pick2" style="left:{px-pr:.0f}px;top:{py-pr:.0f}px;width:{2*pr:.0f}px;height:{2*pr:.0f}px"><b>+</b><span>PICK UP</span></div>'
-           f'<div class="dpad2" style="left:{dx-dr:.0f}px;top:{dy-dr:.0f}px">{dpad_svg(dr)}</div>')
+    ctl = controls(W, H, (1, 0.6, 3), pick=(px, py, pr), dpad=(dx, dy, dr))
     ann = ""
     if annot:
         def box(x, y, w, h, t, c="#56B4E9", ty=None):
