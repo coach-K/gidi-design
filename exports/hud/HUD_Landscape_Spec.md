@@ -106,7 +106,7 @@ Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in 
 |---|---|---|---|
 | Owa! (`owa`) | FREE (shop refill 80 per charge) | 3 | L2 |
 | Pure Water (`pure_water`) | 110 · full traffic immunity | 1 (once until cash-out; resets at cash-out) | L3 |
-| Malta & Agege Roll (`maltina_gala`) | 80 | 2 | L3 |
+| Malta & Agege Roll (`maltina_gala`) · traffic slows 50% for 4 s (ring label “Malta · 4s”) | 80 | 2 | L3 |
 | Change (`bribe_change`) | 90 | 2 | L5 |
 | Danfo Ride | 150 (shop only) | 1 | L4 |
 | VIP Siren (`siren`) | 120 | 1 | L5 |

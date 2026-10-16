@@ -106,8 +106,8 @@ def hud_power(n):
         a = 2*math.pi*frac; x = 85+75*math.sin(a); y = 85-75*math.cos(a); large = 1 if frac>.5 else 0
         return f'<div class="puc">{badge(p,140)}<svg class="r" viewBox="0 0 170 170"><circle cx="85" cy="85" r="75" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><path d="M85 10 A75 75 0 {large} 1 {x:.1f} {y:.1f}" fill="none" stroke="#E8B21E" stroke-width="10" stroke-linecap="round"/></svg><div class="t">{label}</div></div>'
     return shell(n, lv, top_hud(lv, META, o=(2,3))+
-      f'<div class="pu" style="left:50%;transform:translateX(-50%);top:190px">{ring("maltina_gala",.62,"Malta · 2.5s")}</div>'
-      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Malta break! Traffic slow down 60% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True, owa=(2,0,3))
+      f'<div class="pu" style="left:50%;transform:translateX(-50%);top:190px">{ring("maltina_gala",.62,"Malta · 4s")}</div>'
+      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Malta break! Traffic slow down 50% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True, owa=(2,0,3))
 
 def hud_warn(n):
     lv = 8; w,h = FRAMES[n][:2]

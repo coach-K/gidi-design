@@ -13,7 +13,7 @@ SCREENS = [  # key, title, group, note
  ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP and CHANGE highlighted up top; OWA! sits on its own button above PICK UP."),
  ("onboard4","Onboarding 4 · Reach the curb","Onboarding","Goal zone on the far curb. Skippable after step 1."),
  ("hud","In-run HUD (base)","In-run","Approved round-4 HUD. Background: L5 Oshodi Expressway."),
- ("hud-power","HUD · power-up active","In-run","Malta ring timer (4 s, traffic −60%, LevelManager). Background: L7 Ojota Intersect."),
+ ("hud-power","HUD · power-up active","In-run","Malta ring timer: traffic slows 50% for 4 s (LevelManager). Background: L7 Ojota Intersect."),
  ("hud-warn","HUD · warnings (colour + shape)","In-run","Caution ▲, Danger ≫, LASTMA ◆, Safe gap bar. Background: L8 Third Mainland Bridge (8 lanes, wide camera)."),
  ("hud-toast","HUD · toasts","In-run","Owa unlock (code copy), group coach line, \"Found Owa\" grant toast. Background: L2 Surulere Way."),
  ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). The score strip shows only in L10 endless mode; L1–L9 don't show it. Background: L10 Ojuelegba Chaos."),

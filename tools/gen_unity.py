@@ -62,6 +62,12 @@ add("tag_info_earned", "shop/tiles", 136, 48, '<div style="width:136px;height:48
 add("tag_info_curb_pickup", "shop/tiles", 200, 48, '<div style="width:200px;height:48px;box-sizing:border-box;border-radius:24px;background:rgba(89,217,184,.10);border:2px solid rgba(89,217,184,.7);color:#59D9B8;font:700 20px Jakarta,sans-serif;letter-spacing:.08em;display:flex;align-items:center;justify-content:center">CURB PICKUP</div>', "shop", note="Baked-text variant.")
 nine("badge_rating", "home", "home", (48, 48), 12, {"normal": "border:3px solid #F5F5F0"}, "Age-rating outline box (Home).")
 
+# ---------- toasts, telegraph pills, power-up timer ring ----------
+add("panel_toast_normal", "hud", 96, 72, box(96, 72, "border-radius:36px;background:rgba(10,12,18,.86);border:2px solid rgba(255,216,115,.40)"), "hud", [36, 36, 36, 36], note="Toast pill (fixed height 72; no vertical stretch centre, stretch horizontally only).")
+add("panel_tele_pill_normal", "hud", 56, 56, box(56, 56, "border-radius:28px;background:rgba(15,18,25,.78)"), "hud", [28, 28, 28, 28], note="World-telegraph pill, ink 78%, no border (fixed height 56; stretch horizontally only). Add the state outline/icon in code.")
+add("ring_powerup_timer_track", "hud", 170, 170, '<svg viewBox="0 0 170 170" width="170" height="170"><circle cx="85" cy="85" r="75" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/></svg>', "hud", note="Power-up timer track (PowerUpRings): r 75, 10 px stroke, white 15%. Badge 140 sits centred on top.")
+add("ring_powerup_timer_fill", "hud", 170, 170, '<svg viewBox="0 0 170 170" width="170" height="170"><circle cx="85" cy="85" r="75" fill="none" stroke="#FFFFFF" stroke-width="10"/></svg>', "hud", note="Pure white ring, same geometry. Image Type Filled, Radial 360, origin Top, clockwise; tint #E8B21E (mockup) via Image.color; fillAmount = time left (Malta: 4 s).")
+
 # ---------- PICK UP + OWA! ----------
 add("pickup_disc", "hud/pickup", 216, 216, box(216, 216, "border-radius:50%;background:radial-gradient(circle,rgba(232,178,30,.30),rgba(232,178,30,.16) 70%)"), "hud", note="Fill only. Label '+ / PICK UP' is TMP text (44/26 px, #FFECBE at 95%).")
 add("pickup_outline", "hud/pickup", 216, 216, box(216, 216, "border-radius:50%;border:6px solid rgba(232,178,30,.88)"), "hud")

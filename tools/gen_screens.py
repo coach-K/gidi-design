@@ -6,7 +6,7 @@ from gen_hud import FRAMES, OUT
 # --- ids/caps/unlocks from GidiEconomyTables.cs; PRICES per vision doc v2 §8 (Kehinde, Oct 16): Malta 80, VIP Siren 120, Owa 80. Game code still to be updated ---
 ECON = [  # id, display, blurb, cost, cap, first level
  ("owa","Owa","FREE · starts every run full · refill ₦80 per charge",80,3,2),  # vision: free; 80 = refill per charge
- ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,2,3),
+ ("maltina_gala","Malta & Agege Roll","Traffic slows 50% for 4 s",80,2,3),
  ("pure_water","Pure Water","Full immunity, once until cash-out",110,1,3),  # exception: follows the game, not vision (Kehinde, Oct 16); cap 1 resets at cash-out
  ("bribe_change","Change Bundle","Settle LASTMA / KAI pressure",90,2,5),
  ("siren","VIP Siren","Freezes all traffic · LASTMA ignores you",120,1,5),

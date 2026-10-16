@@ -598,6 +598,80 @@
    "note": "Age-rating outline box (Home)."
   },
   {
+   "name": "panel_toast_normal",
+   "file": "sprites@1x/hud/panel_toast_normal.png",
+   "file2x": "sprites@2x/hud/panel_toast_normal.png",
+   "size": [
+    96,
+    72
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud",
+   "note": "Toast pill (fixed height 72; no vertical stretch centre, stretch horizontally only)."
+  },
+  {
+   "name": "panel_tele_pill_normal",
+   "file": "sprites@1x/hud/panel_tele_pill_normal.png",
+   "file2x": "sprites@2x/hud/panel_tele_pill_normal.png",
+   "size": [
+    56,
+    56
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 28,
+    "right": 28,
+    "top": 28,
+    "bottom": 28
+   },
+   "screen": "hud",
+   "note": "World-telegraph pill, ink 78%, no border (fixed height 56; stretch horizontally only). Add the state outline/icon in code."
+  },
+  {
+   "name": "ring_powerup_timer_track",
+   "file": "sprites@1x/hud/ring_powerup_timer_track.png",
+   "file2x": "sprites@2x/hud/ring_powerup_timer_track.png",
+   "size": [
+    170,
+    170
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Power-up timer track (PowerUpRings): r 75, 10 px stroke, white 15%. Badge 140 sits centred on top."
+  },
+  {
+   "name": "ring_powerup_timer_fill",
+   "file": "sprites@1x/hud/ring_powerup_timer_fill.png",
+   "file2x": "sprites@2x/hud/ring_powerup_timer_fill.png",
+   "size": [
+    170,
+    170
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Pure white ring, same geometry. Image Type Filled, Radial 360, origin Top, clockwise; tint #E8B21E (mockup) via Image.color; fillAmount = time left (Malta: 4 s)."
+  },
+  {
    "name": "pickup_disc",
    "file": "sprites@1x/hud/pickup/pickup_disc.png",
    "file2x": "sprites@2x/hud/pickup/pickup_disc.png",
@@ -2105,6 +2179,38 @@
    "name": "icon_siren_white",
    "file": "sprites@1x/icons/powerups/white/icon_siren_white.png",
    "file2x": "sprites@2x/icons/powerups/white/icon_siren_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_souvenirs",
+   "file": "sprites@1x/icons/ui/icon_souvenirs.png",
+   "file2x": "sprites@2x/icons/ui/icon_souvenirs.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_souvenirs_white",
+   "file": "sprites@1x/icons/ui/white/icon_souvenirs_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_souvenirs_white.png",
    "size": [
     64,
     64
