@@ -2932,6 +2932,22 @@
    "border": null,
    "screen": "souvenirs",
    "note": "Perk icon (Souvenirs & Perks page)."
+  },
+  {
+   "name": "icon_souvenirs",
+   "file": "home/1x/icon_souvenirs.png",
+   "file2x": "home/2x/icon_souvenirs.png",
+   "size": [
+    44,
+    44
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "Home Souvenirs button (G-Prototype PR #78). White on transparent, same 3 px/48 stroke style as icon_settings; tint via Image.color. SVG: svg/icons/icon_souvenirs.svg"
   }
  ]
 }

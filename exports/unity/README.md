@@ -162,3 +162,6 @@ Folder `souvenirs/1x/` and `souvenirs/2x/`: **same filenames in both** (no @2x s
 | `perk_owa_capacity.png` | 64×64 | 128×128 | Owa! badge + teal “+1” |
 
 Import: Texture Type **Sprite (2D and UI)**, Single, Mesh Full Rect, **Pixels Per Unit 100 (1x) / 200 (2x)**, Bilinear, no mipmaps, **Compression None**, Alpha Is Transparency on. Pivot centre, no borders. All 24 are listed in `manifest.json` (`screen: "souvenirs"`).
+
+## Home: Souvenirs button icon (G-Prototype PR #78)
+`home/1x/icon_souvenirs.png` (44×44) and `home/2x/icon_souvenirs.png` (88×88, same filename): ribbon medal with a star, white on transparent, same stroke weight (3 px on the 48 grid), round caps/joins and optical size as `icon_settings`. Vector: `svg/icons/icon_souvenirs.svg` (also `icons/svg/souvenirs.svg`). Import as the other UI sprites: Sprite (2D and UI), PPU 100 (1x) / 200 (2x), Bilinear, Compression None; tint with `Image.color`.
