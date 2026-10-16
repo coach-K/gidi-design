@@ -1,1 +1,6 @@
 __pycache__/
+# reference images not published (unclear origin / real-brand packaging / not needed)
+reference/powerups/*_v2_concept.jpg
+reference/powerups/v2_contact_sheet.jpg
+reference/powerups/maltina_current.png
+reference/*/*_texture.png
