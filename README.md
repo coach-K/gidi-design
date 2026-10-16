@@ -19,4 +19,4 @@ python3 tools/gen_logos.py && python3 tools/gen_devices.py && python3 tools/gen_
 # 3D renders: see tools/render3d/README.md
 cd tools && python3 gen_site.py
 ```
-Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Other numbers come from G-Prototype `Economy/GidiEconomyTables.cs` and `LevelManager.cs`; anything undefined is marked TBD. The `maltina_gala` pickup is displayed as “Malta & Agege Roll”. Font: Plus Jakarta Sans Bold (SIL OFL 1.1, `fonts/OFL.txt`).
+Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Other numbers come from G-Prototype `Economy/GidiEconomyTables.cs` and `LevelManager.cs`; anything undefined is marked TBD. The `maltina_gala` pickup is displayed as “Malta & Agege Roll”. Font: Plus Jakarta Sans Bold (SIL OFL 1.1, `fonts/OFL.txt`).

@@ -22,7 +22,7 @@ SCREENS = [  # key, title, group, note
  ("continue","Continue modal (1 per run)","Run modals","Watch ad / ₦125 chips at L2+ (₦100 at L1) / End run. MaxContinuesPerRun = 1."),
  ("clear","Level clear","Results","\"{location} Cleared!\" (code copy). Cash-out grant 75 chips (L2+). Stars rule TBD. Background: L6 Ikeja Along."),
  ("gameover","Game over","Results","After the single continue is used or declined. Background: L5."),
- ("shop","Base Camp shop","Menus","Six soft power-ups. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Caps and unlocks from the code. Background: L4 Mushin Market."),
+ ("shop","Base Camp shop","Menus","Six soft power-ups. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Background: L4 Mushin Market."),
  ("settings","Settings","Menus","Audio, Controls (touch only), Display, Accessibility, Account. Background: L9 (blurred)."),
  ("credits","Credits","Menus","Names TBD. Background: L10 (blurred)."),
 ]
@@ -62,7 +62,7 @@ def screens():
         if g not in groups: groups.append(g)
     toc = " · ".join(f'<a href="#s-{k}">{t}</a>' for k,t,_,_ in SCREENS)
     body = f'''<h1>Screens <span class="badge" style="background:#56B4E9">ROUND 4 APPROVED · full set</span></h1>
-<p class="lead">Every screen from splash onward, <b>landscape only</b>, each as desktop / WebGL 1920×1080 and phone 19.5:9 2340×1080 (notch and home-indicator safe areas). Backgrounds are the real L1–L10 level screenshots from the current build (old HUD removed, dusk grade). Controls, camera, font, palette and copy follow the approved round-4 mockups. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Other economy numbers come from <code>GidiEconomyTables</code> and level facts from <code>LevelManager</code>; wallet, timer and score values are samples; anything undefined is marked <span class="badge">TBD</span>.</p>
+<p class="lead">Every screen from splash onward, <b>landscape only</b>, each as desktop / WebGL 1920×1080 and phone 19.5:9 2340×1080 (notch and home-indicator safe areas). Backgrounds are the real L1–L10 level screenshots from the current build (old HUD removed, dusk grade). Controls, camera, font, palette and copy follow the approved round-4 mockups. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Other economy numbers come from <code>GidiEconomyTables</code> and level facts from <code>LevelManager</code>; wallet, timer and score values are samples; anything undefined is marked <span class="badge">TBD</span>.</p>
 <h2 id="flow">Flow</h2><div class="card scroll">{flow_svg()}</div><p class="small">Tap a box to jump to the screen. Onboarding runs on first launch (skippable after step 1); Continue appears once per run, then Game over.</p>
 <div class="card toc">{toc}</div>'''
     for g in groups:
@@ -94,7 +94,7 @@ LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; 
  4:"Slay Queen joins the mix. Traffic jumps to ×0.55 with tighter gaps (+0.6 s).",
  5:"LASTMA flag enforcement starts (every 5–8 s, lane slows to ×0.8). Change Bundle and VIP Siren appear.",
  6:"First 6-lane road. KAI officers join LASTMA (KAI bribe ₦200).",
- 7:"7 lanes, per-lane speed variation ±15%. Agbero Whistle unlocks (L7+).",
+ 7:"7 lanes, per-lane speed variation ±15%. Agbero Whistle unlocks (L7+; not in vision v2, code value).",
  8:"8 lanes: wide camera (20 m, FOV 58°). Traffic ×1.2, gaps +0.35 s. Big difficulty step.",
  9:"Luxury/aggressive cars +3 speed bonus, near-zero gap offset (+0.1 s).",
  10:"Truly endless: no goal zone. Difficulty climbs every 20 s (+4% speed, −0.05 s gaps per tick); ±35% lane variation. Score = metres + 25/delivery + 10/combo step."}
@@ -117,7 +117,7 @@ def levels():
 <p>{LEVEL_NOTES[n]}</p><div class="pills">{pu}</div></div></article>'''
     return f'''<h1>Levels</h1><p class="lead">The ten-district Lagos campaign as authored in <code>LevelManager.CreateDefaultLevels</code> (mirrors <code>Resources/Campaign/LagosCampaign.asset</code>). Screenshots: current build, original camera, old HUD removed, dusk grade. Landscape only.</p>
 <div class="lvgrid">{cards}</div>
-<p class="small">* Cruise = baseTrafficSpeed 12 × (1 + 0.12 × level index) × profile multiplier, before adaptive difficulty and luxury bonus (LevelManager.GetScaledTrafficSpeed). Difficulty dots are a design summary of lanes, speed and enforcement, not a code value. Stars / par times per level: <span class="badge">TBD</span> (not in code).</p>'''
+<p class="small">* Cruise = baseTrafficSpeed 12 × (1 + 0.12 × level index) × profile multiplier, before adaptive difficulty and luxury bonus (LevelManager.GetScaledTrafficSpeed). Difficulty dots are a design summary of lanes, speed and enforcement, not a code value. Power-up unlocks per vision doc v2 §8 (Owa L2, Malta &amp; Pure Water L3, Change &amp; VIP Siren L5; new v2 items: Danfo Ride L4, Agbada Armour L6, Okada Dash L7, Gist Bomb L8, see <a href="powerups.html">Power-ups</a>). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Stars / par times per level: <span class="badge">TBD</span> (not in code).</p>'''
 
 def costumes():
     from gen_costumes import CFG, VEH
@@ -202,10 +202,10 @@ def icons():
     from gen_screens import ECON
     E = {p:(c,cap,f,b) for p,_,b,c,cap,f in ECON}
     out = '<h1>Icons</h1><p class="lead">One SVG set on a 48×48 grid, 3 px rounded stroke, <code>currentColor</code> lines (default Naira gold <code>#FAE69E</code> on ink glass). Warning shapes are filled and keep their state colour. Download any icon from <code>icons/svg/</code>.</p>'
-    out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, caps and unlock levels from the code. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Display name of <code>maltina_gala</code> is now “Malta &amp; Agege Roll”.</p><div class="icgrid">'
+    out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, caps and unlock levels from the code. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Display name of <code>maltina_gala</code> is now “Malta &amp; Agege Roll”.</p><div class="icgrid">'
     for p in PU_ACCENT:
         c,cap,f,b = E[p]
-        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{c} chips · cap {cap} · L{f}+</span></a>'
+        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{("FREE · refill "+str(c)+" chips/charge") if p=="owa" else str(c)+" chips"} · cap {cap} · L{f}+{" · not in vision, code values" if p=="agbero_whistle" else ""}</span></a>'
     out += '</div>'
     for g, names in GROUPS:
         anchor = ' id="warn"' if g.startswith("Warning") else ''
@@ -267,7 +267,7 @@ def souvenirs():
 <tr><td>Power-up stock</td><td>caps 3/3/2/2/2/2; curb finds and shop buys share the cap</td><td><code>PowerUpInventoryCap</code></td><td>Base Camp pips</td></tr>
 <tr><td>KAI bribe</td><td>₦200 (in-run Naira)</td><td><code>LevelManager.kaiBribeCostNaira</code></td><td>CHANGE pip / toast</td></tr>
 <tr><td>Endless score</td><td>metres + 25 per delivery + 10 per combo step</td><td><code>EndlessRunScore</code></td><td><a href="screens.html#s-hud-endless">Endless HUD</a></td></tr></table>
-<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. These differ from the code (Owa costs 80 chips, six items, Agbero Whistle kept). Prices per vision doc (Kehinde, Oct 16); game code still to be updated. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
+<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. The site now shows Owa as FREE (refill 80 chips per charge); the code still has six items and Agbero Whistle. Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
 <h2>Souvenirs: one per district (concept)</h2><p>A collectible medallion found once per district, shown in a Lagos collection book on the map. Gold rim = collected; dim = not found yet.</p>
 <div class="icgrid">{cards}</div>
 <div class="card" style="display:flex;gap:18px;align-items:center">{souv_svg(5,"","".join(g for n,_,g in SOUV if n==5))}{souv_svg(6,"","".join(g for n,_,g in SOUV if n==6),locked=True)}<div><b>States:</b> collected (left) vs not found (right, 25% and greyscale).<br>Drop chance, where it spawns, rewards for a full set and whether souvenirs give chips: <span class="badge">TBD</span>, needs economy numbers in <code>GidiEconomyTables</code> first.</div></div>

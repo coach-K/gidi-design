@@ -70,3 +70,21 @@ Mockups: `exports/devices/dev-tablet-hud.png` (clean) and `exports/devices/dev-t
 | – | D-pad | bottom-right, 12 px in from the safe corner | 324 Ø (radius 15% H) | Slightly smaller than desktop (16.7% H) so it clears the iPad home indicator; arrows stay ≥ 88 px |
 
 **Switch rule:** `aspect = Screen.safeArea.width / Screen.safeArea.height`. If it's under 1.5, use the two-row layout (a `HudLayoutSwitcher` on the HUD root toggles a second `HorizontalLayoutGroup` row). Otherwise use one row. Safe margins: 32 px sides/top, 40 px bottom (iPad home indicator).
+
+## Power-up values shown in the UI
+Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51.
+
+| Item (id) | Cost (chips) | Cap / run | Unlock |
+|---|---|---|---|
+| Owa! (`owa`) | FREE (shop refill 80 per charge) | 3 | L2 |
+| Pure Water (`pure_water`) | 60 | 2 | L3 |
+| Malta & Agege Roll (`maltina_gala`) | 80 | 2 | L3 |
+| Change (`bribe_change`) | 90 | 2 | L5 |
+| Danfo Ride | 150 (shop only) | 1 | L4 |
+| VIP Siren (`siren`) | 120 | 1 | L5 |
+| Agbada Armour | earned only, never sold | 1 | L6 |
+| Okada Dash | not sold (curb pickup) | 2 | L7 |
+| Gist Bomb | 100 | 1 | L8 |
+| Agbero Whistle (`agbero_whistle`) | 120 | 2 | L7 | 
+
+Agbero Whistle isn't in vision v2 (it was removed there), so it keeps the code values.

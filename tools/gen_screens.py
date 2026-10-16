@@ -5,12 +5,12 @@ from gen_hud import FRAMES, OUT
 
 # --- ids/caps/unlocks from GidiEconomyTables.cs; PRICES per vision doc v2 §8 (Kehinde, Oct 16): Malta 80, VIP Siren 120, Owa 80. Game code still to be updated ---
 ECON = [  # id, display, blurb, cost, cap, first level
- ("owa","Owa","Shout freeze — short lane stop",80,3,2),
- ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,3,3),
+ ("owa","Owa","FREE · starts every run full · refill ₦80 per charge",80,3,2),  # vision: free; 80 = refill per charge
+ ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,2,3),
  ("pure_water","Pure Water","Near-miss shield — one hit / ~2s, not run-through",60,2,3),
  ("bribe_change","Change Bundle","Settle LASTMA / KAI pressure",90,2,5),
- ("siren","VIP Siren","Short VIP clear (mid lane exempt)",120,2,5),
- ("agbero_whistle","Agbero Whistle","Brief reverse / crowd shove",120,2,7),
+ ("siren","VIP Siren","Short VIP clear (mid lane exempt)",120,1,5),
+ ("agbero_whistle","Agbero Whistle","Not in vision v2 · code values",120,2,7),  # not defined in vision v2 (removed): code values
 ]
 START_LIVES, MAX_CONTINUES = 3, 1
 def continue_cost(l): return 100 if l <= 1 else 125
@@ -49,10 +49,10 @@ def shop(name):
     rows = ""
     for pid, disp, blurb, cost, cap, first in ECON:
         locked = lv < first
-        owned = {"owa":3,"maltina_gala":1,"pure_water":0}.get(pid,0)
+        owned = {"owa":2,"maltina_gala":1,"pure_water":0}.get(pid,0)
         pips = "".join(f'<i class="{"on" if k<owned else ""}"></i>' for k in range(cap))
         btn = f'<button class="buy lock">🔒 Opens L{first}</button>' if locked else (
-              f'<button class="buy full">Bag full</button>' if owned>=cap else f'<button class="buy">₦{cost}</button>')
+              f'<button class="buy full">Bag full</button>' if owned>=cap else (f'<span class="owabtns"><button class="buy sm2">Buy 1<br>₦{cost}</button><button class="buy sm2">Fill all<br>₦{cost*(cap-owned)}</button></span>' if pid=="owa" else f'<button class="buy">₦{cost}</button>'))
         rows += f'''<div class="item glass {'locked' if locked else ''}"><div class="ic">{ICON[pid]}</div>
 <div class="tx"><b>{disp}</b><span>{blurb}</span><span class="pips">{pips}<em>{owned}/{cap}</em></span></div>{btn}</div>'''
     iap = "".join(f'<div class="iap glass"><b>{d}</b><span>Store price</span></div>' for _,d in IAP)

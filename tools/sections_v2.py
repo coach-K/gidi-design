@@ -74,7 +74,7 @@ V2 = { # vision v2 §8: effect, duration, cap, cost, unlock
 }
 def powerups():
     E = {p:(d,c,cap,f) for p,d,_,c,cap,f in ECON}
-    def code(pid): d,c,cap,f = E[pid]; return f"<b>Price (vision doc):</b> {c} chips · cap {cap} · from L{f}"
+    def code(pid): d,c,cap,f = E[pid]; return f"<b>Site values (vision doc):</b> {'FREE (refill '+str(c)+' chips per charge)' if pid=='owa' else str(c)+' chips'} · cap {cap} · from L{f}"
     def vis(k): e,du,cap,cost,u = V2[k]; return f"<b>Vision v2 §8:</b> {e}. {du} · cap {cap} · cost {cost} · {u}"
     items = [
      ("Pure Water","pure_water","pure_water", [ref("pure_water_current","powerups","in-game pickup (current)"), ref("pure_water_3d_render","powerups","regenerated mesh render")], r3("pu_purewater", GAME+" <b>Pure Water</b> pickup at dusk"),
@@ -88,14 +88,14 @@ def powerups():
     ]
     rows = "".join(pair(f'<div class="refstack">{"".join(rs)}</div>', rr, f"<h3>{n}</h3><p>{code(pid)}</p><p>{vis(v)}</p><p class='small'>{note}</p>") for n, pid, v, rs, rr, note in items)
     conc = "".join(pair(f'<div class="card" style="margin:0"><b>No reference image exists.</b><br>{why}</div>', r3(img, CON+f" <b>{n}</b>"), f"<h3>{n}</h3><p>{extra}</p><p>{vis(v)}</p>") for n, v, img, why, extra in [
-     ("Owa! (shout)","owa","pu_owa","Vision: “You read the traffic, shout ‘Owa!’, and everybody gets across safe.”",f"Baba Gidi cups his mouth; gold sound rings travel along his facing direction and the next lane's vehicle freezes in a pale-blue ice block (colour-blind safe: shape plus colour). Price: {E['owa'][1]} chips (Kehinde, Oct 16; the vision table itself lists Owa as “— (free)”) · cap {E['owa'][2]} · from L{E['owa'][3]}."),
+     ("Owa! (shout)","owa","pu_owa","Vision: “You read the traffic, shout ‘Owa!’, and everybody gets across safe.”",f"Baba Gidi cups his mouth; gold sound rings travel along his facing direction and the next lane's vehicle freezes in a pale-blue ice block (colour-blind safe: shape plus colour). <b>FREE</b> per the vision (starts every run full, refills between districts) · cap {E['owa'][2]} · from L{E['owa'][3]}. Shop refill: {E['owa'][1]} chips per charge."),
      ("Danfo Ride","danfo_ride","pu_danforide","Use the shipped danfo (see Vehicles).","A gold-lit danfo at the curb; a gold arc shows the 2-lane hop. Toast copy: “ENTER WITH YOUR CHANGE!” Price: <b>150 chips</b>, shop only, cap 1, unlock L4 (vision v2 §8: “Cost (chips) 150 · How earned: Shop only”). Not in the game code yet."),
      ("Agbada Armour","agbada","pu_agbada_armour","Detty December flex. Earned only.","Baba Gidi in a gold agbada inside a gold fresnel shell with sparkles. 2.5 s of full immunity; followers stay vulnerable. No price: vision v2 §8 lists the cost as “—” and says “Earned only: fill the Owa meter via near-miss chains / x5 combo. Never sold”. Not in the game code yet."),
     ])
     left = "".join(f'<li>{t}</li>' for t in ["Okada Dash (v2, L7, not sold): concept image exists but isn't hosted (origin unclear). Description: yellow open-face helmet with a black stripe.",
         "Gist Bomb (v2, 100, L8): concept image exists but isn't hosted (origin unclear). Description: a red retro transistor radio.",
-        f"Agbero Whistle: still in the code ({E['agbero_whistle'][1]} chips, cap {E['agbero_whistle'][2]}, L{E['agbero_whistle'][3]}) but removed in vision v2."])
-    return f'''<h1>Power-ups</h1><p class="lead">Current pickups (shipped models re-staged at dusk) next to the reference images, plus concepts for the three new v2 items that have no image. <b>Prices per vision doc (Kehinde, Oct 16); game code still to be updated.</b> Caps and unlock levels still come from the code.</p>{LEGEND}
+        f"Agbero Whistle: still in the code ({E['agbero_whistle'][1]} chips, cap {E['agbero_whistle'][2]}, L{E['agbero_whistle'][3]}) but removed in vision v2, so the site keeps the code values."])
+    return f'''<h1>Power-ups</h1><p class="lead">Current pickups (shipped models re-staged at dusk) next to the reference images, plus concepts for the three new v2 items that have no image. <b>Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51.</b></p>{LEGEND}
 <h2>Current pickups</h2>{rows}
 <h2>New v2 items {CON}</h2>{conc}
 <h2>Not shown as images</h2><ul>{left}</ul>

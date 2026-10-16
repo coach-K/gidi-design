@@ -16,6 +16,6 @@ The "Gidi Bag" is a 2-slot inventory, and each item has its own Use button.
 | Gist Bomb ("Have you heard?!") | "Hawkers' gossip pulls all LASTMA/KAI officers in range off their posts." | gist_bomb_v2_concept.jpg |
 
 v2_contact_sheet.jpg shows all the v2 concepts together. Agbero Whistle was removed in v2, so it isn't included.
-Prices per vision doc (Kehinde, Oct 16); game code still to be updated. The Maltina pickup is now displayed as **Malta & Agege Roll** (id `maltina_gala` unchanged).
+Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. The Maltina pickup is now displayed as **Malta & Agege Roll** (id `maltina_gala` unchanged).
 
 **Provenance / licence (checked Oct 2026):** `*_current.png` match `*_nobg.png` in the game repo (`Art/L1_Agege/PowerUps/`), and `*_3d_render.png` are renders of the regenerated meshes. Both are project-made, and published, **except `maltina_current.png`**: its packaging shows real-brand-style "Gala" and malt-drink labels, so the site describes it instead of hosting it. The `*_v2_concept.jpg` files and `v2_contact_sheet.jpg` come with **no source or licence note** (they were only found as TRELLIS inputs). Their origin is unclear, so they're **not hosted**: the site describes them.
