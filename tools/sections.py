@@ -128,3 +128,68 @@ def costumes():
 <h2>Baba Gidi fits (<code>pack_baba_fits</code>)</h2><div class="cosgrid">{ch}</div>
 <h2>Lagos Skins (<code>pack_skins_lagos</code>)</h2><p>Vehicle paint jobs with fictional back slogans (no real brands).</p><div class="cosgrid wide">{vh}</div>
 <h2>Readability rules</h2><ul><li>Hat or helmet colour must contrast with both asphalt <code>#26272E</code> and walkway at the 65° camera.</li><li>Every fit keeps the same silhouette and Humanoid rig, so animations and hitbox don't change.</li><li>Not costumes: Agbada Bigman, Corporate Slay Queen, commuters, LASTMA and KAI are in-game NPC archetypes (<code>PedestrianController</code>, <code>FactionAI</code>).</li></ul>'''
+
+def _lum(h):
+    h=h.lstrip('#'); c=[int(h[i:i+2],16)/255 for i in (0,2,4)]
+    c=[x/12.92 if x<=0.03928 else ((x+0.055)/1.055)**2.4 for x in c]; return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]
+def contrast(a,b):
+    la,lb=sorted([_lum(a),_lum(b)],reverse=True); return (la+0.05)/(lb+0.05)
+def rate(r, text=True):
+    return "AAA" if r>=7 else "AA" if r>=4.5 else ("AA large / UI" if r>=3 else "fail")
+
+PALETTE = [ # group, name, hex, role
+ ("UI","Ink (HUD glass base, 72%)","#0F1219","Panels, modals"),("UI","Text primary","#F5F5F0","Body, labels"),("UI","Text muted","#9EA3AD","Secondary labels"),
+ ("UI","Naira gold","#FAE69E","Wallet, numbers, icon lines"),("UI","Danfo yellow","#E8B21E","Accent, OWA!, focus rings"),("UI","Primary CTA","#2E7A68","CTA fill (text #F5F5F0)"),
+ ("UI","CTA deep","#18493F","CTA gradient end, buy buttons"),("UI","Pip on","#59D9B8","Stock pips, success"),("UI","Lives","#FF6B7A","Heart"),
+ ("Warning","Safe / gap","#56B4E9","Rounded bar + tick"),("Warning","Caution","#F0E442","Triangle + !"),("Warning","Danger","#FF7A1A","Double chevrons"),
+ ("Warning","LASTMA","#E07CC0","Diamond + whistle"),("Warning","Train","#FFFFFF","Rail-tie band"),("Warning","Danger (CB mode)","#D55E00","Colour-blind mode, thicker chevrons"),
+ ("Brand","Dusk sky","#2B2F5C","Logo tile top, sky"),("Brand","Dusk violet","#6B4A6E","Gradient mid"),("Brand","Horizon","#F28C4B","Gradient end"),
+]
+TYPE = [ # role, const, ref px, weight, line, tracking, usage, sample
+ ("Display","(logo / splash)",96,700,1.0,"+0.02em","Logo lockup, splash","GIDI++"),
+ ("Hero","(results)",72,700,1.1,"0","Level clear / district name","Ikeja Along Cleared!"),
+ ("Heading","(modal title)",56,700,1.15,"0","Modal titles, CTA label","Continue this run?"),
+ ("Naira wallet","FontNaira",48,700,1.05,"0, tabular","Wallet, big numbers","₦12,450"),
+ ("Title","FontTitle",42,700,1.2,"+0.02em","HUD level name","L5 · Oshodi Expressway"),
+ ("Body","FontBody",33,700,1.3,"0","Body copy, buttons in lists","Load your bag before you cross"),
+ ("Button","FontButton",30,700,1.2,"+0.02em","Buttons, stock labels","OYA, CROSS!"),
+ ("Small (floor)","FontSmall / FontMin",27,700,1.3,"0","Meta, captions; nothing smaller","Saved 4/6 · Best 00:42"),
+]
+
+def palette():
+    ink, text = "#0F1219", "#F5F5F0"
+    out = '<h1>Palette <span class="badge" style="background:#56B4E9">FINAL · v1.0</span></h1><p class="lead">Dusk-glass UI, Okabe-Ito based warning colours and the dusk brand gradient. Contrast ratios are computed (WCAG 2.x) against ink glass <code>#0F1219</code> and against white text. Approved by Kehinde on Oct 13 2026; v1.0 adds CTA deep, pip, lives, colour-blind danger and brand tokens already used in the mockups.</p>'
+    for g in ("UI","Warning","Brand"):
+        out += f'<h2>{g}</h2><div class="grid">'
+        for gg,n,h,role in PALETTE:
+            if gg!=g: continue
+            ci, ct = contrast(h,ink), contrast(h,text)
+            fg = text if ct>ci else ink
+            out += f'<div class="sw"><div class="c" style="background:{h};color:{fg}">Aa</div><p><b>{n}</b><br><code>{h}</code><br>{role}<br><span class="small">on ink {ci:.1f}:1 · {rate(ci)}<br>white text {ct:.1f}:1 · {rate(ct)}</span></p></div>'
+        out += '</div>'
+    out += '''<h2>Warning system (colour + shape + motion)</h2><table><tr><th>State</th><th>Hex</th><th>Shape</th><th>Icon</th><th>Motion / audio</th></tr>
+<tr><td>Safe / gap</td><td><code>#56B4E9</code></td><td>Rounded bar</td><td>tick</td><td>static</td></tr>
+<tr><td>Caution</td><td><code>#F0E442</code></td><td>Triangle</td><td>! + 45° stripes</td><td>1 Hz pulse</td></tr>
+<tr><td>Danger</td><td><code>#FF7A1A</code></td><td>Double chevron ≫</td><td>scrolling chevrons</td><td>3 Hz flash, headlights, horn</td></tr>
+<tr><td>LASTMA</td><td><code>#E07CC0</code></td><td>Diamond</td><td>whistle</td><td>whistle cue</td></tr>
+<tr><td>Train</td><td><code>#FFFFFF</code></td><td>Lane band</td><td>rail ties</td><td>bell + rumble</td></tr></table>
+<div class="card dont">Under deuteranopia/protanopia, Safe, Danger and LASTMA collapse in hue. <b>Shapes are mandatory.</b> Colour-blind mode swaps Danger to <code>#D55E00</code> with thicker chevrons. See <a href="icons.html#warn">warning icons</a>.</div>
+<h2>Colour grade (3D)</h2><table><tr><th>Key</th><th>Day (L1–L4)</th><th>Dusk (L5–L10, menus)</th></tr>
+<tr><td>Sky top / horizon</td><td><code>#7FB4E0</code> / <code>#F4E3C1</code></td><td><code>#2B2F5C</code> / <code>#F28C4B</code></td></tr>
+<tr><td>Key light</td><td><code>#FFF1D6</code> ×1.2</td><td><code>#FFB070</code> ×0.8</td></tr>
+<tr><td>Shadow tint</td><td><code>#3A4A66</code></td><td><code>#2A2440</code></td></tr>
+<tr><td>Asphalt / laterite</td><td><code>#3C3F45</code> / <code>#B5643A</code></td><td><code>#26272E</code> / <code>#7A4630</code></td></tr>
+<tr><td>Highlights tint</td><td><code>#FFF4E0</code></td><td><code>#FFC98A</code></td></tr>
+<tr><td>Bloom</td><td>thr 1.1 · int 0.2</td><td>thr 0.9 · int 0.45 · <code>#FFB46B</code></td></tr></table>
+<h2>Tokens</h2><pre class="card">''' + "\n".join(f"--{n.lower().split(' (')[0].replace(' / ','-').replace(' ','-')}: {h};" for _,n,h,_ in PALETTE) + '</pre>'
+    return out
+
+def typography():
+    rows = "".join(f'<tr><td>{r}</td><td><code>{c}</code></td><td>{px}</td><td>{px*2/3:.0f}</td><td>{px/3:.0f} dp</td><td>{lh}</td><td>{tr}</td><td>{u}</td><td style="font:700 {min(px*2/3,44):.0f}px/{lh} Jakarta;{"color:#FAE69E" if "Naira" in r else ""}">{s}</td></tr>' for r,c,px,w,lh,tr,u,s in TYPE)
+    return f'''<h1>Typography <span class="badge" style="background:#56B4E9">FINAL · v1.0</span></h1><p class="lead"><b style="font-family:Jakarta">Plus Jakarta Sans Bold</b> (Tokotype, SIL Open Font License 1.1, <a href="fonts/OFL.txt">licence</a>). One weight everywhere, includes the ₦ glyph, grown-up rather than kiddy. Bundled as <code>fonts/PlusJakartaSans-Bold.ttf</code>.</p>
+<div class="card" style="font-family:Jakarta"><div style="font-size:64px;line-height:1.05">Cross Lagos. ₦12,450</div><div style="font-size:28px;color:#9EA3AD">GROUP → CHANGE → OWA! · Chai! Traffic don catch you…</div><div style="font-size:22px;color:#FAE69E;margin-top:8px">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ₦ ! ? · → ×</div></div>
+<h2>Type scale (landscape, CanvasScaler 1920×1080 match height)</h2>
+<table><tr><th>Role</th><th>Constant</th><th>Ref px</th><th>px @720p</th><th>Phone</th><th>Line</th><th>Tracking</th><th>Use</th><th>Sample</th></tr>{rows}</table>
+<div class="card"><ul><li>Constants in <code>GameUiTheme</code>: FontTitle 42, FontNaira 48, FontBody 33, FontSmall/FontMin 27, FontButton 30. Display/Hero/Heading sizes are design tokens used by the mockups (not yet constants).</li>
+<li>Floor: nothing below 27 ref px (18 px at 720p, 9 dp on a 360 dp-tall phone).</li><li>Numbers that tick (timer, wallet, score) use tabular figures.</li><li>Sentence case for copy, UPPERCASE only for CTAs and stock labels.</li><li>Pidgin first; keep lines short (≤ 48 characters in toasts).</li></ul></div>
+<h2>Web (this site / storefront)</h2><table><tr><th>Role</th><th>Size</th></tr><tr><td>H1</td><td>40 px (28 px mobile)</td></tr><tr><td>H2</td><td>24 px</td></tr><tr><td>Body</td><td>16 px / 1.55, system UI</td></tr><tr><td>Caption</td><td>13 px</td></tr></table>'''
