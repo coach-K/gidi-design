@@ -16,7 +16,7 @@ START_LIVES, MAX_CONTINUES = 3, 1
 def continue_cost(l): return 100 if l <= 1 else 125
 def cashout(l): return 50 if l <= 1 else 75
 IAP = [("pack_skins_lagos","Lagos skins pack"),("pack_baba_fits","Baba fits pack"),("remove_ads","Remove ads")]
-LEVEL = (3, "Ikorodu Road")   # sample context
+LEVELS = {"home": (9, "Lekki Toll Gate"), "shop": (4, "Mushin Market"), "gameover": (5, "Oshodi Expressway")}  # match each background (LevelManager names)
 ICON = {"owa":"📣","maltina_gala":"🥤","pure_water":"💧","bribe_change":"₦","siren":"🚨","agbero_whistle":"🎺"}
 
 def shell(name, body, title, bg):
@@ -33,7 +33,7 @@ def wallet():
 <button class="glass btn"><span class="ico">⚙</span><small>Settings</small></button></div>'''
 
 def home(name):
-    lv, nm = LEVEL
+    lv, nm = LEVELS["home"]
     return shell(name, f'''
 <div class="toprow"><div class="logo">GIDI<span>++</span><small>Carry dem cross. Lagos no dey wait.</small></div>{wallet()}</div>
 <div class="rating">12+</div>
@@ -45,7 +45,7 @@ def home(name):
 <div class="tag glass">Baba Gidi don ready. Owa! 📣</div>''', "Home", "home")
 
 def shop(name):
-    lv, nm = LEVEL
+    lv, nm = LEVELS["shop"]
     rows = ""
     for pid, disp, blurb, cost, cap, first in ECON:
         locked = lv < first
@@ -64,7 +64,7 @@ def shop(name):
 <button class="glass btn back">◀<small>Back</small></button>''', "Base Camp", "shop")
 
 def gameover(name):
-    lv, nm = LEVEL
+    lv, nm = LEVELS["gameover"]
     return shell(name, f'''
 <div class="dim"></div>
 <div class="gopanel glass">

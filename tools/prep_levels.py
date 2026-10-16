@@ -4,7 +4,7 @@ import cv2, numpy as np, os
 from PIL import Image, ImageFilter, ImageEnhance
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = f"{R}/assets/bg"; os.makedirs(OUT, exist_ok=True)
-HUD_BOXES = [(0,0,300,158),(495,10,918,126),(1100,10,1376,162),(503,606,1068,658),(1466,684,1600,720),(762,682,836,714)]
+HUD_BOXES = [(0,0,300,158),(495,10,918,126),(1100,10,1376,162),(503,600,1068,676),(1466,684,1600,720),(762,682,836,714)]
 
 def clean(level):
     """Old HUD removal. Top boxes sit over horizontal lane stripes, so each masked pixel takes the median
@@ -25,7 +25,7 @@ def clean(level):
     fl, fr = np.polyfit(ys, xl, 1), np.polyfit(ys, xr, 1)
     top_m = np.zeros_like(m)
     for x0,y0,x1,y1 in HUD_BOXES[:3]: top_m[y0:y1, x0:x1] = 255
-    for y in range(0, 170):
+    for y in range(0, 720):
         if not top_m[y].any(): continue
         L, Rr = int(np.polyval(fl, y)), int(np.polyval(fr, y))
         xs = np.arange(W); ok = top_m[y] == 0
@@ -36,8 +36,14 @@ def clean(level):
         sel = ~ok
         fill = np.where(inroad[sel][:, None], rmed, smed) + rng.normal(0, 3, (sel.sum(), 3))
         out[y][sel] = np.clip(fill, 0, 255).astype(np.uint8)
+    # hint bar (near road, uniform asphalt with a soft gradient): interpolate each row between its left/right neighbours
+    x0, y0, x1, y1 = HUD_BOXES[3]
+    for y in range(y0, y1):
+        a = src[y, x0-24:x0-4].astype(np.float32).mean(0); b = src[y, x1+4:x1+24].astype(np.float32).mean(0)
+        t = np.linspace(0, 1, x1-x0)[:, None]
+        out[y, x0:x1] = np.clip(a*(1-t) + b*t + rng.normal(0, 2.5, (x1-x0, 3)), 0, 255).astype(np.uint8)
     mb = np.zeros_like(m)
-    for x0,y0,x1,y1 in HUD_BOXES[3:]: mb[y0:y1, x0:x1] = 255
+    for x0,y0,x1,y1 in HUD_BOXES[4:]: mb[y0:y1, x0:x1] = 255
     return cv2.inpaint(out, mb, 7, cv2.INPAINT_TELEA)
 
 def grade(bgr):
