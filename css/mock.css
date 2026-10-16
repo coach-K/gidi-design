@@ -40,3 +40,6 @@
 .realbg.shop .grade{background:linear-gradient(180deg,rgba(15,18,25,.78),rgba(43,47,92,.6))}
 .srcnote{position:absolute;z-index:3;right:calc(var(--sr) + 16px);bottom:calc(var(--sb) + 4px);font-size:16px;color:rgba(245,245,240,.55)}
 .realbg.shop .srcnote,.realbg.home .srcnote{bottom:auto;top:calc(var(--st) + 160px)}
+.realbg.home .scene{filter:blur(3px) saturate(1.05)}
+.realbg.shop .scene{filter:blur(10px)}
+.realbg.gameover .scene{filter:blur(12px)}

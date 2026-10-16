@@ -23,7 +23,7 @@ def shell(name, body, title, bg):
     w,h,sl,sr,st,sb,label = FRAMES[name]
     return f"""<!doctype html><html><head><meta charset="utf-8"><title>{title} {name}</title>
 <link rel="stylesheet" href="../css/hud.css"><link rel="stylesheet" href="../css/mock.css"></head>
-<body style="width:{w}px;height:{h}px"><div class="frame {name} realbg {bg}" style="width:{w}px;height:{h}px;--sl:{sl}px;--sr:{sr}px;--st:{st}px;--sb:{sb}px"><img class="scene" src="../assets/bg/{bg}_{name}.png" alt="real in-game capture"><div class="grade"></div><div class="srcnote">Background: real build capture, {"L8 Third Mainland (dev build)" if bg!="shop" else "L1 Agege greybox (early build)"}, blurred</div>
+<body style="width:{w}px;height:{h}px"><div class="frame {name} realbg {bg}" style="width:{w}px;height:{h}px;--sl:{sl}px;--sr:{sr}px;--st:{st}px;--sb:{sb}px"><img class="scene" src="../assets/bg/{"scene" if bg=="gameover" else "scene2"}_{name}.png" alt=""><div class="grade"></div>
 {'<div class="notch"></div><div class="homebar"></div>' if name=='phone' else ''}
 <div class="safe">{body}</div></div></body></html>"""
 
