@@ -41,3 +41,5 @@ a{color:var(--naira)}
 .lvb p{font-size:14px;color:var(--text);margin:8px 0}
 .pills{display:flex;flex-wrap:wrap;gap:6px}.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:rgba(255,255,255,.06);border-radius:999px;padding:2px 10px 2px 3px}
 @media (max-width:900px){.lvgrid{grid-template-columns:1fr}}
+.cosgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}.cosgrid.wide{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.cos{margin:0;background:var(--glass);border:1px solid var(--edge);border-radius:18px;overflow:hidden}.cos img{width:100%;display:block}.cos figcaption{padding:10px 12px;font-size:14px}
