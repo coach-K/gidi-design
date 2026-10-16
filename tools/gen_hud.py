@@ -12,8 +12,8 @@ FRAMES = {
   # Baba Gidi + crowd position in the real capture
 
 def scene(w, h, sl, sb, name="desktop"):
-    """Drawn scene (tools/render_scene.py): build camera for an 8-lane wide stage (height 20 m, pitch 65°, FOV 58°)."""
-    return f'<img class="scene" src="../assets/bg/scene_{name}.png" width="{w}" height="{h}" alt="">', 176, 0, 0
+    """Real L5 Oshodi Expressway screenshot (current build camera), old HUD removed + dusk grade (tools/prep_levels.py)."""
+    return f'<img class="scene" src="../assets/bg/lv_hud_{name}.png" width="{w}" height="{h}" alt="">', 176, 0, 0
 
 # Build control layout (measured from reference/levels/L08_phone_landscape.jpg, as fractions of the frame)
 PICK = (0.122, 0.729, 0.100)   # centre x, centre y, radius (fraction of height)
@@ -44,7 +44,7 @@ def page(name, annot):
 <div class="safe">
   <div class="toprow">
   <div class="hud-tl glass" id="level">
-    <div class="lvl">L8 · 3RD MAINLAND</div>
+    <div class="lvl long">L5 · Oshodi Expressway</div>
     <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b> · <span class="t">00:31</span></div>
   </div>
   <div class="hud-tc glass" id="stock">
@@ -70,7 +70,7 @@ def page(name, annot):
    <h4>CAMERA: as in the current build (no change)</h4>
    <ul><li>URP perspective camera, pitch 65°, yaw 0, X locked, follows the crowd on Z (TailCameraFollow)</li>
    <li>Standard stages: height 15 m, focus offset Z −5 m, vertical FOV 52°</li>
-   <li>Wide stages (≥ 8 lanes, e.g. L8 here): height 20 m, FOV 58°</li>
+   <li>Wide stages (≥ 8 lanes): height 20 m, FOV 58°. Shown: L5 (standard)</li>
    <li>Road narrows with distance; lanes enter from the screen edges</li>
    <li>Controls stay where the build puts them; their overlap with lane ends is accepted, as in the build</li></ul></div>
   <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs</li><li>HUD glass panels</li><li>Touch controls (translucent)</li><li>Toasts</li><li>Modals</li></ol></div>
