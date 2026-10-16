@@ -1,6 +1,6 @@
 # Gidi++ Vision Brief (for design)
 
-Source: `/workspace/games/reports/vision-nextgen-v2.md` (v0.2, 12 Oct 2026, decisions locked), built on `/workspace/games/reports/vision-nextgen.md` (v0.1).
+Source: internal vision doc v0.2 (12 Oct 2026, decisions locked), built on v0.1.
 
 ## What the game is
 - **3D, not 2D.** Unity 6 URP, **perspective camera** looking down the road over Baba Gidi (see `levels/L01*.png`). **Landscape only.**
@@ -11,7 +11,7 @@ Source: `/workspace/games/reports/vision-nextgen-v2.md` (v0.2, 12 Oct 2026, deci
 - **Baba Gidi** (hero; outfits: agbada, okada helmet, Ankara fits, generic jerseys).
 - Traffic: **danfo** (yellow bus, paint jobs/back slogans), keke, taxi, okada, market lorry, sand tipper.
 - Enforcement: **LASTMA** and **KAI** officers (flags, cones). Pedestrians: commuters, **Slay Queen**, Agbada Man.
-- Renders for reference: `/workspace/games/trellis-regen/v2/render/`, `/workspace/games/optimize-run/render/png/`, `/workspace/games/reports/review-s1/r6-renders/`, art board `/workspace/games/reports/art-direction/art-direction-board.png`.
+- Reference renders and the art-direction board are kept in the team's internal art folder (not published).
 
 ## Districts (campaign)
 L1 Agege Bus Stop (tutorial) · L2 Surulere · L3 Ikorodu Road · L4 Mushin Market · L5 Oshodi Expressway · L6 Ikeja Along · L7 Ojota · L8 Third Mainland · L9 Lekki Toll · **L10 Ojuelegba: truly endless** (no goal zone; score = distance + deliveries + combo; leaderboards + ghosts).

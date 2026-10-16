@@ -17,3 +17,18 @@ code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:6px}
 .badge{display:inline-block;padding:2px 10px;border-radius:999px;background:#E07CC0;color:#111;font-size:13px;font-weight:700}
 .shot{width:100%;border-radius:16px;border:1px solid var(--edge);display:block}
 .do{border-left:4px solid #56B4E9}.dont{border-left:4px solid #FF7A1A}
+a{color:var(--naira)}
+.small{font-size:13px;color:var(--muted)}
+.pair{display:grid;grid-template-columns:1fr 1.22fr;gap:12px;align-items:start}
+.scr{margin:28px 0}.scr h3{margin:0 0 4px}.scr p{margin:4px 0 10px;color:var(--muted)}
+.toc a{white-space:nowrap}
+.scroll{overflow-x:auto}.flow{min-width:900px;width:100%;height:auto}
+.menu{display:none}
+@media (max-width:900px){
+ body{flex-direction:column}
+ nav{width:auto;height:auto;position:sticky;top:0;z-index:10;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:10px 12px;border-right:none;border-bottom:1px solid var(--edge);background:#0F1219;align-items:center}
+ nav .brand{margin:0 10px 0 0;font-size:22px;flex:none}nav a{flex:none;padding:6px 10px;font-size:14px}nav small{display:none}
+ main{padding:20px 16px;max-width:100%}h1{font-size:28px}
+ .pair{grid-template-columns:1fr}
+ table{display:block;overflow-x:auto}
+}
