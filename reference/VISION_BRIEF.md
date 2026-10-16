@@ -17,11 +17,11 @@ Source: internal vision doc v0.2 (12 Oct 2026, decisions locked), built on v0.1.
 L1 Agege Bus Stop (tutorial) · L2 Surulere · L3 Ikorodu Road · L4 Mushin Market · L5 Oshodi Expressway · L6 Ikeja Along · L7 Ojota · L8 Third Mainland · L9 Lekki Toll · **L10 Ojuelegba: truly endless** (no goal zone; score = distance + deliveries + combo; leaderboards + ghosts).
 
 ## Power-ups (next-gen set)
-2-slot **"Gidi Bag"**, each item has its own Use button (two slot buttons). Owa! shout (free, 3/run), Pure Water (one-hit shield), Maltina Break (traffic slows to 50%), Change (auto on LASTMA/KAI, own pip), Danfo Ride, VIP Siren, Agbada Armour (earned only), Okada Dash, Gist Bomb. Agbero Whistle removed.
+2-slot **"Gidi Bag"**, each item has its own Use button (two slot buttons). Owa! shout (free, 3/run), Pure Water (one-hit shield), Malta & Agege Roll (was “Maltina Break”; traffic slows to 50%), Change (auto on LASTMA/KAI, own pip), Danfo Ride, VIP Siren, Agbada Armour (earned only), Okada Dash, Gist Bomb. Agbero Whistle removed.
 
 ## Economy
 Chips (earned only, never real money) for the shop; Naira in-run. Shop opens from L2. Rewarded ads only, opt-in.
-**Open question for Kehinde:** vision prices differ from code (`G-Prototype/Economy/GidiEconomyTables.cs`). E.g. Maltina **80** in the vision vs **60** in code, VIP Siren 120 vs 100, Owa free vs 80; the code still has Agbero Whistle (120). **For now, follow the code** for names and prices in mockups.
+**Decided (Kehinde, Oct 16):** Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Malta & Agege Roll 80 (renamed from Maltina & Gala), VIP Siren 120, Owa 80, Danfo Ride 150, Agbada Armour earned only (never sold).
 
 ## Tone
 Millennials + Gen Z, 12+/Teen. Pidgin-first copy, adult Lagos in-jokes that never punch down ("Owa!", "We don reach!", "Chai!"). Afrobeats/amapiano energy. Cosmetics, ghost rivalry, vertical clips.

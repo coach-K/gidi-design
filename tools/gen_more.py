@@ -1,5 +1,5 @@
 """All remaining landscape screens (desktop 1920x1080, phone 2340x1080). Backgrounds: cleaned + dusk-graded real level
-screenshots (assets/bg/Lxx_*.png from prep_levels.py). Numbers: GidiEconomyTables / LevelManager only; others are samples or TBD."""
+screenshots (assets/bg/Lxx_*.png from prep_levels.py). Numbers: prices per vision doc v2 (Kehinde, Oct 16); other values GidiEconomyTables / LevelManager; others are samples or TBD."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from gen_hud import FRAMES, OUT, controls
@@ -106,8 +106,8 @@ def hud_power(n):
         a = 2*math.pi*frac; x = 85+75*math.sin(a); y = 85-75*math.cos(a); large = 1 if frac>.5 else 0
         return f'<div class="puc">{badge(p,140)}<svg class="r" viewBox="0 0 170 170"><circle cx="85" cy="85" r="75" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><path d="M85 10 A75 75 0 {large} 1 {x:.1f} {y:.1f}" fill="none" stroke="#E8B21E" stroke-width="10" stroke-linecap="round"/></svg><div class="t">{label}</div></div>'
     return shell(n, lv, top_hud(lv, META, o=(2,3))+
-      f'<div class="pu" style="left:50%;transform:translateX(-50%);top:190px">{ring("maltina_gala",.62,"Maltina · 2.5s")}</div>'
-      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Maltina break! Traffic slow down 60% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True)
+      f'<div class="pu" style="left:50%;transform:translateX(-50%);top:190px">{ring("maltina_gala",.62,"Malta · 2.5s")}</div>'
+      f'<div class="toast" style="top:420px;border-color:#C8743A">{icon("maltina_gala",36,"#C8743A")} Malta break! Traffic slow down 60% for {DUR["maltina_gala"]}s</div>', "HUD power-up", ctl=True)
 
 def hud_warn(n):
     lv = 8; w,h = FRAMES[n][:2]

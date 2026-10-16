@@ -40,7 +40,7 @@ ICONS = {
  "warn_lastma": f'<path d="M24 3l21 21-21 21L3 24z" fill="{P["lastma"]}"/><path d="M15 24h12l4-4 3 3-4 4" fill="none" stroke="#0F1219" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="24" r="3" fill="#0F1219"/>',
  "warn_train": f'<rect x="2" y="12" width="44" height="24" rx="3" fill="{P["train"]}"/><path d="M8 12v24M16 12v24M24 12v24M32 12v24M40 12v24" stroke="#0F1219" stroke-width="3"/><path d="M2 20h44M2 28h44" stroke="#0F1219" stroke-width="2"/>',
 }
-GROUPS = [("Power-ups (GidiEconomyTables)", ["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"]),
+GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren","agbero_whistle"]),
           ("Curb pickups &amp; currency", ["pickup_ring","pickup_person","chip"]),
           ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock"]),
           ("Warning shapes (colour + shape)", ["warn_safe","warn_caution","warn_danger","warn_lastma","warn_train"])]

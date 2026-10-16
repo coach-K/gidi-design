@@ -74,13 +74,13 @@ V2 = { # vision v2 §8: effect, duration, cap, cost, unlock
 }
 def powerups():
     E = {p:(d,c,cap,f) for p,d,_,c,cap,f in ECON}
-    def code(pid): d,c,cap,f = E[pid]; return f"<b>Code (GidiEconomyTables):</b> {c} chips · cap {cap} · from L{f}"
+    def code(pid): d,c,cap,f = E[pid]; return f"<b>Price (vision doc):</b> {c} chips · cap {cap} · from L{f}"
     def vis(k): e,du,cap,cost,u = V2[k]; return f"<b>Vision v2 §8:</b> {e}. {du} · cap {cap} · cost {cost} · {u}"
     items = [
      ("Pure Water","pure_water","pure_water", [ref("pure_water_current","powerups","in-game pickup (current)"), ref("pure_water_3d_render","powerups","regenerated mesh render")], r3("pu_purewater", GAME+" <b>Pure Water</b> pickup at dusk"),
       "v2 concept (not hosted, origin unclear): a pillow-shaped sachet with blue water, on white."),
-     ("Maltina Break","maltina_gala","maltina", [ref("maltina_3d_render","powerups","regenerated mesh render")], r3("pu_maltina", GAME+" <b>Maltina &amp; Gala</b> pickup at dusk"),
-      "Not hosted: <code>maltina_current.png</code> (the in-game pickup image) shows real-brand-style “Gala” and malt-drink packaging. ⚠️ Flag: the shipped model and the item name use real brands, but our rule is fictional brands only. The v2 concept (not hosted, origin unclear) is a plain brown malt bottle with a red/gold label."),
+     ("Malta &amp; Agege Roll","maltina_gala","maltina", [ref("malta_3d_render","powerups","regenerated mesh render (old pickup)")], r3("pu_malta", CON+" <b>Malta &amp; Agege Roll</b> pickup (renamed)"),
+      "Renamed by Kehinde (Oct 16): display name is now <b>Malta &amp; Agege Roll</b> (fictional, no real brands). The internal id <code>maltina_gala</code> is unchanged. The old in-game pickup image is not hosted because its packaging shows a real brand; the render here is a CONCEPT for the renamed pickup: an amber malt bottle with a generic “MALTA” label and a golden Agege roll. The shipped model still needs re-texturing in the game."),
      ("Change (Bribe)","bribe_change","change", [ref("change_current","powerups","in-game pickup (current)")], r3("pu_change", GAME+" <b>Change Bundle</b> pickup at dusk"),
       "v2 concept (not hosted, origin unclear): a rubber-banded stack of worn naira-style notes and a coin."),
      ("VIP Siren","siren","siren", [ref("vip_siren_current","powerups","in-game pickup (current)"), ref("vip_siren_3d_render","powerups","regenerated mesh render")], r3("pu_siren", GAME+" <b>VIP Siren</b> pickup at dusk"),
@@ -88,14 +88,14 @@ def powerups():
     ]
     rows = "".join(pair(f'<div class="refstack">{"".join(rs)}</div>', rr, f"<h3>{n}</h3><p>{code(pid)}</p><p>{vis(v)}</p><p class='small'>{note}</p>") for n, pid, v, rs, rr, note in items)
     conc = "".join(pair(f'<div class="card" style="margin:0"><b>No reference image exists.</b><br>{why}</div>', r3(img, CON+f" <b>{n}</b>"), f"<h3>{n}</h3><p>{extra}</p><p>{vis(v)}</p>") for n, v, img, why, extra in [
-     ("Owa! (shout)","owa","pu_owa","Vision: “You read the traffic, shout ‘Owa!’, and everybody gets across safe.”",f"Baba Gidi cups his mouth; gold sound rings travel along his facing direction and the next lane's vehicle freezes in a pale-blue ice block (colour-blind safe: shape plus colour). Free in v2, but in the code today it's {E['owa'][1]} chips · cap {E['owa'][2]} · from L{E['owa'][3]}."),
-     ("Danfo Ride","danfo_ride","pu_danforide","Use the shipped danfo (see Vehicles).","A gold-lit danfo at the curb; a gold arc shows the 2-lane hop. Toast copy: “ENTER WITH YOUR CHANGE!” Not in the code yet: price <span class='badge'>TBD</span> until Kehinde decides (vision says 150)."),
-     ("Agbada Armour","agbada","pu_agbada_armour","Detty December flex. Earned only.","Baba Gidi in a gold agbada inside a gold fresnel shell with sparkles. 2.5 s of full immunity; followers stay vulnerable. Not in the code yet; never sold."),
+     ("Owa! (shout)","owa","pu_owa","Vision: “You read the traffic, shout ‘Owa!’, and everybody gets across safe.”",f"Baba Gidi cups his mouth; gold sound rings travel along his facing direction and the next lane's vehicle freezes in a pale-blue ice block (colour-blind safe: shape plus colour). Price: {E['owa'][1]} chips (Kehinde, Oct 16; the vision table itself lists Owa as “— (free)”) · cap {E['owa'][2]} · from L{E['owa'][3]}."),
+     ("Danfo Ride","danfo_ride","pu_danforide","Use the shipped danfo (see Vehicles).","A gold-lit danfo at the curb; a gold arc shows the 2-lane hop. Toast copy: “ENTER WITH YOUR CHANGE!” Price: <b>150 chips</b>, shop only, cap 1, unlock L4 (vision v2 §8: “Cost (chips) 150 · How earned: Shop only”). Not in the game code yet."),
+     ("Agbada Armour","agbada","pu_agbada_armour","Detty December flex. Earned only.","Baba Gidi in a gold agbada inside a gold fresnel shell with sparkles. 2.5 s of full immunity; followers stay vulnerable. No price: vision v2 §8 lists the cost as “—” and says “Earned only: fill the Owa meter via near-miss chains / x5 combo. Never sold”. Not in the game code yet."),
     ])
     left = "".join(f'<li>{t}</li>' for t in ["Okada Dash (v2, L7, not sold): concept image exists but isn't hosted (origin unclear). Description: yellow open-face helmet with a black stripe.",
         "Gist Bomb (v2, 100, L8): concept image exists but isn't hosted (origin unclear). Description: a red retro transistor radio.",
         f"Agbero Whistle: still in the code ({E['agbero_whistle'][1]} chips, cap {E['agbero_whistle'][2]}, L{E['agbero_whistle'][3]}) but removed in vision v2."])
-    return f'''<h1>Power-ups</h1><p class="lead">Current pickups (shipped models re-staged at dusk) next to the reference images, plus concepts for the three new v2 items that have no image. <b>Prices follow <code>GidiEconomyTables</code></b> until Kehinde decides; vision v2 numbers are shown for comparison only.</p>{LEGEND}
+    return f'''<h1>Power-ups</h1><p class="lead">Current pickups (shipped models re-staged at dusk) next to the reference images, plus concepts for the three new v2 items that have no image. <b>Prices per vision doc (Kehinde, Oct 16); game code still to be updated.</b> Caps and unlock levels still come from the code.</p>{LEGEND}
 <h2>Current pickups</h2>{rows}
 <h2>New v2 items {CON}</h2>{conc}
 <h2>Not shown as images</h2><ul>{left}</ul>
@@ -111,7 +111,7 @@ OUTFITS = [("baba_default",GAME,"Default fit","Green kaftan + fila (shipped text
 def costumes():
     cards = "".join(r3(k, f"{b} <b>{n}</b><br>{d}") for k, b, n, d in OUTFITS)
     return f'''<h1>Costumes &amp; skins</h1><p class="lead">Baba Gidi outfits, rendered on the <b>shipped Baba Gidi model and rig</b> at Lagos dusk. Fits are texture swaps plus, for agbada, a robe layer. The Humanoid rig, silhouette and hitbox don't change. These replace the earlier flat drawings.</p>{LEGEND}
-<div class="card"><b>Sources.</b> Vision v1: “Baba Gidi outfits (agbada, okada helmet, Ankara fits, football jerseys in generic styles, no licensed kits)” and “Detty December … owambe outfits”. IAP SKUs in <code>GidiEconomyTables.IapSkus</code>: <code>pack_baba_fits</code> and <code>pack_skins_lagos</code>. Cosmetics are vanity only. Prices and pack contents: <span class="badge">TBD</span> (store; follow <code>GidiEconomyTables</code> until Kehinde decides).</div>
+<div class="card"><b>Sources.</b> Vision v1: “Baba Gidi outfits (agbada, okada helmet, Ankara fits, football jerseys in generic styles, no licensed kits)” and “Detty December … owambe outfits”. IAP SKUs in <code>GidiEconomyTables.IapSkus</code>: <code>pack_baba_fits</code> and <code>pack_skins_lagos</code>. Cosmetics are vanity only. Prices and pack contents: <span class="badge">TBD</span> (not in the vision doc).</div>
 <h2>Baba Gidi fits (<code>pack_baba_fits</code>)</h2><div class="pair" style="grid-template-columns:1fr 1fr 1fr"><div class="pp">{ref("BabaGidi_concept","babagidi","model concept input")}</div><div class="pp">{ref("BabaGidi_rigged_render","babagidi","rigged model render")}</div><div class="pn"><h3>Reference</h3><p>Only the default outfit exists in the game. Every other fit below is a CONCEPT.</p></div></div>
 <div class="cosgrid">{cards}</div>
 <h2>Lagos Skins (<code>pack_skins_lagos</code>)</h2><p>Danfo paint jobs and slogans: see <a href="vehicles.html#paint">Vehicles · paint jobs</a>.</p>

@@ -3,13 +3,13 @@ G-Prototype Economy/GidiEconomyTables.cs (copied into ECON below, do not edit by
 import os
 from gen_hud import FRAMES, OUT
 
-# --- from GidiEconomyTables.cs (team-branch, Oct 2026) ---
+# --- ids/caps/unlocks from GidiEconomyTables.cs; PRICES per vision doc v2 §8 (Kehinde, Oct 16): Malta 80, VIP Siren 120, Owa 80. Game code still to be updated ---
 ECON = [  # id, display, blurb, cost, cap, first level
  ("owa","Owa","Shout freeze — short lane stop",80,3,2),
- ("maltina_gala","Maltina & Gala","Slows traffic briefly — not a speed boost",60,3,3),
+ ("maltina_gala","Malta & Agege Roll","Slows traffic briefly — not a speed boost",80,3,3),
  ("pure_water","Pure Water","Near-miss shield — one hit / ~2s, not run-through",60,2,3),
  ("bribe_change","Change Bundle","Settle LASTMA / KAI pressure",90,2,5),
- ("siren","VIP Siren","Short VIP clear (mid lane exempt)",100,2,5),
+ ("siren","VIP Siren","Short VIP clear (mid lane exempt)",120,2,5),
  ("agbero_whistle","Agbero Whistle","Brief reverse / crowd shove",120,2,7),
 ]
 START_LIVES, MAX_CONTINUES = 3, 1

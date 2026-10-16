@@ -257,3 +257,13 @@ SCENES.pu_agbada_armour = async (ctx) => { const o = await character('baba', { r
   sh.scale.set(.8, 1.0, .8); sh.position.y = 1.0; ctx.scene.add(sh);
   for (let i = 0; i < 60; i++) { const s = new THREE.Mesh(new THREE.OctahedronGeometry(.018), new THREE.MeshBasicMaterial({ color: '#FFF1B8', toneMapped: false })); const a = Math.random() * 6.28, y = Math.random() * 2; s.position.set(Math.cos(a) * .95, y, Math.sin(a) * .95); ctx.scene.add(s); }
   ctx.bloom = .25; camChar(ctx.camera); ctx.camera.position.set(1.9, 1.3, 5.2); };
+SCENES.pu_malta = async (ctx) => { const g = new THREE.Group();
+  const pts = []; const prof = [[0,0],[.13,0],[.14,.02],[.14,.42],[.12,.5],[.06,.62],[.045,.78],[.05,.8],[.05,.83],[0,.83]]; for (const [x,y] of prof) pts.push(new THREE.Vector2(x, y));
+  const bottle = new THREE.Mesh(new THREE.LatheGeometry(pts, 48), new THREE.MeshStandardMaterial({ color: '#3a1606', roughness: .08, metalness: .1, transparent: true, opacity: .93, envMapIntensity: 2 })); g.add(bottle);
+  const lt = textTex(['MALTA'], { w: 768, h: 256, bg: '#C8102E', fg: '#FAE69E', font: 'bold 130px Jakarta, Arial' }); lt.offset.x = 0.2;
+  const label = new THREE.Mesh(new THREE.CylinderGeometry(.143, .143, .18, 48, 1, true), new THREE.MeshStandardMaterial({ map: lt, roughness: .5 })); lt.wrapS = THREE.RepeatWrapping; lt.repeat.set(3, 1); label.position.y = .24; label.rotation.y = -Math.PI / 2; g.add(label);
+  const cap = new THREE.Mesh(new THREE.CylinderGeometry(.055, .055, .03, 24), M('#E8B21E', .3, .9)); cap.position.y = .84; g.add(cap);
+  g.position.set(.12, 0, 0); ctx.scene.add(g);
+  const roll = new THREE.Mesh(new THREE.CapsuleGeometry(.11, .26, 10, 28), new THREE.MeshStandardMaterial({ color: '#A9682A', roughness: .7 })); roll.rotation.z = Math.PI / 2; roll.rotation.y = .5; roll.scale.set(1, 1, .85); roll.position.set(-.2, .1, .18); ctx.scene.add(roll);
+  const r = ring(.5, '#E8B21E', .7, .012); r.position.y = .03; ctx.scene.add(r); ctx.bloom = .3;
+  ctx.camera.fov = 28; ctx.camera.updateProjectionMatrix(); ctx.camera.position.set(1.4, 1.0, 2.0); ctx.camera.lookAt(0, .38, 0); };

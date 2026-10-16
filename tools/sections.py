@@ -13,7 +13,7 @@ SCREENS = [  # key, title, group, note
  ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP → CHANGE → OWA! highlighted."),
  ("onboard4","Onboarding 4 · Reach the curb","Onboarding","Goal zone on the far curb. Skippable after step 1."),
  ("hud","In-run HUD (base)","In-run","Approved round-4 HUD. Background: L5 Oshodi Expressway."),
- ("hud-power","HUD · power-up active","In-run","Maltina ring timer (4 s, traffic −60%, LevelManager). Background: L7 Ojota Intersect."),
+ ("hud-power","HUD · power-up active","In-run","Malta ring timer (4 s, traffic −60%, LevelManager). Background: L7 Ojota Intersect."),
  ("hud-warn","HUD · warnings (colour + shape)","In-run","Caution ▲, Danger ≫, LASTMA ◆, Safe gap bar. Background: L8 Third Mainland Bridge (8 lanes, wide camera)."),
  ("hud-toast","HUD · toasts","In-run","Owa unlock (code copy), group coach line, \"Found Owa\" grant toast. Background: L2 Surulere Way."),
  ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). Background: L10 Ojuelegba Chaos."),
@@ -22,7 +22,7 @@ SCREENS = [  # key, title, group, note
  ("continue","Continue modal (1 per run)","Run modals","Watch ad / ₦125 chips at L2+ (₦100 at L1) / End run. MaxContinuesPerRun = 1."),
  ("clear","Level clear","Results","\"{location} Cleared!\" (code copy). Cash-out grant 75 chips (L2+). Stars rule TBD. Background: L6 Ikeja Along."),
  ("gameover","Game over","Results","After the single continue is used or declined. Background: L5."),
- ("shop","Base Camp shop","Menus","Six soft power-ups, caps, costs and unlock levels from GidiEconomyTables. Background: L4 Mushin Market."),
+ ("shop","Base Camp shop","Menus","Six soft power-ups. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Caps and unlocks from the code. Background: L4 Mushin Market."),
  ("settings","Settings","Menus","Audio, Controls (touch only), Display, Accessibility, Account. Background: L9 (blurred)."),
  ("credits","Credits","Menus","Names TBD. Background: L10 (blurred)."),
 ]
@@ -62,7 +62,7 @@ def screens():
         if g not in groups: groups.append(g)
     toc = " · ".join(f'<a href="#s-{k}">{t}</a>' for k,t,_,_ in SCREENS)
     body = f'''<h1>Screens <span class="badge" style="background:#56B4E9">ROUND 4 APPROVED · full set</span></h1>
-<p class="lead">Every screen from splash onward, <b>landscape only</b>, each as desktop / WebGL 1920×1080 and phone 19.5:9 2340×1080 (notch and home-indicator safe areas). Backgrounds are the real L1–L10 level screenshots from the current build (old HUD removed, dusk grade). Controls, camera, font, palette and copy follow the approved round-4 mockups. Economy numbers come from <code>GidiEconomyTables</code> and level facts from <code>LevelManager</code>; wallet, timer and score values are samples; anything undefined is marked <span class="badge">TBD</span>.</p>
+<p class="lead">Every screen from splash onward, <b>landscape only</b>, each as desktop / WebGL 1920×1080 and phone 19.5:9 2340×1080 (notch and home-indicator safe areas). Backgrounds are the real L1–L10 level screenshots from the current build (old HUD removed, dusk grade). Controls, camera, font, palette and copy follow the approved round-4 mockups. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Other economy numbers come from <code>GidiEconomyTables</code> and level facts from <code>LevelManager</code>; wallet, timer and score values are samples; anything undefined is marked <span class="badge">TBD</span>.</p>
 <h2 id="flow">Flow</h2><div class="card scroll">{flow_svg()}</div><p class="small">Tap a box to jump to the screen. Onboarding runs on first launch (skippable after step 1); Continue appears once per run, then Game over.</p>
 <div class="card toc">{toc}</div>'''
     for g in groups:
@@ -90,7 +90,7 @@ LEVELS = [ # n, name, pool, speedMul, gapOffset, lanes, speedVar, luxury, lastma
 ]
 LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; Owa! not yet unlocked.",
  2:"Owa! unlocks here (toast). Base Camp opens (ShopAllowed L2+). Continue cost rises to 125 chips.",
- 3:"First Agbada Bigman in the curb mix. Maltina &amp; Gala and Pure Water start spawning.",
+ 3:"First Agbada Bigman in the curb mix. Malta &amp; Agege Roll and Pure Water start spawning.",
  4:"Slay Queen joins the mix. Traffic jumps to ×0.55 with tighter gaps (+0.6 s).",
  5:"LASTMA flag enforcement starts (every 5–8 s, lane slows to ×0.8). Change Bundle and VIP Siren appear.",
  6:"First 6-lane road. KAI officers join LASTMA (KAI bribe ₦200).",
@@ -194,7 +194,7 @@ def typography():
 <li>Floor: nothing below 27 ref px (18 px at 720p, 9 dp on a 360 dp-tall phone).</li><li>Numbers that tick (timer, wallet, score) use tabular figures.</li><li>Sentence case for copy, UPPERCASE only for CTAs and stock labels.</li><li>Pidgin first; keep lines short (≤ 48 characters in toasts).</li></ul></div>
 <h2>Web (this site / storefront)</h2><table><tr><th>Role</th><th>Size</th></tr><tr><td>H1</td><td>40 px (28 px mobile)</td></tr><tr><td>H2</td><td>24 px</td></tr><tr><td>Body</td><td>16 px / 1.55, system UI</td></tr><tr><td>Caption</td><td>13 px</td></tr></table>'''
 
-LABEL = {"owa":"Owa","maltina_gala":"Maltina &amp; Gala","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","agbero_whistle":"Agbero Whistle",
+LABEL = {"owa":"Owa","maltina_gala":"Malta &amp; Agege Roll","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","agbero_whistle":"Agbero Whistle",
  "pickup_ring":"Curb pickup marker","pickup_person":"Recruit (person lights up)","chip":"Naira Chip","lives":"Lives","group":"GROUP","change":"CHANGE","stats":"Stats","pause":"Pause",
  "settings":"Settings","map":"Lagos map","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
  "warn_safe":"Safe / gap","warn_caution":"Caution","warn_danger":"Danger","warn_lastma":"LASTMA","warn_train":"Train"}
@@ -202,7 +202,7 @@ def icons():
     from gen_screens import ECON
     E = {p:(c,cap,f,b) for p,_,b,c,cap,f in ECON}
     out = '<h1>Icons</h1><p class="lead">One SVG set on a 48×48 grid, 3 px rounded stroke, <code>currentColor</code> lines (default Naira gold <code>#FAE69E</code> on ink glass). Warning shapes are filled and keep their state colour. Download any icon from <code>icons/svg/</code>.</p>'
-    out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, costs, caps and unlock levels from <code>GidiEconomyTables</code>.</p><div class="icgrid">'
+    out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, caps and unlock levels from the code. Prices per vision doc (Kehinde, Oct 16); game code still to be updated. Display name of <code>maltina_gala</code> is now “Malta &amp; Agege Roll”.</p><div class="icgrid">'
     for p in PU_ACCENT:
         c,cap,f,b = E[p]
         out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{c} chips · cap {cap} · L{f}+</span></a>'
@@ -267,7 +267,7 @@ def souvenirs():
 <tr><td>Power-up stock</td><td>caps 3/3/2/2/2/2; curb finds and shop buys share the cap</td><td><code>PowerUpInventoryCap</code></td><td>Base Camp pips</td></tr>
 <tr><td>KAI bribe</td><td>₦200 (in-run Naira)</td><td><code>LevelManager.kaiBribeCostNaira</code></td><td>CHANGE pip / toast</td></tr>
 <tr><td>Endless score</td><td>metres + 25 per delivery + 10 per combo step</td><td><code>EndlessRunScore</code></td><td><a href="screens.html#s-hud-endless">Endless HUD</a></td></tr></table>
-<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. These differ from the code (Owa costs 80 chips, six items, Agbero Whistle kept). The storefront doc lists Pure Water at 40 chips, but <code>GidiEconomyTables</code> says 60. Mockups follow the code.</div>
+<div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. These differ from the code (Owa costs 80 chips, six items, Agbero Whistle kept). Prices per vision doc (Kehinde, Oct 16); game code still to be updated. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
 <h2>Souvenirs: one per district (concept)</h2><p>A collectible medallion found once per district, shown in a Lagos collection book on the map. Gold rim = collected; dim = not found yet.</p>
 <div class="icgrid">{cards}</div>
 <div class="card" style="display:flex;gap:18px;align-items:center">{souv_svg(5,"","".join(g for n,_,g in SOUV if n==5))}{souv_svg(6,"","".join(g for n,_,g in SOUV if n==6),locked=True)}<div><b>States:</b> collected (left) vs not found (right, 25% and greyscale).<br>Drop chance, where it spawns, rewards for a full set and whether souvenirs give chips: <span class="badge">TBD</span>, needs economy numbers in <code>GidiEconomyTables</code> first.</div></div>
