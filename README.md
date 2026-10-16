@@ -1,12 +1,20 @@
 # Gidi++ Design System
 
-Static HTML/CSS site with no build step (works on GitHub Pages once approved). Open `index.html`.
+Static HTML/CSS site, no build step, relative links only (works at a GitHub Pages project subpath). Open `index.html`.
 
-**Landscape only (RT-106).** The four approval mockups for M1 (Oct 30) are in `mockups/` (HTML) and `exports/` (PNG). The HUD spec is in `exports/hud/`.
+**Landscape only (RT-106).** Sections: Brand, Guidelines, Palette, Typography, Icons, Logos & app icons, Screens (+ flow), Levels, Costumes, Souvenirs & perks, Devices.
 
-Regenerate:
+- `mockups/` HTML sources · `exports/` PNG renders (screens, `hud/`, `costumes/`, `devices/`)
+- `icons/svg/` icon set · `logos/` wordmarks, `logos/app/{ios,android,web}` app icons · `souvenirs/` medallions
+- `assets/bg/` level backgrounds built from `reference/levels/L01–L10.png` (current build screenshots)
+
+Regenerate (needs python3 + opencv/PIL/fontTools and google-chrome):
 ```
-cd tools && python3 gen_hud.py && python3 gen_screens.py && cd .. && python3 tools/gen_site.py
-tools/shoot.sh "$PWD/mockups/hud-desktop.html" exports/hud-desktop.png 1920 1080   # needs google-chrome
+python3 tools/prep_levels.py          # backgrounds
+python3 tools/brand.py                # icons
+cd tools && python3 gen_hud.py && python3 gen_screens.py && python3 gen_more.py && cd ..
+bash tools/shoot_all.sh               # screen PNGs
+python3 tools/gen_costumes.py && python3 tools/gen_logos.py && python3 tools/gen_devices.py
+cd tools && python3 gen_site.py
 ```
-The font is Plus Jakarta Sans Bold (SIL OFL 1.1, `fonts/OFL.txt`). Economy values are copied from G-Prototype `Economy/GidiEconomyTables.cs`.
+Numbers come from G-Prototype `Economy/GidiEconomyTables.cs` and `LevelManager.cs`; anything not in code is marked TBD. Font: Plus Jakarta Sans Bold (SIL OFL 1.1, `fonts/OFL.txt`).

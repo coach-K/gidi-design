@@ -1,6 +1,3 @@
 # Level screenshots
-Only L1 (Agege Bus Stop) has real in-game captures on the box (greybox/early build, landscape, perspective camera):
-- L01.png – mid-highway; L01b_curb.png – curb + first roads; L01c_goal.png – goal side.
-Source: G-Prototype Assets `Art/L1_Agege/References/`.
-
-L02–L10: NO in-game screenshots exist yet (no new builds were run, disk is tight). Use the L1 shots for camera/scale, the per-level road textures in `Art/L1_Agege/Textures/Levels/L2..L10`, and the vehicle/character renders listed in ../VISION_BRIEF.md.
+`L01.png`–`L10.png`: one capture per level from the current build (1600×720, original camera, old debug HUD visible). `L01b_curb.png` / `L01c_goal.png`: early greybox L1 captures. `L08_phone_landscape.jpg`: phone capture used to measure the touch-control positions.
+The design site uses cleaned and dusk-graded versions (`tools/prep_levels.py` → `assets/bg/`).
