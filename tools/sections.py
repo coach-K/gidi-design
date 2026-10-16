@@ -193,3 +193,26 @@ def typography():
 <div class="card"><ul><li>Constants in <code>GameUiTheme</code>: FontTitle 42, FontNaira 48, FontBody 33, FontSmall/FontMin 27, FontButton 30. Display/Hero/Heading sizes are design tokens used by the mockups (not yet constants).</li>
 <li>Floor: nothing below 27 ref px (18 px at 720p, 9 dp on a 360 dp-tall phone).</li><li>Numbers that tick (timer, wallet, score) use tabular figures.</li><li>Sentence case for copy, UPPERCASE only for CTAs and stock labels.</li><li>Pidgin first; keep lines short (≤ 48 characters in toasts).</li></ul></div>
 <h2>Web (this site / storefront)</h2><table><tr><th>Role</th><th>Size</th></tr><tr><td>H1</td><td>40 px (28 px mobile)</td></tr><tr><td>H2</td><td>24 px</td></tr><tr><td>Body</td><td>16 px / 1.55, system UI</td></tr><tr><td>Caption</td><td>13 px</td></tr></table>'''
+
+LABEL = {"owa":"Owa","maltina_gala":"Maltina &amp; Gala","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","agbero_whistle":"Agbero Whistle",
+ "pickup_ring":"Curb pickup marker","pickup_person":"Recruit (person lights up)","chip":"Naira Chip","lives":"Lives","group":"GROUP","change":"CHANGE","stats":"Stats","pause":"Pause",
+ "settings":"Settings","map":"Lagos map","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
+ "warn_safe":"Safe / gap","warn_caution":"Caution","warn_danger":"Danger","warn_lastma":"LASTMA","warn_train":"Train"}
+def icons():
+    from gen_screens import ECON
+    E = {p:(c,cap,f,b) for p,_,b,c,cap,f in ECON}
+    out = '<h1>Icons</h1><p class="lead">One SVG set on a 48×48 grid, 3 px rounded stroke, <code>currentColor</code> lines (default Naira gold <code>#FAE69E</code> on ink glass). Warning shapes are filled and keep their state colour. Download any icon from <code>icons/svg/</code>.</p>'
+    out += '<h2>Power-up badges</h2><p>Ink disc + accent ring + gold glyph. Used in Base Camp rows, HUD timer rings and curb pickups. Ids, costs, caps and unlock levels from <code>GidiEconomyTables</code>.</p><div class="icgrid">'
+    for p in PU_ACCENT:
+        c,cap,f,b = E[p]
+        out += f'<a class="ic" href="icons/svg/badge_{p}.svg">{badge(p,96)}<b>{LABEL[p]}</b><code>{p}</code><span>{c} chips · cap {cap} · L{f}+</span></a>'
+    out += '</div>'
+    for g, names in GROUPS:
+        anchor = ' id="warn"' if g.startswith("Warning") else ''
+        out += f'<h2{anchor}>{g}</h2><div class="icgrid">'
+        for n in names:
+            out += f'<a class="ic" href="icons/svg/{n}.svg">{icon(n,64)}<b>{LABEL[n]}</b><code>{n}.svg</code></a>'
+        out += '</div>'
+    out += '<h2>Sizes</h2><div class="card" style="display:flex;gap:24px;align-items:end">' + "".join(icon("owa",s) for s in (24,32,48,64,96)) + "".join(icon("warn_danger",s) for s in (24,48,96)) + '</div>'
+    out += '<div class="card"><ul><li>Minimum in-game size 48 ref px inside a 144 px touch target.</li><li>Never show a warning by colour alone: always the shape.</li><li>Pure Water is a sachet (pillow pack), not a bottle. Change Bundle is a ₦ note stack. Next-gen items from vision v2 (Danfo Ride, Okada Dash, Gist Bomb, Agbada Armour) get icons once they land in code: <span class="badge">TBD</span>.</li></ul></div>'
+    return out

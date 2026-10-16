@@ -25,7 +25,7 @@ import sections
 page("palette", sections.palette())
 page("typography", sections.typography())
 page("screens", sections.screens())
-page("icons", stub("Icons", ["Power-up icons for the 6 table items (Owa, Maltina &amp; Gala, Pure Water, Change Bundle, VIP Siren, Agbero Whistle), plus the vision v2 §8 next-gen set once it lands in code","Warning shapes: tick bar, triangle, chevrons, diamond, rail band (SVG, 24/48/96 px)","HUD glyphs: ₦, lives ♥, stats, pause, settings, map, Base Camp","Rules: 2 px stroke at 48 px, rounded joins, glass-safe colours"]))
+page("icons", sections.icons())
 page("logos", stub("Logos &amp; app icons", ["GIDI++ wordmark (light, dark, mono), clear-space and minimum size","App icons: iOS 1024 master + sizes, Android adaptive (foreground/background 432 px, 108 dp safe zone), WebGL favicon / PWA 192/512","Store feature graphic 1024×500 and landscape screenshots (from the approved mockups)","12+ rating badge usage"]))
 page("levels", sections.levels())
 page("costumes", sections.costumes())
