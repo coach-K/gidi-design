@@ -16,7 +16,7 @@ SCREENS = [  # key, title, group, note
  ("hud-power","HUD · power-up active","In-run","Malta ring timer (4 s, traffic −60%, LevelManager). Background: L7 Ojota Intersect."),
  ("hud-warn","HUD · warnings (colour + shape)","In-run","Caution ▲, Danger ≫, LASTMA ◆, Safe gap bar. Background: L8 Third Mainland Bridge (8 lanes, wide camera)."),
  ("hud-toast","HUD · toasts","In-run","Owa unlock (code copy), group coach line, \"Found Owa\" grant toast. Background: L2 Surulere Way."),
- ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). Background: L10 Ojuelegba Chaos."),
+ ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). The score strip shows only in L10 endless mode; L1–L9 don't show it. Background: L10 Ojuelegba Chaos."),
  ("pause","Pause","Run modals","Resume, Restart, Settings, Map, Stats. Background: L5 (blurred)."),
  ("stats","Stats","Run modals","Run stats (values are samples)."),
  ("continue","Continue modal (1 per run)","Run modals","Watch ad / ₦125 chips at L2+ (₦100 at L1) / End run. MaxContinuesPerRun = 1."),

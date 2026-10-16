@@ -1,0 +1,2113 @@
+{
+ "reference": "1920x1080, CanvasScaler match height 1.0",
+ "pixelsPerUnit": 100,
+ "borderUnits": "px at 1x (double for @2x)",
+ "sprites": [
+  {
+   "name": "panel_glass_normal",
+   "file": "sprites@1x/common/panels/panel_glass_normal.png",
+   "file2x": "sprites@2x/common/panels/panel_glass_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "all",
+   "note": "HUD dusk-glass panel: level card 400×144, stock panel, chips, lives, toasts, endless strip, shop item card, IAP card."
+  },
+  {
+   "name": "panel_modal_normal",
+   "file": "sprites@1x/common/panels/panel_modal_normal.png",
+   "file2x": "sprites@2x/common/panels/panel_modal_normal.png",
+   "size": [
+    112,
+    112
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 48,
+    "right": 48,
+    "top": 48,
+    "bottom": 48
+   },
+   "screen": "gameover,pause",
+   "note": "Modal panel (Game Over 1240 wide)."
+  },
+  {
+   "name": "tile_stat_normal",
+   "file": "sprites@1x/common/panels/tile_stat_normal.png",
+   "file2x": "sprites@2x/common/panels/tile_stat_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "gameover,shop",
+   "note": "Stat tile / shop icon tile (Game Over stats, item icon well 110×110)."
+  },
+  {
+   "name": "divider_cell_normal",
+   "file": "sprites@1x/hud/divider_cell_normal.png",
+   "file2x": "sprites@2x/hud/divider_cell_normal.png",
+   "size": [
+    4,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 8,
+    "right": 8,
+    "top": 8,
+    "bottom": 8
+   },
+   "screen": "hud",
+   "note": "Stock-panel cell divider (stretch vertically)."
+  },
+  {
+   "name": "btn_glass_normal",
+   "file": "sprites@1x/common/buttons/btn_glass_normal.png",
+   "file2x": "sprites@2x/common/buttons/btn_glass_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "all",
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
+  },
+  {
+   "name": "btn_glass_pressed",
+   "file": "sprites@1x/common/buttons/btn_glass_pressed.png",
+   "file2x": "sprites@2x/common/buttons/btn_glass_pressed.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "all",
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
+  },
+  {
+   "name": "btn_glass_disabled",
+   "file": "sprites@1x/common/buttons/btn_glass_disabled.png",
+   "file2x": "sprites@2x/common/buttons/btn_glass_disabled.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "all",
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
+  },
+  {
+   "name": "btn_glass_highlight",
+   "file": "sprites@1x/common/buttons/btn_glass_highlight.png",
+   "file2x": "sprites@2x/common/buttons/btn_glass_highlight.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 60,
+    "right": 60,
+    "top": 60,
+    "bottom": 60
+   },
+   "screen": "all",
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back. Highlight: glow baked into a 24 px transparent margin (border values include it)."
+  },
+  {
+   "name": "btn_cta_normal",
+   "file": "sprites@1x/common/buttons/btn_cta_normal.png",
+   "file2x": "sprites@2x/common/buttons/btn_cta_normal.png",
+   "size": [
+    112,
+    112
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 40,
+    "right": 40,
+    "top": 40,
+    "bottom": 40
+   },
+   "screen": "home,gameover,shop",
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
+  },
+  {
+   "name": "btn_cta_pressed",
+   "file": "sprites@1x/common/buttons/btn_cta_pressed.png",
+   "file2x": "sprites@2x/common/buttons/btn_cta_pressed.png",
+   "size": [
+    112,
+    112
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 40,
+    "right": 40,
+    "top": 40,
+    "bottom": 40
+   },
+   "screen": "home,gameover,shop",
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
+  },
+  {
+   "name": "btn_cta_disabled",
+   "file": "sprites@1x/common/buttons/btn_cta_disabled.png",
+   "file2x": "sprites@2x/common/buttons/btn_cta_disabled.png",
+   "size": [
+    112,
+    112
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 40,
+    "right": 40,
+    "top": 40,
+    "bottom": 40
+   },
+   "screen": "home,gameover,shop",
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
+  },
+  {
+   "name": "btn_cta_highlight",
+   "file": "sprites@1x/common/buttons/btn_cta_highlight.png",
+   "file2x": "sprites@2x/common/buttons/btn_cta_highlight.png",
+   "size": [
+    160,
+    160
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 64,
+    "right": 64,
+    "top": 64,
+    "bottom": 64
+   },
+   "screen": "home,gameover,shop",
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high). Highlight: glow baked into a 24 px transparent margin (border values include it)."
+  },
+  {
+   "name": "btn_buy_normal",
+   "file": "sprites@1x/shop/buttons/btn_buy_normal.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+  },
+  {
+   "name": "btn_buy_pressed",
+   "file": "sprites@1x/shop/buttons/btn_buy_pressed.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_pressed.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+  },
+  {
+   "name": "btn_buy_disabled",
+   "file": "sprites@1x/shop/buttons/btn_buy_disabled.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_disabled.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+  },
+  {
+   "name": "btn_buy_highlight",
+   "file": "sprites@1x/shop/buttons/btn_buy_highlight.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_highlight.png",
+   "size": [
+    128,
+    128
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 56,
+    "right": 56,
+    "top": 56,
+    "bottom": 56
+   },
+   "screen": "shop",
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'. Highlight: glow baked into a 24 px transparent margin (border values include it)."
+  },
+  {
+   "name": "btn_buy_locked_normal",
+   "file": "sprites@1x/shop/buttons/btn_buy_locked_normal.png",
+   "file2x": "sprites@2x/shop/buttons/btn_buy_locked_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "screen": "shop",
+   "note": "Shop locked state (unlocks at Lx)."
+  },
+  {
+   "name": "badge_rating_normal",
+   "file": "sprites@1x/home/badge_rating_normal.png",
+   "file2x": "sprites@2x/home/badge_rating_normal.png",
+   "size": [
+    48,
+    48
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 20,
+    "right": 20,
+    "top": 20,
+    "bottom": 20
+   },
+   "screen": "home",
+   "note": "Age-rating outline box (Home)."
+  },
+  {
+   "name": "pickup_disc",
+   "file": "sprites@1x/hud/pickup/pickup_disc.png",
+   "file2x": "sprites@2x/hud/pickup/pickup_disc.png",
+   "size": [
+    216,
+    216
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Fill only. Label '+ / PICK UP' is TMP text (44/26 px, #FFECBE at 95%)."
+  },
+  {
+   "name": "pickup_outline",
+   "file": "sprites@1x/hud/pickup/pickup_outline.png",
+   "file2x": "sprites@2x/hud/pickup/pickup_outline.png",
+   "size": [
+    216,
+    216
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "pickup_pressed",
+   "file": "sprites@1x/hud/pickup/pickup_pressed.png",
+   "file2x": "sprites@2x/hud/pickup/pickup_pressed.png",
+   "size": [
+    216,
+    216
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Overlay on top of the disc while held."
+  },
+  {
+   "name": "pickup_disabled",
+   "file": "sprites@1x/hud/pickup/pickup_disabled.png",
+   "file2x": "sprites@2x/hud/pickup/pickup_disabled.png",
+   "size": [
+    216,
+    216
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Replaces disc+outline when nothing to pick up (optional)."
+  },
+  {
+   "name": "owa_disc",
+   "file": "sprites@1x/hud/owa/owa_disc.png",
+   "file2x": "sprites@2x/hud/owa/owa_disc.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "144×144 canvas = touch target; visible disc 120 Ø centred."
+  },
+  {
+   "name": "owa_outline",
+   "file": "sprites@1x/hud/owa/owa_outline.png",
+   "file2x": "sprites@2x/hud/owa/owa_outline.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "owa_disabled",
+   "file": "sprites@1x/hud/owa/owa_disabled.png",
+   "file2x": "sprites@2x/hud/owa/owa_disabled.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Replaces disc+outline at 0 charges; label colour rgba(200,200,200,.6)."
+  },
+  {
+   "name": "owa_glow",
+   "file": "sprites@1x/hud/owa/owa_glow.png",
+   "file2x": "sprites@2x/hud/owa/owa_glow.png",
+   "size": [
+    192,
+    192
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Highlight layer behind the disc (unlock / tutorial / toast)."
+  },
+  {
+   "name": "owa_pressed",
+   "file": "sprites@1x/hud/owa/owa_pressed.png",
+   "file2x": "sprites@2x/hud/owa/owa_pressed.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "pip_empty",
+   "file": "sprites@1x/hud/owa/pip_empty.png",
+   "file2x": "sprites@2x/hud/owa/pip_empty.png",
+   "size": [
+    18,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "OWA! pip base (18 Ø, 7 px gap)."
+  },
+  {
+   "name": "pip_filled",
+   "file": "sprites@1x/hud/owa/pip_filled.png",
+   "file2x": "sprites@2x/hud/owa/pip_filled.png",
+   "size": [
+    18,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "pip_partial_fill",
+   "file": "sprites@1x/hud/owa/pip_partial_fill.png",
+   "file2x": "sprites@2x/hud/owa/pip_partial_fill.png",
+   "size": [
+    18,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Image Type Filled, Radial 360, origin Top, clockwise; fillAmount = refill progress. Draw over pip_empty + pip_partial_ring."
+  },
+  {
+   "name": "pip_partial_ring",
+   "file": "sprites@1x/hud/owa/pip_partial_ring.png",
+   "file2x": "sprites@2x/hud/owa/pip_partial_ring.png",
+   "size": [
+    18,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "pip_partial_example",
+   "file": "sprites@1x/hud/owa/pip_partial_example.png",
+   "file2x": "sprites@2x/hud/owa/pip_partial_example.png",
+   "size": [
+    18,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Reference only (50%)."
+  },
+  {
+   "name": "stock_pip_on",
+   "file": "sprites@1x/hud/stock_pip_on.png",
+   "file2x": "sprites@2x/hud/stock_pip_on.png",
+   "size": [
+    24,
+    24
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "GROUP/CHANGE pips 24 Ø, 10 px gap."
+  },
+  {
+   "name": "stock_pip_off",
+   "file": "sprites@1x/hud/stock_pip_off.png",
+   "file2x": "sprites@2x/hud/stock_pip_off.png",
+   "size": [
+    24,
+    24
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": ""
+  },
+  {
+   "name": "dpad_base",
+   "file": "sprites@1x/hud/dpad/dpad_base.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_base.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Base circle + centre dot. 360 Ø at 1x desktop/phone (radius 16.7% H); tablet 324."
+  },
+  {
+   "name": "dpad_arrow_N_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_N_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_N_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_N_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_N_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_N_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_NE_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_NE_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_NE_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_NE_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_NE_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_NE_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_E_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_E_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_E_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_E_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_E_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_E_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_SE_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_SE_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_SE_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_SE_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_SE_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_SE_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_S_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_S_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_S_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_S_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_S_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_S_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_SW_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_SW_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_SW_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_SW_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_SW_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_SW_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_W_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_W_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_W_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_W_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_W_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_W_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_NW_normal",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_NW_normal.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_NW_normal.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "dpad_arrow_NW_pressed",
+   "file": "sprites@1x/hud/dpad/dpad_arrow_NW_pressed.png",
+   "file2x": "sprites@2x/hud/dpad/dpad_arrow_NW_pressed.png",
+   "size": [
+    360,
+    360
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Full 360 canvas so it stacks on dpad_base with the same RectTransform."
+  },
+  {
+   "name": "icon_ad",
+   "file": "sprites@1x/icons/ui/icon_ad.png",
+   "file2x": "sprites@2x/icons/ui/icon_ad.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_ad_white",
+   "file": "sprites@1x/icons/ui/white/icon_ad_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_ad_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_agbero_whistle",
+   "file": "sprites@1x/icons/powerups/icon_agbero_whistle.png",
+   "file2x": "sprites@2x/icons/powerups/icon_agbero_whistle.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_agbero_whistle_white",
+   "file": "sprites@1x/icons/powerups/white/icon_agbero_whistle_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_agbero_whistle_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_back",
+   "file": "sprites@1x/icons/ui/icon_back.png",
+   "file2x": "sprites@2x/icons/ui/icon_back.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_back_white",
+   "file": "sprites@1x/icons/ui/white/icon_back_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_back_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "badge_agbero_whistle",
+   "file": "sprites@1x/icons/powerup_badges/badge_agbero_whistle.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_agbero_whistle.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_bribe_change",
+   "file": "sprites@1x/icons/powerup_badges/badge_bribe_change.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_bribe_change.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_maltina_gala",
+   "file": "sprites@1x/icons/powerup_badges/badge_maltina_gala.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_maltina_gala.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_owa",
+   "file": "sprites@1x/icons/powerup_badges/badge_owa.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_owa.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_pure_water",
+   "file": "sprites@1x/icons/powerup_badges/badge_pure_water.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_pure_water.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "badge_siren",
+   "file": "sprites@1x/icons/powerup_badges/badge_siren.png",
+   "file2x": "sprites@2x/icons/powerup_badges/badge_siren.png",
+   "size": [
+    140,
+    140
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud,shop",
+   "note": "Power-up badge (Base Camp rows, HUD timer ring, curb pickups)."
+  },
+  {
+   "name": "icon_basecamp",
+   "file": "sprites@1x/icons/ui/icon_basecamp.png",
+   "file2x": "sprites@2x/icons/ui/icon_basecamp.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_basecamp_white",
+   "file": "sprites@1x/icons/ui/white/icon_basecamp_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_basecamp_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_bribe_change",
+   "file": "sprites@1x/icons/powerups/icon_bribe_change.png",
+   "file2x": "sprites@2x/icons/powerups/icon_bribe_change.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_bribe_change_white",
+   "file": "sprites@1x/icons/powerups/white/icon_bribe_change_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_bribe_change_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_change",
+   "file": "sprites@1x/icons/pickups/icon_change.png",
+   "file2x": "sprites@2x/icons/pickups/icon_change.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_change_white",
+   "file": "sprites@1x/icons/pickups/white/icon_change_white.png",
+   "file2x": "sprites@2x/icons/pickups/white/icon_change_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_chip",
+   "file": "sprites@1x/icons/ui/icon_chip.png",
+   "file2x": "sprites@2x/icons/ui/icon_chip.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_chip_white",
+   "file": "sprites@1x/icons/ui/white/icon_chip_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_chip_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_close",
+   "file": "sprites@1x/icons/ui/icon_close.png",
+   "file2x": "sprites@2x/icons/ui/icon_close.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_close_white",
+   "file": "sprites@1x/icons/ui/white/icon_close_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_close_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_group",
+   "file": "sprites@1x/icons/pickups/icon_group.png",
+   "file2x": "sprites@2x/icons/pickups/icon_group.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_group_white",
+   "file": "sprites@1x/icons/pickups/white/icon_group_white.png",
+   "file2x": "sprites@2x/icons/pickups/white/icon_group_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_lives",
+   "file": "sprites@1x/icons/ui/icon_lives.png",
+   "file2x": "sprites@2x/icons/ui/icon_lives.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_lives_white",
+   "file": "sprites@1x/icons/ui/white/icon_lives_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_lives_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_lock",
+   "file": "sprites@1x/icons/ui/icon_lock.png",
+   "file2x": "sprites@2x/icons/ui/icon_lock.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_lock_white",
+   "file": "sprites@1x/icons/ui/white/icon_lock_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_lock_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_maltina_gala",
+   "file": "sprites@1x/icons/powerups/icon_maltina_gala.png",
+   "file2x": "sprites@2x/icons/powerups/icon_maltina_gala.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_maltina_gala_white",
+   "file": "sprites@1x/icons/powerups/white/icon_maltina_gala_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_maltina_gala_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_map",
+   "file": "sprites@1x/icons/ui/icon_map.png",
+   "file2x": "sprites@2x/icons/ui/icon_map.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_map_white",
+   "file": "sprites@1x/icons/ui/white/icon_map_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_map_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_owa",
+   "file": "sprites@1x/icons/powerups/icon_owa.png",
+   "file2x": "sprites@2x/icons/powerups/icon_owa.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_owa_white",
+   "file": "sprites@1x/icons/powerups/white/icon_owa_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_owa_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_pause",
+   "file": "sprites@1x/icons/ui/icon_pause.png",
+   "file2x": "sprites@2x/icons/ui/icon_pause.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_pause_white",
+   "file": "sprites@1x/icons/ui/white/icon_pause_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_pause_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_pickup_person",
+   "file": "sprites@1x/icons/pickups/icon_pickup_person.png",
+   "file2x": "sprites@2x/icons/pickups/icon_pickup_person.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_pickup_person_white",
+   "file": "sprites@1x/icons/pickups/white/icon_pickup_person_white.png",
+   "file2x": "sprites@2x/icons/pickups/white/icon_pickup_person_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_pickup_ring",
+   "file": "sprites@1x/icons/pickups/icon_pickup_ring.png",
+   "file2x": "sprites@2x/icons/pickups/icon_pickup_ring.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_pickup_ring_white",
+   "file": "sprites@1x/icons/pickups/white/icon_pickup_ring_white.png",
+   "file2x": "sprites@2x/icons/pickups/white/icon_pickup_ring_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_play",
+   "file": "sprites@1x/icons/ui/icon_play.png",
+   "file2x": "sprites@2x/icons/ui/icon_play.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_play_white",
+   "file": "sprites@1x/icons/ui/white/icon_play_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_play_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_pure_water",
+   "file": "sprites@1x/icons/powerups/icon_pure_water.png",
+   "file2x": "sprites@2x/icons/powerups/icon_pure_water.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_pure_water_white",
+   "file": "sprites@1x/icons/powerups/white/icon_pure_water_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_pure_water_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_settings",
+   "file": "sprites@1x/icons/ui/icon_settings.png",
+   "file2x": "sprites@2x/icons/ui/icon_settings.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_settings_white",
+   "file": "sprites@1x/icons/ui/white/icon_settings_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_settings_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_siren",
+   "file": "sprites@1x/icons/powerups/icon_siren.png",
+   "file2x": "sprites@2x/icons/powerups/icon_siren.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_siren_white",
+   "file": "sprites@1x/icons/powerups/white/icon_siren_white.png",
+   "file2x": "sprites@2x/icons/powerups/white/icon_siren_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_stats",
+   "file": "sprites@1x/icons/ui/icon_stats.png",
+   "file2x": "sprites@2x/icons/ui/icon_stats.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_stats_white",
+   "file": "sprites@1x/icons/ui/white/icon_stats_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_stats_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_timer",
+   "file": "sprites@1x/icons/ui/icon_timer.png",
+   "file2x": "sprites@2x/icons/ui/icon_timer.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked. Tint in Unity only if you re-export white."
+  },
+  {
+   "name": "icon_timer_white",
+   "file": "sprites@1x/icons/ui/white/icon_timer_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_timer_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "warn_caution",
+   "file": "sprites@1x/icons/warnings/warn_caution.png",
+   "file2x": "sprites@2x/icons/warnings/warn_caution.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour."
+  },
+  {
+   "name": "warn_danger",
+   "file": "sprites@1x/icons/warnings/warn_danger.png",
+   "file2x": "sprites@2x/icons/warnings/warn_danger.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour."
+  },
+  {
+   "name": "warn_lastma",
+   "file": "sprites@1x/icons/warnings/warn_lastma.png",
+   "file2x": "sprites@2x/icons/warnings/warn_lastma.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour."
+  },
+  {
+   "name": "warn_safe",
+   "file": "sprites@1x/icons/warnings/warn_safe.png",
+   "file2x": "sprites@2x/icons/warnings/warn_safe.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour."
+  },
+  {
+   "name": "warn_train",
+   "file": "sprites@1x/icons/warnings/warn_train.png",
+   "file2x": "sprites@2x/icons/warnings/warn_train.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Warning shape; keeps its state colour. Telegraph pill = panel_glass + 3 px outline in the state colour."
+  },
+  {
+   "name": "logo_wordmark_dark",
+   "file": "sprites@1x/logos/logo_wordmark_dark.png",
+   "file2x": "sprites@2x/logos/logo_wordmark_dark.png",
+   "size": [
+    720,
+    196
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "From logos/*.svg (kept in exports/unity/svg/logos)."
+  },
+  {
+   "name": "logo_wordmark_light",
+   "file": "sprites@1x/logos/logo_wordmark_light.png",
+   "file2x": "sprites@2x/logos/logo_wordmark_light.png",
+   "size": [
+    720,
+    196
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "From logos/*.svg (kept in exports/unity/svg/logos)."
+  },
+  {
+   "name": "logo_lockup_tagline_dark",
+   "file": "sprites@1x/logos/logo_lockup_tagline_dark.png",
+   "file2x": "sprites@2x/logos/logo_lockup_tagline_dark.png",
+   "size": [
+    720,
+    268
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "From logos/*.svg (kept in exports/unity/svg/logos)."
+  },
+  {
+   "name": "logo_mark",
+   "file": "sprites@1x/logos/logo_mark.png",
+   "file2x": "sprites@2x/logos/logo_mark.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "From logos/*.svg (kept in exports/unity/svg/logos)."
+  },
+  {
+   "name": "bg_home_desktop",
+   "file": "backgrounds/bg_home_desktop.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home"
+  },
+  {
+   "name": "bg_home_desktop_blur",
+   "file": "backgrounds/bg_home_desktop_blur.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home"
+  },
+  {
+   "name": "bg_home_phone",
+   "file": "backgrounds/bg_home_phone.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home"
+  },
+  {
+   "name": "bg_home_phone_blur",
+   "file": "backgrounds/bg_home_phone_blur.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home"
+  },
+  {
+   "name": "bg_shop_desktop",
+   "file": "backgrounds/bg_shop_desktop.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop"
+  },
+  {
+   "name": "bg_shop_desktop_blur",
+   "file": "backgrounds/bg_shop_desktop_blur.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop"
+  },
+  {
+   "name": "bg_shop_phone",
+   "file": "backgrounds/bg_shop_phone.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop"
+  },
+  {
+   "name": "bg_shop_phone_blur",
+   "file": "backgrounds/bg_shop_phone_blur.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "shop"
+  },
+  {
+   "name": "bg_gameover_desktop",
+   "file": "backgrounds/bg_gameover_desktop.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "gameover"
+  },
+  {
+   "name": "bg_gameover_desktop_blur",
+   "file": "backgrounds/bg_gameover_desktop_blur.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "gameover"
+  },
+  {
+   "name": "bg_gameover_phone",
+   "file": "backgrounds/bg_gameover_phone.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "gameover"
+  },
+  {
+   "name": "bg_gameover_phone_blur",
+   "file": "backgrounds/bg_gameover_phone_blur.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "gameover"
+  },
+  {
+   "name": "bg_hud_desktop",
+   "file": "backgrounds/bg_hud_desktop.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud"
+  },
+  {
+   "name": "bg_hud_desktop_blur",
+   "file": "backgrounds/bg_hud_desktop_blur.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud"
+  },
+  {
+   "name": "bg_hud_phone",
+   "file": "backgrounds/bg_hud_phone.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud"
+  },
+  {
+   "name": "bg_hud_phone_blur",
+   "file": "backgrounds/bg_hud_phone_blur.png",
+   "size": [
+    2340,
+    1080
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud"
+  }
+ ]
+}
