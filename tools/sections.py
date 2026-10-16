@@ -10,7 +10,7 @@ SCREENS = [  # key, title, group, note
  ("intro","Level intro (district card)","Menus","Lanes, people, enforcement, live power-ups and continue cost from code. Background: L6 Ikeja Along."),
  ("onboard1","Onboarding 1 · Move","Onboarding","Coach pill + highlighted d-pad; PICK UP hint (code copy). Background: L1 Agege Bus Stop."),
  ("onboard2","Onboarding 2 · Read the road","Onboarding","Caution triangle vs Danger chevrons on the lanes."),
- ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP → CHANGE → OWA! highlighted."),
+ ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP and CHANGE highlighted up top; OWA! sits on its own button above PICK UP."),
  ("onboard4","Onboarding 4 · Reach the curb","Onboarding","Goal zone on the far curb. Skippable after step 1."),
  ("hud","In-run HUD (base)","In-run","Approved round-4 HUD. Background: L5 Oshodi Expressway."),
  ("hud-power","HUD · power-up active","In-run","Malta ring timer (4 s, traffic −60%, LevelManager). Background: L7 Ojota Intersect."),
