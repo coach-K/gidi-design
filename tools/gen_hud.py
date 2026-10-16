@@ -9,52 +9,17 @@ FRAMES = {
   "phone":   (2340, 1080, 132, 132, 0, 63, "Phone 19.5:9 landscape 2340×1080 @3x (780×360 dp) · notch inset 132 px, home indicator 63 px"),
 }
 
-def scene(w, h, sl, sb, lanes=6):
-    # Camera framing: HUD band top 0..216, road lanes in 230..h-250, near sidewalk under controls.
-    # top: HUD row ends at 32+144=176 -> far curb from 200. bottom: controls block 24+300+24 above safe bottom.
-    top_curb, bot_curb = 200, h - sb - 348
-    s = [f'<svg class="scene" width="{w}" height="{h}" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg">',
-         '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2F5C"/><stop offset="1" stop-color="#F28C4B"/></linearGradient>'
-         '<linearGradient id="asph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E1F26"/><stop offset="1" stop-color="#2A2B33"/></linearGradient>'
-         '<radialGradient id="hl"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".9"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></radialGradient></defs>',
-         f'<rect width="{w}" height="{top_curb}" fill="url(#sky)" opacity=".35"/>',
-         f'<rect y="0" width="{w}" height="{top_curb}" fill="#7A4630" opacity=".55"/>',  # far shore / laterite sidewalk (goal)
-         f'<rect y="{top_curb-18}" width="{w}" height="18" fill="#9A9488"/>',
-         f'<rect y="{top_curb}" width="{w}" height="{bot_curb-top_curb}" fill="url(#asph)"/>',
-         f'<rect y="{bot_curb}" width="{w}" height="18" fill="#9A9488"/>',
-         f'<rect y="{bot_curb+18}" width="{w}" height="{h-bot_curb-18}" fill="#5E3A2A"/>']
-    lh = (bot_curb - top_curb) / lanes
-    import random; random.seed(7)
-    ch = min(68, lh * 0.72)
-    for i in range(1, lanes):
-        y = top_curb + i * lh
-        s.append(f'<line x1="0" y1="{y:.0f}" x2="{w}" y2="{y:.0f}" stroke="#E8E2D0" stroke-opacity=".55" stroke-width="4" stroke-dasharray="60 50"/>')
-    for i in range(lanes):
-        y = top_curb + i * lh + lh / 2
-        right = i % 2 == 0
-        for k in range(2):
-            x = random.randint(100, w - 300) if k == 0 else (random.randint(0, 200) if right else w - 220)
-            col = random.choice(["#E8B21E", "#E8B21E", "#C9CCD2", "#7C2E2E", "#3A5A80"])
-            L = 210 if col == "#E8B21E" else 170
-            s.append(f'<g transform="translate({x},{y-ch/2:.0f})"><rect width="{L}" height="{ch:.0f}" rx="14" fill="{col}"/>'
-                     f'<rect x="{L*0.25:.0f}" y="10" width="{L*0.5:.0f}" height="{ch-20:.0f}" rx="8" fill="#111" opacity=".55"/>'
-                     + (f'<rect y="{ch/2-4:.0f}" width="{L}" height="8" fill="#111" opacity=".7"/>' if col == "#E8B21E" else "")
-                     + f'<circle cx="{L+30 if right else -30}" cy="{ch/2:.0f}" r="40" fill="url(#hl)"/></g>')
-        # edge telegraph (Danger chevrons) on one lane, caution triangle on another
-        if i == 2:
-            s.append(f'<g transform="translate({sl+16},{y-30})" fill="#FF7A1A"><path d="M0 0 L26 30 L0 60 L14 60 L40 30 L14 0Z"/><path d="M30 0 L56 30 L30 60 L44 60 L70 30 L44 0Z"/></g>')
-        if i == 4:
-            s.append(f'<g transform="translate({w-sl-90},{y-30})"><path d="M30 0 L60 56 L0 56Z" fill="#F0E442"/><text x="30" y="50" font-size="34" text-anchor="middle" fill="#111">!</text></g>')
-    # player crowd at near curb
-    cx = w // 2
-    for dx in (-40, 0, 40):
-        s.append(f'<g transform="translate({cx+dx},{bot_curb+40})"><circle r="16" fill="#F5F5F0"/><rect x="-14" y="16" width="28" height="40" rx="10" fill="#56B4E9"/></g>')
-    s.append('</svg>')
-    return "\n".join(s), top_curb, bot_curb, lh
+CROWD = {"desktop": (956, 845), "phone": (1166, 845)}  # Baba Gidi + crowd position in the real capture
+
+def scene(w, h, sl, sb, name="desktop"):
+    """REAL 3D capture: reference/levels/L08_phone_landscape.jpg (dev build, L8 Third Mainland Bridge),
+    old HUD inpainted out, cropped/scaled by tools/prep_bg.py. Top 200 px = far shoulder fill (camera-aim proposal)."""
+    return f'<img class="scene" src="../assets/bg/hud_{name}.png" width="{w}" height="{h}" alt="real in-game capture">', 176, 0, 0
 
 def page(name, annot):
     w, h, sl, sr, st, sb, label = FRAMES[name]
-    svg, tc, bc, lh = scene(w, h, sl, sb)
+    svg, tc, bc, lh = scene(w, h, sl, sb, name)
+    cx, cy = CROWD[name]
     dpad = 3 * 144
     a = f"""<!doctype html><html><head><meta charset="utf-8"><title>HUD {name}</title>
 <link rel="stylesheet" href="../css/hud.css"></head>
@@ -64,8 +29,8 @@ def page(name, annot):
 <div class="safe">
   <div class="toprow">
   <div class="hud-tl glass" id="level">
-    <div class="lvl">L3 · OSHODI <span class="t">00:31</span></div>
-    <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b></div>
+    <div class="lvl">L8 · 3RD MAINLAND</div>
+    <div class="meta">Saved <b>4/6</b> · Best <b>00:42</b> · <span class="t">00:31</span></div>
   </div>
   <div class="hud-tc glass" id="stock">
     <div class="cell"><span class="k">GROUP</span><span class="pips"><i class="on"></i><i class="on"></i><i></i></span></div>
@@ -83,23 +48,24 @@ def page(name, annot):
   <div class="dpad {'touchonly' if name=='desktop' else ''}" id="dpad" >
     <b class="u">▲</b><b class="l">◀</b><b class="d">▼</b><b class="r">▶</b>
   </div>
-  {'<div class="keys glass">WASD / ← ↑ → ↓ move · Space pick up · Tab stats</div>' if name=='desktop' else ''}
+  {'<div class="keys glass">WASD / arrows: waka · Space: pick up · Tab: stats</div>' if name=='desktop' else ''}
 </div>
 """
     if annot:
         a += f"""<div class="ann">
   <div class="safeline"></div>
-  <div class="band hudband" style="top:0;height:{tc}px"><span>HUD band 0–{tc}px · far curb + goal shore visible under HUD</span></div>
-  <div class="band roadband" style="top:{tc}px;height:{bc-tc}px"><span>ROAD: 6 lanes, full width · {bc-tc}px tall ({lh:.0f}px/lane) · no HUD over lanes</span></div>
-  <div class="band ctlband" style="top:{bc}px;height:{h-bc}px"><span>Near curb + controls band · controls sit over sidewalk only</span></div>
+  <div class="band hudband" style="top:0;height:{tc}px"><span>HUD row 0–176 px over far shoulder / beyond-goal (camera aim proposal: far curb at y ≥ 200)</span></div>
+  <div class="crowdcol" style="left:{cx-240}px;width:480px;top:{cy-200}px;bottom:0"><span>Crowd column: keep clear (±240 px around Baba Gidi)</span></div>
+  <div class="persp"><span>Perspective: far lanes narrower than near lanes</span></div>
   <div class="note cam">
-   <h4>CAMERA FRAMING (RT-106)</h4>
-   <ul><li>Pitch 65° (TailCameraFollow.fixedEulerAngles), yaw 0, X locked</li>
-   <li>Vertical FOV 50–55°; keep vertical FOV fixed, so wider aspect = more lane length</li>
-   <li>Fit lanes×4 m + 2×1.5 m curb into the road band ({(bc-tc)/h*100:.0f}% of height)</li>
-   <li>Lane margin: ≥1.5 car lengths visible both sides of the crowd; at 19.5:9 ≈ 38 m of lane visible vs 32 m at 16:9 → cars seen ≈1.3–1.7 s before reaching the crowd</li>
-   <li>8-lane levels: raise height (15 → ~20 m), don't shrink HUD</li></ul></div>
-  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs (unlit, not graded)</li><li>HUD glass panels</li><li>Touch controls</li><li>Toasts</li><li>Modals (continue / pause)</li></ol></div>
+   <h4>CAMERA FRAMING: real perspective camera (RT-106)</h4>
+   <ul><li>3D URP perspective camera behind and above Baba Gidi, pitch 65° (TailCameraFollow), yaw 0, X locked, follows the crowd on Z</li>
+   <li>Vertical FOV fixed at 50–55°. A wider screen shows more lane length (19.5:9 shows more than 16:9)</li>
+   <li>Aim: crowd at ≈ 85% of screen height, so almost the whole screen is lanes still to cross</li>
+   <li>Far curb / goal must sit below the HUD row (y ≥ 200). Tilt or offset the aim so the top 176 px shows shoulder or beyond-goal</li>
+   <li>Far lane should span ≥ 70% of screen width so cars are seen early. On 8 lanes, raise the camera height before widening the FOV</li>
+   <li>Controls sit in the bottom corners, over road already crossed, never in the crowd column</li></ul></div>
+  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs (unlit)</li><li>HUD glass panels</li><li>Touch controls</li><li>Toasts</li><li>Modals</li></ol></div>
 </div>"""
     a += "</div></body></html>"
     fn = os.path.join(OUT, f"hud-{name}{'-annotated' if annot else ''}.html")

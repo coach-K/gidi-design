@@ -32,5 +32,11 @@
 .gostats div{background:rgba(255,255,255,.05);border-radius:24px;padding:22px}
 .gostats b{display:block;font-size:48px;color:#FAE69E}.gostats span{font-size:22px;color:#9EA3AD}
 .gobtns{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:20px}
-.gob{height:160px;color:#F5F5F0;font:inherit;font-size:36px}.gocta{height:160px}
+.gob{height:160px;color:#F5F5F0;font:inherit;font-size:36px}.gocta{height:160px;font-size:46px;white-space:nowrap}
 .gonote{margin-top:22px;font-size:22px;color:#9EA3AD}
+.realbg .scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.grade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,47,92,.55),rgba(242,140,75,.18) 55%,rgba(15,18,25,.55))}
+.home .grade,.realbg.home .grade{background:linear-gradient(90deg,rgba(15,18,25,.7),rgba(43,47,92,.25) 50%,rgba(15,18,25,.55)),linear-gradient(180deg,rgba(43,47,92,.5),rgba(242,140,75,.2))}
+.realbg.shop .grade{background:linear-gradient(180deg,rgba(15,18,25,.78),rgba(43,47,92,.6))}
+.srcnote{position:absolute;z-index:3;right:calc(var(--sr) + 16px);bottom:calc(var(--sb) + 4px);font-size:16px;color:rgba(245,245,240,.55)}
+.realbg.shop .srcnote,.realbg.home .srcnote{bottom:auto;top:calc(var(--st) + 160px)}

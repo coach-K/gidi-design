@@ -19,11 +19,11 @@ IAP = [("pack_skins_lagos","Lagos skins pack"),("pack_baba_fits","Baba fits pack
 LEVEL = (3, "Ikorodu Road")   # sample context
 ICON = {"owa":"📣","maltina_gala":"🥤","pure_water":"💧","bribe_change":"₦","siren":"🚨","agbero_whistle":"🎺"}
 
-def shell(name, body, title):
+def shell(name, body, title, bg):
     w,h,sl,sr,st,sb,label = FRAMES[name]
     return f"""<!doctype html><html><head><meta charset="utf-8"><title>{title} {name}</title>
 <link rel="stylesheet" href="../css/hud.css"><link rel="stylesheet" href="../css/mock.css"></head>
-<body style="width:{w}px;height:{h}px"><div class="frame {name} bgscene" style="width:{w}px;height:{h}px;--sl:{sl}px;--sr:{sr}px;--st:{st}px;--sb:{sb}px">
+<body style="width:{w}px;height:{h}px"><div class="frame {name} realbg {bg}" style="width:{w}px;height:{h}px;--sl:{sl}px;--sr:{sr}px;--st:{st}px;--sb:{sb}px"><img class="scene" src="../assets/bg/{bg}_{name}.png" alt="real in-game capture"><div class="grade"></div><div class="srcnote">Background: real build capture, {"L8 Third Mainland (dev build)" if bg!="shop" else "L1 Agege greybox (early build)"}, blurred</div>
 {'<div class="notch"></div><div class="homebar"></div>' if name=='phone' else ''}
 <div class="safe">{body}</div></div></body></html>"""
 
@@ -35,14 +35,14 @@ def wallet():
 def home(name):
     lv, nm = LEVEL
     return shell(name, f'''
-<div class="toprow"><div class="logo">GIDI<span>++</span><small>Cross Lagos. Don't get jammed.</small></div>{wallet()}</div>
+<div class="toprow"><div class="logo">GIDI<span>++</span><small>Carry dem cross. Lagos no dey wait.</small></div>{wallet()}</div>
 <div class="rating">12+</div>
 <div class="homecol">
-  <button class="glass big2">🗺 Lagos map<small>10 districts</small></button>
-  <button class="glass big2">🛍 Base Camp<small>Power-ups · fits</small></button>
-  <button class="cta">▶ PLAY<small>L{lv} · {nm}</small></button>
+  <button class="glass big2">🗺 Lagos map<small>10 districts · Agege to Ojuelegba</small></button>
+  <button class="glass big2">🛍 Base Camp<small>Load your bag before you cross</small></button>
+  <button class="cta">▶ OYA, PLAY<small>L{lv} · {nm}</small></button>
 </div>
-<div class="tag glass">Dusk at Ikorodu Road · danfos running</div>''', "Home")
+<div class="tag glass">Baba Gidi don ready. Owa! 📣</div>''', "Home", "home")
 
 def shop(name):
     lv, nm = LEVEL
@@ -51,35 +51,35 @@ def shop(name):
         locked = lv < first
         owned = {"owa":3,"maltina_gala":1,"pure_water":0}.get(pid,0)
         pips = "".join(f'<i class="{"on" if k<owned else ""}"></i>' for k in range(cap))
-        btn = f'<button class="buy lock">🔒 L{first}</button>' if locked else (
-              f'<button class="buy full">FULL</button>' if owned>=cap else f'<button class="buy">₦{cost}</button>')
+        btn = f'<button class="buy lock">🔒 Opens L{first}</button>' if locked else (
+              f'<button class="buy full">Bag full</button>' if owned>=cap else f'<button class="buy">₦{cost}</button>')
         rows += f'''<div class="item glass {'locked' if locked else ''}"><div class="ic">{ICON[pid]}</div>
 <div class="tx"><b>{disp}</b><span>{blurb}</span><span class="pips">{pips}<em>{owned}/{cap}</em></span></div>{btn}</div>'''
     iap = "".join(f'<div class="iap glass"><b>{d}</b><span>Store price</span></div>' for _,d in IAP)
     return shell(name, f'''
-<div class="toprow"><div class="hud-tl glass"><div class="lvl">BASE CAMP</div><div class="meta">Before L{lv} · {nm}</div></div>{wallet()}</div>
+<div class="toprow"><div class="hud-tl glass"><div class="lvl">BASE CAMP</div><div class="meta">Load your bag before L{lv} · {nm}</div></div>{wallet()}</div>
 <div class="shopgrid">{rows}</div>
-<div class="iaprow"><span class="iaph">FITS &amp; EXTRAS · cosmetic only, no power for cash</span>{iap}</div>
-<button class="cta shopgo">CROSS! ▶<small>L{lv} · {nm}</small></button>
-<button class="glass btn back">◀<small>Back</small></button>''', "Base Camp")
+<div class="iaprow"><span class="iaph">FITS &amp; EXTRAS · na drip only, no power for cash</span>{iap}</div>
+<button class="cta shopgo">OYA, CROSS! ▶<small>L{lv} · {nm}</small></button>
+<button class="glass btn back">◀<small>Back</small></button>''', "Base Camp", "shop")
 
 def gameover(name):
     lv, nm = LEVEL
     return shell(name, f'''
 <div class="dim"></div>
 <div class="gopanel glass">
-  <div class="goh">Eiya! That traffic got you…</div>
-  <div class="gosub">Run over at L{lv} · {nm}</div>
+  <div class="goh">Chai! Traffic don catch you…</div>
+  <div class="gosub">Run don end for L{lv} · {nm}. No wahala, try am again.</div>
   <div class="gostats">
     <div><b>4/6</b><span>Saved</span></div><div><b>00:31</b><span>Time · Best 00:42</span></div>
     <div><b>₦640</b><span>Run tips</span></div><div><b>{MAX_CONTINUES}/{MAX_CONTINUES}</b><span>Continue used</span></div>
   </div>
   <div class="gobtns">
     <button class="glass gob">🗺 Map</button><button class="glass gob">🛍 Base Camp</button>
-    <button class="cta gocta">↻ RETRY L{lv}</button>
+    <button class="cta gocta">↻ TRY AM AGAIN</button>
   </div>
   <div class="gonote">Fair play: max {MAX_CONTINUES} continue per run</div>
-</div>''', "Game over")
+</div>''', "Game over", "gameover")
 
 if __name__ == "__main__":
     for n in FRAMES:
