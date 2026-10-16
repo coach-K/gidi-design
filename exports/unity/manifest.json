@@ -2548,6 +2548,390 @@
    ],
    "border": null,
    "screen": "hud"
+  },
+  {
+   "name": "souvenir_L01",
+   "file": "souvenirs/1x/souvenir_L01.png",
+   "file2x": "souvenirs/2x/souvenir_L01.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L01_dim",
+   "file": "souvenirs/1x/souvenir_L01_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L01_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L02",
+   "file": "souvenirs/1x/souvenir_L02.png",
+   "file2x": "souvenirs/2x/souvenir_L02.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L02_dim",
+   "file": "souvenirs/1x/souvenir_L02_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L02_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L03",
+   "file": "souvenirs/1x/souvenir_L03.png",
+   "file2x": "souvenirs/2x/souvenir_L03.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L03_dim",
+   "file": "souvenirs/1x/souvenir_L03_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L03_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L04",
+   "file": "souvenirs/1x/souvenir_L04.png",
+   "file2x": "souvenirs/2x/souvenir_L04.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L04_dim",
+   "file": "souvenirs/1x/souvenir_L04_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L04_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L05",
+   "file": "souvenirs/1x/souvenir_L05.png",
+   "file2x": "souvenirs/2x/souvenir_L05.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L05_dim",
+   "file": "souvenirs/1x/souvenir_L05_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L05_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L06",
+   "file": "souvenirs/1x/souvenir_L06.png",
+   "file2x": "souvenirs/2x/souvenir_L06.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L06_dim",
+   "file": "souvenirs/1x/souvenir_L06_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L06_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L07",
+   "file": "souvenirs/1x/souvenir_L07.png",
+   "file2x": "souvenirs/2x/souvenir_L07.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L07_dim",
+   "file": "souvenirs/1x/souvenir_L07_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L07_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L08",
+   "file": "souvenirs/1x/souvenir_L08.png",
+   "file2x": "souvenirs/2x/souvenir_L08.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L08_dim",
+   "file": "souvenirs/1x/souvenir_L08_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L08_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L09",
+   "file": "souvenirs/1x/souvenir_L09.png",
+   "file2x": "souvenirs/2x/souvenir_L09.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L09_dim",
+   "file": "souvenirs/1x/souvenir_L09_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L09_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "souvenir_L10",
+   "file": "souvenirs/1x/souvenir_L10.png",
+   "file2x": "souvenirs/2x/souvenir_L10.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Souvenir (found)."
+  },
+  {
+   "name": "souvenir_L10_dim",
+   "file": "souvenirs/1x/souvenir_L10_dim.png",
+   "file2x": "souvenirs/2x/souvenir_L10_dim.png",
+   "size": [
+    256,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Not-found state: desaturated, 45% brightness and alpha."
+  },
+  {
+   "name": "perk_lives",
+   "file": "souvenirs/1x/perk_lives.png",
+   "file2x": "souvenirs/2x/perk_lives.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Perk icon (Souvenirs & Perks page)."
+  },
+  {
+   "name": "perk_ad_continue",
+   "file": "souvenirs/1x/perk_ad_continue.png",
+   "file2x": "souvenirs/2x/perk_ad_continue.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Perk icon (Souvenirs & Perks page)."
+  },
+  {
+   "name": "perk_cashout",
+   "file": "souvenirs/1x/perk_cashout.png",
+   "file2x": "souvenirs/2x/perk_cashout.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Perk icon (Souvenirs & Perks page)."
+  },
+  {
+   "name": "perk_owa_capacity",
+   "file": "souvenirs/1x/perk_owa_capacity.png",
+   "file2x": "souvenirs/2x/perk_owa_capacity.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "souvenirs",
+   "note": "Perk icon (Souvenirs & Perks page)."
   }
  ]
 }
