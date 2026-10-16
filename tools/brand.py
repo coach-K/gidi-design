@@ -81,3 +81,36 @@ if __name__ == "__main__":
     for n in PU_ACCENT:
         open(f"{ROOT}/icons/svg/badge_{n}.svg", "w").write(badge(n))
     print(len(ICONS), "icons")
+
+# --- outlined text (so exported logo SVGs don't depend on the font being installed) ---
+_FONT = None
+def text_path(txt, size, x=0, y=0, track=0):
+    global _FONT
+    from fontTools.ttLib import TTFont
+    from fontTools.pens.svgPathPen import SVGPathPen
+    from fontTools.pens.transformPen import TransformPen
+    if _FONT is None: _FONT = TTFont(f"{ROOT}/fonts/PlusJakartaSans-Bold.ttf")
+    gs, cmap, hmtx, upm = _FONT.getGlyphSet(), _FONT.getBestCmap(), _FONT["hmtx"], _FONT["head"].unitsPerEm
+    sc = size/upm; d = []; cx = x
+    for ch in txt:
+        g = cmap.get(ord(ch));
+        if g is None: continue
+        pen = SVGPathPen(gs); gs[g].draw(TransformPen(pen, (sc,0,0,-sc,cx,y))); d.append(pen.getCommands())
+        cx += hmtx[g][0]*sc + track
+    return " ".join(d), cx
+
+def wordmark(h=120, light=True, tagline=False, mono=None):
+    t = mono or (P["text"] if light else P["ink"]); acc = mono or P["gold"]
+    gidi, end = text_path("GIDI", 128, 0, 110, 2)
+    px = end + 14
+    plus = lambda x0: f'<path d="M{x0} 48h24V24h24v24h24v24h-24v24h-24V72h-{24}z"/>'.replace(f"M{x0} 48", f"M{x0:.0f} 48")
+    W = px + 192
+    tl = ""
+    if tagline:
+        d,_ = text_path("Carry dem cross. Lagos no dey wait.", 27, 2, 168, 0.5)
+        tl = f'<path d="{d}" fill="{mono or (P["naira"] if light else P["ctad"])}"/>'
+    hh = 180 if tagline else 132
+    stripes = "".join(f'<rect x="{6+i*44}" y="122" width="28" height="6" rx="2"/>' for i in range(int((W-10)//44)))
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W:.0f} {hh}" height="{h}">'
+            f'<path d="{gidi}" fill="{t}"/><g fill="{acc}">{plus(px)}{plus(px+92)}</g>'
+            f'<g fill="{t}" opacity=".85">{stripes}</g>{tl}</svg>')

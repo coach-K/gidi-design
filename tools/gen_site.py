@@ -2,10 +2,10 @@ import os
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES=[("index","Brand"),("guidelines","Guidelines"),("palette","Palette"),("typography","Typography"),("icons","Icons"),("logos","Logos & app icons"),("screens","Screens"),("levels","Levels"),("costumes","Costumes"),("souvenirs","Souvenirs & perks"),("devices","Devices")]
 def nav(cur):
-    return '<nav><a class="brand" href="index.html">GIDI<span>++</span></a>'+"".join(f'<a href="{k}.html"{" class=on" if k==cur else ""}>{t}</a>' for k,t in PAGES)+'<small>Design system v1.0 · Oct 2026 · LANDSCAPE ONLY (RT-106)</small></nav>'
+    return '<nav><a class="brand" href="index.html"><img src="logos/wordmark_light.svg" alt="GIDI++" height="34"></a>'+"".join(f'<a href="{k}.html"{" class=on" if k==cur else ""}>{t}</a>' for k,t in PAGES)+'<small>Design system v1.0 · Oct 2026 · LANDSCAPE ONLY (RT-106)</small></nav>'
 def page(k, body):
     t=dict(PAGES)[k]
-    open(os.path.join(ROOT,f"{k}.html"),"w").write(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gidi++ · {t}</title><link rel="stylesheet" href="css/site.css"></head><body>{nav(k)}<main>{body}</main></body></html>')
+    open(os.path.join(ROOT,f"{k}.html"),"w").write(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gidi++ · {t}</title><link rel="stylesheet" href="css/site.css"><link rel="icon" href="logos/app/web/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="logos/app/web/favicon-32.png"><link rel="apple-touch-icon" href="logos/app/web/apple-touch-icon.png"></head><body>{nav(k)}<main>{body}</main></body></html>')
 def stub(title, items):
     return f'<h1>{title} <span class="badge">STUB, phase 2</span></h1><div class="stub"><b>Planned contents</b><ul>'+"".join(f"<li>{i}</li>" for i in items)+'</ul></div>'
 
@@ -26,7 +26,7 @@ page("palette", sections.palette())
 page("typography", sections.typography())
 page("screens", sections.screens())
 page("icons", sections.icons())
-page("logos", stub("Logos &amp; app icons", ["GIDI++ wordmark (light, dark, mono), clear-space and minimum size","App icons: iOS 1024 master + sizes, Android adaptive (foreground/background 432 px, 108 dp safe zone), WebGL favicon / PWA 192/512","Store feature graphic 1024×500 and landscape screenshots (from the approved mockups)","12+ rating badge usage"]))
+page("logos", sections.logos())
 page("levels", sections.levels())
 page("costumes", sections.costumes())
 page("souvenirs", stub("Souvenirs &amp; perks", ["Souvenir collectibles per district (non-power, collection meta)","Perk rules: soft-currency only, caps from <code>PowerUpInventoryCap</code>, unlock levels from <code>PowerUpFirstLiveLevel</code>","Owa meter / combo rewards (vision v2 §8), once the numbers are in GidiEconomyTables","No economy numbers until they are in code"]))

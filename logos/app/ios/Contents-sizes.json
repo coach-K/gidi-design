@@ -1,0 +1,57 @@
+{
+ "images": [
+  {
+   "filename": "AppIcon-1024.png",
+   "size": "1024x1024px"
+  },
+  {
+   "filename": "AppIcon-180.png",
+   "size": "180x180px"
+  },
+  {
+   "filename": "AppIcon-167.png",
+   "size": "167x167px"
+  },
+  {
+   "filename": "AppIcon-152.png",
+   "size": "152x152px"
+  },
+  {
+   "filename": "AppIcon-120.png",
+   "size": "120x120px"
+  },
+  {
+   "filename": "AppIcon-87.png",
+   "size": "87x87px"
+  },
+  {
+   "filename": "AppIcon-80.png",
+   "size": "80x80px"
+  },
+  {
+   "filename": "AppIcon-76.png",
+   "size": "76x76px"
+  },
+  {
+   "filename": "AppIcon-60.png",
+   "size": "60x60px"
+  },
+  {
+   "filename": "AppIcon-58.png",
+   "size": "58x58px"
+  },
+  {
+   "filename": "AppIcon-40.png",
+   "size": "40x40px"
+  },
+  {
+   "filename": "AppIcon-29.png",
+   "size": "29x29px"
+  },
+  {
+   "filename": "AppIcon-20.png",
+   "size": "20x20px"
+  }
+ ],
+ "note": "Single-size 1024 is enough for Xcode 14+; smaller sizes provided for older targets."
+}
