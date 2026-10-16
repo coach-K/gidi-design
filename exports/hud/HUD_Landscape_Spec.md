@@ -50,3 +50,23 @@ From `TailCameraFollow` + `UI/HudLandscapeConfig.cs` on team-branch:
 4. Touch controls (7, 8)
 5. Toasts
 6. Modals (continue, pause, stats)
+
+## Orientation lock (done)
+Landscape lock is in the build: parent repo **PR #9, merged to main** (Landscape Left + Landscape Right only; portrait never shows). WebGL on a phone still can't hard-lock, so it shows the rotate prompt (Devices page).
+
+## Tablet 4:3: two-row HUD (aspect < 1.5)
+Matching height at 1920×1080 gives a **1440×1080** reference canvas on 4:3 (iPad landscape). The one-row top HUD needs about 1,750 ref px, so on tablets it splits into two rows. Nothing else changes: same components, sizes, font, colours and camera.
+
+Mockups: `exports/devices/dev-tablet-hud.png` (clean) and `exports/devices/dev-tablet-hud-annot.png` (numbered zones). Source: `tools/gen_tablet.py`.
+
+| # | Zone | Anchor (safe rect) | Size (ref px) | Notes |
+|---|---|---|---|---|
+| 1 | Level card (title + Saved · Best · timer) | top-left (0, 0) | 560×144 | Width fixed to the stock panel so the column is one block. Long names drop to 40 px (as on phone) |
+| 2 | Stock panel GROUP / CHANGE / OWA! | top-left (0, 160) | 560×144 | Row gap 16. Same pips and OWA! gold label |
+| 3 | Wallet · lives · Stats · Pause | top-right (0, 0) | ≈705×144 | Unchanged from desktop. Buttons stay 144×144 (48 dp) |
+| 4 | Keep-clear zone | right of the column, y 160–304 | — | Nothing goes here, so the far curb / goal zone stays readable at the 65° camera |
+| – | HUD band | — | ends at y = 336 (32 safe + 304) | 31% of height, vs 16% on desktop. The extra band only covers the far-curb side of the left column |
+| – | PICK UP | bottom-left, 24 px in from the safe corner | 216 Ø (radius 10% H) | Pulled in from the 12.2% W phone position so it stays inside the tablet safe rect |
+| – | D-pad | bottom-right, 12 px in from the safe corner | 324 Ø (radius 15% H) | Slightly smaller than desktop (16.7% H) so it clears the iPad home indicator; arrows stay ≥ 88 px |
+
+**Switch rule:** `aspect = Screen.safeArea.width / Screen.safeArea.height`. If it's under 1.5, use the two-row layout (a `HudLayoutSwitcher` on the HUD root toggles a second `HorizontalLayoutGroup` row). Otherwise use one row. Safe margins: 32 px sides/top, 40 px bottom (iPad home indicator).
