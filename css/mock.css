@@ -1,0 +1,36 @@
+.bgscene{background:linear-gradient(180deg,#2B2F5C 0%,#6B4A6E 30%,#F28C4B 52%,#26272E 53%,#1E1F26 75%,#5E3A2A 76%)}
+.bgscene::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 140px,rgba(232,226,208,.25) 140px 200px) 0 64%/100% 6px no-repeat,radial-gradient(ellipse at 70% 60%,rgba(255,231,176,.35),transparent 40%)}
+.safe{z-index:2}
+.logo{font-size:96px;letter-spacing:.02em;line-height:1;color:#F5F5F0;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.logo span{color:#E8B21E}.logo small{display:block;font-size:30px;color:#FAE69E;margin-top:8px}
+.rating{position:absolute;left:0;top:190px;border:3px solid #F5F5F0;border-radius:12px;padding:4px 14px;font-size:28px}
+.homecol{position:absolute;right:0;bottom:24px;display:flex;flex-direction:column;gap:20px;width:560px}
+.big2{height:144px;color:#F5F5F0;font:inherit;font-size:36px;text-align:left;padding:0 36px;display:flex;flex-direction:column;justify-content:center}
+.big2 small,.cta small{font-size:24px;color:#9EA3AD}
+.cta{height:192px;border-radius:32px;border:3px solid rgba(255,216,115,.6);background:linear-gradient(180deg,#2E7A68,#18493F);color:#F5F5F0;font:inherit;font-size:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.cta small{color:#FAE69E}
+.tag{position:absolute;left:0;bottom:24px;padding:16px 26px;font-size:24px;color:#9EA3AD}
+.shopgrid{position:absolute;left:0;right:0;top:176px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.item{height:220px;display:flex;align-items:center;gap:20px;padding:20px 24px}
+.item .ic{width:110px;height:110px;flex:none;border-radius:24px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:60px;color:#FAE69E}
+.item .tx{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
+.item b{font-size:33px}.item span{font-size:22px;color:#9EA3AD;line-height:1.25}
+.item .pips em{font-style:normal;font-size:22px;margin-left:8px;color:#F5F5F0}
+.buy{flex:none;min-width:150px;height:144px;border-radius:24px;border:2px solid rgba(255,216,115,.5);background:#18493F;color:#FAE69E;font:inherit;font-size:34px}
+.buy.full{background:#2a2d36;color:#9EA3AD}.buy.lock{background:#1a1c22;color:#9EA3AD;font-size:28px}
+.locked .ic,.locked b{opacity:.5}
+.iaprow{position:absolute;left:0;bottom:24px;right:540px;display:flex;gap:16px;align-items:flex-end}
+.iaph{position:absolute;top:-38px;left:0;font-size:22px;color:#E8B21E;letter-spacing:.06em}
+.iap{flex:1;height:144px;display:flex;flex-direction:column;justify-content:center;padding:0 22px}
+.iap b{font-size:27px}.iap span{font-size:22px;color:#9EA3AD}
+.shopgo{position:absolute;right:0;bottom:24px;width:500px}
+.back{position:absolute;display:none}
+.dim{position:absolute;inset:-200px;background:rgba(2,3,5,.62)}
+.gopanel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1240px;padding:48px 56px;text-align:center;border-radius:40px;background:rgba(10,12,18,.88)}
+.goh{font-size:60px;color:#FF7A1A}.gosub{font-size:30px;color:#9EA3AD;margin-top:8px}
+.gostats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:36px 0}
+.gostats div{background:rgba(255,255,255,.05);border-radius:24px;padding:22px}
+.gostats b{display:block;font-size:48px;color:#FAE69E}.gostats span{font-size:22px;color:#9EA3AD}
+.gobtns{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:20px}
+.gob{height:160px;color:#F5F5F0;font:inherit;font-size:36px}.gocta{height:160px}
+.gonote{margin-top:22px;font-size:22px;color:#9EA3AD}
