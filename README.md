@@ -20,3 +20,7 @@ python3 tools/gen_logos.py && python3 tools/gen_devices.py && python3 tools/gen_
 cd tools && python3 gen_site.py
 ```
 Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Other numbers come from G-Prototype `Economy/GidiEconomyTables.cs` and `LevelManager.cs`; anything undefined is marked TBD. The `maltina_gala` pickup is displayed as “Malta & Agege Roll”. Font: Plus Jakarta Sans Bold (SIL OFL 1.1, `fonts/OFL.txt`).
+
+## Hidden pages
+Costumes, Vehicles and Power-ups are **hidden pending Kehinde's review** (Oct 16). They're left out of the nav, the index cards and cross-links, and they carry `<meta name="robots" content="noindex">`. The files stay in the repo and are **still reachable by direct URL** (`costumes.html`, `vehicles.html`, `powerups.html`).
+To restore them: remove the keys from `HIDDEN` in `tools/gen_site.py`, re-add the index cards in the same file, then run `cd tools && python3 gen_site.py` and push.
