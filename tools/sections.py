@@ -272,3 +272,23 @@ def souvenirs():
 <div class="icgrid">{cards}</div>
 <div class="card" style="display:flex;gap:18px;align-items:center">{souv_svg(5,"","".join(g for n,_,g in SOUV if n==5))}{souv_svg(6,"","".join(g for n,_,g in SOUV if n==6),locked=True)}<div><b>States:</b> collected (left) vs not found (right, 25% and greyscale).<br>Drop chance, where it spawns, rewards for a full set and whether souvenirs give chips: <span class="badge">TBD</span>, needs economy numbers in <code>GidiEconomyTables</code> first.</div></div>
 <h2>Perk badges (visual)</h2><div class="icgrid"><div class="ic">{badge("owa",80)}<b>Owa! +1 capacity</b><span>₦500 · cap TBD</span></div><div class="ic">{icon("lives",64,"#FF6B7A")}<b>Lives</b><span>3 per run</span></div><div class="ic">{icon("ad",64)}<b>Watch-ad continue</b><span>1 per run</span></div><div class="ic">{icon("chip",64)}<b>Cash-out</b><span>50 / 75 chips</span></div></div>'''
+
+def devices():
+    from gen_devices import DEV
+    t = "".join(f'<tr><td>{lab}</td><td>{W}×{H}</td><td>L {l} · R {r} · T {t_} · B {b}</td><td>{W-l-r}×{H-t_-b}</td></tr>' for k,(lab,W,H,(l,r,t_,b),cut,rad) in DEV.items())
+    tpl = "".join(f'<figure class="cos"><a href="exports/devices/dev-{k}.png"><img loading="lazy" src="exports/devices/dev-{k}.png" alt="{DEV[k][0]} template"></a><figcaption><b>{DEV[k][0]}</b></figcaption></figure>' for k in DEV)
+    fr = "".join(f'<figure class="cos"><a href="exports/devices/{f}.png"><img loading="lazy" src="exports/devices/{f}.png" alt="{f}"></a><figcaption>{c}</figcaption></figure>' for f,c in [
+        ("dev-iphone-hud-phone","iPhone · in-run HUD"),("dev-iphone-home-phone","iPhone · Home"),("dev-android-hud-warn-phone","Android · HUD warnings"),("dev-android-shop-phone","Android · Base Camp"),
+        ("dev-web-hud-desktop","Web · in-run HUD"),("dev-web-map-desktop","Web · Lagos map")])
+    return f'''<h1>Devices (Android · iOS · Web)</h1><p class="lead"><b>Landscape only on every device</b> (RT-106). One layout: CanvasScaler 1920×1080, match height; everything placed inside <code>Screen.safeArea</code> (<code>SafeAreaFitter</code>). Orange hatching = unsafe (notch, punch-hole, home indicator); blue dashes = safe area.</p>
+<h2>Orientation lock</h2><div class="card"><ul>
+<li><b>iOS / Android:</b> Player Settings → Resolution and Presentation → Default Orientation <b>Auto Rotation</b> with only <b>Landscape Left</b> and <b>Landscape Right</b> allowed (Android manifest ends up as <code>sensorLandscape</code>). Portrait never shows.</li>
+<li><b>WebGL desktop:</b> fixed 16:9 canvas in the <code>GidiFullscreen</code> template; <code>AdaptiveCanvasMatch</code> re-applies the match on resize.</li>
+<li><b>WebGL on a phone:</b> browsers can't hard-lock. When held upright, show the rotate prompt below (no portrait layout); in fullscreen, also try <code>screen.orientation.lock("landscape")</code>. PWA manifest sets <code>"orientation": "landscape"</code>.</li>
+<li>Player Settings live outside the design repo; confirming the lock is set in the build: <span class="badge">TBD</span> (engineering).</li></ul></div>
+<h2>Safe-area templates</h2><table><tr><th>Device</th><th>Pixels</th><th>Insets (typical)</th><th>Safe area</th></tr>{t}</table>
+<p class="small">Inset values are typical for each class; Android cutouts differ per model, so always read <code>Screen.safeArea</code>. Touch controls: PICK UP bottom-left and d-pad bottom-right, both inside the safe area; minimum touch target 144 px (48 dp).</p>
+<div class="cosgrid wide">{tpl}</div>
+<div class="card dont"><b>Tablet risk (4:3):</b> matching height at 1920×1080 gives a 1440-wide reference canvas on 4:3. The top HUD row (level card + GROUP/CHANGE/OWA! + wallet/lives/stats/pause) needs about 1,750 ref px, so it won't fit. Proposal: on aspect &lt; 1.5, use the match-width blend or a compact stock panel. Decision <span class="badge">TBD</span>.</div>
+<h2>Device-framed mockups</h2><div class="cosgrid wide">{fr}</div>
+<h2>Web: phone held upright</h2><div style="max-width:320px"><a href="exports/devices/dev-rotate-prompt.png"><img class="shot" src="exports/devices/dev-rotate-prompt.png" alt="Rotate prompt"></a></div>'''
