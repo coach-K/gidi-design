@@ -151,3 +151,22 @@ Clearances (1080): top row ends y 176 and the power-up chip/ring under it spans 
 **Base Camp.** Bag strip bottom-left (120 slots, "YOUR BAG n/4"), tiles: new type with no free slot → `btn_buy_full` "Bag full"; same type below cap → "+1 to stack"; Siren bought this level → "Used this level" + next price. Level intro shows the carried-over bag (see `../unity/screens/intro/README.md`, bag row).
 
 **Open question.** OWA! stays a separate button above PICK UP (current build) AND OWA charges sit in the bag (mockups show both: the button fires a charge, the slot shows the count). Confirm: keep both, or drop the OWA! button and use only the slot (frees the PICK UP stack).
+
+## Power-up active + Owa countdown ring (RT-118, G-Prototype PR #107)
+Mockups: `hud-owa-*` (Owa freeze running while a Malta chip runs), `owa-ring-states-*`. Code: `ActivePowerUpHudRules`, `MobileControlsView.SetOwaActive(remaining01, totalSeconds)`, called from `GameHudController.RefreshAll` with `traffic.OwaRemainingNormalized` and `LevelManager.owaShoutFreezeDuration` (4 s).
+
+| Power-up (`HudPowerUp`) | `ActiveIndicator` | What the HUD draws |
+|---|---|---|
+| Owa | `OwaButtonRing` | ring around the OWA! button (below) |
+| Maltina / PureWater / Siren | `TimerChip` (`ActiveChipKind` Malta / PureWater / Siren) | existing timer chip under the top band, gold ring + `Malta · 4s` caption (PR #85, unchanged) |
+| Bribe (CHANGE) | `StockCountOnly` | CHANGE pips drop by one, nothing else |
+| Whistle | `Removed` | nothing (removed in #39) |
+
+**Owa ring (`FreezeTimer` Image)**
+- Sprite: reuse `ring_powerup_timer_fill` (white, tinted at runtime). Optional track: `ring_powerup_timer_track` at the same size (white 15%), only while the ring shows. No new sprite needed.
+- Size **140 px Ø** at 1080 (`OwaRingDiameter`), centred on the 144 touch box, i.e. just outside the 120 px face and its glow. The 170 px sprite scaled to 140 gives an ≈8 px stroke (`OwaRingThickness`).
+- Image Type Filled, Radial 360, origin Top, **counter-clockwise** (`fillClockwise = false`), `fillAmount = OwaRingFill(remaining01)`; raycastTarget off; draws above the rim and below the label.
+- Colour: Owa teal `#59D9B8` (`GameUiTheme.OwaTeal`). In the last `PowerUpChipRules.WarningSeconds` it turns `GameUiTheme.Danger` (Okabe-Ito vermilion), paired with a shape cue: add a 1 Hz scale pulse (1.00 → 1.06) on the ring so it doesn't rely on colour alone.
+- Visible only while `remaining01 > PowerUpChipRules.MinActive`; hide instantly at the end (no fade needed).
+- **Pips keep showing charges left** (the charge was spent on tap, so a 2-charge button shows 1 filled pip while the ring runs). Button stays tappable only if another charge exists; a second tap while frozen is queued/ignored per `_owaQueued` (no visual change).
+- Bag (GPP-021): if OWA! moves into the bag, the same ring draws around the Owa bag slot at 124 px (`bag_slot_active` + the ring), same colours.
