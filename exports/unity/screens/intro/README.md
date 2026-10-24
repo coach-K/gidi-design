@@ -58,3 +58,16 @@ Reduce motion: no scale/slide, fades only (150 ms). Buttons accept taps from 300
 1. L1–L9 source captures came from the build with missing vehicle models (see Levels page note); swap in fresh captures when available (re-run `tools/gen_intro_bgs.py`).
 2. Mobile switch rule: `isMobilePlatform` vs aspect ratio (tablets 4:3 would then use the desktop file, cropped by Envelope).
 3. Dim 20%: confirm on device; raise to 30% if the subtitle feels weak on bright levels (L4, L9).
+
+## Bag row on the card (reserved zone, RT-116 / PR #101, matches GPP-021)
+The card grows from 660 to **860** high (1280×720: 573) to make room; the card centre stays 40 px above the safe centre (desktop card y 38–898 in safe, phone 26–886: both fit). Everything above the power-up chips is unchanged.
+
+| Element (card-local, top-left origin) | 1280×720 | 1920 / 2340 |
+|---|---|---|
+| Power-ups header / chips | y 295 / 321 | y 442 / 482 (unchanged) |
+| Bag header `IN YOUR BAG · carried over from {previous level}` (24 px gold, tracking 8%) | x 37, y 361 | x 56, y 542 |
+| **Bag row (reserved zone)**: 4 slots 120 × 120, gap 12 → 516 × 120 | x 37, y 384, 344 × 80 | x 56, y 576, 516 × 120 |
+| Helper text right of the row ("n of 4 slots used · Nothing fires by itself · VIP Siren: one per level", 22 px #9EA3AD) | x 393, y 389 | x 590, y 584, ≤ 280 wide |
+| Buttons (CTA 380 × 144, Base Camp 300 × 144) | y 468 | y = 860 − 44 − 144 + 30 = **702** (bag row ends 696) |
+
+Slots use the GPP-021 sprites at 120 (`bag_slot_normal` / `bag_slot_empty`, badge 80, `bag_count_badge`), read-only on this card (tap = no-op, or opens Base Camp on L2+ if you want; open question). Fresh run with an empty bag: show the row with 4 empty slots and the helper "Bag empty · stock up in Base Camp". L1 (no power-ups yet): hide the bag header + row and keep the 660 card. Concept mockup: `exports/intro-bag-*.png`.

@@ -4043,6 +4043,180 @@
    "border": null,
    "screen": "all",
    "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "bag_slot_normal",
+   "file": "sprites@1x/hud/bag/bag_slot_normal.png",
+   "file2x": "sprites@2x/hud/bag/bag_slot_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud,shop,intro",
+   "note": "Bag slot frame 144×144 HUD (120×120 Base Camp strip). Badge 96 centred (84 while active, inside the timer ring)."
+  },
+  {
+   "name": "bag_slot_pressed",
+   "file": "sprites@1x/hud/bag/bag_slot_pressed.png",
+   "file2x": "sprites@2x/hud/bag/bag_slot_pressed.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud,shop,intro",
+   "note": "Bag slot frame 144×144 HUD (120×120 Base Camp strip). Badge 96 centred (84 while active, inside the timer ring)."
+  },
+  {
+   "name": "bag_slot_full",
+   "file": "sprites@1x/hud/bag/bag_slot_full.png",
+   "file2x": "sprites@2x/hud/bag/bag_slot_full.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud,shop,intro",
+   "note": "Bag slot frame 144×144 HUD (120×120 Base Camp strip). Badge 96 centred (84 while active, inside the timer ring)."
+  },
+  {
+   "name": "bag_slot_active",
+   "file": "sprites@1x/hud/bag/bag_slot_active.png",
+   "file2x": "sprites@2x/hud/bag/bag_slot_active.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "hud,shop,intro",
+   "note": "Bag slot frame 144×144 HUD (120×120 Base Camp strip). Badge 96 centred (84 while active, inside the timer ring)."
+  },
+  {
+   "name": "bag_slot_empty",
+   "file": "sprites@1x/hud/bag/bag_slot_empty.png",
+   "file2x": "sprites@2x/hud/bag/bag_slot_empty.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Empty slot (not 9-slice, use at 144 or 120). Not tappable."
+  },
+  {
+   "name": "bag_overlay_active_glow",
+   "file": "sprites@1x/hud/bag/bag_overlay_active_glow.png",
+   "file2x": "sprites@2x/hud/bag/bag_overlay_active_glow.png",
+   "size": [
+    192,
+    192
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 52,
+    "right": 52,
+    "top": 52,
+    "bottom": 52
+   },
+   "screen": "hud",
+   "note": "Active/running glow, 24 px margin. Ring: reuse ring_powerup_timer_track + ring_powerup_timer_fill scaled to 124 (r 59)."
+  },
+  {
+   "name": "bag_overlay_cooldown",
+   "file": "sprites@1x/hud/bag/bag_overlay_cooldown.png",
+   "file2x": "sprites@2x/hud/bag/bag_overlay_cooldown.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "White rounded square: Image Type Filled, Radial 360, origin Top, clockwise, fillAmount = cooldown left; tint #0A0C12 @66%. TMP seconds 22 px bottom."
+  },
+  {
+   "name": "bag_overlay_disabled",
+   "file": "sprites@1x/hud/bag/bag_overlay_disabled.png",
+   "file2x": "sprites@2x/hud/bag/bag_overlay_disabled.png",
+   "size": [
+    144,
+    144
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "hud",
+   "note": "Disabled (used this level / not usable now): over a greyscale badge at 50% alpha; reason label TMP 18 px #9EA3AD under the slot."
+  },
+  {
+   "name": "bag_count_badge",
+   "file": "sprites@1x/hud/bag/bag_count_badge.png",
+   "file2x": "sprites@2x/hud/bag/bag_count_badge.png",
+   "size": [
+    44,
+    44
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 22,
+    "right": 22,
+    "top": 22,
+    "bottom": 22
+   },
+   "screen": "hud,shop",
+   "note": "Count pill ×N (N ≥ 2; OWA always), top-right at (−8, −8) outside the slot. TMP 24 px #0F1219, stretch horizontally."
   }
  ]
 }

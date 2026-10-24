@@ -115,3 +115,39 @@ Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in 
 | Gist Bomb | 100 | 1 | L8 |
 
 Pure Water follows the game, not the vision doc (Kehinde, Oct 16). Shop copy “Full immunity, once until cash-out”; used state “used, cash out to refresh”. Agbero Whistle is removed from the game (#39): not in the shop, HUD or exports (assets archived).
+
+## Bag (GPP-021): 4 shared slots, tap to activate
+Mockups: `hud-bag-*` (Owa ×3, Malta running, Siren cooldown, 1 empty), `hud-bagfull-*`, `bag-states-*`, `siren-states-*`, `shop-bag-*`, `intro-bag-*`. Source `tools/gen_bag.py`, CSS `css/bag.css`, sprites `../unity/sprites@{1x,2x}/hud/bag/`.
+
+**Rules.** 4 slots shared by Pure Water, Malta, VIP Siren, Change and OWA charges. One item type per slot, stacked up to its cap (Owa 3, Malta 2, Change 2, Pure Water 1, Siren 1); count pill ×N. Nothing fires by itself: the player taps a slot. The bag carries over between levels (cleared only by `RestartPoolKeepProgress(resetInventory: true)` / a new run).
+
+**Position** (anchor bottom-right of `Screen.safeArea`, pivot bottom-right; one row of 4):
+| | 1280×720 ref | 1920×1080 desktop | 2340×1080 phone |
+|---|---|---|---|
+| Slot / gap | 96 × 96 / 8 | 144 × 144 / 12 | 144 × 144 / 12 |
+| Row size | 408 × 96 | 612 × 144 | 612 × 144 |
+| Right edge | safe right − 21.3 | x 1888 (row x 1276–1888) | x 2176 (safe right 2208 − 32; row x 1564–2176) |
+| Bottom edge | d-pad top − 16 (≈ y 386 from top) | y 554 (row y 410–554); d-pad top 578 | y 554 (row y 410–554) |
+| "BAG · TAP TO USE" label | 13 px, 29 above | 20 px gold, tracking 10%, 44 above the row, dark text shadow | same |
+Clearances (1080): top row ends y 176 and the power-up chip/ring under it spans y 198–368 at the centre (x 875–1045) → bag starts y 410 and x ≥ 1276. PICK UP (360, 786) / OWA! (360, 574) are on the left half. D-pad starts y 578. Tablet 4:3 (1440 ref): row x 796–1408, y 410–554, below the two-row HUD band (ends y 336).
+
+**Slot states** (all 144 × 144 touch targets):
+| State | Look | Sprites |
+|---|---|---|
+| Empty | dashed outline 35%, faint +, not tappable | `bag_slot_empty` |
+| Filled | glass frame, badge 96, ×N pill when N ≥ 2 (OWA always) | `bag_slot_normal`, `badge_*`, `bag_count_badge` |
+| Active / running | gold frame + glow, badge 84 inside the timer ring (124 Ø): reuse `ring_powerup_timer_track` + `ring_powerup_timer_fill` (tint #E8B21E, fillAmount = time left) | `bag_slot_active`, `bag_overlay_active_glow` |
+| Cooldown | white radial `bag_overlay_cooldown` tinted #0A0C12 @66%, Filled Radial 360 from top clockwise, seconds TMP 22 px | `bag_overlay_cooldown` |
+| Disabled | greyscale badge 50%, `bag_overlay_disabled`, reason TMP 18 px under the slot ("Used this level") | `bag_overlay_disabled` |
+| Pressed | scale 0.92 | `bag_slot_pressed` |
+| Full (pickup refused) | orange #FF7A1A frame + shake | `bag_slot_full` |
+
+**Tap feedback.** Scale 1 → 0.92 (80 ms) → 1.0 (120 ms ease-out back); light haptic (iOS `UIImpactFeedbackGenerator.light`, Android `VIRTUAL_KEY`); sound `sfx_bag_slot_tap`, then the item's own cue. Denied tap (cooldown / disabled / empty): 6 px horizontal shake 3× in 240 ms, `sfx_bag_denied`, no haptic.
+
+**Full bag on pickup (chosen behaviour).** The item is NOT picked up and stays on the curb (pickup marker stays lit); all 4 slots shake (6 px, 240 ms) with the orange `bag_slot_full` frame for 600 ms; toast `panel_toast_normal` with `icon_bag` tinted #FF7A1A: "Bag full · tap a slot to use one" (2 s, one toast per 4 s max). Exception: a stackable item whose type is already in the bag below its cap stacks normally.
+
+**VIP Siren anti-exploit.** One per level (after use the slot shows Disabled "Used this level" until the next level); 8 s cooldown after the 5 s effect ends; price per run 120 → 180 → 270 (stays 270), resets at cash-out. Base Camp tile shows the next price ("next ₦180"); states in `siren-states-*`.
+
+**Base Camp.** Bag strip bottom-left (120 slots, "YOUR BAG n/4"), tiles: new type with no free slot → `btn_buy_full` "Bag full"; same type below cap → "+1 to stack"; Siren bought this level → "Used this level" + next price. Level intro shows the carried-over bag (see `../unity/screens/intro/README.md`, bag row).
+
+**Open question.** OWA! stays a separate button above PICK UP (current build) AND OWA charges sit in the bag (mockups show both: the button fires a charge, the slot shows the count). Confirm: keep both, or drop the OWA! button and use only the slot (frees the PICK UP stack).

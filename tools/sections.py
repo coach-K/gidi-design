@@ -18,6 +18,10 @@ SCREENS = [  # key, title, group, note
  ("hud-warn","HUD · warnings (colour + shape)","In-run","Caution ▲, Danger ≫, LASTMA ◆, Safe gap bar. Background: L8 Third Mainland Bridge (8 lanes, wide camera)."),
  ("hud-toast","HUD · toasts","In-run","Owa unlock (code copy), group coach line, \"Found Owa\" grant toast. Background: L2 Surulere Way."),
  ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). The score strip shows only in L10 endless mode; L1–L9 don't show it. Background: L10 Ojuelegba Chaos."),
+ ("hud-bag","HUD · bag (GPP-021)","In-run","4 shared slots bottom-right above the d-pad: Owa ×3, Malta running (timer ring), VIP Siren cooldown (radial), one empty. Tap to use; nothing fires by itself; the bag carries over. Spec: HUD_Landscape_Spec.md › Bag."),
+ ("hud-bagfull","HUD · bag full on pickup","In-run","Item isn't picked up and stays on the curb; slots shake with an orange frame; toast 'Bag full · tap a slot to use one'."),
+ ("bag-states","Bag · slot states","In-run","Empty, filled ×N, active/running, cooldown, disabled, full, pressed + tap feedback (scale 0.92, light haptic, sfx_bag_slot_tap)."),
+ ("siren-states","VIP Siren · anti-exploit","In-run","One per level, 8 s cooldown, price per run ₦120 → ₦180 → ₦270 (resets at cash-out): Base Camp tile states (available + next price, used this level, bag full) and slot looks."),
  ("pause","Pause","Run modals","Resume, Restart, Settings, Map, Stats. Background: L5 (blurred)."),
  ("stats","Stats","Run modals","Run stats (values are samples)."),
  ("continue","Continue modal (1 per run)","Run modals","Watch ad / ₦125 chips at L2+ (₦100 at L1) / End run. MaxContinuesPerRun = 1."),
@@ -27,6 +31,8 @@ SCREENS = [  # key, title, group, note
  ("leaderboard","Leaderboards · per level (RT-109)","Leaderboards","L1–L9 ranked by clear time, fastest first (mm:ss.mmm), with the run's Naira chips. Level tabs L1–L10, Global / Friends filter, top-3 star / hexagon / circle badges, the player's own row pinned at the bottom. Entry: Home and Level clear. Background: the selected level's screenshot (L4 Mushin Market, blurred)."),
  ("leaderboard-endless","Leaderboards · L10 endless (Friends)","Leaderboards","L10 has no clear time: ranked by the game's endless score (<code>EndlessRunScore</code>: metres + 25/delivery + 10/combo step), distance shown as a secondary column. Friends filter; when you're in view your row is highlighted in place and not pinned twice. Background: L10 Ojuelegba Chaos."),
  ("leaderboard-states","Leaderboards · states","Leaderboards","Loading (skeleton rows + spinner), empty (first time on a level), offline (cached personal best, Try again), not signed in (local best kept, Sign in). Background: L6 Ikeja Along."),
+ ("shop-bag","Base Camp · with bag","Menus","Bag strip 4/4 full; Pure Water and Change show 'Bag full', Malta '+1 to stack', VIP Siren 'Used this level' with next price ₦180. Background: L4 shop grade, context L7."),
+ ("intro-bag","Level intro · bag carry-over","Menus","The bag carried over from the last level on the district card (RT-116 bag row)."),
  ("settings","Settings","Menus","Audio, Controls (touch only), Display, Accessibility, Account. Background: L9 (blurred)."),
  ("credits","Credits","Menus","Names TBD. Background: L10 (blurred)."),
 ]
@@ -289,7 +295,7 @@ def devices():
     tpl = "".join(f'<figure class="cos"><a href="exports/devices/dev-{k}.png"><img loading="lazy" src="exports/devices/dev-{k}.png" alt="{DEV[k][0]} template"></a><figcaption><b>{DEV[k][0]}</b></figcaption></figure>' for k in DEV)
     fr = "".join(f'<figure class="cos"><a href="exports/devices/{f}.png"><img loading="lazy" src="exports/devices/{f}.png" alt="{f}"></a><figcaption>{c}</figcaption></figure>' for f,c in [
         ("dev-iphone-hud-phone","iPhone · in-run HUD"),("dev-iphone-home-phone","iPhone · Home"),("dev-android-hud-warn-phone","Android · HUD warnings"),("dev-android-shop-phone","Android · Base Camp"),
-        ("dev-web-hud-desktop","Web · in-run HUD"),("dev-web-map-desktop","Web · Lagos map"),("dev-iphone-leaderboard-phone","iPhone · Leaderboard"),("dev-web-leaderboard-desktop","Web · Leaderboard")])
+        ("dev-web-hud-desktop","Web · in-run HUD"),("dev-web-map-desktop","Web · Lagos map"),("dev-iphone-leaderboard-phone","iPhone · Leaderboard"),("dev-web-leaderboard-desktop","Web · Leaderboard"),("dev-android-hud-bag-phone","Android · HUD bag")])
     return f'''<h1>Devices (Android · iOS · Web)</h1><p class="lead"><b>Landscape only on every device</b> (RT-106). One layout: CanvasScaler 1920×1080, match height; everything placed inside <code>Screen.safeArea</code> (<code>SafeAreaFitter</code>). Orange hatching = unsafe (notch, punch-hole, home indicator); blue dashes = safe area.</p>
 <h2>Orientation lock</h2><div class="card"><ul>
 <li><b>iOS / Android:</b> Player Settings → Resolution and Presentation → Default Orientation <b>Auto Rotation</b> with only <b>Landscape Left</b> and <b>Landscape Right</b> allowed (Android manifest ends up as <code>sensorLandscape</code>). Portrait never shows.</li>

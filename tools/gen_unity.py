@@ -118,6 +118,15 @@ add("skeleton_bar", "leaderboard", 40, 18, box(40, 18, "border-radius:9px;backgr
 add("skeleton_row", "leaderboard", 64, 56, box(64, 56, "border-radius:18px;background:rgba(255,255,255,.07)"), "leaderboard", [20, 20, 20, 20], note="Loading row base; add the moving shimmer in code (or skip if Reduce motion).")
 add("spinner_arc", "leaderboard", 72, 72, '<svg viewBox="0 0 72 72" width="72" height="72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="8"/><path d="M36 6a30 30 0 0 1 30 30" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/></svg>', "leaderboard", note="Spinner: rotate 360°/1 s; tint the arc #E8B21E.")
 
+# ---------- bag (GPP-021) ----------
+nine("bag_slot", "hud/bag", "hud,shop,intro", (96, 96), 28, {"normal": GLASS, "pressed": GLASS_P, "full": "background:rgba(15,18,25,.72);border:3px solid #FF7A1A",
+     "active": "background:rgba(15,18,25,.72);border:3px solid #E8B21E"}, "Bag slot frame 144×144 HUD (120×120 Base Camp strip). Badge 96 centred (84 while active, inside the timer ring).")
+add("bag_slot_empty", "hud/bag", 144, 144, '<svg width="144" height="144"><rect x="1" y="1" width="142" height="142" rx="28" fill="rgba(15,18,25,.45)" stroke="rgba(255,236,190,.35)" stroke-width="2" stroke-dasharray="10 8"/><path d="M72 56v32M56 72h32" stroke="rgba(255,236,190,.35)" stroke-width="4" stroke-linecap="round"/></svg>', "hud", note="Empty slot (not 9-slice, use at 144 or 120). Not tappable.")
+add("bag_overlay_active_glow", "hud/bag", 144+2*G, 144+2*G, box(144+2*G, 144+2*G, f"border-radius:28px;{HI}", G), "hud", [28+G]*4, note="Active/running glow, 24 px margin. Ring: reuse ring_powerup_timer_track + ring_powerup_timer_fill scaled to 124 (r 59).")
+add("bag_overlay_cooldown", "hud/bag", 144, 144, box(144, 144, "border-radius:28px;background:#FFFFFF"), "hud", note="White rounded square: Image Type Filled, Radial 360, origin Top, clockwise, fillAmount = cooldown left; tint #0A0C12 @66%. TMP seconds 22 px bottom.")
+add("bag_overlay_disabled", "hud/bag", 144, 144, box(144, 144, "border-radius:28px;background:rgba(42,45,54,.6)"), "hud", note="Disabled (used this level / not usable now): over a greyscale badge at 50% alpha; reason label TMP 18 px #9EA3AD under the slot.")
+add("bag_count_badge", "hud/bag", 44, 44, box(44, 44, "border-radius:22px;background:#E8B21E;border:2px solid #0F1219"), "hud,shop", [22, 22, 22, 22], note="Count pill ×N (N ≥ 2; OWA always), top-right at (−8, −8) outside the slot. TMP 24 px #0F1219, stretch horizontally.")
+
 # ---------- icons from SVG ----------
 ISV = f"{ROOT}/icons/svg"
 def inline(path, color, size):

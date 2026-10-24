@@ -49,7 +49,7 @@ def controls(w, h, owa=(2, 0.5, 3), owa_hi=False, pick=None, dpad=None):
     px, py, pr = pick or pick_pos(w, h)
     dx, dy, dr = dpad or (DPAD[0]*w, DPAD[1]*h, DPAD[2]*h)
     return (f'<div class="pick2" style="left:{px-pr:.0f}px;top:{py-pr:.0f}px;width:{2*pr:.0f}px;height:{2*pr:.0f}px"><b>+</b><span>PICK UP</span></div>'
-            + owa_btn(px, py, pr, owa, owa_hi) +
+            + (owa_btn(px, py, pr, owa, owa_hi) if owa else '') +
             f'<div class="dpad2" style="left:{dx-dr:.0f}px;top:{dy-dr:.0f}px">{dpad_svg(dr)}</div>')
 
 def page(name, annot):

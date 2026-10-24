@@ -1,0 +1,25 @@
+/* Bag (GPP-021): 4 shared slots, tap to activate */
+.bagrow{position:absolute;z-index:4;display:flex;gap:12px}
+.bslot{width:144px;height:144px;position:relative;border-radius:28px;background:rgba(15,18,25,.72);border:2px solid rgba(255,216,115,.28);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.bslot .bd{width:96px;height:96px;display:flex}
+.bslot.empty{background:rgba(15,18,25,.45);border:2px dashed rgba(255,236,190,.35);box-shadow:none}
+.bslot.empty::after{content:"+";font-size:44px;color:rgba(255,236,190,.35)}
+.bslot .cnt{position:absolute;right:-8px;top:-8px;min-width:44px;height:44px;padding:0 10px;border-radius:22px;background:#E8B21E;color:#0F1219;font-size:24px;display:flex;align-items:center;justify-content:center;border:2px solid #0F1219}
+.bslot .ring{position:absolute;left:10px;top:10px;width:124px;height:124px}
+.bslot.active{border-color:rgba(232,178,30,.9);box-shadow:0 0 0 4px rgba(232,178,30,.25),0 0 22px rgba(232,178,30,.45)}
+.bslot .cd{position:absolute;inset:0;border-radius:26px;background:conic-gradient(rgba(10,12,18,.66) var(--p),transparent 0)}
+.bslot .cdt{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:22px;color:#F5F5F0;text-shadow:0 2px 4px #000}
+.bslot.disabled{filter:grayscale(1);opacity:.5}
+.bslot.disabled .lbl{position:absolute;bottom:-34px;left:-30px;right:-30px;text-align:center;font-size:18px;color:#9EA3AD;white-space:nowrap}
+.bslot.full{border-color:#FF7A1A;box-shadow:0 0 0 4px rgba(255,122,26,.3)}
+.bslot.pressed{transform:scale(.92)}
+.shake{position:absolute;font-size:30px;color:#FF7A1A;z-index:5}
+.baglbl{position:absolute;z-index:4;font-size:20px;letter-spacing:.1em;color:#E8B21E;text-shadow:0 2px 6px #000,0 0 12px rgba(0,0,0,.8)}
+.statecard{display:flex;flex-direction:column;align-items:center;gap:52px;padding:30px 14px 22px;border-radius:24px;background:rgba(255,255,255,.04);flex:1}
+.statecard span{font-size:22px;color:#F5F5F0;text-align:center;line-height:1.3}.statecard small{display:block;font-size:18px;color:#9EA3AD}
+.bagstrip{position:absolute;left:0;bottom:24px;display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:28px}
+.bagstrip .h{font-size:22px;color:#E8B21E;letter-spacing:.08em;margin-right:6px;line-height:1.3}
+.bagstrip .bslot{width:120px;height:120px}.bagstrip .bslot .bd{width:80px;height:80px}
+.up{color:#FF7A1A;font-size:22px}
+.next{font-size:18px;color:#9EA3AD;display:block}
+.pickfail{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:20px;color:#FF7A1A}
