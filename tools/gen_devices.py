@@ -74,6 +74,6 @@ def shoot(name, W, H):
 if __name__ == "__main__":
     jobs = [page(k) for k in DEV]
     jobs += [page("iphone","exports/hud-phone.png"), page("iphone","exports/home-phone.png"), page("android","exports/hud-warn-phone.png"), page("android","exports/shop-phone.png"),
-             page("web","exports/hud-desktop.png"), page("web","exports/map-desktop.png"), rotate_prompt()]
+             page("web","exports/hud-desktop.png"), page("web","exports/map-desktop.png"), page("iphone","exports/leaderboard-phone.png"), page("web","exports/leaderboard-desktop.png"), rotate_prompt()]
     for j in jobs: shoot(*j)
     print(" ".join(j[0] for j in jobs))

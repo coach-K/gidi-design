@@ -23,22 +23,25 @@ SCREENS = [  # key, title, group, note
  ("clear","Level clear","Results","\"{location} Cleared!\" (code copy). Cash-out grant 75 chips (L2+). Stars rule TBD. Background: L6 Ikeja Along."),
  ("gameover","Game over","Results","After the single continue is used or declined. Background: L5."),
  ("shop","Base Camp shop","Menus","3×3 grid, 180 px tiles: buyable Owa refill, Pure Water 110 (once until cash-out), Malta 80, Change 90, VIP Siren 120; Danfo Ride 150 and Gist Bomb 100 coming soon (locked, price shown); Agbada Armour (Earned) and Okada Dash (Curb pickup) are not for sale. Agbero Whistle removed (#39). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Background: L4 Mushin Market."),
+ ("leaderboard","Leaderboards · per level (RT-109)","Leaderboards","L1–L9 ranked by clear time, fastest first (mm:ss.mmm), with the run's Naira chips. Level tabs L1–L10, Global / Friends filter, top-3 star / hexagon / circle badges, the player's own row pinned at the bottom. Entry: Home and Level clear. Background: the selected level's screenshot (L4 Mushin Market, blurred)."),
+ ("leaderboard-endless","Leaderboards · L10 endless (Friends)","Leaderboards","L10 has no clear time: ranked by the game's endless score (<code>EndlessRunScore</code>: metres + 25/delivery + 10/combo step), distance shown as a secondary column. Friends filter; when you're in view your row is highlighted in place and not pinned twice. Background: L10 Ojuelegba Chaos."),
+ ("leaderboard-states","Leaderboards · states","Leaderboards","Loading (skeleton rows + spinner), empty (first time on a level), offline (cached personal best, Try again), not signed in (local best kept, Sign in). Background: L6 Ikeja Along."),
  ("settings","Settings","Menus","Audio, Controls (touch only), Display, Accessibility, Account. Background: L9 (blurred)."),
  ("credits","Credits","Menus","Names TBD. Background: L10 (blurred)."),
 ]
 
 FLOW_NODES = {  # key: (col, row)
  "splash":(0,1),"onboard1":(1,0),"home":(1,1),"map":(2,1),"shop":(2,2),"settings":(2,0),"credits":(3,0),"intro":(3,1),
- "hud":(4,1),"pause":(5,0),"continue":(5,1),"clear":(5,2),"gameover":(6,1),"stats":(6,0)}
+ "hud":(4,1),"leaderboard":(1,2),"pause":(5,0),"continue":(5,1),"clear":(5,2),"gameover":(6,1),"stats":(6,0)}
 FLOW_EDGES = [("splash","home"),("splash","onboard1"),("onboard1","home"),("home","map"),("home","shop"),("home","settings"),("settings","credits"),
  ("map","intro"),("shop","intro"),("intro","hud"),("hud","pause"),("pause","stats"),("hud","continue"),("continue","hud"),("continue","gameover"),
- ("hud","clear"),("clear","map"),("gameover","map"),("gameover","hud")]
+ ("hud","clear"),("home","leaderboard"),("clear","map"),("gameover","map"),("gameover","hud")]
 
 def flow_svg():
     W,H,bw,bh = 1400, 520, 170, 74
     pos = {k:(30+c*200, 40+r*160) for k,(c,r) in FLOW_NODES.items()}
     title = dict(splash="Splash / boot",onboard1="Onboarding 1–4",home="Home",map="Lagos map",shop="Base Camp",settings="Settings",credits="Credits",
-                 intro="Level intro",hud="In-run HUD + states",pause="Pause",continue_="",clear="Level clear",gameover="Game over",stats="Stats"); title["continue"]="Continue (1/run)"
+                 intro="Level intro",hud="In-run HUD + states",pause="Pause",continue_="",clear="Level clear",gameover="Game over",stats="Stats",leaderboard="Leaderboards"); title["continue"]="Continue (1/run)"
     s = f'<svg viewBox="0 0 {W} {H}" class="flow" role="img" aria-label="Screen flow"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#E8B21E"/></marker></defs>'
     for a,b in FLOW_EDGES:
         (x1,y1),(x2,y2) = pos[a],pos[b]
@@ -197,7 +200,7 @@ def typography():
 
 LABEL = {"owa":"Owa","maltina_gala":"Malta &amp; Agege Roll","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","danfo_ride":"Danfo Ride","gist_bomb":"Gist Bomb","agbada_armour":"Agbada Armour","okada_dash":"Okada Dash","retry":"Retry (TRY AM AGAIN)","iap_skins_pack":"Lagos skins pack","iap_fits_pack":"Baba fits pack","iap_remove_ads":"Remove ads",
  "pickup_ring":"Curb pickup marker","pickup_person":"Recruit (person lights up)","chip":"Naira Chip","lives":"Lives","group":"GROUP","change":"CHANGE","stats":"Stats","pause":"Pause",
- "settings":"Settings","map":"Lagos map","souvenirs":"Souvenirs (Home)","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
+ "settings":"Settings","map":"Lagos map","souvenirs":"Souvenirs (Home)","bag":"Bag","trophy":"Leaderboard","wifi_off":"Offline","user":"Player / sign in","swap":"Swap","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
  "warn_safe":"Safe / gap","warn_caution":"Caution","warn_danger":"Danger","warn_lastma":"LASTMA","warn_train":"Train"}
 def icons():
     from gen_screens import ECON, SOON, INFO
@@ -285,7 +288,7 @@ def devices():
     tpl = "".join(f'<figure class="cos"><a href="exports/devices/dev-{k}.png"><img loading="lazy" src="exports/devices/dev-{k}.png" alt="{DEV[k][0]} template"></a><figcaption><b>{DEV[k][0]}</b></figcaption></figure>' for k in DEV)
     fr = "".join(f'<figure class="cos"><a href="exports/devices/{f}.png"><img loading="lazy" src="exports/devices/{f}.png" alt="{f}"></a><figcaption>{c}</figcaption></figure>' for f,c in [
         ("dev-iphone-hud-phone","iPhone · in-run HUD"),("dev-iphone-home-phone","iPhone · Home"),("dev-android-hud-warn-phone","Android · HUD warnings"),("dev-android-shop-phone","Android · Base Camp"),
-        ("dev-web-hud-desktop","Web · in-run HUD"),("dev-web-map-desktop","Web · Lagos map")])
+        ("dev-web-hud-desktop","Web · in-run HUD"),("dev-web-map-desktop","Web · Lagos map"),("dev-iphone-leaderboard-phone","iPhone · Leaderboard"),("dev-web-leaderboard-desktop","Web · Leaderboard")])
     return f'''<h1>Devices (Android · iOS · Web)</h1><p class="lead"><b>Landscape only on every device</b> (RT-106). One layout: CanvasScaler 1920×1080, match height; everything placed inside <code>Screen.safeArea</code> (<code>SafeAreaFitter</code>). Orange hatching = unsafe (notch, punch-hole, home indicator); blue dashes = safe area.</p>
 <h2>Orientation lock</h2><div class="card"><ul>
 <li><b>iOS / Android:</b> Player Settings → Resolution and Presentation → Default Orientation <b>Auto Rotation</b> with only <b>Landscape Left</b> and <b>Landscape Right</b> allowed (Android manifest ends up as <code>sensorLandscape</code>). Portrait never shows.</li>

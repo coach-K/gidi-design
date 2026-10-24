@@ -95,6 +95,29 @@ for i, d in enumerate(["N", "NE", "E", "SE", "S", "SW", "W", "NW"]):
     for st, fill, stroke in (("normal", "rgba(226,196,128,.62)", "rgba(120,90,30,.35)"), ("pressed", "rgba(250,230,158,.95)", "rgba(232,178,30,.9)")):
         add(f"dpad_arrow_{d}_{st}", "hud/dpad", 360, 360, f'<svg viewBox="-180 -180 360 360" width="360" height="360"><g fill="{fill}" stroke="{stroke}" stroke-width="2" transform="rotate({i*45})"><rect x="-17" y="-128" width="34" height="58" rx="4"/><path d="M-44 -124 L0 -168 L44 -124 Z"/></g></svg>', "hud", note="Full 360 canvas so it stacks on dpad_base with the same RectTransform.")
 
+# ---------- leaderboards (RT-109) ----------
+nine("lb_row", "leaderboard", "leaderboard", (80, 80), 22, {"normal": "background:rgba(255,255,255,.045)",
+     "top1": "background:rgba(232,178,30,.18);border:2px solid rgba(232,178,30,.55)", "top2": "background:rgba(201,207,217,.14);border:2px solid rgba(201,207,217,.45)",
+     "top3": "background:rgba(200,116,58,.18);border:2px solid rgba(200,116,58,.55)", "you": "background:rgba(15,18,25,.92);border:3px solid #E8B21E"},
+     "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view).")
+nine("tab_level", "leaderboard", "leaderboard", (96, 96), 28, {"off": GLASS, "on": "background:#E8B21E;border:2px solid #E8B21E", "pressed": GLASS_P},
+     "Level tab ≈163×144 desktop / ≈185×144 phone (flex, 8 px gaps). TMP 'L4' 44 px + short name 18 px; on = ink text #0F1219.")
+nine("seg_filter", "leaderboard", "leaderboard", (80, 80), 28, {"off": "background:rgba(255,255,255,.04);border:2px solid rgba(255,216,115,.28)", "on": "background:rgba(232,178,30,.16);border:3px solid #E8B21E"},
+     "Global / Friends segmented button, 192×144 each, 8 px gap. Icon 40 + TMP 28 px.")
+_MS = {1: '<path d="M32 2l7.6 11.7 13.6-3-3 13.6L62 32l-11.7 7.6 3 13.6-13.6-3L32 62l-7.6-11.7-13.6 3 3-13.6L2 32l11.7-7.6-3-13.6 13.6 3z"/>',
+       2: '<path d="M32 3l25 14.5v29L32 61 7 46.5v-29z"/>', 3: '<circle cx="32" cy="32" r="28"/>'}
+_MC = {1: ("#E8B21E", "#7A5A00", "gold, 8-point star"), 2: ("#C9CFD9", "#5B6270", "silver, hexagon"), 3: ("#C8743A", "#5E3014", "bronze, circle")}
+for _n in (1, 2, 3):
+    f_, s_, d_ = _MC[_n]
+    add(f"badge_rank_{_n}", "leaderboard", 64, 64, f'<svg viewBox="0 0 64 64" width="64" height="64"><g fill="{f_}" stroke="{s_}" stroke-width="3">{_MS[_n]}</g></svg>', "leaderboard", note=f"Rank {_n} badge ({d_}); add TMP '{_n}' 28 px #0F1219 centred. Shape differs per rank so it never relies on colour.")
+    add(f"badge_rank_{_n}_text", "leaderboard", 64, 64, f'<svg viewBox="0 0 64 64" width="64" height="64"><g fill="{f_}" stroke="{s_}" stroke-width="3">{_MS[_n]}</g><text x="32" y="42" text-anchor="middle" font-family="Jakarta" font-weight="700" font-size="28" fill="#0F1219">{_n}</text></svg>', "leaderboard", note="Baked-number variant.")
+add("avatar_mask", "leaderboard", 64, 64, box(64, 64, "border-radius:50%;background:#fff"), "leaderboard", note="Circle mask for player avatars (60 px in rows). Placeholder = this tinted with an Okabe-Ito colour + 2 initials TMP 24 px.")
+add("avatar_ring", "leaderboard", 64, 64, box(64, 64, "border-radius:50%;border:3px solid rgba(245,245,240,.85)"), "leaderboard", note="Avatar outline, on top of the masked image.")
+add("tag_you", "leaderboard", 40, 28, box(40, 28, "border-radius:10px;background:#E8B21E"), "leaderboard", [10, 10, 10, 10], note="'YOU' tag behind TMP 18 px #0F1219, padding 10 px.")
+add("skeleton_bar", "leaderboard", 40, 18, box(40, 18, "border-radius:9px;background:rgba(255,255,255,.12)"), "leaderboard", [9, 9, 9, 9], note="Loading placeholder line (stretch). Pulse alpha .6→1, 900 ms.")
+add("skeleton_row", "leaderboard", 64, 56, box(64, 56, "border-radius:18px;background:rgba(255,255,255,.07)"), "leaderboard", [20, 20, 20, 20], note="Loading row base; add the moving shimmer in code (or skip if Reduce motion).")
+add("spinner_arc", "leaderboard", 72, 72, '<svg viewBox="0 0 72 72" width="72" height="72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="8"/><path d="M36 6a30 30 0 0 1 30 30" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/></svg>', "leaderboard", note="Spinner: rotate 360°/1 s; tint the arc #E8B21E.")
+
 # ---------- icons from SVG ----------
 ISV = f"{ROOT}/icons/svg"
 def inline(path, color, size):
@@ -127,7 +150,7 @@ def render():
         s["x"], s["y"] = X, Y; X += s["w"] + PAD; rowh = max(rowh, s["h"])
     H = Y + rowh
     body = "".join(f'<div style="position:absolute;left:{s["x"]}px;top:{s["y"]}px;width:{s["w"]}px;height:{s["h"]}px;overflow:visible">{s["html"]}</div>' for s in S)
-    html = f'<!doctype html><html><head><meta charset="utf-8"><style>html,body{{margin:0;background:transparent}}*{{box-sizing:border-box}}</style></head><body style="width:{MAXW}px;height:{H}px;position:relative">{body}</body></html>'
+    html = f'<!doctype html><html><head><meta charset="utf-8"><style>@font-face{{font-family:Jakarta;src:url(file://{ROOT}/fonts/PlusJakartaSans-Bold.ttf)}}html,body{{margin:0;background:transparent}}*{{box-sizing:border-box}}</style></head><body style="width:{MAXW}px;height:{H}px;position:relative">{body}</body></html>'
     p = "/tmp/unity_sheet.html"; open(p, "w").write(html)
     for sc in (1, 2):
         out = f"/tmp/unity_sheet@{sc}.png"
@@ -168,6 +191,12 @@ if __name__ == "__main__":
                 size=[s["w"], s["h"]], pivot=list(s["pivot"]), border=(dict(zip(("left","right","top","bottom"), s["border"])) if s["border"] else None),
                 screen=s["screen"], note=s["note"]) for s in S]
     man += backgrounds()
+    # keep entries written by other generators (splash/map, souvenirs, bag): replace only the ones produced here
+    mine = {m["name"] for m in man}
+    if os.path.exists(f"{U}/manifest.json"):
+        prev = json.load(open(f"{U}/manifest.json"))["sprites"]
+        order = [m["name"] for m in prev]; byname = {m["name"]: m for m in man}
+        man = [byname.get(m["name"], m) if m.get("file", "").startswith(("sprites@", "backgrounds/")) else m for m in prev] + [m for m in man if m["name"] not in set(order)]
     json.dump(dict(reference="1920x1080, CanvasScaler match height 1.0", pixelsPerUnit=100, borderUnits="px at 1x (double for @2x)", sprites=man),
               open(f"{U}/manifest.json", "w"), indent=1, ensure_ascii=False)
     print(len(S), "sprites x2 +", len(man)-len(S), "backgrounds")

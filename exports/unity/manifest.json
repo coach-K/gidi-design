@@ -22,7 +22,7 @@
     "bottom": 36
    },
    "screen": "all",
-   "note": "HUD dusk-glass panel: level card 400\u00d7144, stock panel, chips, lives, toasts, endless strip, shop item card, IAP card."
+   "note": "HUD dusk-glass panel: level card 400×144, stock panel, chips, lives, toasts, endless strip, shop item card, IAP card."
   },
   {
    "name": "panel_levelcard_normal",
@@ -85,7 +85,7 @@
     "bottom": 32
    },
    "screen": "gameover,shop",
-   "note": "Stat tile / shop icon tile (Game Over stats, item icon well 110\u00d7110)."
+   "note": "Stat tile / shop icon tile (Game Over stats, item icon well 110×110)."
   },
   {
    "name": "divider_cell_normal",
@@ -127,7 +127,7 @@
     "bottom": 36
    },
    "screen": "all",
-   "note": "Glass button: Stats/Pause 144\u00d7144, Home big buttons 560\u00d7144, Game Over secondary 160 high, Back."
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
   },
   {
    "name": "btn_glass_pressed",
@@ -148,7 +148,7 @@
     "bottom": 36
    },
    "screen": "all",
-   "note": "Glass button: Stats/Pause 144\u00d7144, Home big buttons 560\u00d7144, Game Over secondary 160 high, Back."
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
   },
   {
    "name": "btn_glass_disabled",
@@ -169,7 +169,7 @@
     "bottom": 36
    },
    "screen": "all",
-   "note": "Glass button: Stats/Pause 144\u00d7144, Home big buttons 560\u00d7144, Game Over secondary 160 high, Back."
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back."
   },
   {
    "name": "btn_glass_highlight",
@@ -190,7 +190,7 @@
     "bottom": 60
    },
    "screen": "all",
-   "note": "Glass button: Stats/Pause 144\u00d7144, Home big buttons 560\u00d7144, Game Over secondary 160 high, Back. Highlight: glow baked into a 24 px transparent margin (border values include it)."
+   "note": "Glass button: Stats/Pause 144×144, Home big buttons 560×144, Game Over secondary 160 high, Back. Highlight: glow baked into a 24 px transparent margin (border values include it)."
   },
   {
    "name": "btn_cta_normal",
@@ -211,7 +211,7 @@
     "bottom": 40
    },
    "screen": "home,gameover,shop",
-   "note": "Primary CTA (Home PLAY 560\u00d7192, Game Over 160 high, pause CONTINUE 144 high)."
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
   },
   {
    "name": "btn_cta_pressed",
@@ -232,7 +232,7 @@
     "bottom": 40
    },
    "screen": "home,gameover,shop",
-   "note": "Primary CTA (Home PLAY 560\u00d7192, Game Over 160 high, pause CONTINUE 144 high)."
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
   },
   {
    "name": "btn_cta_disabled",
@@ -253,7 +253,7 @@
     "bottom": 40
    },
    "screen": "home,gameover,shop",
-   "note": "Primary CTA (Home PLAY 560\u00d7192, Game Over 160 high, pause CONTINUE 144 high)."
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high)."
   },
   {
    "name": "btn_cta_highlight",
@@ -274,7 +274,7 @@
     "bottom": 64
    },
    "screen": "home,gameover,shop",
-   "note": "Primary CTA (Home PLAY 560\u00d7192, Game Over 160 high, pause CONTINUE 144 high). Highlight: glow baked into a 24 px transparent margin (border values include it)."
+   "note": "Primary CTA (Home PLAY 560×192, Game Over 160 high, pause CONTINUE 144 high). Highlight: glow baked into a 24 px transparent margin (border values include it)."
   },
   {
    "name": "btn_buy_normal",
@@ -295,7 +295,7 @@
     "bottom": 32
    },
    "screen": "shop",
-   "note": "Shop Buy button 150\u00d7144 (sm2 144\u00d7144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
   },
   {
    "name": "btn_buy_pressed",
@@ -316,7 +316,7 @@
     "bottom": 32
    },
    "screen": "shop",
-   "note": "Shop Buy button 150\u00d7144 (sm2 144\u00d7144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
   },
   {
    "name": "btn_buy_disabled",
@@ -337,7 +337,7 @@
     "bottom": 32
    },
    "screen": "shop",
-   "note": "Shop Buy button 150\u00d7144 (sm2 144\u00d7144). Disabled = 'Bag full' / 'used, cash out to refresh'."
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'."
   },
   {
    "name": "btn_buy_highlight",
@@ -358,7 +358,7 @@
     "bottom": 56
    },
    "screen": "shop",
-   "note": "Shop Buy button 150\u00d7144 (sm2 144\u00d7144). Disabled = 'Bag full' / 'used, cash out to refresh'. Highlight: glow baked into a 24 px transparent margin (border values include it)."
+   "note": "Shop Buy button 150×144 (sm2 144×144). Disabled = 'Bag full' / 'used, cash out to refresh'. Highlight: glow baked into a 24 px transparent margin (border values include it)."
   },
   {
    "name": "btn_buy_locked_normal",
@@ -463,7 +463,7 @@
     "bottom": 32
    },
    "screen": "shop",
-   "note": "Coming-soon price box 150\u00d7144: icon_lock_white tinted #9EA3AD (28 px) above TMP price (32 px, #F5F5F0). Not interactive."
+   "note": "Coming-soon price box 150×144: icon_lock_white tinted #9EA3AD (28 px) above TMP price (32 px, #F5F5F0). Not interactive."
   },
   {
    "name": "ribbon_coming_soon",
@@ -749,7 +749,7 @@
    ],
    "border": null,
    "screen": "hud",
-   "note": "144\u00d7144 canvas = touch target; visible disc 120 \u00d8 centred."
+   "note": "144×144 canvas = touch target; visible disc 120 Ø centred."
   },
   {
    "name": "owa_outline",
@@ -829,7 +829,7 @@
    ],
    "border": null,
    "screen": "hud",
-   "note": "OWA! pip base (18 \u00d8, 7 px gap)."
+   "note": "OWA! pip base (18 Ø, 7 px gap)."
   },
   {
    "name": "pip_filled",
@@ -909,7 +909,7 @@
    ],
    "border": null,
    "screen": "hud",
-   "note": "GROUP/CHANGE pips 24 \u00d8, 10 px gap."
+   "note": "GROUP/CHANGE pips 24 Ø, 10 px gap."
   },
   {
    "name": "stock_pip_off",
@@ -941,7 +941,7 @@
    ],
    "border": null,
    "screen": "hud",
-   "note": "Base circle + centre dot. 360 \u00d8 at 1x desktop/phone (radius 16.7% H); tablet 324."
+   "note": "Base circle + centre dot. 360 Ø at 1x desktop/phone (radius 16.7% H); tablet 324."
   },
   {
    "name": "dpad_arrow_N_normal",
@@ -3466,6 +3466,583 @@
    ],
    "screen": "map",
    "note": "opaque background"
+  },
+  {
+   "name": "lb_row_normal",
+   "file": "sprites@1x/leaderboard/lb_row_normal.png",
+   "file2x": "sprites@2x/leaderboard/lb_row_normal.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "screen": "leaderboard",
+   "note": "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view)."
+  },
+  {
+   "name": "lb_row_top1",
+   "file": "sprites@1x/leaderboard/lb_row_top1.png",
+   "file2x": "sprites@2x/leaderboard/lb_row_top1.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "screen": "leaderboard",
+   "note": "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view)."
+  },
+  {
+   "name": "lb_row_top2",
+   "file": "sprites@1x/leaderboard/lb_row_top2.png",
+   "file2x": "sprites@2x/leaderboard/lb_row_top2.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "screen": "leaderboard",
+   "note": "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view)."
+  },
+  {
+   "name": "lb_row_top3",
+   "file": "sprites@1x/leaderboard/lb_row_top3.png",
+   "file2x": "sprites@2x/leaderboard/lb_row_top3.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "screen": "leaderboard",
+   "note": "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view)."
+  },
+  {
+   "name": "lb_row_you",
+   "file": "sprites@1x/leaderboard/lb_row_you.png",
+   "file2x": "sprites@2x/leaderboard/lb_row_you.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "screen": "leaderboard",
+   "note": "Leaderboard row, 84 px high (stretch horizontally). top1/2/3 = podium tint + outline; you = pinned player row (also used inline when the player is in view)."
+  },
+  {
+   "name": "tab_level_off",
+   "file": "sprites@1x/leaderboard/tab_level_off.png",
+   "file2x": "sprites@2x/leaderboard/tab_level_off.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Level tab ≈163×144 desktop / ≈185×144 phone (flex, 8 px gaps). TMP 'L4' 44 px + short name 18 px; on = ink text #0F1219."
+  },
+  {
+   "name": "tab_level_on",
+   "file": "sprites@1x/leaderboard/tab_level_on.png",
+   "file2x": "sprites@2x/leaderboard/tab_level_on.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Level tab ≈163×144 desktop / ≈185×144 phone (flex, 8 px gaps). TMP 'L4' 44 px + short name 18 px; on = ink text #0F1219."
+  },
+  {
+   "name": "tab_level_pressed",
+   "file": "sprites@1x/leaderboard/tab_level_pressed.png",
+   "file2x": "sprites@2x/leaderboard/tab_level_pressed.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Level tab ≈163×144 desktop / ≈185×144 phone (flex, 8 px gaps). TMP 'L4' 44 px + short name 18 px; on = ink text #0F1219."
+  },
+  {
+   "name": "seg_filter_off",
+   "file": "sprites@1x/leaderboard/seg_filter_off.png",
+   "file2x": "sprites@2x/leaderboard/seg_filter_off.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Global / Friends segmented button, 192×144 each, 8 px gap. Icon 40 + TMP 28 px."
+  },
+  {
+   "name": "seg_filter_on",
+   "file": "sprites@1x/leaderboard/seg_filter_on.png",
+   "file2x": "sprites@2x/leaderboard/seg_filter_on.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Global / Friends segmented button, 192×144 each, 8 px gap. Icon 40 + TMP 28 px."
+  },
+  {
+   "name": "badge_rank_1",
+   "file": "sprites@1x/leaderboard/badge_rank_1.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_1.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Rank 1 badge (gold, 8-point star); add TMP '1' 28 px #0F1219 centred. Shape differs per rank so it never relies on colour."
+  },
+  {
+   "name": "badge_rank_1_text",
+   "file": "sprites@1x/leaderboard/badge_rank_1_text.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_1_text.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Baked-number variant."
+  },
+  {
+   "name": "badge_rank_2",
+   "file": "sprites@1x/leaderboard/badge_rank_2.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_2.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Rank 2 badge (silver, hexagon); add TMP '2' 28 px #0F1219 centred. Shape differs per rank so it never relies on colour."
+  },
+  {
+   "name": "badge_rank_2_text",
+   "file": "sprites@1x/leaderboard/badge_rank_2_text.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_2_text.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Baked-number variant."
+  },
+  {
+   "name": "badge_rank_3",
+   "file": "sprites@1x/leaderboard/badge_rank_3.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_3.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Rank 3 badge (bronze, circle); add TMP '3' 28 px #0F1219 centred. Shape differs per rank so it never relies on colour."
+  },
+  {
+   "name": "badge_rank_3_text",
+   "file": "sprites@1x/leaderboard/badge_rank_3_text.png",
+   "file2x": "sprites@2x/leaderboard/badge_rank_3_text.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Baked-number variant."
+  },
+  {
+   "name": "avatar_mask",
+   "file": "sprites@1x/leaderboard/avatar_mask.png",
+   "file2x": "sprites@2x/leaderboard/avatar_mask.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Circle mask for player avatars (60 px in rows). Placeholder = this tinted with an Okabe-Ito colour + 2 initials TMP 24 px."
+  },
+  {
+   "name": "avatar_ring",
+   "file": "sprites@1x/leaderboard/avatar_ring.png",
+   "file2x": "sprites@2x/leaderboard/avatar_ring.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Avatar outline, on top of the masked image."
+  },
+  {
+   "name": "tag_you",
+   "file": "sprites@1x/leaderboard/tag_you.png",
+   "file2x": "sprites@2x/leaderboard/tag_you.png",
+   "size": [
+    40,
+    28
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 10,
+    "right": 10,
+    "top": 10,
+    "bottom": 10
+   },
+   "screen": "leaderboard",
+   "note": "'YOU' tag behind TMP 18 px #0F1219, padding 10 px."
+  },
+  {
+   "name": "skeleton_bar",
+   "file": "sprites@1x/leaderboard/skeleton_bar.png",
+   "file2x": "sprites@2x/leaderboard/skeleton_bar.png",
+   "size": [
+    40,
+    18
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 9,
+    "right": 9,
+    "top": 9,
+    "bottom": 9
+   },
+   "screen": "leaderboard",
+   "note": "Loading placeholder line (stretch). Pulse alpha .6→1, 900 ms."
+  },
+  {
+   "name": "skeleton_row",
+   "file": "sprites@1x/leaderboard/skeleton_row.png",
+   "file2x": "sprites@2x/leaderboard/skeleton_row.png",
+   "size": [
+    64,
+    56
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 20,
+    "right": 20,
+    "top": 20,
+    "bottom": 20
+   },
+   "screen": "leaderboard",
+   "note": "Loading row base; add the moving shimmer in code (or skip if Reduce motion)."
+  },
+  {
+   "name": "spinner_arc",
+   "file": "sprites@1x/leaderboard/spinner_arc.png",
+   "file2x": "sprites@2x/leaderboard/spinner_arc.png",
+   "size": [
+    72,
+    72
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "leaderboard",
+   "note": "Spinner: rotate 360°/1 s; tint the arc #E8B21E."
+  },
+  {
+   "name": "icon_bag",
+   "file": "sprites@1x/icons/ui/icon_bag.png",
+   "file2x": "sprites@2x/icons/ui/icon_bag.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_bag_white",
+   "file": "sprites@1x/icons/ui/white/icon_bag_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_bag_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_swap",
+   "file": "sprites@1x/icons/ui/icon_swap.png",
+   "file2x": "sprites@2x/icons/ui/icon_swap.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_swap_white",
+   "file": "sprites@1x/icons/ui/white/icon_swap_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_swap_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_trophy",
+   "file": "sprites@1x/icons/ui/icon_trophy.png",
+   "file2x": "sprites@2x/icons/ui/icon_trophy.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_trophy_white",
+   "file": "sprites@1x/icons/ui/white/icon_trophy_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_trophy_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_user",
+   "file": "sprites@1x/icons/ui/icon_user.png",
+   "file2x": "sprites@2x/icons/ui/icon_user.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_user_white",
+   "file": "sprites@1x/icons/ui/white/icon_user_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_user_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_wifi_off",
+   "file": "sprites@1x/icons/ui/icon_wifi_off.png",
+   "file2x": "sprites@2x/icons/ui/icon_wifi_off.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_wifi_off_white",
+   "file": "sprites@1x/icons/ui/white/icon_wifi_off_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_wifi_off_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
   }
  ]
 }

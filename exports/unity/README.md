@@ -177,3 +177,32 @@ Import: Texture Type **Sprite (2D and UI)**, Single, Mesh Full Rect, **Pixels Pe
 **Fixed-height pills:** borders of 36 on a 72-tall sprite (and 28 on 56) leave no stretchable centre vertically. That's intended: keep the RectTransform height at 72 (toast) / 56 (pill) and stretch only horizontally. PPU 100 (1x) / 200 (2x), Compression None.
 
 Malta & Agege Roll in the game: **traffic slows 50% for 4 s** (ring label “Malta · 4s”, toast “Traffic slow down 50% for 4s”).
+
+## Leaderboards (RT-109)
+Mockups: `exports/leaderboard-{desktop,phone}.png` (L4, Global), `leaderboard-endless-*` (L10, Friends), `leaderboard-states-*` (loading / empty / offline / not signed in). Source `tools/gen_leaderboard.py`, sprites in `sprites@{1x,2x}/leaderboard/` (PPU 100 / 200).
+
+**Ranking.** L1–L9: clear time ascending, shown `mm:ss.mmm` (e.g. `00:41.237`). L10 endless: `EndlessRunScore` descending (metres + 25/delivery + 10/combo step), distance `1,820 m` as a secondary column. Every row shows the run's Naira chips `₦240` (chips earned in that run). Ties: earlier submission ranks higher.
+
+**Layout** (inside `Screen.safeArea`; ref 1920×1080 = 1280×720 × 1.5; desktop safe 1856×1016, phone 2340 safe 2076×993):
+
+| Element | 1280×720 safe coords (x, y, w × h) | 1920×1080 | 2340×1080 phone |
+|---|---|---|---|
+| Back button | 0, 0, 96 × 96 | 0, 0, 144 × 144 | same |
+| Level tabs L1–L10 (flex row after Back, gap 5.3 / 8 px) | 101, 0, ≈109 × 96 each | 152, 0, ≈163 × 144 | 152, 0, ≈185 × 144 |
+| Side card (title, Global/Friends, your best/rank, CTA) | 0, 117, 293 × to bottom | 0, 176, 440 × 840 | 0, 176, 440 × 817 |
+| Global / Friends segmented (2 buttons, gap 8) | in card, 128 × 96 each | 192 × 144 each | same |
+| CTA (BEAT AM / OYA, RUN!) | card bottom, 256 × 96 | 392 × 144 | same |
+| List panel | 309, 117, to right × to bottom | 464, 176, 1392 × 840 | 464, 176, 1612 × 817 |
+| Header row | +16 inset, h 29 | h 44 | same |
+| Row (`lb_row_*`) | h 56, gap 5.3 | h 84, gap 8, padding 20 | same |
+| Pinned own row (`lb_row_you`) | bottom of list, inset 11 | bottom 16 px inset, under a "YOUR BEST · PINNED" divider | same |
+
+Row columns (1920 ref): rank 88 (badge 64) · avatar 60 · name flex · clear time 250 (right) · chips 210 (right); endless: score 190 · distance 170 · chips 190. Rows are not buttons (tap target rules don't apply); tabs, filter, Back and CTA are all ≥ 144 px.
+
+**Rows.** `lb_row_normal` (white 4.5%), `lb_row_top1/2/3` (gold / silver / bronze tint + outline) with `badge_rank_1/2/3` (8-point star / hexagon / circle + number, never colour alone), `lb_row_you` (ink 92% + 3 px gold) + `tag_you`. When the player is in the visible list, highlight that row in place and hide the pinned copy. Avatar: `avatar_mask` + `avatar_ring`, 60 px; placeholder = mask tinted with an Okabe-Ito colour (#E69F00, #56B4E9, #009E73, #F0E442, #0072B2, #D55E00, #CC79A7) + 2 initials TMP 24 px (#0F1219, or #F5F5F0 on #0072B2/#D55E00/#009E73).
+
+**Tabs / filter.** `tab_level_off/on/pressed`: TMP `L4` 44 px + short name 18 px (#9EA3AD; on = #0F1219). L10 label `L10 ∞`. `seg_filter_off/on` with `icon_trophy` (Global) / `icon_group` (Friends), 40 px icon + TMP 28 px.
+
+**States.** Loading: 4+ `skeleton_row` with `skeleton_bar` lines + `spinner_arc` (tint #E8B21E, 1 rev/s; Reduce motion = no shimmer). Empty: `icon_trophy` 64 gold, "No times yet on {level}", CTA OYA, CROSS!. Offline: `icon_wifi_off`, "Network no dey", cached personal best + chips, `btn_glass` "Try again" (`icon_retry`). Not signed in: `icon_user`, "Sign in to join the ranks", CTA Sign in; local best is kept.
+
+**Type & colour.** Plus Jakarta Sans Bold. Name 30 px #F5F5F0; time/score 30 px tabular #F5F5F0; chips 30 px #FAE69E; rank 32 px #9EA3AD (you: #FAE69E); header 20 px #9EA3AD tracking 10%; card kicker 22 px #E8B21E; level title 46 px. Ink #0F1219, gold #E8B21E, naira #FAE69E, muted #9EA3AD. Backgrounds: the selected level's blurred screenshot + 55% ink scrim.

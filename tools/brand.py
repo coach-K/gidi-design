@@ -33,6 +33,11 @@ ICONS = {
  "pause": f'<rect {S} x="13" y="10" width="7" height="28" rx="2"/><rect {S} x="28" y="10" width="7" height="28" rx="2"/>',
  "settings": f'<circle {S} cx="24" cy="24" r="6"/><path {S} d="M24 5v6M24 37v6M5 24h6M37 24h6M10.5 10.5l4.2 4.2M33.3 33.3l4.2 4.2M10.5 37.5l4.2-4.2M33.3 14.7l4.2-4.2"/><circle {S} cx="24" cy="24" r="13"/>',
  "souvenirs": f'<path {S} d="M15 6h18l-6 13M15 6l6 13"/><circle {S} cx="24" cy="30" r="12"/><path {S} d="M24 23.5l2 4.2 4.5.6-3.3 3.1.8 4.5-4-2.2-4 2.2.8-4.5-3.3-3.1 4.5-.6z"/>',
+ "bag": f'<path {S} d="M10 18h28l-2 22H12z"/><path {S} d="M18 18v-3a6 6 0 0 1 12 0v3"/><path {S} d="M10 26h28"/><rect {S} x="20" y="23" width="8" height="6" rx="1.5"/>',
+ "trophy": f'<path {S} d="M15 8h18v8a9 9 0 0 1-18 0z"/><path {S} d="M15 11H9c0 6 3 9 7 9M33 11h6c0 6-3 9-7 9M24 25v8M17 40h14M19 40l1-7h8l1 7"/>',
+ "wifi_off": f'<path {S} d="M6 18a26 26 0 0 1 36 0M11 24a19 19 0 0 1 26 0M16 30a12 12 0 0 1 16 0"/><circle cx="24" cy="37" r="2.5" fill="currentColor"/><path d="M8 8l32 32" stroke="{P["danger"]}" stroke-width="3.5" stroke-linecap="round"/>',
+ "user": f'<circle {S} cx="24" cy="16" r="8"/><path {S} d="M8 41c0-9 7-15 16-15s16 6 16 15"/>',
+ "swap": f'<path {S} d="M8 16h28l-7-7M40 32H12l7 7"/>',
  "map": f'<path {S} d="M6 12l11-4 14 4 11-4v28l-11 4-14-4-11 4z"/><path {S} d="M17 8v28M31 12v28"/>',
  "basecamp": f'<path {S} d="M10 18h28l-3 22H13z"/><path {S} d="M17 18v-4a7 7 0 0 1 14 0v4"/><path {S} d="M19 28h10"/>',
  "play": f'<path {S} d="M15 9l24 15-24 15z"/>',
@@ -52,7 +57,7 @@ GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren
           ("Earned &amp; curb-only (not sold)", ["agbada_armour","okada_dash"]),
           ("Shop extras", ["retry","iap_skins_pack","iap_fits_pack","iap_remove_ads"]),
           ("Curb pickups &amp; currency", ["pickup_ring","pickup_person","chip"]),
-          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs"]),
+          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs","bag","trophy","wifi_off","user","swap"]),
           ("Warning shapes (colour + shape)", ["warn_safe","warn_caution","warn_danger","warn_lastma","warn_train"])]
 PU_ACCENT = {"owa":P["gold"],"maltina_gala":"#C8743A","pure_water":P["safe"],"bribe_change":"#7FD6A2","siren":P["danger"],"danfo_ride":"#F2C230","gist_bomb":"#E0443C","agbada_armour":P["naira"],"okada_dash":"#59D9B8"}
 
