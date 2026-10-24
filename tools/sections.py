@@ -8,6 +8,7 @@ SCREENS = [  # key, title, group, note
  ("home","Title / home","Menus","Play (thumb zone, bottom-right), Lagos map, Base Camp, wallet, Settings. Background: L9 Lekki Toll Gate."),
  ("map","Lagos map level select","Menus","10 districts on a stylised road line; current district auto-centred; locked toast. Background: L3 Ikorodu Road."),
  ("intro","Level intro (district card)","Menus","Lanes, people, enforcement, live power-ups and continue cost from code. Background: L6 Ikeja Along."),
+ ("intro-clean","Level intro · clean district background (RT-116)","Menus","One clean (not blurred) background per district, L1–L10, from the graded level screenshots, with a calm zone baked behind the card; dim drops to 20%. Files <code>exports/unity/screens/intro/bg_intro_Lxx(_phone).png</code>, spec <a href=\"exports/unity/screens/intro/README.md\">intro/README.md</a>. Shown: L6 Ikeja Along."),
  ("onboard1","Onboarding 1 · Move","Onboarding","Coach pill + highlighted d-pad; PICK UP hint (code copy). Background: L1 Agege Bus Stop."),
  ("onboard2","Onboarding 2 · Read the road","Onboarding","Caution triangle vs Danger chevrons on the lanes."),
  ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP and CHANGE highlighted up top; OWA! sits on its own button above PICK UP."),

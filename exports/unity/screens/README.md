@@ -6,6 +6,7 @@
 | `bg_splash_phone_blur.png` | 2340×1080 | `SplashScreenView` (`Application.isMobilePlatform`) |
 | `bg_intro_blur.png` | 1920×1080 | `DistrictIntroView` (`bg_intro_blur`) |
 | `bg_intro_phone_blur.png` | 2340×1080 | phone variant: `DistrictIntroView` currently loads only `bg_intro_blur`; add a mobile switch like the splash to use it |
+| `intro/bg_intro_L01…L10(_phone).png` | 1920×1080 / 2340×1080 | **RT-116:** clean per-district intro backgrounds, replace `bg_intro_blur`; spec `intro/README.md` |
 | `district_subtitles.md` | — | subtitle copy for LASTMA only / KAI only / no enforcement |
 
 Drop into `Resources/UI/Screens/1x/` (ScreenKit looks there first). These are full-screen 1x art: there is no 2x.
