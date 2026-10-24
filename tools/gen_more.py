@@ -79,7 +79,7 @@ def intro(n):
 def onboard(n, step):
     texts = {1:"Move Baba Gidi with the d-pad. Waka go the curb.",
              2:"Read the road: ▲ caution, ≫ danger. Wait for your gap.",
-             3:"Your stock: GROUP and CHANGE up top, OWA! above PICK UP",
+             3:"Your stock: GROUP and CHANGE up top. Power-ups go in your bag from L2",
              4:"Reach the far curb with your people. We don reach!"}
     w,h = FRAMES[n][:2]
     extra = ""
@@ -174,7 +174,7 @@ def credits(n):
 <h4>MUSIC &amp; SFX</h4><p><span class="tbd">TBD</span></p><h4>THANKS</h4><p>Every Lagos commuter wey dey cross daily. Una try!</p></div>''', "Credits", blur=True)
 
 SCREENS = [("splash",splash),("map",lagos_map),("intro",intro)]+[(f"onboard{i}",(lambda i: lambda n: onboard(n,i))(i)) for i in range(1,5)]+\
-  [("hud-power",hud_power),("hud-warn",hud_warn),("hud-toast",hud_toast),("hud-endless",hud_endless),("pause",pause),("stats",stats),
+  [("hud-power",hud_power),("hud-warn",hud_warn),("hud-toast",hud_toast),("pause",pause),("stats",stats),
    ("continue",cont),("clear",clear),("settings",settings),("credits",credits)]
 if __name__ == "__main__":
     for key, fn in SCREENS:

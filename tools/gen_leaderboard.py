@@ -1,5 +1,5 @@
 """Per-level leaderboards (RT-109). Desktop 1920x1080 + phone 2340x1080. Background: the selected level's own screenshot (blurred).
-Ranked by clear time (fastest first) for L1-L9; L10 endless ranked by EndlessRunScore (metres + 25/delivery + 10/combo step).
+Ranked by clear time (fastest first) for L1-L10 (L10 no longer endless: RT-108, PR #94). Backend: UGS Leaderboards gidi_L01..L10_time.
 Names and numbers are fictional samples. No leaderboard backend exists on team-branch yet (Oct 24)."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -34,7 +34,7 @@ def chips(n): return f'{icon("chip", 30)}₦{n:,}'
 def tabs(sel):
     out = f'<button class="glass btn back">{icon("back",44,P["text"])}<small>Back</small></button>'
     for i in range(1, 11):
-        lab = f'L{i}' if i < 10 else f'L10 ∞'
+        lab = f'L{i}'
         out += f'<div class="tab{" on" if i == sel else ""}{" end" if i == 10 else ""}"><b>{lab}</b><span>{SHORT[i]}</span></div>'
     return f'<div class="lbtabs">{out}</div>'
 
@@ -66,18 +66,6 @@ def timed(n):
     body = f'<div class="ov"></div><div class="lb">{tabs(lv)}{side(lv, "Global", t(58406), "#128", False)}{lst}</div>'
     return shell(n, lv, body, "Leaderboard", blur=True).replace("</head>", '<link rel="stylesheet" href="../css/leaderboard.css"></head>')
 
-def endless(n):
-    lv = 10
-    data = [(12480, 1820, 610), (11905, 1744, 580), (10230, 1502, 540), (9870, 1460, 470), (8115, 1203, 420), (7340, 1098, 390)]
-    names = ["Ngozi_Danfo", "Kunle.Kerb", "Sade_Shuffle", ME, "Obi_NoBrakes", "Ifeoma_99"]
-    rows = ""
-    for k, (sc, m, c) in enumerate(data):
-        rows += rowhtml(k+1, names[k], k+3, f'<div class="tm">{sc:,}</div><div class="ds">{m:,} m</div><div class="ch">{chips(c)}</div>', "you" if names[k] == ME else "")
-    lst = f'''<div class="lblist glass" style="--cols:{COLS_E}"><div class="lbhead" style="--cols:{COLS_E}"><span style="text-align:center">RANK</span><span></span><span>FRIEND</span><span class="r">SCORE</span><span class="r">DISTANCE</span><span class="r">CHIPS (RUN)</span></div>
-{rows}<div class="pinlbl" style="margin-top:auto">YOU'RE IN VIEW · NO PINNED COPY</div><div class="more" style="text-align:left;padding-left:20px">Invite friends from Settings › Account to fill this list.</div></div>'''
-    body = f'<div class="ov"></div><div class="lb">{tabs(lv)}{side(lv, "Friends", "9,870", "#4 of 38", True)}{lst}</div>'
-    return shell(n, lv, body, "Leaderboard endless", blur=True).replace("</head>", '<link rel="stylesheet" href="../css/leaderboard.css"></head>')
-
 def states(n):
     lv = 6
     sk = "".join(f'<div class="sk"><i class="c"></i><i style="width:{a}px"></i><i style="width:90px;margin-left:auto"></i></div>' for a in (220, 180, 240, 160))
@@ -91,7 +79,7 @@ def states(n):
     body = f'<div class="ov"></div><div class="lb">{tabs(lv)}{side(lv, "Global", "—", "—")}<div class="stgrid">{grid}</div></div>'
     return shell(n, lv, body, "Leaderboard states", blur=True).replace("</head>", '<link rel="stylesheet" href="../css/leaderboard.css"></head>')
 
-SCREENS = [("leaderboard", timed), ("leaderboard-endless", endless), ("leaderboard-states", states)]
+SCREENS = [("leaderboard", timed), ("leaderboard-states", states)]
 if __name__ == "__main__":
     for k, fn in SCREENS:
         for n in ("desktop", "phone"):

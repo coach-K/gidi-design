@@ -127,7 +127,7 @@ def intro_bag(n):
     body = f'''<div class="ov"></div><div class="panel" style="width:1180px;text-align:left"><div style="color:#E8B21E;font-size:26px;letter-spacing:.12em">DISTRICT 7 OF 10</div>
 <div class="ph" style="font-size:72px;color:#F5F5F0">{LV[lv][0]}</div><div class="psub">Two wahala dey road today: LASTMA flag <b style="color:#E07CC0">and</b> KAI officers. Hold your change.</div>
 <div style="margin-top:30px;font-size:26px;color:#E8B21E;letter-spacing:.08em">IN YOUR BAG · carried over from Ikeja Along</div>
-<div style="display:flex;gap:12px;margin-top:16px;align-items:center">{slots}<div style="margin-left:22px;font-size:24px;color:#9EA3AD;line-height:1.35">3 of 4 slots used.<br>Nothing fires by itself: tap a slot.<br>VIP Siren: one per level.</div></div>
+<div style="display:flex;gap:12px;margin-top:16px;align-items:center">{slots}<div style="margin-left:22px;font-size:24px;color:#9EA3AD;line-height:1.35">3 of 4 slots used.<br>Use them in the run (tap in the HUD).<br>VIP Siren: one per level.</div></div>
 <div class="row" style="justify-content:flex-end"><button class="gbtn">{icon("basecamp",44)} Base Camp</button><button class="cta sm">{icon("play",44,P["text"])} OYA, CROSS!</button></div></div>'''
     return page(None, n, lv, body, "Level intro with bag")
 

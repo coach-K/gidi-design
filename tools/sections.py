@@ -11,15 +11,14 @@ SCREENS = [  # key, title, group, note
  ("intro-clean","Level intro · clean district background (RT-116)","Menus","One clean (not blurred) background per district, L1–L10, from the graded level screenshots, with a calm zone baked behind the card; dim drops to 20%. Files <code>exports/unity/screens/intro/bg_intro_Lxx(_phone).png</code>, spec <a href=\"exports/unity/screens/intro/README.md\">intro/README.md</a>. Shown: L6 Ikeja Along."),
  ("onboard1","Onboarding 1 · Move","Onboarding","Coach pill + highlighted d-pad; PICK UP hint (code copy). Background: L1 Agege Bus Stop."),
  ("onboard2","Onboarding 2 · Read the road","Onboarding","Caution triangle vs Danger chevrons on the lanes."),
- ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP and CHANGE highlighted up top; OWA! sits on its own button above PICK UP."),
+ ("onboard3","Onboarding 3 · Stock","Onboarding","GROUP and CHANGE highlighted up top. No OWA! button any more (Owa fires from the bag, L2+); coach copy updated, PR #104 needs the same change."),
  ("onboard4","Onboarding 4 · Reach the curb","Onboarding","Goal zone on the far curb. Skippable after step 1."),
  ("hud","In-run HUD (base)","In-run","Approved round-4 HUD. Background: L5 Oshodi Expressway."),
  ("hud-power","HUD · power-up active","In-run","Malta ring timer: traffic slows 50% for 4 s (LevelManager). Background: L7 Ojota Intersect."),
- ("hud-owa","HUD · Owa freeze running (RT-118)","In-run","Teal countdown ring around OWA! (ActivePowerUpHudRules.OwaButtonRing, 140 px, Radial 360 from top, counter-clockwise) while a Malta timer chip runs. Background: L7."),
- ("owa-ring-states","Owa ring · states (RT-118)","In-run","Ready, start, running, last second (Danger + pulse), ended; and which indicator each power-up uses (ring, timer chip, stock count only)."),
+ ("hud-owa","HUD · Owa freeze running (RT-118)","In-run","OWA! button removed: the teal Owa freeze ring now draws on the Owa bag slot (124 px, Radial 360 from top, counter-clockwise) while a Malta timer chip runs. Background: L7."),
+ ("owa-ring-states","Owa ring · states (RT-118)","In-run","Owa bag slot: ready, start, running, last second (Danger + pulse), ended; and which indicator each power-up uses (ring, timer chip, stock count only)."),
  ("hud-warn","HUD · warnings (colour + shape)","In-run","Caution ▲, Danger ≫, LASTMA ◆, Safe gap bar. Background: L8 Third Mainland Bridge (8 lanes, wide camera)."),
  ("hud-toast","HUD · toasts","In-run","Owa unlock (code copy), group coach line, \"Found Owa\" grant toast. Background: L2 Surulere Way."),
- ("hud-endless","HUD · endless (L10)","In-run","Score = metres + 25/delivery + 10/combo step (EndlessRunScore). The score strip shows only in L10 endless mode; L1–L9 don't show it. Background: L10 Ojuelegba Chaos."),
  ("hud-bag","HUD · bag (GPP-021)","In-run","4 shared slots bottom-right above the d-pad: Owa ×3, Malta running (timer ring), VIP Siren cooldown (radial), one empty. Tap to use; nothing fires by itself; the bag carries over. Spec: HUD_Landscape_Spec.md › Bag."),
  ("hud-bagfull","HUD · bag full on pickup","In-run","Item isn't picked up and stays on the curb; slots shake with an orange frame; toast 'Bag full · tap a slot to use one'."),
  ("bag-states","Bag · slot states","In-run","Empty, filled ×N, active/running, cooldown, disabled, full, pressed + tap feedback (scale 0.92, light haptic, sfx_bag_slot_tap)."),
@@ -31,7 +30,6 @@ SCREENS = [  # key, title, group, note
  ("gameover","Game over","Results","After the single continue is used or declined. Background: L5."),
  ("shop","Base Camp shop","Menus","3×3 grid, 180 px tiles: buyable Owa refill, Pure Water 110 (once until cash-out), Malta 80, Change 90, VIP Siren 120; Danfo Ride 150 and Gist Bomb 100 coming soon (locked, price shown); Agbada Armour (Earned) and Okada Dash (Curb pickup) are not for sale. Agbero Whistle removed (#39). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Background: L4 Mushin Market."),
  ("leaderboard","Leaderboards · per level (RT-109)","Leaderboards","L1–L9 ranked by clear time, fastest first (mm:ss.mmm), with the run's Naira chips. Level tabs L1–L10, Global / Friends filter, top-3 star / hexagon / circle badges, the player's own row pinned at the bottom. Entry: Home and Level clear. Background: the selected level's screenshot (L4 Mushin Market, blurred)."),
- ("leaderboard-endless","Leaderboards · L10 endless (Friends)","Leaderboards","L10 has no clear time: ranked by the game's endless score (<code>EndlessRunScore</code>: metres + 25/delivery + 10/combo step), distance shown as a secondary column. Friends filter; when you're in view your row is highlighted in place and not pinned twice. Background: L10 Ojuelegba Chaos."),
  ("leaderboard-states","Leaderboards · states","Leaderboards","Loading (skeleton rows + spinner), empty (first time on a level), offline (cached personal best, Try again), not signed in (local best kept, Sign in). Background: L6 Ikeja Along."),
  ("shop-bag","Base Camp · with bag","Menus","Bag strip 4/4 full; Pure Water and Change show 'Bag full', Malta '+1 to stack', VIP Siren 'Used this level' with next price ₦180. Background: L4 shop grade, context L7."),
  ("intro-bag","Level intro · bag carry-over","Menus","The bag carried over from the last level on the district card (RT-116 bag row)."),
@@ -98,7 +96,7 @@ LEVELS = [ # n, name, pool, speedMul, gapOffset, lanes, speedVar, luxury, lastma
  (7,"Ojota Intersect",7,0.55,1.0,7,0.15,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
  (8,"Third Mainland Bridge",8,1.2,0.35,8,0,0,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
  (9,"Lekki Toll Gate",8,1.35,0.1,8,0,3,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
- (10,"Ojuelegba Chaos",8,1.45,0.0,8,0.35,3.5,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],1),
+ (10,"Ojuelegba Chaos",8,1.45,0.0,8,0.35,3.5,1,1,1,1,0,["owa","maltina_gala","pure_water","bribe_change","siren"],0),
 ]
 LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; Owa! not yet unlocked.",
  2:"Owa! unlocks here (toast). Base Camp opens (ShopAllowed L2+). Continue cost rises to 125 chips.",
@@ -109,7 +107,7 @@ LEVEL_NOTES = {1:"Tutorial. Commuters only, widest gaps (+1.2 s). No power-ups; 
  7:"7 lanes, per-lane speed variation ±15%. Okada Dash appears at the curb (L7+, curb pickup, not sold).",
  8:"8 lanes: wide camera (20 m, FOV 58°). Traffic ×1.2, gaps +0.35 s. Big difficulty step.",
  9:"Luxury/aggressive cars +3 speed bonus, near-zero gap offset (+0.1 s).",
- 10:"Truly endless: no goal zone. Difficulty climbs every 20 s (+4% speed, −0.05 s gaps per tick); ±35% lane variation. Score = metres + 25/delivery + 10/combo step."}
+ 10:"Final level (RT-108, PR #94: no longer endless). Ranked by clear time like L1–L9."}
 from gen_screens import ECON
 NAMES = {p:d for p,d,*_ in ECON}
 
@@ -284,7 +282,6 @@ def souvenirs():
 <tr><td>Owa capacity upgrade</td><td>₦500 per +1, but max = hard cap = 3, so no headroom today</td><td><code>GameManager.owaCapacityUpgradeCost</code>, <code>absoluteMaxOwaCapacity</code></td><td>Hidden until the cap rises (<span class="badge">TBD</span>)</td></tr>
 <tr><td>Power-up stock</td><td>caps 3/3/2/2/2/2; curb finds and shop buys share the cap</td><td><code>PowerUpInventoryCap</code></td><td>Base Camp pips</td></tr>
 <tr><td>KAI bribe</td><td>₦200 (in-run Naira)</td><td><code>LevelManager.kaiBribeCostNaira</code></td><td>CHANGE pip / toast</td></tr>
-<tr><td>Endless score</td><td>metres + 25 per delivery + 10 per combo step</td><td><code>EndlessRunScore</code></td><td><a href="screens.html#s-hud-endless">Endless HUD</a></td></tr></table>
 <div class="card dont"><b>Open with Kehinde:</b> the vision brief proposes a 2-slot “Gidi Bag”, a free Owa (3 per run), Agbada Armour (earned only) and new items. The site now shows Owa as FREE (refill 80 chips per charge); Agbero Whistle is removed from the game (#39). Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. (Malta 80, VIP Siren 120, Owa 80, Danfo Ride 150; Agbada Armour earned only.)</div>
 <h2>Souvenirs: one per district (concept)</h2><p>A collectible medallion found once per district, shown in a Lagos collection book on the map. Gold rim = collected; dim = not found yet.</p>
 <div class="icgrid">{cards}</div>

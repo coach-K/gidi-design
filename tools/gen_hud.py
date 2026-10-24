@@ -45,7 +45,10 @@ def pick_pos(w, h):
     l, b = SAFE_LB.get(w, (0, 0)); k = h / 720
     return l + 240*k, h - b - 196*k, PICK[2]*h
 
+OWA_BUTTON = False  # Kehinde Oct 24: separate OWA! button removed; Owa fires only from the bag (GPP-021)
+
 def controls(w, h, owa=(2, 0.5, 3), owa_hi=False, pick=None, dpad=None):
+    if not OWA_BUTTON: owa = None
     px, py, pr = pick or pick_pos(w, h)
     dx, dy, dr = dpad or (DPAD[0]*w, DPAD[1]*h, DPAD[2]*h)
     return (f'<div class="pick2" style="left:{px-pr:.0f}px;top:{py-pr:.0f}px;width:{2*pr:.0f}px;height:{2*pr:.0f}px"><b>+</b><span>PICK UP</span></div>'
@@ -92,7 +95,7 @@ def page(name, annot):
    <li>Wide stages (≥ 8 lanes): height 20 m, FOV 58°. Shown: L5 (standard)</li>
    <li>Road narrows with distance; lanes enter from the screen edges</li>
    <li>Controls stay where the build puts them; their overlap with lane ends is accepted, as in the build</li></ul></div>
-  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs</li><li>HUD glass panels</li><li>Touch controls (translucent): PICK UP, OWA! (same layer, no overlap), d-pad</li><li>Toasts</li><li>Modals</li></ol></div>
+  <div class="note z"><h4>Z-ORDER</h4><ol><li>3D scene</li><li>World telegraphs</li><li>HUD glass panels</li><li>Touch controls (translucent): PICK UP, bag, d-pad (same layer, no overlap)</li><li>Toasts</li><li>Modals</li></ol></div>
 </div>"""
     a += "</div></body></html>"
     fn = os.path.join(OUT, f"hud-{name}{'-annotated' if annot else ''}.html")
