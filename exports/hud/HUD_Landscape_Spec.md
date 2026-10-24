@@ -148,28 +148,30 @@ Clearances (1080): top row ends y 176 and the power-up chip/ring under it spans 
 
 **Full bag on pickup (chosen behaviour).** The item is NOT picked up and stays on the curb (pickup marker stays lit); all 4 slots shake (6 px, 240 ms) with the orange `bag_slot_full` frame for 600 ms; toast `panel_toast_normal` with `icon_bag` tinted #FF7A1A: "Bag full · tap a slot to use one" (2 s, one toast per 4 s max). Exception: a stackable item whose type is already in the bag below its cap stacks normally.
 
-**VIP Siren anti-exploit.** One per level (after use the slot shows Disabled "Used this level" until the next level); 8 s cooldown after the 5 s effect ends; price per run 120 → 180 → 270 (stays 270), resets at cash-out. Base Camp tile shows the next price ("next ₦180"); states in `siren-states-*`.
+**VIP Siren anti-exploit.** One per level (after use the slot shows Disabled "Used this level" until the next level); **20 s cooldown** after the 5 s effect ends (Kehinde, Oct 24; was 8 s); price per run 120 → 180 → 270 (stays 270), resets at cash-out. Base Camp tile shows the next price ("next ₦180"); states in `siren-states-*`.
 
 **Base Camp.** Bag strip bottom-left (120 slots, "YOUR BAG n/4"), tiles: new type with no free slot → `btn_buy_full` "Bag full"; same type below cap → "+1 to stack"; Siren bought this level → "Used this level" + next price. Level intro shows the carried-over bag (see `../unity/screens/intro/README.md`, bag row).
 
 **Decided (Kehinde, Oct 24).** No separate OWA! button: Owa fires only from its bag slot (×N pill = charges, cap 3). Owa refill in Base Camp fills that slot (takes a slot when the first charge arrives).
 
-## Power-up active + Owa countdown ring (RT-118, G-Prototype PR #107), updated Oct 24 for "no OWA! button"
-Mockups: `hud-owa-*` (Owa freeze running on its bag slot while Malta runs), `owa-ring-states-*`. Code in PR #107: `ActivePowerUpHudRules`, `MobileControlsView.SetOwaActive(remaining01, totalSeconds)` from `GameHudController.RefreshAll` (`traffic.OwaRemainingNormalized`, `LevelManager.owaShoutFreezeDuration` = 4 s). **Change needed:** the OWA! button is removed, so the ring must move from `MobileControlsView`'s `FreezeTimer` to the Owa slot in the bag view. `IndicatorFor(Owa)` keeps returning `OwaButtonRing` but it now means "ring on the Owa bag slot" (rename to `OwaSlotRing` if convenient).
+## Power-up active: Owa timer chip (RT-118, G-Prototype PR #107), revised Oct 24 to the dev's #107 approach
+Mockups: `hud-owa-*` (Owa chip + Malta chip side by side in the active row, Owa bag slot active with no ring), `owa-ring-states-*`. Code in PR #107: `ActivePowerUpHudRules` (`WarningSeconds` = 1 s, `MinActive`, `GameUiTheme.OwaTeal`, `GameUiTheme.Danger`); remaining time from `traffic.OwaRemainingNormalized` × `LevelManager.owaShoutFreezeDuration` (4 s). **Supersedes** the earlier "teal ring on the Owa bag slot" design.
 
 | Power-up (`HudPowerUp`) | `ActiveIndicator` | What the HUD draws |
 |---|---|---|
-| Owa | `OwaButtonRing` → bag slot | teal ring on the Owa bag slot (below) |
-| Maltina / PureWater / Siren | `TimerChip` (`ActiveChipKind` Malta / PureWater / Siren) | timer chip under the top band (PR #85, unchanged) **and** the gold active ring on its bag slot |
+| Owa | `TimerChip` (`ActiveChipKind` Owa) | timer chip in the active row, **teal** ring + freeze badge; bag slot shows active / disabled only |
+| Maltina / PureWater / Siren | `TimerChip` (Malta / PureWater / Siren) | gold timer chip (PR #85) **and** the gold active ring on its bag slot |
 | Bribe (CHANGE) | `StockCountOnly` | CHANGE bag-slot count drops by one |
 | Whistle | `Removed` | nothing |
 
-**Owa ring on the bag slot**
-- Sprite: reuse `ring_powerup_timer_fill` (white, tinted) over `ring_powerup_timer_track`, both scaled to **124 px** inside the 144 slot (`bag_slot_active` frame); badge shrinks to 84 like any active slot. 170 → 124 scale gives a ≈7–8 px stroke. No new art.
-- Filled, Radial 360, origin Top, **counter-clockwise**, `fillAmount = OwaRingFill(remaining01)`, raycastTarget off.
-- Colour: Owa teal `#59D9B8` (`GameUiTheme.OwaTeal`), so it reads differently from the gold Malta/Siren slot rings. In the last `WarningSeconds` → `GameUiTheme.Danger` plus a 1 Hz scale pulse 1.00 → 1.06 (shape/motion pairing, not colour alone).
-- Visible while `remaining01 > MinActive`; hidden at the end.
-- ×N pill keeps showing charges left (2 → 1 on tap). Tapping the slot again during a freeze: queued/ignored as today (`_owaQueued`), the slot plays the denied shake if ignored.
+**Owa chip** (same prefab as the other timer chips: 140 badge + `ring_powerup_timer_track` / `ring_powerup_timer_fill` 170, label under it)
+- Ring fill tinted **OwaTeal `#59D9B8`** (not gold); Filled Radial 360, origin Top, clockwise like the other chips, `fillAmount = remaining01`. Label `Owa · 2.4s` (30 px, legacy/TMP whichever the chip uses), `#F5F5F0`.
+- **Freeze cue:** 56 px round badge on the chip's top-right (−6, −6): ink `#0F1219` fill, 3 px teal outline, new sprite `icon_freeze_white` (snowflake, 34 px, tinted teal). Sprites: `sprites@{1x,2x}/icons/ui/icon_freeze.png` / `white/icon_freeze_white.png`. Teal + snowflake = colour paired with a shape.
+- **Last second** (`remaining ≤ WarningSeconds` = 1 s): ring, label and badge outline → `GameUiTheme.Danger` (#FF7A1A), plus a 1 Hz scale pulse 1.00 → 1.06 and a soft red halo (Image, 45% alpha, fades with the pulse). Motion + colour, never colour alone.
+- Hidden when `remaining ≤ MinActive`. Ordering in the row: activation order, chips 210 px apart, row centred under the top band (y 198).
+- **No gold anywhere on the Owa chip's frame or glow** (this removes the old gold-glow-around-teal conflict). The badge art itself stays as is.
+
+**Owa bag slot while the freeze runs:** no ring, no teal, no glow. Charges left → `bag_slot_active` frame with `bag_overlay_active_glow` **off** (×N pill updates 2 → 1); 0 left → Disabled (grey 50%, "in use"). Ended with 0 → Disabled "none left". Tapping during a freeze: queued/ignored as today (`_owaQueued`); ignored taps play the denied shake.
 
 ### PICK UP after the OWA! removal (re-check, Oct 24)
 PICK UP stays at the PR #59 build position (centre 360, 786 desktop / 492, 723 phone, 216 Ø). With OWA! gone nothing sits above it: the old OWA! box (y 502–646) is free and must stay empty, so PICK UP's nearest neighbours are the safe left edge (144 px gap desktop, 24 px from the 132 notch inset on phone) and the HUD row (ends y 176, 502 px above). No move needed; don't enlarge it into the old OWA! space (it would cover the near lane ends). Bag ↔ PICK UP gap: desktop 808 px horizontally, so the two thumbs never collide.

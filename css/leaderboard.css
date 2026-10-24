@@ -48,3 +48,8 @@
 .sk i{display:block;height:18px;border-radius:9px;background:rgba(255,255,255,.12)}
 .sk i.c{width:36px;height:36px;border-radius:50%}
 .spin{width:72px;height:72px;border-radius:50%;border:8px solid rgba(255,255,255,.15);border-top-color:#E8B21E;margin:4px auto}
+
+.tab.lock b{display:flex;align-items:center;gap:6px;opacity:.45}.tab.lock span{opacity:.45}.tab.lock{border-style:dashed}
+.tab.lock.on{background:rgba(232,178,30,.55);border-style:solid}.tab.lock.on b,.tab.lock.on span{opacity:.75}
+.lockban{display:flex;gap:20px;align-items:center;margin:0 0 14px;padding:18px 24px;border-radius:24px;background:rgba(232,178,30,.12);border:2px solid rgba(232,178,30,.55)}
+.lockban b{display:block;font-size:32px;color:#F5F5F0}.lockban span{display:block;font-size:22px;color:#9EA3AD;margin-top:4px}

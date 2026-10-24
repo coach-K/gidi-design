@@ -45,6 +45,7 @@ ICONS = {
  "close": f'<path {S} d="M12 12l24 24M36 12L12 36"/>',
  "ad": f'<rect {S} x="6" y="11" width="36" height="26" rx="5"/><path {S} d="M21 18l9 6-9 6z"/>',
  "timer": f'<circle {S} cx="24" cy="27" r="15"/><path {S} d="M24 27v-8M20 6h8M24 6v6"/>',
+ "freeze": f'<path {S} d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path {S} d="M18 8l6 5 6-5M18 40l6-5 6 5M5 20.5l7.8-1.2-2.8-7.4M43 27.5l-7.8 1.2 2.8 7.4M5 27.5l7.8 1.2-2.8 7.4M43 20.5l-7.8-1.2 2.8-7.4"/>',
  "lock": f'<rect {S} x="10" y="22" width="28" height="20" rx="4"/><path {S} d="M16 22v-6a8 8 0 0 1 16 0v6"/>',
  # warning shapes (filled, colour fixed by state)
  "warn_safe": f'<rect x="4" y="16" width="40" height="16" rx="8" fill="{P["safe"]}"/><path d="M15 24l6 5 12-10" fill="none" stroke="#0F1219" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -57,7 +58,7 @@ GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren
           ("Earned &amp; curb-only (not sold)", ["agbada_armour","okada_dash"]),
           ("Shop extras", ["retry","iap_skins_pack","iap_fits_pack","iap_remove_ads"]),
           ("Curb pickups &amp; currency", ["pickup_ring","pickup_person","chip"]),
-          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs","bag","trophy","wifi_off","user","swap"]),
+          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs","bag","trophy","wifi_off","user","freeze","swap"]),
           ("Warning shapes (colour + shape)", ["warn_safe","warn_caution","warn_danger","warn_lastma","warn_train"])]
 PU_ACCENT = {"owa":P["gold"],"maltina_gala":"#C8743A","pure_water":P["safe"],"bribe_change":"#7FD6A2","siren":P["danger"],"danfo_ride":"#F2C230","gist_bomb":"#E0443C","agbada_armour":P["naira"],"okada_dash":"#59D9B8"}
 

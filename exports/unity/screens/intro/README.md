@@ -57,7 +57,7 @@ Reduce motion: no scale/slide, fades only (150 ms). Buttons accept taps from 300
 ## Open questions
 1. L1–L9 source captures came from the build with missing vehicle models (see Levels page note); swap in fresh captures when available (re-run `tools/gen_intro_bgs.py`).
 2. Mobile switch rule: `isMobilePlatform` vs aspect ratio (tablets 4:3 would then use the desktop file, cropped by Envelope).
-3. Dim 20%: confirm on device; raise to 30% if the subtitle feels weak on bright levels (L4, L9).
+3. ~~Dim 20%: confirm on device~~ **Decided Oct 24: per-level dim table below** (20% default, 30% on L4 and L9).
 
 ## Bag row on the card (reserved zone, RT-116 / PR #101, matches GPP-021)
 The card grows from 660 to **860** high (1280×720: 573) to make room; the card centre stays 40 px above the safe centre (desktop card y 38–898 in safe, phone 26–886: both fit). Everything above the power-up chips is unchanged.
@@ -71,3 +71,22 @@ The card grows from 660 to **860** high (1280×720: 573) to make room; the card 
 | Buttons (CTA 380 × 144, Base Camp 300 × 144) | y 468 | y = 860 − 44 − 144 + 30 = **702** (bag row ends 696) |
 
 Slots use the GPP-021 sprites at 120 (`bag_slot_normal` / `bag_slot_empty`, badge 80, `bag_count_badge`), **read-only** on this card (Kehinde, Oct 24): no tap affordance at all. Not buttons, no pressed state, no raycast target, no ×N tap hint, no 'tap to use' label; header reads `IN YOUR BAG · carried over from …` only. Fresh run with an empty bag: show the row with 4 empty slots and the helper "Bag empty · stock up in Base Camp". L1 (no power-ups yet): hide the bag header + row and keep the 660 card. Concept mockup: `exports/intro-bag-*.png`.
+
+
+## Per-level dim (RT-116, decided Oct 24)
+`Dim` = full-bleed Image `#02030A`, alpha from this table (`LevelIntroView` picks it by level index; default 0.20). Measured on the shipped `bg_intro_L##.png` (WCAG contrast; "card" = text on the ink @88% card over the brightest 5% of the background behind it; "street" = white #F5F5F0 against the brightest 5% of the whole dimmed background, i.e. anything drawn straight on the street and the card's edge read).
+
+| Level | Dim | Card title #F5F5F0 | Card subtitle #9EA3AD | Kicker gold | Street p95 at 20% → chosen |
+|---|---|---|---|---|---|
+| L1 | **20%** | 16.5 | 7.1 | 9.3 | 6.2 |
+| L2 | **20%** | 16.4 | 7.1 | 9.2 | 4.8 |
+| L3 | **20%** | 16.9 | 7.3 | 9.5 | 10.7 |
+| L4 Mushin Market | **30%** | 16.4 | 7.1 | 9.2 | 4.2 → **5.2** |
+| L5 | **20%** | 16.4 | 7.1 | 9.2 | 4.9 |
+| L6 | **20%** | 16.6 | 7.2 | 9.3 | 7.6 |
+| L7 | **20%** | 16.6 | 7.2 | 9.4 | 8.3 |
+| L8 | **20%** | 16.7 | 7.2 | 9.4 | 7.9 |
+| L9 Third Mainland Bridge | **30%** | 16.2 | 7.0 | 9.1 | 3.8 → **4.8** |
+| L10 | **20%** | 17.0 | 7.3 | 9.6 | 11.7 |
+
+Reading: everything **inside** the card passes AA/AAA on every level at either dim (the 88% ink fill does the work; subtitle ≥ 6.9:1). The dim only matters for the street around the card: L4 (bright market awnings) and L9 (sky + bridge lights) drop below 4.5:1 at 20%, so they get **30%**; every other level stays at 20% so the street keeps reading. Phone backgrounds use the same table.

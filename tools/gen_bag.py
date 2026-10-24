@@ -44,7 +44,7 @@ def page(fn, n, lv, body, title, **kw):
 
 def hud_bag(n):
     w, h = FRAMES[n][:2]
-    slots = [slot("owa", 3), slot("maltina_gala", 1, "active", .55), slot("siren", 1, "filled", cd=.6, cdt="6s"), slot()]
+    slots = [slot("owa", 3), slot("maltina_gala", 1, "active", .55), slot("siren", 1, "filled", cd=.6, cdt="12s"), slot()]
     out = page(None, n, 6, top_hud(6, META) + chip("maltina_gala", .55, "Malta · 2.2s", w), "HUD bag", ctl=True, owa=(3, 0, 3))
     return out.replace("</body>", row(w, h, slots) + "</body>")
 
@@ -70,7 +70,7 @@ def bag_states(n):
 <div class="psub" style="margin-top:28px;font-size:24px">Tap: scale 0.92 (80 ms) → 1.0 (120 ms ease-out) · light haptic · <code>sfx_bag_slot_tap</code> then the item cue. Denied tap (cooldown, disabled): 6 px shake · <code>sfx_bag_denied</code>.</div></div>'''
     return page(None, n, 5, body, "Bag states", blur=True)
 
-SIREN_PRICES = (120, 180, 270)   # 1st / 2nd / 3rd+ purchase in a run (anti-exploit); one per level, 8 s cooldown in-run
+SIREN_PRICES = (120, 180, 270)   # 1st / 2nd / 3rd+ purchase in a run (anti-exploit); one per level, 20 s cooldown in-run
 def siren_btn(state, price=120, nxt=180):
     if state == "buy":  return f'<button class="buy sm2" style="width:170px;min-width:170px">₦{price}</button>'
     if state == "used": return '<button class="buy full sm2" style="width:170px;min-width:170px;font-size:24px;line-height:1.15">Used this<br>level</button>'
@@ -112,11 +112,11 @@ def siren_states(n):
     ladder = "".join(f'<div class="statecard" style="gap:10px;padding:18px"><span style="font-size:44px;color:#FAE69E">₦{p}</span><span>{k}<small>{d}</small></span></div>'
                      for p, k, d in ((120, "1st buy", "base price"), (180, "2nd buy", "×1.5"), (270, "3rd+ buy", "×1.5, then stays")))
     cd = (f'<div class="statecard" style="gap:52px">{slot("siren",1,"active",.6)}<span>Running<small>5 s freeze, ring</small></span></div>'
-          f'<div class="statecard" style="gap:52px">{slot("siren",1,"filled",cd=.7,cdt="6s")}<span>Cooldown<small>8 s radial + seconds</small></span></div>'
+          f'<div class="statecard" style="gap:52px">{slot("siren",1,"filled",cd=.7,cdt="12s")}<span>Cooldown<small>20 s radial + seconds</small></span></div>'
           f'<div class="statecard" style="gap:52px">{slot("siren",1,"disabled",lbl="Used this level")}<span>Used this level<small>grey 50%, can\'t fire again</small></span></div>')
     w = FRAMES[n][0] - 2*FRAMES[n][2] - 120
     body = f'''<div class="ov heavy"></div><div class="panel" style="width:{w}px;text-align:left;padding:36px 48px"><div class="ph" style="font-size:44px">VIP Siren · anti-exploit</div>
-<div class="psub" style="font-size:24px">One per level · 8 s cooldown after it ends · price rises per run: ₦120 → ₦180 → ₦270 · resets at cash-out</div>
+<div class="psub" style="font-size:24px">One per level · 20 s cooldown after it ends · price rises per run: ₦120 → ₦180 → ₦270 · resets at cash-out</div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin-top:22px;--tile:1fr">{grid}</div>
 <div style="display:flex;gap:14px;margin-top:26px">{ladder}{cd}</div></div>'''
     return page(None, n, 7, body, "VIP Siren states", blur=True).replace("</head>", '<link rel="stylesheet" href="../css/mock.css"><link rel="stylesheet" href="../css/bag.css"></head>')

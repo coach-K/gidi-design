@@ -4217,6 +4217,38 @@
    },
    "screen": "hud,shop",
    "note": "Count pill ×N (N ≥ 2; OWA always), top-right at (−8, −8) outside the slot. TMP 24 px #0F1219, stretch horizontally."
+  },
+  {
+   "name": "icon_freeze",
+   "file": "sprites@1x/icons/ui/icon_freeze.png",
+   "file2x": "sprites@2x/icons/ui/icon_freeze.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_freeze_white",
+   "file": "sprites@1x/icons/ui/white/icon_freeze_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_freeze_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
   }
  ]
 }

@@ -178,9 +178,9 @@ Import: Texture Type **Sprite (2D and UI)**, Single, Mesh Full Rect, **Pixels Pe
 Malta & Agege Roll in the game: **traffic slows 50% for 4 s** (ring label “Malta · 4s”, toast “Traffic slow down 50% for 4s”).
 
 ## Leaderboards (RT-109)
-Mockups: `exports/leaderboard-{desktop,phone}.png` (L4, Global), `leaderboard-states-*` (loading / empty / offline / not signed in). Source `tools/gen_leaderboard.py`, sprites in `sprites@{1x,2x}/leaderboard/` (PPU 100 / 200).
+Mockups: `exports/leaderboard-{desktop,phone}.png` (L4, Global), `leaderboard-states-*` (loading / empty / offline / not signed in), `leaderboard-locked-*` (L9 locked), `leaderboard-friends-*` (Friends empty). Source `tools/gen_leaderboard.py`, sprites in `sprites@{1x,2x}/leaderboard/` (PPU 100 / 200).
 
-**Ranking.** L1–L10: clear time **ascending**, shown `mm:ss.mmm` (e.g. `00:41.237`). L10 is no longer endless (RT-108, PR #94), so there is no score board. Ties: earlier submission ranks higher.
+**Ranking.** L1–L10: clear time **ascending**, shown **`mm:ss.hh`** (hundredths, e.g. `00:41.23`; truncate ms/10, don't round). **No distance column anywhere** (rows: rank · avatar · name · time · chips). L10 is no longer endless (RT-108, PR #94), so there is no score board. Ties: earlier submission ranks higher.
 
 **Backend: Unity Gaming Services Leaderboards** (Kehinde, Oct 24; ties into GPP-013 sign-in / UGS auth).
 | Level | Leaderboard ID | Sort | Score submitted |
@@ -189,7 +189,7 @@ Mockups: `exports/leaderboard-{desktop,phone}.png` (L4, Global), `leaderboard-st
 - One board per level; reset: none for all-time; a weekly view, if wanted, is a UGS reset schedule on a separate ID (`gidi_L01_time_weekly`, …).
 - **Chips** on each row come from the entry's **metadata** (`{"chips": 240, "saved": 7}`, written with the score; UGS `AddPlayerScoreAsync(id, ms, new AddPlayerScoreOptions{ Metadata = … })` and read with `IncludeMetadata = true`).
 - **Tiers:** use UGS leaderboard tiers for the rank badge band: top 3 by rank get `badge_rank_1/2/3`; configure tiers `gold` (top 1%), `silver` (top 10%), `bronze` (top 25%) and show the tier name under "Your best" in the side card (`tierId` from `GetPlayerScoreAsync`). Rows keep the top-3 styling by rank.
-- Global = `GetScoresAsync(id)` (pages of 50), Friends = `GetScoresByPlayerIdsAsync(id, friendIds)` (friend list source still open), own row = `GetPlayerScoreAsync(id)` (pinned).
+- Global = `GetScoresAsync(id)` (pages of 50), Friends = `GetScoresByPlayerIdsAsync(id, friendIds)` (friend list = UGS Friends relationships), own row = `GetPlayerScoreAsync(id)` (pinned).
 
 **Layout** (inside `Screen.safeArea`; ref 1920×1080 = 1280×720 × 1.5; desktop safe 1856×1016, phone 2340 safe 2076×993):
 
@@ -207,13 +207,37 @@ Mockups: `exports/leaderboard-{desktop,phone}.png` (L4, Global), `leaderboard-st
 
 Row columns (1920 ref): rank 88 (badge 64) · avatar 60 · name flex · clear time 250 (right) · chips 210 (right). Rows are not buttons (tap target rules don't apply); tabs, filter, Back and CTA are all ≥ 144 px.
 
-**Rows.** `lb_row_normal` (white 4.5%), `lb_row_top1/2/3` (gold / silver / bronze tint + outline) with `badge_rank_1/2/3` (8-point star / hexagon / circle + number, never colour alone), `lb_row_you` (ink 92% + 3 px gold) + `tag_you`. When the player is in the visible list, highlight that row in place and hide the pinned copy. Avatar: `avatar_mask` + `avatar_ring`, 60 px; placeholder = mask tinted with an Okabe-Ito colour (#E69F00, #56B4E9, #009E73, #F0E442, #0072B2, #D55E00, #CC79A7) + 2 initials TMP 24 px (#0F1219, or #F5F5F0 on #0072B2/#D55E00/#009E73).
+**Rows.** `lb_row_normal` (white 4.5%), `lb_row_top1/2/3` (gold / silver / bronze tint + outline) with `badge_rank_1/2/3` (8-point star / hexagon / circle + number, never colour alone), `lb_row_you` (ink 92% + 3 px gold) + `tag_you`. When the player is in the visible list, highlight that row in place and hide the pinned copy. Avatar: `avatar_mask` + `avatar_ring`, 60 px; placeholder = mask tinted with an Okabe-Ito colour (#E69F00, #56B4E9, #009E73, #F0E442, #0072B2, #D55E00, #CC79A7) + 2 initials Text 24 px (#0F1219, or #F5F5F0 on #0072B2/#D55E00/#009E73).
 
-**Tabs / filter.** `tab_level_off/on/pressed`: TMP `L4` 44 px + short name 18 px (#9EA3AD; on = #0F1219). L10 label `L10` (no ∞). `seg_filter_off/on` with `icon_trophy` (Global) / `icon_group` (Friends), 40 px icon + TMP 28 px.
+**Tabs / filter.** `tab_level_off/on/pressed`: Text `L4` 44 px + short name 18 px (#9EA3AD; on = #0F1219). L10 label `L10` (no ∞). `seg_filter_off/on` with `icon_trophy` (Global) / `icon_group` (Friends), 40 px icon + Text 28 px.
 
 **States.** Loading: 4+ `skeleton_row` with `skeleton_bar` lines + `spinner_arc` (tint #E8B21E, 1 rev/s; Reduce motion = no shimmer). Empty: `icon_trophy` 64 gold, "No times yet on {level}", CTA OYA, CROSS!. Offline: `icon_wifi_off`, "Network no dey", cached personal best + chips, `btn_glass` "Try again" (`icon_retry`). Not signed in: `icon_user`, "Sign in to join the ranks", CTA Sign in; local best is kept.
+
+**Locked levels.** Tabs for levels the player hasn't unlocked are greyed but **still tappable**: `tab_level_off` at normal alpha with a 3 px dashed `#9EA3AD` 45% outline (or `tab_level_off` + CanvasGroup 0.45 if dashed is awkward), `icon_lock_white` 30 px tinted #9EA3AD left of the label, label + short name at **45% alpha**. Selected locked tab = `tab_level_on` frame at 45%. Opening one shows the board read-only plus a banner at the top of the list panel: `panel_toast` (glass), `icon_lock` 36 px, "**Clear L{n-1} to unlock** · {level name} · you can look around; your times post once it opens." (Text 26 px #F5F5F0, level name #FAE69E). Side card CTA becomes a 45% **Locked** button (not interactable); your-best shows "—". No new sprite needed.
+
+**Friends empty.** When Friends has no entries (no friends, or none with a time on this level): centred in the list panel, `icon_group` 96 px gold, "No friends on this board yet" (Text 40 px #F5F5F0), body 30 px #9EA3AD "Add friends with their Gidi name and race their times here.", primary CTA **Add friends** (`btn_gold`, 392 × 144, opens UGS Friends: `FriendsService.Instance.AddFriendByNameAsync(name)` → sends a friend request; incoming requests listed with Accept/Decline), secondary `btn_glass` **Share my name** (native share sheet with "Find me on Gidi++: BabaGidiFan#4821"), and the caption "Your Gidi name: {PlayerName}" 24 px #9EA3AD. Requires UGS Friends package (`com.unity.services.friends`); if it's not enabled, hide Add friends and keep Share my name.
+
+**Legacy `UnityEngine.UI.Text` settings (the screen doesn't use TMP).** Font: Plus Jakarta Sans Bold (`PlusJakartaSans-Bold.ttf` as a Font asset, Dynamic, Include Font Data). On every Text: **Best Fit off**, Rich Text off, Horizontal Overflow Overflow on single-line labels (Wrap on body copy), Vertical Overflow Truncate, Line Spacing 1, Raycast Target off unless it's the button's only graphic.
+
+| Text | Size (1920 ref) | Colour | Alignment | Effect |
+|---|---|---|---|---|
+| Level title (side card) | 46 | #F5F5F0 | Upper Left | Shadow #000 50%, (0, −2) |
+| Card kicker | 22 | #E8B21E | Upper Left | none |
+| Tab label / short name | 44 / 18 | #F5F5F0 / #9EA3AD (on: #0F1219) | Middle Center | none |
+| Header row | 20 | #9EA3AD | Middle Left (time/chips Middle Right) | none |
+| Rank | 32 | #9EA3AD (you #FAE69E) | Middle Center | none |
+| Name | 30 | #F5F5F0 | Middle Left | Shadow #000 50%, (0, −2) |
+| Time | 30 | #F5F5F0 | Middle Right | Shadow #000 50%, (0, −2) |
+| Chips | 30 | #FAE69E | Middle Right | Shadow #000 50%, (0, −2) |
+| Banner / state copy | 26–40 | see above | Middle Center | Shadow #000 50%, (0, −2) |
+
+No `Outline` component anywhere (it thickens Jakarta Bold and halos on glass); a single `Shadow` (effect colour #000000 alpha 128, distance (0, −2), Use Graphic Alpha on) only on text drawn over glass/blurred backgrounds. Times: Text can't do tabular figures, so put the time in a fixed-width right-aligned rect (250 px) and keep `mm:ss.hh` zero-padded so columns line up.
 
 **Type & colour.** Plus Jakarta Sans Bold. Name 30 px #F5F5F0; time/score 30 px tabular #F5F5F0; chips 30 px #FAE69E; rank 32 px #9EA3AD (you: #FAE69E); header 20 px #9EA3AD tracking 10%; card kicker 22 px #E8B21E; level title 46 px. Ink #0F1219, gold #E8B21E, naira #FAE69E, muted #9EA3AD. Backgrounds: the selected level's blurred screenshot + 55% ink scrim.
 
 ## Bag (GPP-021)
 Sprites `sprites@{1x,2x}/hud/bag/` (PPU 100/200, borders in `manifest.json`): `bag_slot_{normal,pressed,active,full}` (9-slice, border 36), `bag_slot_empty`, `bag_overlay_active_glow` (24 px glow margin), `bag_overlay_cooldown` (white, Filled Radial 360), `bag_overlay_disabled`, `bag_count_badge` (9-slice pill 22). Icons: existing `badge_owa / badge_maltina_gala / badge_pure_water / badge_bribe_change / badge_siren` (96 in slots, 84 when running) and `icon_bag`. Timer ring: reuse `ring_powerup_timer_track` / `ring_powerup_timer_fill` scaled to 124. Layout, states, feedback, full-bag rule and VIP Siren rules: `../hud/HUD_Landscape_Spec.md` › Bag.
+
+**VIP Siren cooldown: 20 s** (Kehinde, Oct 24; was 8 s) after the 5 s effect, shown as the `bag_overlay_cooldown` radial + seconds. One per level, price per run ₦120 → ₦180 → ₦270.
+
+**Owa while it runs (RT-118, PR #107):** Owa is a normal `TimerChip` in the active power-up row, ring tinted OwaTeal `#59D9B8`, plus a 56 px freeze badge (`icon_freeze_white` tinted teal, new in `icons/ui/`). Last 1 s (`WarningSeconds`) → Danger #FF7A1A + 1 Hz pulse. The Owa bag slot shows only `bag_slot_active` (glow off) or Disabled; no ring on the slot. Full spec: `../hud/HUD_Landscape_Spec.md` › Power-up active.

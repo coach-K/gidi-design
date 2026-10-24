@@ -23,3 +23,7 @@
 .up{color:#FF7A1A;font-size:22px}
 .next{font-size:18px;color:#9EA3AD;display:block}
 .pickfail{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:20px;color:#FF7A1A}
+.bslot.active.noglow{box-shadow:none}
+.pu .frost{position:absolute;right:-6px;top:-6px;width:56px;height:56px;border-radius:50%;background:#0F1219;border:3px solid #59D9B8;display:flex;align-items:center;justify-content:center}
+.pu.warn .frost{border-color:#FF7A1A}
+.pu .halo{position:absolute;left:-14px;top:-14px;right:-14px;bottom:-14px;border-radius:50%;border:6px solid rgba(255,122,26,.45);box-shadow:0 0 26px rgba(255,122,26,.6)}

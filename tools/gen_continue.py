@@ -1,5 +1,5 @@
 """GPP-066 Continue modal states (PR #109, ContinueModalRules / ContinueOfferPanel). 1 continue per run.
-States: offer, ad loading (SetBusy), ad unavailable/failed, no continues left, countdown/timeout (design proposal: not in code yet)."""
+States: offer, ad loading (SetBusy), ad unavailable/failed, no continues left, countdown/timeout (FINAL, Kehinde Oct 24: 10 s, pauses while an ad loads, run ends at 0)."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from gen_hud import FRAMES, OUT

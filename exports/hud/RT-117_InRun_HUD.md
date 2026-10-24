@@ -14,7 +14,7 @@ Full detail stays in `HUD_Landscape_Spec.md`; this page is the one-screen build 
 | 8 | D-pad | centre (86.1% W, 70.2% H), r 16.7% H | 360 Ø | built |
 | 9 | **Bag row** (4 slots, `BAG · TAP TO USE` label 44 above) | bottom-right: right = safe right − 32, bottom = d-pad top − 24 | 612×144 (slots 144, gap 12); desktop x 1276–1888, phone x 1564–2176, y 410–554 | **to build** (GPP-021 section) |
 | 10 | Timer chips (Malta / Pure Water / Siren) | top-centre, y 198–368 | 140 badge + 170 ring | built (#85) |
-| 11 | Owa freeze ring | on the Owa bag slot, 124 | — | **move** from the OWA! button (#107) to the bag slot (RT-118 section) |
+| 11 | Owa timer chip | active power-up row with the other chips, 140 badge / 170 ring, teal #59D9B8 + freeze badge | — | **as #107**: `TimerChip` (RT-118 section); Owa bag slot active/disabled only, no ring |
 | 12 | Toasts | top-centre, y 420 band, left edge ≥ 744 when the bag-full toast shows | auto × 72 | built (#90) |
 | – | ~~OWA! button~~ | removed Oct 24 | — | **remove/hide** `MobileControlsView` OWA! (`_owaRoot`, rim, label, pips, `FreezeTimer`) |
 | – | ~~Endless score strip~~ | removed (L10 timed) | — | **remove** |
@@ -23,4 +23,4 @@ Sorting / z-order: 3D → world telegraphs → HUD panels (canvas 100) → touch
 
 Clearances to keep (1080): top row ends y 176; chips/ring band 198–368 at x 875–1045; bag starts y 410 / x ≥ 1276 (desktop); d-pad top y 578; PICK UP top y 678. Tablet 4:3 (aspect < 1.5): two-row top HUD per the tablet section; the bag keeps its rule (right − 32, d-pad top − 24).
 
-Wiring the dev needs: `HudStatsPauseButtons.PauseHandler = PauseScreenView.Open`, `StatsHandler = StatsScreenView.Open` (set by those screens, as in #106). Pause also opens on app background. Stats/Pause are disabled (45%) while the continue modal or level intro is up.
+Wiring the dev needs: `HudStatsPauseButtons.PauseHandler = PauseScreenView.Open`, `StatsHandler = StatsScreenView.Open` (set by those screens, as in #106). Pause also opens on app background. **FINAL (Kehinde, Oct 24): Stats/Pause grey out to 45% (`interactable = false`) behind every modal and are never hidden.** They are disabled while the continue modal or level intro is up.
