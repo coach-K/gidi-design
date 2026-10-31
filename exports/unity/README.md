@@ -25,6 +25,7 @@ exports/unity/
     icons/powerup_badges/  badge_* 140 px: owa, maltina_gala, pure_water, bribe_change, siren, danfo_ride, gist_bomb (coming soon), agbada_armour (earned only), okada_dash (curb pickup only)
     icons/warnings/        warn_caution, warn_danger, warn_lastma, warn_safe, warn_train
     logos/                 logo_wordmark_dark/light, logo_lockup_tagline_dark, logo_mark
+  settings/                GPP-SETTINGS: sprites@1x|2x/ (slider, toggle, segment, tab, danger button; 16 sprites) + README.md spec. Outside sprites@* so gen_unity.py never wipes it; made by tools/gen_unity_settings.py
   backgrounds/             bg_<home|shop|gameover|hud>_<desktop|phone>.png + _blur.png (1x only)
   svg/icons, svg/logos     original vectors (keep for re-export)
   _archive/agbero_whistle/ removed item (#39), not for import

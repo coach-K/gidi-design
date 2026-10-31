@@ -4249,6 +4249,359 @@
    "border": null,
    "screen": "all",
    "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "settings_slider_track",
+   "file": "settings/sprites@1x/settings_slider_track.png",
+   "file2x": "settings/sprites@2x/settings_slider_track.png",
+   "size": [
+    48,
+    16
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 8,
+    "right": 8,
+    "top": 0,
+    "bottom": 0
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Slider background, 520×16 desktop (400×16 when safe aspect < 1.5). Sliced, horizontal stretch only."
+  },
+  {
+   "name": "settings_slider_fill",
+   "file": "settings/sprites@1x/settings_slider_fill.png",
+   "file2x": "settings/sprites@2x/settings_slider_fill.png",
+   "size": [
+    48,
+    16
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 8,
+    "right": 8,
+    "top": 0,
+    "bottom": 0
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Slider fill (teal accent), Image Type Sliced in the Slider's Fill Area. Hide the fill Image at value 0 so the 16 px cap never shows."
+  },
+  {
+   "name": "settings_slider_knob",
+   "file": "settings/sprites@1x/settings_slider_knob.png",
+   "file2x": "settings/sprites@2x/settings_slider_knob.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Slider handle: 56 Ø knob centred on an 80×80 canvas (12 px shadow margin baked). Handle RectTransform 80×80, Simple, not sliced. Scale 1.1 while dragging."
+  },
+  {
+   "name": "settings_toggle_off",
+   "file": "settings/sprites@1x/settings_toggle_off.png",
+   "file2x": "settings/sprites@2x/settings_toggle_off.png",
+   "size": [
+    132,
+    72
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Toggle OFF: grey track, grey knob left. Swap sprite on state (Image Simple, 132×72, preserve aspect). Not 9-slice."
+  },
+  {
+   "name": "settings_toggle_on",
+   "file": "settings/sprites@1x/settings_toggle_on.png",
+   "file2x": "settings/sprites@2x/settings_toggle_on.png",
+   "size": [
+    132,
+    72
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Toggle ON: teal track + teal edge, cream knob right with a check (position + check = state, never colour alone). Not 9-slice."
+  },
+  {
+   "name": "settings_seg_left_normal",
+   "file": "settings/sprites@1x/settings_seg_left_normal.png",
+   "file2x": "settings/sprites@2x/settings_seg_left_normal.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 24,
+    "right": 4,
+    "top": 24,
+    "bottom": 24
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment left piece (normal). Text 28 px, #9EA3AD."
+  },
+  {
+   "name": "settings_seg_mid_normal",
+   "file": "settings/sprites@1x/settings_seg_mid_normal.png",
+   "file2x": "settings/sprites@2x/settings_seg_mid_normal.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 4,
+    "right": 4,
+    "top": 4,
+    "bottom": 4
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment middle piece (normal); 2 px divider baked on its left edge."
+  },
+  {
+   "name": "settings_seg_right_normal",
+   "file": "settings/sprites@1x/settings_seg_right_normal.png",
+   "file2x": "settings/sprites@2x/settings_seg_right_normal.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 4,
+    "right": 24,
+    "top": 24,
+    "bottom": 24
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment right piece (normal); 2 px divider baked on its left edge."
+  },
+  {
+   "name": "settings_seg_left_selected",
+   "file": "settings/sprites@1x/settings_seg_left_selected.png",
+   "file2x": "settings/sprites@2x/settings_seg_left_selected.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 24,
+    "right": 4,
+    "top": 24,
+    "bottom": 24
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment left piece (selected). Text 28 px, #0F1219 on teal."
+  },
+  {
+   "name": "settings_seg_mid_selected",
+   "file": "settings/sprites@1x/settings_seg_mid_selected.png",
+   "file2x": "settings/sprites@2x/settings_seg_mid_selected.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 4,
+    "right": 4,
+    "top": 4,
+    "bottom": 4
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment middle piece (selected); 2 px divider baked on its left edge."
+  },
+  {
+   "name": "settings_seg_right_selected",
+   "file": "settings/sprites@1x/settings_seg_right_selected.png",
+   "file2x": "settings/sprites@2x/settings_seg_right_selected.png",
+   "size": [
+    64,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 4,
+    "right": 24,
+    "top": 24,
+    "bottom": 24
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Segment right piece (selected); 2 px divider baked on its left edge."
+  },
+  {
+   "name": "settings_tab_normal",
+   "file": "settings/sprites@1x/settings_tab_normal.png",
+   "file2x": "settings/sprites@2x/settings_tab_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Tab, not selected. Label Text 30 px #9EA3AD. Pressed: Button ColorTint pressed #C8C8C8."
+  },
+  {
+   "name": "settings_tab_selected",
+   "file": "settings/sprites@1x/settings_tab_selected.png",
+   "file2x": "settings/sprites@2x/settings_tab_selected.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Tab, selected (gold = navigation). Label #FAE69E. Replaces the PR #136 Outline component."
+  },
+  {
+   "name": "settings_tab_locked",
+   "file": "settings/sprites@1x/settings_tab_locked.png",
+   "file2x": "settings/sprites@2x/settings_tab_locked.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 30,
+    "right": 30,
+    "top": 30,
+    "bottom": 30
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Tab, locked: dashed 3 px #9EA3AD 45% (same as RT-109 locked level tabs). icon_lock_white 30 px tinted #9EA3AD left of the label, label at 45% alpha. Still tappable (toast says why)."
+  },
+  {
+   "name": "settings_btn_danger_normal",
+   "file": "settings/sprites@1x/settings_btn_danger_normal.png",
+   "file2x": "settings/sprites@2x/settings_btn_danger_normal.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Danger button (Reset game data row 240×96, confirm modal 392×144). Text #FF7A1A 28/36 px."
+  },
+  {
+   "name": "settings_btn_danger_pressed",
+   "file": "settings/sprites@1x/settings_btn_danger_pressed.png",
+   "file2x": "settings/sprites@2x/settings_btn_danger_pressed.png",
+   "size": [
+    96,
+    96
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "settings",
+   "note": "GPP-SETTINGS. Danger button pressed."
   }
  ]
 }
