@@ -94,7 +94,7 @@ No graphics-quality or FPS picker in v1: frame pacing is rule-driven (RT-105) an
 - Kicker `▲ CAN'T UNDO`: 26 px `#FF7A1A`, tracking 8%.
 - Title `Reset game data?`: 56 px `#F5F5F0`.
 - Body, 28 px `#9EA3AD`, wraps to 3 lines at 904 px (**Kehinde decision: reset wipes device and cloud**):
-  "This wipes your game progress on this device and in your cloud save: levels, Naira chips, bag, souvenirs and tutorial. You can't undo this. Your settings and player name stay."
+  "This wipes your game progress on this device and in your cloud save: levels, bag, souvenirs and tutorial. You can't undo this. Your Naira chips, settings and player name stay."
   - Legacy Text has Rich Text off, so the emphasis is three Text runs, or turn Rich Text on for this one Text only: "and in your cloud save" in `#F5F5F0`, "You can't undo this." in `#FF7A1A`. Plain `#9EA3AD` all through is also acceptable.
 - Buttons 392×144: **`Cancel`** (`btn_glass`, left; **default selection**; Esc and Back do the same) and **`Reset`** (`settings_btn_danger_*`, right). Reset is at 45% and not interactable for the first **1.0 s** after the modal opens, so a double-tap can't confirm it.
 - On Reset:
