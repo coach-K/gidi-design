@@ -39,7 +39,7 @@ The eight `SettingsControl` values from PR #136:
 | VoiceVolume | Audio | 4 | slider | `Voice` | `Owa!, conductor calls` | 100% |
 | AmbienceVolume | Audio | 5 | slider | `Ambience` | `Street buzz, hawkers, generators` | 100% |
 | Haptics | Controls | 1 | toggle | `Haptics` | `Buzz on bag taps, pickups, hits` (no haptics hardware: `Phones and tablets only`, row at 45%, not interactable) | on |
-| Language | Display | 1 | stepper (‹ name ›) | `Language` | `Menus and subtitles` | `en` |
+| Language | Display | 1 | read-only value `English` (v1, see Q5) | `Language` | `Menus and subtitles` | `en` |
 | Subtitles | Accessibility | 1 | toggle | `Subtitles` | `Text for voice lines and calls` | **on** (`DefaultSubtitles = true`, vision v2 §5) |
 
 Music, SFX and Voice keep their mockup copy. Master goes first because it scales the four below it. Captions are 32 characters or fewer so they fit the narrowest label column (4:3, Q7) with Best Fit off.
@@ -47,39 +47,39 @@ Music, SFX and Voice keep their mockup copy. Master goes first because it scales
 **Code change (one line per tab in `SettingsScreenLayout.Rows`):**
 ```
 Audio:         MasterVolume, MusicVolume, SfxVolume, VoiceVolume, AmbienceVolume
-Controls:      Haptics, ReplayTutorial*
+Controls:      Haptics
 Display:       Language, BatterySaver*
-Accessibility: Subtitles, TextSize*, ColourBlind*, ReduceMotion*
+Accessibility: Subtitles, TextSize*, ColourBlind*
 Account:       PlayerName*, PlayerId*, SignIn*, ResetData*
 AwaitingDesign: (empty)
+HiddenV1:      ReplayTutorial*, ReduceMotion*   (designed, not shown in v1; see "Hidden for later")
 ```
-`*` are new `SettingsControl` values (Q3/Q4). Add `SettingsControlKind.Button` (Replay, Copy, Reset), `Value` (read-only text), `Status`, and `Segment` (Text size). Keep `Choice` for Language and draw it as the stepper below. The existing layout test, "5 rows fit, every control placed or awaiting, never both", still passes with `AwaitingDesign` empty.
+Visible row counts in v1: **Audio 5, Controls 1, Display 2, Accessibility 3, Account 4.**
+`*` are new `SettingsControl` values (Q3/Q4). Add `SettingsControlKind.Button` (Copy, Retry, Reset), `Value` (read-only text, also used for Language in v1), `Status`, and `Segment` (Text size). Keep `Choice` for Language: the view draws it as a read-only value while `Languages.Length == 1` and as the stepper (Q5) once a second language ships. The existing layout test, "5 rows fit, every control placed or awaiting, never both", still passes with `AwaitingDesign` empty.
 
 ## Q3: Controls, Display, Accessibility and Account (v1)
 
-**Controls** (2 rows)
+**Controls** (1 row in v1)
 | Row | Control | Behaviour |
 |---|---|---|
 | `Haptics` / `Buzz on bag taps, pickups, hits` | toggle → `GidiAudioSettings.Current.HapticsEnabled` (exists) | Turning it on plays one light haptic as a preview. Where there's no haptics hardware (WebGL, desktop, `!SystemInfo.supportsVibration`): row at 45% (CanvasGroup alpha 0.45, `interactable = false`, RT-117 grey-out), caption `Phones and tablets only` |
-| `Replay tutorial` / `Show the coach steps on L1 again` | button `Replay` (`btn_glass`, 240×96) | Deletes `OnboardingRules.PrefsDoneKey` (`gidi.onboarding.gpp063.done`). Toast `Tutorial will play next time you start L1` (2 s). `ShouldRun` only fires on L1, so nothing else changes |
 
 No keyboard map and no control remapping in v1: the HUD spec has no keyboard hints, and there's nothing to remap on touch.
 
 **Display** (2 rows)
 | Row | Control | Behaviour |
 |---|---|---|
-| `Language` / `Menus and subtitles` | stepper: ‹ name › (Q5) | `GidiSettingsBridge.SetLanguage`. Sub-line under the name: `{i} of {n}`. When the list has 1 entry, both arrows sit at 45% and do nothing |
+| `Language` / `Menus and subtitles` | read-only value `English`, Text 30 px `#F5F5F0`, Middle Right, ending at the row's right edge | **v1 decision: show the row as a single value, not hidden.** No arrows, no hit area, no sub-line. It tells players the game knows about language without offering a choice that does nothing. It becomes the stepper (Q5) when `SettingsRules.Languages` has 2+ entries |
 | `Battery saver` / `Lower resolution, cooler phone` | toggle → `WebPerformanceBootstrap` battery saver (`gidi.perf.battery_saver`, -1 unset / 0 / 1; already built "for a future Settings screen") | Default comes from `FramePacingRules.DefaultBatterySaver` (on for phones with ≤ 4096 MB RAM, `LowMemoryMb`). On desktop/WebGL it does nothing, so the row is at 45% with caption `Phones and tablets only` |
 
 No graphics-quality or FPS picker in v1: frame pacing is rule-driven (RT-105) and phones already run the lean URP asset.
 
-**Accessibility** (4 rows, Q4)
+**Accessibility** (3 rows in v1, Q4)
 | Row | Control | Behaviour |
 |---|---|---|
 | `Subtitles` / `Text for voice lines and calls` | toggle → `GidiAudioSettings.Current.SubtitlesEnabled` (exists, **default on**) | `SubtitleOverlay` picks it up live |
 | `Text size` / `Subtitles, tips and toasts` | segment `S` `M` `L` (left / mid / right) | New pref `gidi.a11y.text_size` (0/1/2, default 1). Font-size multiplier **0.9 / 1.0 / 1.2**, rounded to whole px, on subtitles, toasts, coach pills and the Continue/Game Over body copy only. HUD numbers, buttons and Settings keep their sizes, so nothing overflows with Best Fit off |
 | `Colour-blind mode` / `Bolder danger colour + chevrons` | toggle | New pref `gidi.a11y.colour_blind` (default off). Danger telegraph `#FF7A1A` → Okabe-Ito vermilion `#D55E00`, chevron stroke ×1.5. Caution ▲ / LASTMA ◆ / Safe shapes unchanged (the shapes already carry meaning) |
-| `Reduce motion` / `Fewer shakes, pulses, shimmer` | toggle | New pref `gidi.a11y.reduce_motion` (default off). Turns off bag shake (keeps the orange frame), the 1 Hz last-second pulse (colour change stays), leaderboard skeleton shimmer, and the Continue bar pulse (it steps once a second instead). the leaderboard, intro and continue specs already define this reduced-motion ("ln") variant, so this row is the switch for it |
 
 **Account** (4 rows; UGS Friends stays off in v1 (`LeaderboardRules.FriendsEnabled = false`), so there's no friends, add-friend or share row)
 | Row | Control | Behaviour |
@@ -87,16 +87,18 @@ No graphics-quality or FPS picker in v1: frame pacing is rule-driven (RT-105) an
 | `Player name` / `Shown on leaderboards` | value, Text 30 px `#F5F5F0`, right | `AuthenticationService.Instance.PlayerName` (UGS `Name#1234`). Read-only in v1. Not loaded yet: `—`, caption `Appears once you're online` |
 | `Player ID` / `Quote this if you contact us` | value (30 px `#9EA3AD`, middle-ellipsis: first 6 + `…` + last 4) + `Copy` (`btn_glass` 240×96) | `UgsBootstrap.PlayerId`. Copy → `GUIUtility.systemCopyBuffer` = full ID, toast `Player ID copied`. WebGL can block clipboard writes; if so, the toast shows the full ID for 4 s instead |
 | `Sign-in` / `Guest account on this device` | status, 30 px, right | Ready: `● Signed in · guest`, teal. Initialising: `Connecting…` in `#9EA3AD` + `spinner_arc` 32 px. Failed or offline: `▲ Offline` in `#FF7A1A`, plus `Retry` (`btn_glass` 240×96) → `UgsBootstrap.EnsureSignedInAsync()`. Dot or triangle shape plus colour, never colour alone. No platform sign-in (Google/Apple) in v1 |
-| `Reset game data` / `Levels, chips, bag back to zero` | `Reset` (`settings_btn_danger_normal`, 240×96, text `#FF7A1A` 28 px) | Opens the confirm modal below |
+| `Reset game data` / `Wipes this device and cloud save` | `Reset` (`settings_btn_danger_normal`, 240×96, text `#FF7A1A` 28 px) | Opens the confirm modal below |
 
 **Reset confirm modal** (preview `settings-account-reset-confirm-1920x1080.png`)
 - Dim `rgba(2,3,5,.62)`, `panel_modal_normal` 1000×560 centred, padding 48.
 - Kicker `▲ CAN'T UNDO`: 26 px `#FF7A1A`, tracking 8%.
-- Title `Reset game data?`: 56 px.
-- Body, 28 px `#9EA3AD`: "Levels, Naira chips, bag, souvenirs and onboarding go back to zero on this device and in your cloud save. Your settings and player name stay. Times already on the leaderboards stay up."
-- Buttons 392×144: **`Cancel`** (`btn_glass`, left; default selection; Esc and Back do the same) and **`Reset`** (`settings_btn_danger_*`, right). Reset is at 45% and not interactable for the first **1.0 s**, so a double-tap can't confirm it.
+- Title `Reset game data?`: 56 px `#F5F5F0`.
+- Body, 28 px `#9EA3AD`, wraps to 3 lines at 904 px (**Kehinde decision: reset wipes device and cloud**):
+  "This wipes your game progress on this device and in your cloud save: levels, Naira chips, bag, souvenirs and tutorial. You can't undo this. Your settings and player name stay."
+  - Legacy Text has Rich Text off, so the emphasis is three Text runs, or turn Rich Text on for this one Text only: "and in your cloud save" in `#F5F5F0`, "You can't undo this." in `#FF7A1A`. Plain `#9EA3AD` all through is also acceptable.
+- Buttons 392×144: **`Cancel`** (`btn_glass`, left; **default selection**; Esc and Back do the same) and **`Reset`** (`settings_btn_danger_*`, right). Reset is at 45% and not interactable for the first **1.0 s** after the modal opens, so a double-tap can't confirm it.
 - On Reset:
-  - Clear `PlayerProgress` (local and cloud `progress_v1`), the bag, souvenirs, the wallet and `gidi.onboarding.*`.
+  - Clear `PlayerProgress` on the device **and** delete/overwrite the Cloud Save `progress_v1` key, plus the bag, souvenirs, wallet and `gidi.onboarding.*`, both local and cloud. If offline, the reset is refused with the toast `Go online to reset your cloud save` so the cloud copy can't come back on the next sign-in.
   - Keep `gidi.audio.*`, `gidi.settings.*`, `gidi.a11y.*`, `gidi.perf.*` and the UGS account.
   - Close Settings, reload into Home, toast `Game data reset`.
 
@@ -108,11 +110,11 @@ No graphics-quality or FPS picker in v1: frame pacing is rule-driven (RT-105) an
 
 Both are removed from Audio and now sit in **Accessibility** as rows 3 and 2 (table above). Audio only holds the five volume sliders. Neither has an owner or API yet (PR #136 gap 4).
 
-Proposal: put both in `SettingsRules` / `SettingsPersistence`, with new keys `gidi.a11y.colour_blind` and `gidi.a11y.text_size` (plus `gidi.a11y.reduce_motion`), and a `GidiSettingsBridge.AccessibilityChanged` event that the danger-telegraph views, `SubtitleOverlay` and the toast and coach views listen to.
+Proposal: put both in `SettingsRules` / `SettingsPersistence`, with new keys `gidi.a11y.colour_blind` and `gidi.a11y.text_size` and a `GidiSettingsBridge.AccessibilityChanged` event that the danger-telegraph views, `SubtitleOverlay` and the toast and coach views listen to.
 
-## Q5: language list (**PROPOSAL, for Kehinde to confirm**)
+## Q5: language list (v1 ships **English only**; the other names are a **proposal for later**, for Kehinde to confirm)
 
-Each language is shown in its own name, in this order, on the Display › Language stepper:
+Each language is shown in its own name, in this order, on the later Display › Language stepper:
 
 | Code (BCP-47) | Button text (autonym) | English name | Notes |
 |---|---|---|---|
@@ -122,13 +124,12 @@ Each language is shown in its own name, in this order, on the Display › Langua
 | `ha` | **Hausa** | Hausa | Long form `Harshen Hausa` |
 | `ig` | **Igbo** | Igbo | Long form `Asụsụ Igbo` (ụ = U+1EE5) |
 
-- **Until there are string tables, ship only `en` in `SettingsRules.Languages`.** The row still shows English with both arrows greyed. A language whose strings aren't in yet must not be selectable, because picking it would change nothing.
+- **v1 ships English only (Kehinde decision).** `SettingsRules.Languages` exposes only `en`. Keep the other four in code as a hidden list (e.g. `SettingsRules.HiddenLanguages`, or entries with `Visible = false`) so they can be switched on per language when its strings land. The Display row shows the single value `English` (Q3).
 - Font check (Plus Jakarta Sans Bold):
   - It has every glyph in these five names, plus ẹ ọ ṣ ụ and the combining grave, acute and dot below.
   - It **lacks Hausa's hooked letters ɓ ɗ ƙ ƴ** (U+0253, U+0257, U+0199, U+01B4). Full Hausa copy needs a fallback font, e.g. Noto Sans in the Font asset's fallback list.
   - Legacy `UI.Text` does no mark positioning. Yorùbá letters that only exist as base + combining mark (e.g. ẹ́, ọ̀) will render badly, so translated Yorùbá text must use precomposed characters where they exist, or the screen moves to TMP. The button names above are all precomposed and safe.
-- Stepper metrics: left and right 120×96 (`settings_seg_left/right_normal` with `icon_back_white` 40 px tinted `#F5F5F0`; the right one flipped with scaleX −1), mid 360×96 (`settings_seg_mid_normal`). Name 30 px `#F5F5F0`, sub-line `{i} of {n}` 18 px `#9EA3AD`. Wraps around at the ends. Selecting saves at once and fires `LanguageChanged`.
-- The preview's sub-line says `1 of 5 · proposal` only to mark the proposal. Ship it as `1 of 5`.
+- Stepper metrics (**later, when a second language ships**; not in v1): left and right 120×96 (`settings_seg_left/right_normal` with `icon_back_white` 40 px tinted `#F5F5F0`; the right one flipped with scaleX −1), mid 360×96 (`settings_seg_mid_normal`). Name 30 px `#F5F5F0`, sub-line `{i} of {n}` 18 px `#9EA3AD`. Wraps around at the ends. Selecting saves at once and fires `LanguageChanged`.
 
 ## Q6: top-right cluster
 
@@ -151,8 +152,8 @@ Screen px, top-left origin. Code uses offsets from the safe rect (= `SettingsScr
 | Slider | x 1328–1848 (520), track 16 high, centred on the row | `settings_slider_track` + `settings_slider_fill` (sliced 8/8/0/0), handle `settings_slider_knob` 80×80 (56 visible). **Handle Slide Area inset 28 px each side** so the knob stays in the row. Value read-out `70%`: 26 px `#9EA3AD`, right-aligned, 80 wide, ending 24 px left of the track |
 | Toggle | x 1716–1848, 132×72 | `settings_toggle_on/off`, Image Simple, swapped on state |
 | Segment S/M/L | x 1488–1848, 3 × 120×96 | left / mid / right pieces, `_selected` on the chosen one. Text 28 px: `#9EA3AD`, selected `#0F1219` |
-| Language stepper | x 1248–1848: 120 + 360 + 120, h 96 | see Q5 |
-| Row button (Replay, Copy, Retry, Reset) | x 1608–1848, 240×96 | Value text (Player ID) ends at x 1584 |
+| Language value (v1) | x 1148–1848 (700 wide), 48 high, centred on the row | Middle Right. Stepper later: x 1248–1848, 120 + 360 + 120, h 96 (Q5) |
+| Row button (Copy, Retry, Reset) | x 1608–1848, 240×96 | Value text (Player ID) ends at x 1584 |
 | Reset modal | 460, 260, 1000, 560 | buttons at y 628, 392×144 each, 48 from the panel edges |
 
 Hit areas: the visible controls are 72–96 px high, but each control's raycast rect is the **full row height (132 px = 44 dp at 3x)**, and tabs and buttons stay ≥ 120 / 96 px with 132 px row spacing. Toggles flip when the whole row is tapped.
@@ -165,8 +166,8 @@ Hit areas: the visible controls are 72–96 px high, but each control's raycast 
 ### 4:3 tablet (1024×768 physical → **1440×1080 ref**; safe 32 sides/top, 40 bottom → 1376×1008)
 - Switch rule as on the HUD: `Screen.safeArea.width / height < 1.5` → narrow variant.
 - Rail unchanged (x 32–372). Body x 396–1408 (1012 wide), rows x 436–1368, y 232 … 760 (inner 760 → **5 rows, no scroll**).
-- **Slider 400** (x 968–1368) instead of 520. **Language stepper 96 + 312 + 96** (x 864–1368). Toggle, segment and buttons unchanged.
-- Narrowest label column is 404 px (next to the stepper): the 32-character caption limit is what keeps captions on one line at 22 px.
+- **Slider 400** (x 968–1368) instead of 520. Language stepper (later) 96 + 312 + 96 (x 864–1368). Toggle, segment and buttons unchanged.
+- Narrowest label column is 404 px (next to the later stepper; in v1 the short `English` value leaves far more): the 32-character caption limit is what keeps captions on one line at 22 px.
 - 1 ref px = 0.71 physical px at 1024×768, so a 132-row is about 94 px, still above 44 pt.
 - Preview: `settings-audio-4x3-1440x1080.png`.
 
@@ -188,7 +189,8 @@ Font: Plus Jakarta Sans Bold (Dynamic, Include Font Data).
 | Row caption | 22 | #9EA3AD | Upper Left |
 | Slider value `70%` | 26 | #9EA3AD | Middle Right |
 | Segment | 28 | #9EA3AD, selected #0F1219 | Middle Center |
-| Stepper name / sub-line | 30 / 18 | #F5F5F0 / #9EA3AD | Middle Center |
+| Language value (v1) | 30 | #F5F5F0 | Middle Right |
+| Stepper name / sub-line (later) | 30 / 18 | #F5F5F0 / #9EA3AD | Middle Center |
 | Account values | 30 | name #F5F5F0, ID #9EA3AD, status teal / #9EA3AD / #FF7A1A | Middle Right |
 | Row buttons | 28 | #F5F5F0, Reset #FF7A1A | Middle Center |
 | Modal kicker / title / body / buttons | 26 / 56 / 28 / 36 | #FF7A1A / #F5F5F0 / #9EA3AD / #F5F5F0 (Reset #FF7A1A) | Left / Left / Upper Left (wrap) / Center |
@@ -217,12 +219,30 @@ Reused from the existing export: `panel_glass_normal`, `panel_modal_normal`, `bt
 The folder sits outside `sprites@*` on purpose: `tools/gen_unity.py` deletes `exports/unity/sprites@1x|2x` when it runs, and it keeps manifest entries whose files are elsewhere.
 
 ## Other notes for the PR #136 dev
-- PR gap 9 (source of truth): **device-local `GidiAudioSettings` / PlayerPrefs owns every setting** (audio, haptics, subtitles, a11y, language, battery saver). Ignore `PlayerProgress.musicVolume / sfxVolume / hapticsEnabled / language` and don't cloud-sync settings in v1. A reset keeps them. Kehinde to confirm.
+- PR gap 9 (source of truth), **Kehinde decision: all settings are backed up to the cloud save.**
+  - Every setting (all five volumes, haptics, subtitles, text size, colour-blind, language, battery saver; the hidden reduce-motion pref too) is written to PlayerPrefs at once, and then backed up to UGS Cloud Save.
+  - Proposal for the dev: use a separate Cloud Save key `settings_v1`, not `progress_v1`, so Reset game data can wipe progress without wiping settings. Drop the stray `PlayerProgress.musicVolume / sfxVolume / hapticsEnabled / language` copies or migrate them into `settings_v1` once.
+  - Upload is debounced: 2 s after the last change, plus once when Settings closes. On sign-in, if the cloud copy is newer (compare a `savedAt` stamp), apply it and refresh PlayerPrefs. Offline changes stay local and upload on the next sign-in.
+  - Battery saver's default is per device (RAM rule), so a phone only takes the cloud value if the player set it on purpose (saved choice 0/1, not -1).
 - PR gap 10: a 5% slider step is fine. Add the `70%` read-out so the step is visible.
 - Every change saves at once, so there's no Apply button. Moving the SFX slider plays a short existing SFX (e.g. `SFX_hop`) once per step (throttled to 8/s). The Voice slider plays one short voice line when released, so the player hears the level.
 
+## Hidden for later (designed, not shown in v1; Kehinde decision)
+Keep the enum values and prefs in code. Leave them out of `SettingsScreenLayout.Rows` (list them in `HiddenV1`). Adding them back is a one-line change per tab, and both tabs stay within 5 rows.
+
+| Row | Would go | Control | Behaviour when shown |
+|---|---|---|---|
+| `Replay tutorial` / `Show the coach steps on L1 again` | Controls, row 2 | button `Replay` (`btn_glass`, 240×96) | Deletes `OnboardingRules.PrefsDoneKey` (`gidi.onboarding.gpp063.done`). Toast `Tutorial will play next time you start L1` (2 s). `ShouldRun` only fires on L1 |
+| `Reduce motion` / `Fewer shakes, pulses, shimmer` | Accessibility, row 4 | toggle | New pref `gidi.a11y.reduce_motion` (default off). Turns off bag shake (keeps the orange frame), the 1 Hz last-second pulse (colour change stays), leaderboard skeleton shimmer, and the Continue bar pulse (it steps once a second instead). The leaderboard, intro and continue specs already define this reduced-motion ("ln") variant, so this row is the switch for it |
+
+Language stepper (Q5) is in the same state: designed, shown only when a second language ships.
+
+## Decisions (Kehinde, relayed by the dev, Oct 31)
+1. Reset game data wipes the device **and** the cloud save. The confirm copy says so and says it can't be undone. Cancel is the default and Reset waits 1 s.
+2. Reduce motion and Replay tutorial are hidden in v1. Controls has 1 row, Accessibility 3.
+3. English only. The Language row shows the single value `English`; the other languages stay in code, hidden.
+4. All settings are backed up to the cloud save.
+
 ## Open for Kehinde
-1. Language list and the button names (`Naijá` or `Pidgin`; short or long autonyms), and when localisation lands.
-2. Reset scope: does it also wipe the cloud save (proposed: yes) and keep settings (proposed: yes)?
-3. Reduce motion and Replay tutorial are small new rows. Keep them in v1, or cut them?
-4. Settings stay device-local, not in `PlayerProgress` (gap 9).
+1. Language names for later (`Naijá` or `Pidgin`; short or long autonyms) and when localisation lands.
+2. Reset keeps settings and player name (the spec assumes yes; settings live in `settings_v1`, separate from progress). Confirm.
