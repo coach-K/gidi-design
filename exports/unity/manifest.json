@@ -4602,6 +4602,52 @@
    "pixelsPerUnit2x": 200,
    "screen": "settings",
    "note": "GPP-SETTINGS. Danger button pressed."
+  },
+  {
+   "name": "clear_pill_new",
+   "file": "sprites@1x/clear/clear_pill_new.png",
+   "file2x": "sprites@2x/clear/clear_pill_new.png",
+   "size": [
+    56,
+    56
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 28,
+    "right": 28,
+    "top": 28,
+    "bottom": 28
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "clear",
+   "note": "GPP-SOUVENIR-CLEAR. Level Clear NEW pill: Image Sliced 140x56 (stretch horizontally only), gold #E8B21E fill, 2 px #FAE69E rim. Child legacy Text 'NEW' 28 px #0F1219 Middle Center, no Shadow (solid fill, not glass). Shown only when LevelClearSouvenir.IsNew."
+  },
+  {
+   "name": "clear_souvenir_frame_new",
+   "file": "sprites@1x/clear/clear_souvenir_frame_new.png",
+   "file2x": "sprites@2x/clear/clear_souvenir_frame_new.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 32,
+    "right": 32,
+    "top": 32,
+    "bottom": 32
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "clear",
+   "note": "GPP-SOUVENIR-CLEAR. Souvenir row frame, NEW state: Image Sliced 1068x150, gold 10% fill + 2 px #E8B21E 80% edge, radius 24 (matches tile_stat). Already-owned state uses tile_stat_normal instead (no gold edge)."
   }
  ]
 }
