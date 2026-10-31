@@ -236,6 +236,14 @@ No `Outline` component anywhere (it thickens Jakarta Bold and halos on glass); a
 
 **Type & colour.** Plus Jakarta Sans Bold. Name 30 px #F5F5F0; time/score 30 px tabular #F5F5F0; chips 30 px #FAE69E; rank 32 px #9EA3AD (you: #FAE69E); header 20 px #9EA3AD tracking 10%; card kicker 22 px #E8B21E; level title 46 px. Ink #0F1219, gold #E8B21E, naira #FAE69E, muted #9EA3AD. Backgrounds: the selected level's blurred screenshot + 55% ink scrim.
 
+## Home leaderboard tile + weekly L10 / Country board (GPP-LEADERBOARD-HOME, Oct 31)
+
+Full spec: [`leaderboard_home/README.md`](leaderboard_home/README.md). Previews: `exports/home-leaderboard-*.png`, `exports/leaderboard-{weekly,country,country-unavailable,country-empty-states,tabs}-desktop.png`. Generator: `tools/gen_lb_home.py` (renders only its sprites).
+
+- **Home tile.** 144×144 at `AnchorTopRight(732, 0)`, left of Souvenirs; at 1920×1080 that is x 1012–1156, y 32–176. When safe aspect < 1.5 (4:3), move Souvenirs and the tile to a second row at y −160. Icon `home/{1x,2x}/icon_trophy` (white). Caption "Ranks" 22 px, Best Fit off. Offline adds `badge_tile_offline`; the tile stays tappable.
+- **Tabs.** v1 has Global + Country, 196×144 hit rects. New `icon_country` (globe + pin) over the ISO code. No flags. New `seg_filter_pressed`.
+- **Weekly header (PROPOSAL, needs a UGS reset schedule).** "WEEKLY · L10 · W44", the same-road line, and a `pill_week_reset` countdown.
+
 ## Bag (GPP-021)
 Sprites `sprites@{1x,2x}/hud/bag/` (PPU 100/200, borders in `manifest.json`): `bag_slot_{normal,pressed,active,full}` (9-slice, border 36), `bag_slot_empty`, `bag_overlay_active_glow` (24 px glow margin), `bag_overlay_cooldown` (white, Filled Radial 360), `bag_overlay_disabled`, `bag_count_badge` (9-slice pill 22). Icons: existing `badge_owa / badge_maltina_gala / badge_pure_water / badge_bribe_change / badge_siren` (96 in slots, 84 when running) and `icon_bag`. Timer ring: reuse `ring_powerup_timer_track` / `ring_powerup_timer_fill` scaled to 124. Layout, states, feedback, full-bag rule and VIP Siren rules: `../hud/HUD_Landscape_Spec.md` › Bag.
 

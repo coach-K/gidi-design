@@ -104,6 +104,11 @@ nine("tab_level", "leaderboard", "leaderboard", (96, 96), 28, {"off": GLASS, "on
      "Level tab ≈163×144 desktop / ≈185×144 phone (flex, 8 px gaps). TMP 'L4' 44 px + short name 18 px; on = ink text #0F1219.")
 nine("seg_filter", "leaderboard", "leaderboard", (80, 80), 28, {"off": "background:rgba(255,255,255,.04);border:2px solid rgba(255,216,115,.28)", "on": "background:rgba(232,178,30,.16);border:3px solid #E8B21E"},
      "Global / Friends segmented button, 192×144 each, 8 px gap. Icon 40 + TMP 28 px.")
+# GPP-LEADERBOARD-HOME (Oct 31): pressed segment (Global / Country, 196×144 hit rect, sprite inset 4 px on the inner edge) + weekly reset pill
+nine("seg_filter", "leaderboard", "leaderboard", (80, 80), 28, {"pressed": "background:rgba(232,178,30,.28);border:3px solid #FAE69E"},
+     "Segment pressed (GPP-LEADERBOARD-HOME). Global / Country: 196×144 hit rect each in the 392 row, visible sprite inset 4 px on the inner edge.")
+add("pill_week_reset", "leaderboard", 80, 44, box(80, 44, "border-radius:22px;background:rgba(232,178,30,.14);border:2px solid rgba(232,178,30,.55)"), "leaderboard", [22, 22, 22, 22],
+    note="Weekly reset countdown pill (GPP-LEADERBOARD-HOME): fixed height 44, stretch horizontally; icon_timer_white 28 tinted #FAE69E + Text 22 px #FAE69E. Last hour: tint the sprite #FF7A1A via Image.color.")
 _MS = {1: '<path d="M32 2l7.6 11.7 13.6-3-3 13.6L62 32l-11.7 7.6 3 13.6-13.6-3L32 62l-7.6-11.7-13.6 3 3-13.6L2 32l11.7-7.6-3-13.6 13.6 3z"/>',
        2: '<path d="M32 3l25 14.5v29L32 61 7 46.5v-29z"/>', 3: '<circle cx="32" cy="32" r="28"/>'}
 _MC = {1: ("#E8B21E", "#7A5A00", "gold, 8-point star"), 2: ("#C9CFD9", "#5B6270", "silver, hexagon"), 3: ("#C8743A", "#5E3014", "bronze, circle")}

@@ -4648,6 +4648,112 @@
    "pixelsPerUnit2x": 200,
    "screen": "clear",
    "note": "GPP-SOUVENIR-CLEAR. Souvenir row frame, NEW state: Image Sliced 1068x150, gold 10% fill + 2 px #E8B21E 80% edge, radius 24 (matches tile_stat). Already-owned state uses tile_stat_normal instead (no gold edge)."
+  },
+  {
+   "name": "seg_filter_pressed",
+   "file": "sprites@1x/leaderboard/seg_filter_pressed.png",
+   "file2x": "sprites@2x/leaderboard/seg_filter_pressed.png",
+   "size": [
+    80,
+    80
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 36,
+    "right": 36,
+    "top": 36,
+    "bottom": 36
+   },
+   "screen": "leaderboard",
+   "note": "Segment pressed (GPP-LEADERBOARD-HOME). Global / Country: 196×144 hit rect each in the 392 row, visible sprite inset 4 px on the inner edge."
+  },
+  {
+   "name": "pill_week_reset",
+   "file": "sprites@1x/leaderboard/pill_week_reset.png",
+   "file2x": "sprites@2x/leaderboard/pill_week_reset.png",
+   "size": [
+    80,
+    44
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 22,
+    "right": 22,
+    "top": 22,
+    "bottom": 22
+   },
+   "screen": "leaderboard",
+   "note": "Weekly reset countdown pill (GPP-LEADERBOARD-HOME): fixed height 44, stretch horizontally; icon_timer_white 28 tinted #FAE69E + Text 22 px #FAE69E. Last hour: tint the sprite #FF7A1A via Image.color."
+  },
+  {
+   "name": "icon_country",
+   "file": "sprites@1x/icons/ui/icon_country.png",
+   "file2x": "sprites@2x/icons/ui/icon_country.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Line icon, Naira gold #FAE69E baked."
+  },
+  {
+   "name": "icon_country_white",
+   "file": "sprites@1x/icons/ui/white/icon_country_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_country_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White version for Image.color tinting (accents keep their colour)."
+  },
+  {
+   "name": "icon_trophy",
+   "file": "home/1x/icon_trophy.png",
+   "file2x": "home/2x/icon_trophy.png",
+   "size": [
+    44,
+    44
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "Home leaderboard tile icon (GPP-LEADERBOARD-HOME). White on transparent, same 3 px/48 stroke as icon_settings / icon_souvenirs; HomeScreenView.AddIcon loads UI/Home/{1x|2x}/icon_trophy and shows it untinted. Pressed: Image.color #FAE69E. SVG: svg/icons/trophy.svg"
+  },
+  {
+   "name": "badge_tile_offline",
+   "file": "home/1x/badge_tile_offline.png",
+   "file2x": "home/2x/badge_tile_offline.png",
+   "size": [
+    40,
+    40
+   ],
+   "pivot": [
+    1,
+    1
+   ],
+   "border": null,
+   "screen": "home",
+   "note": "Offline badge on the Home leaderboard tile (GPP-LEADERBOARD-HOME). Child Image 40×40, anchor/pivot top-right, anchoredPosition (−6, −6) inside the 144 tile. Tile stays tappable (opens the offline card with the cached best)."
   }
  ]
 }
