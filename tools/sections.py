@@ -214,7 +214,7 @@ def typography():
 
 LABEL = {"owa":"Owa","maltina_gala":"Malta &amp; Agege Roll","pure_water":"Pure Water","bribe_change":"Change Bundle","siren":"VIP Siren","danfo_ride":"Danfo Ride","gist_bomb":"Gist Bomb","agbada_armour":"Agbada Armour","okada_dash":"Okada Dash","retry":"Retry (TRY AM AGAIN)","iap_skins_pack":"Lagos skins pack","iap_fits_pack":"Baba fits pack","iap_remove_ads":"Remove ads",
  "pickup_ring":"Curb pickup marker","pickup_person":"Recruit (person lights up)","chip":"Naira Chip","lives":"Lives","group":"GROUP","change":"CHANGE","stats":"Stats","pause":"Pause",
- "settings":"Settings","map":"Lagos map","souvenirs":"Souvenirs (Home)","bag":"Bag","freeze":"Owa freeze (RT-118)","trophy":"Leaderboard","country":"Country board","wifi_off":"Offline","user":"Player / sign in","swap":"Swap","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
+ "settings":"Settings","map":"Lagos map","souvenirs":"Souvenirs (Home)","bag":"Bag","freeze":"Owa freeze (RT-118)","trophy":"Leaderboard","country":"Country board","friends":"Friends board","wifi_off":"Offline","user":"Player / sign in","swap":"Swap","basecamp":"Base Camp","play":"Play / cross","back":"Back","close":"Close","ad":"Watch ad","timer":"Timer","lock":"Locked",
  "warn_safe":"Safe / gap","warn_caution":"Caution","warn_danger":"Danger","warn_lastma":"LASTMA","warn_train":"Train"}
 def icons():
     from gen_screens import ECON, SOON, INFO

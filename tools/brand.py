@@ -46,6 +46,8 @@ ICONS = {
  "ad": f'<rect {S} x="6" y="11" width="36" height="26" rx="5"/><path {S} d="M21 18l9 6-9 6z"/>',
  "timer": f'<circle {S} cx="24" cy="27" r="15"/><path {S} d="M24 27v-8M20 6h8M24 6v6"/>',
  "freeze": f'<path {S} d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path {S} d="M18 8l6 5 6-5M18 40l6-5 6 5M5 20.5l7.8-1.2-2.8-7.4M43 27.5l-7.8 1.2 2.8 7.4M5 27.5l7.8 1.2-2.8 7.4M43 20.5l-7.8-1.2 2.8-7.4"/>',
+ # GPP-LEADERBOARD-HOME v2: Friends tab. Two equal busts side by side (a pair, not the uneven crowd of `group`, which is the pickup passengers icon); the front bust knocks out the back one
+ "friends": f'<mask id="gfm"><rect width="48" height="48" fill="#fff"/><g fill="#000" stroke="#000" stroke-width="7" stroke-linejoin="round"><circle cx="18" cy="17" r="6.5"/><path d="M5 41c0-8.5 5.5-14 13-14s13 5.5 13 14z"/></g></mask><g mask="url(#gfm)"><circle {S} cx="31" cy="15" r="6"/><path {S} d="M19 39c0-8 5-13 12-13s12 5 12 13"/></g><circle {S} cx="18" cy="17" r="6.5"/><path {S} d="M5 41c0-8.5 5.5-14 13-14s13 5.5 13 14"/>',
  # GPP-LEADERBOARD-HOME: generic country board (globe + map pin, no flag); the pin knocks the globe out so it reads at 40 px
  "country": f'<mask id="gcm"><rect width="48" height="48" fill="#fff"/><path d="M34 44c-5-6-8-9.5-8-13.5a8 8 0 0 1 16 0c0 4-3 7.5-8 13.5z" fill="#000" stroke="#000" stroke-width="7" stroke-linejoin="round"/></mask><g mask="url(#gcm)"><circle {S} cx="21" cy="21" r="15"/><path {S} d="M6 21h30"/><ellipse {S} cx="21" cy="21" rx="6.5" ry="15"/></g><path {S} d="M34 44c-5-6-8-9.5-8-13.5a8 8 0 0 1 16 0c0 4-3 7.5-8 13.5z"/><circle cx="34" cy="30.5" r="2.6" fill="currentColor"/>',
  "lock": f'<rect {S} x="10" y="22" width="28" height="20" rx="4"/><path {S} d="M16 22v-6a8 8 0 0 1 16 0v6"/>',
@@ -60,7 +62,7 @@ GROUPS = [("Power-ups", ["owa","maltina_gala","pure_water","bribe_change","siren
           ("Earned &amp; curb-only (not sold)", ["agbada_armour","okada_dash"]),
           ("Shop extras", ["retry","iap_skins_pack","iap_fits_pack","iap_remove_ads"]),
           ("Curb pickups &amp; currency", ["pickup_ring","pickup_person","chip"]),
-          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs","bag","trophy","wifi_off","user","freeze","swap","country"]),
+          ("HUD &amp; navigation", ["chip","lives","group","change","stats","pause","settings","map","basecamp","play","back","close","ad","timer","lock","souvenirs","bag","trophy","wifi_off","user","freeze","swap","country","friends"]),
           ("Warning shapes (colour + shape)", ["warn_safe","warn_caution","warn_danger","warn_lastma","warn_train"])]
 PU_ACCENT = {"owa":P["gold"],"maltina_gala":"#C8743A","pure_water":P["safe"],"bribe_change":"#7FD6A2","siren":P["danger"],"danfo_ride":"#F2C230","gist_bomb":"#E0443C","agbada_armour":P["naira"],"okada_dash":"#59D9B8"}
 

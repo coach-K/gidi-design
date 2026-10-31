@@ -4754,6 +4754,38 @@
    "border": null,
    "screen": "home",
    "note": "Offline badge on the Home leaderboard tile (GPP-LEADERBOARD-HOME). Child Image 40×40, anchor/pivot top-right, anchoredPosition (−6, −6) inside the 144 tile. Tile stays tappable (opens the offline card with the cached best)."
+  },
+  {
+   "name": "icon_friends",
+   "file": "sprites@1x/icons/ui/icon_friends.png",
+   "file2x": "sprites@2x/icons/ui/icon_friends.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "Friends tab + Friends empty state (GPP-LEADERBOARD-HOME v2). Line icon, Naira gold #FAE69E baked (on state). Not icon_group: that one is the pickup passengers icon."
+  },
+  {
+   "name": "icon_friends_white",
+   "file": "sprites@1x/icons/ui/white/icon_friends_white.png",
+   "file2x": "sprites@2x/icons/ui/white/icon_friends_white.png",
+   "size": [
+    64,
+    64
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "screen": "all",
+   "note": "White Friends icon for Image.color: off #9EA3AD, on #FAE69E, pressed #F5F5F0 on seg_filter_pressed (GPP-LEADERBOARD-HOME v2)."
   }
  ]
 }

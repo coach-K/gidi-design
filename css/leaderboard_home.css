@@ -25,7 +25,7 @@
 .wpill{align-self:flex-start;height:44px;border-radius:22px;padding:0 18px 0 12px;display:flex;align-items:center;gap:8px;font-size:22px;color:#FAE69E;background:rgba(232,178,30,.14);border:2px solid rgba(232,178,30,.55);white-space:nowrap}
 .wpill.hot{color:#FF7A1A;background:rgba(255,122,26,.14);border-color:rgba(255,122,26,.7)}
 .seg2{display:flex;gap:0;margin-top:2px}
-.seg2 .hit{width:196px;height:144px;position:relative}
+.seg2 .hit{width:196px;height:144px;position:relative;flex:none}
 .seg2 .hit>div{position:absolute;top:0;bottom:0;border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:28px;background:rgba(255,255,255,.04);border:2px solid rgba(255,216,115,.28);color:#9EA3AD}
 .seg2 .hit:first-child>div{left:0;right:4px}.seg2 .hit:last-child>div{left:4px;right:0}
 .seg2 .hit>div.on{background:rgba(232,178,30,.16);border:3px solid #E8B21E;color:#FAE69E}
@@ -57,3 +57,13 @@
 .opt .seg3 div.sm{font-size:22px}
 .opt p{font-size:21px;color:#9EA3AD;line-height:1.35;margin-top:10px}
 .opt .cardw{border-radius:24px;border:2px dashed rgba(158,163,173,.35);padding:24px}
+/* v2 (Oct 31): three tabs, side card 520 */
+.lb3 .lbside{width:520px;padding:26px 22px}  /* + 2 px glass border = 24 from the card edge, inner 472 */
+.lb3 .lblist,.lb3 .stgrid{left:544px}
+.seg2 .hit:first-child>div,.seg2 .hit:last-child>div{}
+.side520{width:520px;padding:0 24px}
+.optrow{display:flex;align-items:center;margin-bottom:18px}
+.ctab{border-collapse:collapse;font-size:22px}.ctab th{color:#E8B21E;font-size:18px;letter-spacing:.1em;text-align:left;padding:8px 18px 8px 0}.ctab td{padding:8px 18px 8px 0;color:#F5F5F0;border-top:1px solid rgba(255,216,115,.15);white-space:nowrap}
+.sheet .seg3 div{height:144px;border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:22px;background:rgba(255,255,255,.04);border:2px solid rgba(255,216,115,.28);color:#9EA3AD}
+.sheet .seg3 div.on{background:rgba(232,178,30,.16);border:3px solid #E8B21E;color:#FAE69E}
+.sheet p{font-size:21px;color:#9EA3AD;line-height:1.35}
