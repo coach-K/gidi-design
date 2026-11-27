@@ -4786,6 +4786,342 @@
    "border": null,
    "screen": "all",
    "note": "White Friends icon for Image.color: off #9EA3AD, on #FAE69E, pressed #F5F5F0 on seg_filter_pressed (GPP-LEADERBOARD-HOME v2)."
+  },
+  {
+   "name": "dlg_box_normal",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_box_normal.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_box_normal.png",
+   "size": [
+    128,
+    128
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 44,
+    "right": 44,
+    "top": 44,
+    "bottom": 44
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Dialogue box frame, 9-slice (Image Sliced, Fill Center on). 1760×280 on 16:9 and 20:9. 82% ink glass, 2 px gold edge at 32%, faint top sheen."
+  },
+  {
+   "name": "dlg_nametag_baba",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_nametag_baba.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_nametag_baba.png",
+   "size": [
+    96,
+    64
+   ],
+   "pivot": [
+    0,
+    0
+   ],
+   "border": {
+    "left": 28,
+    "right": 28,
+    "top": 28,
+    "bottom": 28
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Name tag, Baba Gidi (teal). Text 'Baba Gidi' 30 px #0F1219, no Shadow (not over glass). Width = text + 64, min 220."
+  },
+  {
+   "name": "dlg_nametag_ped",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_nametag_ped.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_nametag_ped.png",
+   "size": [
+    96,
+    64
+   ],
+   "pivot": [
+    1,
+    0
+   ],
+   "border": {
+    "left": 28,
+    "right": 28,
+    "top": 28,
+    "bottom": 28
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Name tag, Pedestrian / Ped 8 (gold, picks up her gold brocade). Text 'Pedestrian' 30 px #0F1219, no Shadow. Width = text + 64, min 220."
+  },
+  {
+   "name": "dlg_nametag_glass",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_nametag_glass.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_nametag_glass.png",
+   "size": [
+    96,
+    64
+   ],
+   "pivot": [
+    0,
+    0
+   ],
+   "border": {
+    "left": 28,
+    "right": 28,
+    "top": 28,
+    "bottom": 28
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Neutral name tag for any future speaker without a colour (glass + gold edge). Text #FAE69E 30 px + Shadow."
+  },
+  {
+   "name": "dlg_btn_skip_normal",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_btn_skip_normal.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_btn_skip_normal.png",
+   "size": [
+    120,
+    104
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 52,
+    "right": 52,
+    "top": 52,
+    "bottom": 52
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Skip button, normal. Visual 232×104 inside a 264×144 transparent hit rect. Label 'Skip' 32 px #F5F5F0 + Shadow, dlg_icon_skip 40 px #F5F5F0 right of the label."
+  },
+  {
+   "name": "dlg_btn_skip_pressed",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_btn_skip_pressed.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_btn_skip_pressed.png",
+   "size": [
+    120,
+    104
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": {
+    "left": 52,
+    "right": 52,
+    "top": 52,
+    "bottom": 52
+   },
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Skip button, pressed (SpriteSwap). Label + icon #FAE69E, scale 0.96 for 80 ms."
+  },
+  {
+   "name": "dlg_icon_skip",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_icon_skip.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_icon_skip.png",
+   "size": [
+    40,
+    40
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Double chevron for Skip, white for Image.color tinting (#F5F5F0 normal, #FAE69E pressed)."
+  },
+  {
+   "name": "dlg_tap_indicator",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_tap_indicator.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_tap_indicator.png",
+   "size": [
+    48,
+    48
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Tap-to-continue marker, bottom-right inside the box. Shown only when the line has finished typing. Bob 8 px down/up, 0.9 s loop, ease in-out; reduce motion: static at 100%."
+  },
+  {
+   "name": "dlg_scrim_bottom",
+   "file": "intro_dialogue/sprites@1x/ui/dlg_scrim_bottom.png",
+   "file2x": "intro_dialogue/sprites@2x/ui/dlg_scrim_bottom.png",
+   "size": [
+    16,
+    256
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Bottom scrim behind portraits + box: stretch full width, 480 high from the screen bottom (not the safe rect). Not sliced; Image Simple, stretched."
+  },
+  {
+   "name": "portrait_baba_neutral",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_baba_neutral.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_baba_neutral.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Baba Gidi portrait, neutral. Transparent, waist-up, faces right, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_baba_laughing",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_baba_laughing.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_baba_laughing.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Baba Gidi portrait, laughing. Transparent, waist-up, faces right, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_baba_surprised",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_baba_surprised.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_baba_surprised.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Baba Gidi portrait, surprised. Transparent, waist-up, faces right, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_baba_proud",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_baba_proud.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_baba_proud.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Baba Gidi portrait, proud. Transparent, waist-up, faces right, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_baba_pointing",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_baba_pointing.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_baba_pointing.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Baba Gidi portrait, pointing. Transparent, waist-up, faces right, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_ped8_neutral",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_ped8_neutral.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_ped8_neutral.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Ped 8 portrait, neutral. Transparent, waist-up, faces left, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_ped8_pleading",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_ped8_pleading.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_ped8_pleading.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Ped 8 portrait, pleading. Transparent, waist-up, faces left, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
+  },
+  {
+   "name": "portrait_ped8_happy",
+   "file": "intro_dialogue/sprites@1x/portraits/portrait_ped8_happy.png",
+   "file2x": "intro_dialogue/sprites@2x/portraits/portrait_ped8_happy.png",
+   "size": [
+    700,
+    800
+   ],
+   "pivot": [
+    0.5,
+    0
+   ],
+   "border": null,
+   "pixelsPerUnit": 100,
+   "pixelsPerUnit2x": 200,
+   "screen": "intro_dialogue",
+   "note": "GPP-INTRO-DIALOGUE. Ped 8 portrait, happy. Transparent, waist-up, faces left, eye line y 250 from top; bottom 80 px fades out under the dialogue box. Image Simple 700x800, anchor bottom, pivot bottom-centre."
   }
  ]
 }
