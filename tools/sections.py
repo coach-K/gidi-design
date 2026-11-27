@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from brand import P, icon, badge, ICONS, GROUPS, PU_ACCENT, logo_mark, wordmark
 
 SCREENS = [  # key, title, group, note
- ("splash","Splash / boot","Boot","Logo, 12+ badge, loading bar with a tip toast. Background: L1 Agege Bus Stop (blurred)."),
+ ("splash","Splash / boot","Boot","Logo, 13+ badge, loading bar with a tip toast. Background: L1 Agege Bus Stop (blurred)."),
  ("home","Title / home","Menus","Play (thumb zone, bottom-right), Lagos map, Base Camp, wallet, Settings. Background: L9 Lekki Toll Gate."),
  ("map","Lagos map level select","Menus","10 districts on a stylised road line; current district auto-centred; locked toast. Background: L3 Ikorodu Road."),
  ("intro","Level intro (district card)","Menus","Lanes, people, enforcement, live power-ups and continue cost from code. Background: L6 Ikeja Along."),

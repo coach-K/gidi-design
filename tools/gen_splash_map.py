@@ -71,7 +71,7 @@ def splash():
     sprite("loader_track", '<div style="width:64px;height:20px;border-radius:10px;background:rgba(245,245,240,.16);box-shadow:inset 0 0 0 2px rgba(245,245,240,.10)"></div>', 64, 20, "splash")
     sprite("loader_fill", '<div style="width:64px;height:20px;border-radius:10px;background:linear-gradient(#FAE69E,#E8B21E 55%,#C99212)"></div>', 64, 20, "splash")
     sprite("loader_glint", '<div style="width:48px;height:20px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.7),rgba(255,255,255,0))"></div>', 48, 20, "splash")
-    sprite("badge_rating", '<div style="width:72px;height:48px;border:3px solid #F5F5F0;border-radius:10px;color:#F5F5F0;font-size:24px;display:flex;align-items:center;justify-content:center">12+</div>', 72, 48, "splash")
+    sprite("badge_rating", '<div style="width:72px;height:48px;border:3px solid #F5F5F0;border-radius:10px;color:#F5F5F0;font-size:24px;display:flex;align-items:center;justify-content:center">13+</div>', 72, 48, "splash")
     sprite("splash_scrim", '<div style="width:64px;height:256px;background:linear-gradient(rgba(15,18,25,0),rgba(15,18,25,.85))"></div>', 64, 256, "splash")
 
 def splash_preview(W, H, prog=.62):

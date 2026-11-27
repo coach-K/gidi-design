@@ -87,7 +87,7 @@ def home_frame(W, sl, sr, st, sb, two_row=False, annotate=False, phone=False, st
     srow += tile(sv_right, "Souvenirs", icon("souvenirs", 44, wt))
     srow += tile(rk_right, "Ranks", icon("trophy", 44, trophy_c), state, badge=(state == "offline")) + "</div>"
     logo = wordmark(98)
-    body = f'''<div class="hlogo">{logo}</div><div class="htag">Carry dem cross. Lagos no dey wait.</div><div class="hrate">12+</div>
+    body = f'''<div class="hlogo">{logo}</div><div class="htag">Carry dem cross. Lagos no dey wait.</div><div class="hrate">13+</div>
 {tiles}{srow}
 <div class="hcol">
  <button class="glass big2">{icon("map",56,P["naira"])}<div>Lagos map<small>10 districts · Agege to Ojuelegba</small></div></button>

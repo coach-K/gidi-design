@@ -37,7 +37,7 @@ def home(name):
     lv, nm = LEVELS["home"]
     return shell(name, f'''
 <div class="toprow"><div class="logo">GIDI<span>++</span><small>Carry dem cross. Lagos no dey wait.</small></div>{wallet()}</div>
-<div class="rating">12+</div>
+<div class="rating">13+</div>
 <div class="homecol">
   <button class="glass big2">🗺 Lagos map<small>10 districts · Agege to Ojuelegba</small></button>
   <button class="glass big2">🛍 Base Camp<small>Load your bag before you cross</small></button>

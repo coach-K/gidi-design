@@ -24,4 +24,4 @@ Chips (earned only, never real money) for the shop; Naira in-run. Shop opens fro
 **Decided (Kehinde, Oct 16):** Prices, caps and unlocks per vision doc (Kehinde, Oct 16); game-side changes in G-Prototype PR #51. Malta & Agege Roll 80 (renamed from Maltina & Gala), VIP Siren 120, Owa 80, Danfo Ride 150, Agbada Armour earned only (never sold).
 
 ## Tone
-Millennials + Gen Z, 12+/Teen. Pidgin-first copy, adult Lagos in-jokes that never punch down ("Owa!", "We don reach!", "Chai!"). Afrobeats/amapiano energy. Cosmetics, ghost rivalry, vertical clips.
+Millennials + Gen Z, 13+. Pidgin-first copy, adult Lagos in-jokes that never punch down ("Owa!", "We don reach!", "Chai!"). Afrobeats/amapiano energy. Cosmetics, ghost rivalry, vertical clips.

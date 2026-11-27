@@ -47,7 +47,7 @@ def title_row(t, ic="back"):
 def splash(n):
     return shell(n, 1, f'''<div class="ov heavy"></div><div class="splash">{logo_mark(220)}{wordmark(150,True,True)}
 <div class="bar"><i></i></div><div style="font-size:28px;color:#9EA3AD">Loading Agege Bus Stop… <span style="color:#FAE69E">Tip: Owa! freeze the next lane.</span></div></div>
-<div class="rating" style="top:auto;bottom:24px;z-index:3">12+</div>''', "Splash", blur=True)
+<div class="rating" style="top:auto;bottom:24px;z-index:3">13+</div>''', "Splash", blur=True)
 
 def lagos_map(n):
     cur = 3
