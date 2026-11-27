@@ -32,7 +32,7 @@ COMM = [("Commuter_0","ch_Ped","Ped · purple tee + fila"),("Commuter_1","ch_Ped
 def characters():
     rows = "".join(pair(ref(f, d, "pipeline concept input"), r3(r, f"{GAME} <b>{n}</b>"), f"<h3>{n}</h3><p>{role}</p>") for f, d, r, n, role in CHAR)
     crowd = "".join(f'<div class="mini2">{ref(f,"peds",c.split(" · ")[0])}{r3(r, GAME+" "+c)}</div>' for f, r, c in COMM)
-    return f'''<h1>Characters</h1><p class="lead">The cast of Gidi++: Baba Gidi, the people he carries across, and the officers who make it harder. On the left, the reference image the 3D model was built from. On the right, our treatment: the <b>shipped model</b> rendered in the Lagos dusk grade. Semi-real, 12+, no real people.</p>{LEGEND}
+    return f'''<h1>Characters</h1><p class="lead">The cast of Gidi++: Baba Gidi, the people he carries across, and the officers who make it harder. On the left, the reference image the 3D model was built from. On the right, our treatment: the <b>shipped model</b> rendered in the Lagos dusk grade. Semi-real, 13+, no real people.</p>{LEGEND}
 <h2>Hero, archetypes and officers</h2>{rows}
 <h2>Commuters (the crowd)</h2><p>Eleven generic commuters fill the crowd you lead. Each card shows reference (top) and in-game model at dusk (bottom).</p><div class="crowd">{crowd}</div>
 <h2>Hawkers {CON}</h2><p>Needed for <b>Gist Bomb</b> (“Have you heard?!”, vision v2 §8): hawkers' gossip pulls LASTMA/KAI officers off their posts. These concepts reuse shipped commuter bodies with head trays, so no new rig is needed. Tray props are about 1.5k tris (props budget, v2 §4).</p>

@@ -11,7 +11,7 @@ Previews (checked by eye): `preview/splash_{1920x1080,1024x450}.png` and `previe
 | sprites@1x/logo_gidi.png (2x: 1600×480) | 800×240 | Splash logo |
 | loader_track / loader_fill | 64×20, 9-slice L/R 10, T/B 0 | Bar, Image type Sliced; drive fill width (or Filled Horizontal) |
 | loader_glint | 48×20 | Optional sweep over the fill, 1.2 s loop |
-| badge_rating | 72×48 | 12+ |
+| badge_rating | 72×48 | 13+ |
 | splash_scrim | 64×256, stretch | Bottom 45% of the screen, ink 0→85%, behind the bar/text |
 
 Layout (1920 ref, ×s elsewhere): logo 800×240 centred, top = 0.30·H − 120. Bar 720×20 centred, top = H − 200. Loading text 28 px, muted #9EA3AD, tip in #FAE69E, centred, top = H − 160. Badge bottom-left at (40 + safeL, 40 from the bottom).
