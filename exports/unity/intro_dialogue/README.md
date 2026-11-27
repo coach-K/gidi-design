@@ -2,6 +2,8 @@
 
 # GPP-INTRO-DIALOGUE: Baba Gidi intro dialogue (art + UI spec)
 
+> **v2 (Nov 27): Baba Gidi is now in the HD smooth stylised 3D style** (Kehinde-approved reference `gidi/characters/baba-gidi-hd-v1-stylized.jpg`), replacing the v1 low-poly portraits. Same five expressions, file names, sizes (700×800 / 1400×1600), pivot, framing, eye line (y 250 @1x) and facing. Ped 8 and all UI sprites are unchanged from v1. Mockups re-rendered.
+
 Design only. Shown once to first-time players before Level 1, replayable from Settings. Landscape only, uGUI with **legacy `UnityEngine.UI.Text`** (Best Fit off, no Outline, one `Shadow` over glass), CanvasScaler 1920×1080, match height 1.0. Style: the existing dusk glass (`gen_unity.py` GLASS recipe), teal `#59D9B8`, orange `#FF7A1A`, gold `#E8B21E`, Naira gold `#FAE69E`. Tap targets ≥ 144 px (canvas units).
 
 Unity copy: `gidi-design/exports/unity/intro_dialogue/` (sprites in its own `sprites@1x/` and `sprites@2x/`, PPU 100 / 200, entries appended to `exports/unity/manifest.json`).
@@ -122,7 +124,9 @@ Import as the rest of `exports/unity` (Sprite 2D and UI, Full Rect, Bilinear, no
 | `portrait_baba_{neutral,laughing,surprised,proud,pointing}` | 700×800 | – | 0.5, 0 | Baba, faces right, eye line y 250 |
 | `portrait_ped8_{neutral,pleading,happy}` | 700×800 | – | 0.5, 0 | Ped 8, faces left, eye line y 250 |
 
-Portraits: transparent PNG, waist-up, same head scale and eye line across all 8; the bottom ~80 px fades to transparent (hidden under the box). The @2x portraits (1400×1600) are upscaled about 1.3× from the 864×1152 generated source, so they are a little soft at full 2x; @1x is native-sharp. If 2x crispness matters on tablets, re-render the 3D characters at 2x and drop them into the same frames.
+Portraits: transparent PNG, waist-up, same eye line across all 8 (y 250 @1x / 500 @2x).
+
+**Baba v2 resolution:** the image tool's maximum output is about 1 MP (864×1152 at 3:4; 720×1280 at 9:16), so a full 1400×1600 frame cannot be generated natively. The Baba @2x portraits are therefore built at **1:1 from the 864×1152 sources, never upscaled** (scale 1.000 for all five); the figure fills the 1400×1600 canvas and the rest is transparent. @1x is a Lanczos downscale of @2x. Holding scale at 1.0 makes Baba's head 91–99% of the v1 head size (neutral 99%, proud 97%, surprised 94%, laughing 92%, pointing 91%); the eye line is exact. Because the sources are framed tight, the bottom crop of each Baba portrait sits only 5–22 units under the box top (bottom at 645–662 of 800 @1x, with a 6 unit soft edge), so don't raise the box or lower the portraits without re-checking. Ped 8 is still v1 (upscaled about 1.3× at @2x from 864×1152).
 
 ## Files
 ```
@@ -136,14 +140,18 @@ GPP-INTRO-DIALOGUE/
   mockups/intro-line{1,2,8}-16x9-1920x1080.png, intro-line8-16x9-1920x1080-guides.png
   mockups/intro-line{1,2,8}-20x9-2400x1080.png, intro-line8-20x9-2400x1080-guides.png
   tools/gen_ui.py                 UI sprites (headless Chrome, same method as gen_unity_settings.py)
-  tools/cut.py, tools/compose.py  rembg cut-out (isnet-general-use) + edge clean + scale/eye-line normalise
+  tools/cut.py, tools/compose.py  v1: rembg cut-out (isnet-general-use) + edge clean + scale/eye-line normalise (Ped 8 still from this)
+  tools/compose_v2.py             v2 Baba: native 1:1 @2x from the HD sources, @1x downscaled from @2x
   tools/gen_mockups.py            mockups and guide overlays
-  work/raw, work/cut              generated source images and raw cut-outs
+  work/raw, work/cut              v1 generated sources and cut-outs (Ped 8 + old low-poly Baba)
+  work/raw_v2, work/cut_v2        v2 HD Baba sources (864×1152) and cut-outs, incl. rejected takes
 gidi-design/exports/unity/intro_dialogue/
   README.md (copy), sprites@1x/{ui,portraits}/, sprites@2x/{ui,portraits}/, mockups/
 ```
 Names in `<name>`: baba_neutral, baba_laughing, baba_surprised, baba_proud, baba_pointing, ped8_neutral, ped8_pleading, ped8_happy.
 
 ## Notes on the art
-- Baba Gidi keeps the reference's flat-faceted low-poly look in all five portraits (fila, white trim, gold chevrons). The pointing portrait was generated slightly closer, so it was scaled down to match head size; its waist crop sits under the box.
-- Ped 8 matches her own reference, which is a smoother semi-real render than Baba's low-poly. The two therefore differ a little in finish, exactly as their reference renders do.
+- **Baba Gidi v2** uses the HD smooth stylised look from `baba-gidi-hd-v1-stylized.jpg`: smooth shaded skin and fabric, green senator with white trim and gold chevron, green/gold fila with the yellow X band, moustache and goatee. Sources used: neutral `neutral_a`, laughing `laughing_b`, surprised `surprised_d`, proud `proud_b`, pointing `pointing_c` (in `work/raw_v2/`). Takes were rejected for a hand cut by the frame edge (surprised), a head too small to stay native (proud, surprised and laughing variants), or arms touching the frame edge.
+- The approved reference itself shows faint planar shading on the cheeks and a soft centre line on the chin. The v2 portraits carry the same subtle shading, which is consistent with the reference and not a low-poly mesh. The fila's folded cloth panels are angular, as in the reference.
+- Proud no longer has the second hand on the hip (it's out of frame), and the hand rests on the collar.
+- Ped 8 matches her own reference, a smoother semi-real render. Baba v2 is now closer to her finish than v1 was.
